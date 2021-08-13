@@ -1,12 +1,26 @@
 
 /* Optional: Makes the sample page fill the window. */
 body{
-  background-image: url("imgs/background.jpg");
+  background-image: url("../imgs/background.jpg");
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.8;
+}
+
+
+#main{
+    background: rgba(39,62,84,0.82);
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+#button{
+  font-weight: bolder;
+  color: purple;
 }
 
 #floating-panel {
@@ -16,7 +30,7 @@ body{
   z-index: 5;
   background-color: #fff;
   padding: 5px;
-  border: 1px solid #999;
+  border: 1px solid white;
   text-align: center;
   font-family: "Roboto", "sans-serif";
   line-height: 30px;

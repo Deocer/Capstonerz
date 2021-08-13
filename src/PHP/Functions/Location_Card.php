@@ -1,5 +1,5 @@
 <?php
-include '../PHP/CreateDesImgandTxt.php';
+include 'CreateDesImgandTxt.php';
 
 
 class Place_Box{
@@ -16,7 +16,7 @@ class Place_Box{
     <div class="card-body mx-auto">
       <h5 class="card-title text-center p-1">'.str_replace('%20',' ',$q).'</h5>
       <p class="card-text">'.$desc.'</p>
-      <a href="../pages/place.php?nm='.$q.'&lat='.$lat.'&lot='.$lot.'&desc='.$desc.'" class="btn btn-primary " type="button" >CHECK OUT</a>
+      <a href="../../pages/user/place.php?nm='.$q.'&lat='.$lat.'&lot='.$lot.'&desc='.$desc.'" class="btn btn-primary " type="button" >CHECK OUT</a>
     </div>
   </div>
   ';

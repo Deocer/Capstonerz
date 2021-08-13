@@ -1,5 +1,5 @@
 <?php 
-include '../PHP/Location_Card.php';
+include 'Location_Card.php';
 
 class RecomendedP{
 	public $destination = array('','');
