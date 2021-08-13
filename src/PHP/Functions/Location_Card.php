@@ -12,7 +12,7 @@ class Place_Box{
   $destination_box = '
 
   <div class="card mx-auto bg-light" style="width: 300px;">
-    <img src="'.$imgurl.'>" class="card-img-top" alt="NOT AVAILABLE">
+    <img src="'.$imgurl.'>"  style="height: 300px; lass="card-img-top" alt="NOT AVAILABLE">
     <div class="card-body mx-auto">
       <h5 class="card-title text-center p-1">'.str_replace('%20',' ',$q).'</h5>
       <p class="card-text">'.$desc.'</p>

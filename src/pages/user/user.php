@@ -5,7 +5,6 @@ include '../../PHP/Functions/CreateRecList.php';
 $lat = '14.5995';
 $lot = '120.9842';
 
-
 ?>
 
 <!DOCTYPE html>
