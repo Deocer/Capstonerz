@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
     <title>WANDER | Travel Website</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark navbar-fixed-top">
         <div class="container">
             <a href="#" class="navbar-brand" id="WANDER">
-                <img src="imgs/wander logo.png" class="img-fluid rounded-pill">
+                <img src="src/imgs/wander logo.png" class="img-fluid rounded-pill">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">

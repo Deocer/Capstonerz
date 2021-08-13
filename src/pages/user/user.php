@@ -17,9 +17,9 @@ $lot = '120.9842';
  <body>
 
 <section class="container-fluid">
-  <div class="row">
-    <div class="col-2">
-      <aside class="p-0 bg-dark ">
+  <div class="row p-0 m-0">
+    <div class="col-2" style="height: 1240px;">
+      <aside class="p-0 bg-dark " style="height: 100%;">
 	        <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
 	          <div class="text-center p-3">
 	            <a href="#" class="navbar-brand" id="WANDER">
@@ -62,13 +62,13 @@ $lot = '120.9842';
 		  <div class="card-body">
 		    <h5 class="card-title">Card title</h5>
 		    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 		  </div>
-		  <img src="..." class="card-img-bottom" alt="...">
+		  <img src="../../imgs/background.jpg" class="card-img mx-auto" alt="...">
+		  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 		</div>
     </div>
 
-    <div class="col-3 text-center mx-auto bg-light">
+    <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
       <h4 class="text-light bg-dark text-center  p-3">Recomended Places</h4>
 		 		<?php 
 				 $des = new RecomendedP($lat,$lot);

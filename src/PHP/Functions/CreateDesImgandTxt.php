@@ -14,7 +14,7 @@ class Destination{
 
 		
 			if(isset($near2['inline_images']) == false){
-				$img ='IMAGE NOT AVAILABLE';
+				$this->img ='IMAGE NOT AVAILABLE';
 			}else{
 				foreach ($near2['inline_images'] as $result) {
 				$this->img = $result['thumbnail']; 
