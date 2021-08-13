@@ -1,24 +1,13 @@
-<<<<<<< HEAD
-@media(min-width:768px ){
-	.news-input{
-		width: 50%;
-	}
-}
-
-#map {
-  height: 50%;
-  width: 50%;
-  margin: auto;
-}
 
 /* Optional: Makes the sample page fill the window. */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+body{
+  background-image: url("imgs/background.jpg");
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.8;
 }
-
 
 #floating-panel {
   position: absolute;
@@ -32,39 +21,4 @@ body {
   font-family: "Roboto", "sans-serif";
   line-height: 30px;
   padding-left: 10px;
-=======
-@media(min-width:768px ){
-	.news-input{
-		width: 50%;
-	}
-}
-
-#map {
-  height: 50%;
-  width: 50%;
-  margin: auto;
-}
-
-/* Optional: Makes the sample page fill the window. */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
-#floating-panel {
-  position: absolute;
-  top: 10px;
-  left: 25%;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-  text-align: center;
-  font-family: "Roboto", "sans-serif";
-  line-height: 30px;
-  padding-left: 10px;
->>>>>>> c4a0a598708132d0d4e9d9cdb5e0fda015cef18a
 }

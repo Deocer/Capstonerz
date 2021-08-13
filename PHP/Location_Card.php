@@ -1,5 +1,5 @@
 <?php
-include 'CreateDesImgandTxt.php';
+include '../PHP/CreateDesImgandTxt.php';
 
 
 class Place_Box{
@@ -11,12 +11,12 @@ class Place_Box{
 
   $destination_box = '
 
-  <div class="card " style="width: 300px;">
+  <div class="card mx-auto bg-light" style="width: 300px;">
     <img src="'.$imgurl.'>" class="card-img-top" alt="NOT AVAILABLE">
     <div class="card-body mx-auto">
-      <h5 class="card-title text-center p-3">'.str_replace('%20',' ',$q).'</h5>
+      <h5 class="card-title text-center p-1">'.str_replace('%20',' ',$q).'</h5>
       <p class="card-text">'.$desc.'</p>
-      <a href="PHP/place.php?nm='.$q.'&lat='.$lat.'&lot='.$lot.'&desc='.$desc.'" class="btn btn-primary " type="button" >CHECK OUT</a>
+      <a href="../pages/place.php?nm='.$q.'&lat='.$lat.'&lot='.$lot.'&desc='.$desc.'" class="btn btn-primary " type="button" >CHECK OUT</a>
     </div>
   </div>
   ';
