@@ -1,12 +1,7 @@
 
 /* Optional: Makes the sample page fill the window. */
 body{
-  background-image: url("../imgs/background.jpg");
-  background-position: center center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.8;
+  background-color: dimgrey;
 }
 
 

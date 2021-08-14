@@ -1,3 +1,21 @@
+<?php 
+session_start();
+if (isset($_SESSION['UserName'])) {
+$URL='src/pages/user/user.php';
+echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+}else{
+
+}
+
+
+
+
+ ?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,10 +48,10 @@
                         <a href="#About" class="nav-link">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#Contact" class="nav-link">Contact Us</a>
+                        <a href="src/pages/Login.php" class="nav-link">Log In</a>
                     </li>
                     <li class="nav-item">
-                        <a href="SignUp.html" class="nav-link">Sign Up</a>
+                        <a href="src/pages/Signup.php" class="nav-link">Sign Up</a>
                     </li>
                 </ul>
             </div>

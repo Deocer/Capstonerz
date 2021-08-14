@@ -1,9 +1,16 @@
 <?php
+session_start();
+if (isset($_SESSION['UserName']) == false) {
+$URL='../../../index.php';
+echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+
+
 include '../../PHP/Functions/CreateRecList.php';
+include '../../Class/Components.php';
+include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 
-
-$lat = '14.5995';
-$lot = '120.9842';
 
 ?>
 
@@ -17,16 +24,20 @@ $lot = '120.9842';
  <body>
 
 <section class="container-fluid">
+
+
   <div class="row p-0 m-0">
+
+
     <div class="col-2" style="height: 1240px;">
       <aside class="p-0 bg-dark " style="height: 100%;">
 	        <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
 	          <div class="text-center p-3">
 	            <a href="#" class="navbar-brand" id="WANDER">
-	              <img src="../../imgs/wander logo.png" class="img-fluid rounded-pill">
+	              <img src="../../imgs/wander logo.png" class="img-fluid rounded-pill navbar-brand">
 	            </a>
 	            <img src="../../imgs/logo.jpg" alt="profile picture" width="50%" height="60%" class=" rounded-circle my-4 p-1 d-none d-md-block shadow  mx-auto"/>
-	           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap">User#222121</a>
+	           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap"><?php echo $_SESSION['UserName']; ?></a>
 	          </div>
 	              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
 	                <span class="navbar-toggler-icon"></span>
@@ -47,7 +58,7 @@ $lot = '120.9842';
 	              <a href="#" class="nav-link">Settings</a>
 	            </li>
 	            <li class="nav-item">
-	              <a href="index.html" class="nav-link">Logout</a>
+	              <a href="../../PHP/Functions/Log_out.php" class="nav-link">Logout</a>
 	            </li>
 	          </ul>
 	          </div>      
@@ -56,25 +67,68 @@ $lot = '120.9842';
     </div>
 
     <div class="col-6 mx-auto bg-light">
+
     	<h4 class=" text-light bg-dark text-center  p-3">TRAVEL FEED</h4>
 
-		<div class="card">
-		  <div class="card-body">
-		    <h5 class="card-title">Card title</h5>
-		    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		  </div>
-		  <img src="../../imgs/background.jpg" class="card-img mx-auto" alt="...">
-		  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		</div>
+
+
+
+			<ul class="nav nav-pills nav-fill">
+				  <li class="nav-item">
+				    <a class="nav-link" aria-current="page" href="#">Active</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="#">Link</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="#">Link</a>
+				  </li>
+				  <li class="nav-item">
+				    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">New post</button>
+				  </li>
+			</ul>
+
+				<?php 
+					$p = new PostView();
+					$p->ShowPost();
+					?>
+
+
+			<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" >
+				  <div class="modal-content" style="width: 1400px; height: 500px;">
+
+				  	 <div class="modal-header text-center ">
+				  	 		<h5>Post</h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      		</div>
+
+							<div class="modal-body">
+								<?php 
+											$form = new Form(); 
+								 ?>
+									 
+							</div>
+						</div>
+	    		</div>
+				</div>
+			</div>
+			
+
     </div>
 
     <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
       <h4 class="text-light bg-dark text-center  p-3">Recomended Places</h4>
 		 		<?php 
-				 $des = new RecomendedP($lat,$lot);
+				 $des = new RecomendedP($_SESSION['lat'],$_SESSION['lot'] );
 		 		 ?>
+
     </div>
+
+
   </div>
+
+  
 </section>
 
 

@@ -1,4 +1,11 @@
 <?php 
+session_start();
+if (isset($_SESSION['variable']) == false) {
+$URL=($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/index.php');
+echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
+echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+}
+
 include '../../PHP/Functions/CreateRecList.php';
 if (isset($_GET['lat'])){
 $lat = $_GET['lat'];

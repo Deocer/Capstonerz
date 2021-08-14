@@ -7,7 +7,7 @@ class RecomendedP{
 	public $lot  = array('','');
 
 	public function __construct($lat,$lot) {
-     $otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q=tourist_attractions&ll=@'.$lat.','.$lot.',14z&type=search&api_key=fa32e8bc42c412b76478419ed0b15c1d4f1a728484ee17acb5e48ea9bbf1c658');
+     $otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q=museums&ll=@'.$lat.','.$lot.',14z&type=search&api_key=8a87e73f3aeb43182c76b9a78233ece1af910d9108e8d63a72b82bc1b7218b2f');
 			$near2 = json_decode($otherData, TRUE);
 
 			for ($i=0; $i < 5; $i++) { 
