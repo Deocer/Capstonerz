@@ -36,6 +36,18 @@ class database{
 
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
+
+		protected function verify($Username){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM WUser WHERE Username = ?"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("s", $Username);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
 }
 
  ?>

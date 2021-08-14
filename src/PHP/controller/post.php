@@ -10,6 +10,16 @@ include '../model/post.php';
 		{
 		 $this->insert($title, $cont, $tag, $rating, $id);
 		}
+
+
+		function GetPost()
+		{
+		 
+		 $res =  $this->fetchPost();
+
+		 return $res;
+		 
+		}
 	}
 
  ?>

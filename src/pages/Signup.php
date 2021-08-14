@@ -31,20 +31,14 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 						<img src="../imgs/wander logo.png" class="w-50 rounded-pill">
 					</div>
 					<p class="h4 text-center">Sign-Up Page</p>
-					<form>
+					<form action=" ../../src/PHP/Functions/Sign_up.php" method="post">
 						<div class="mb-4">
-							<label for="name" class="form-label">Full Name</label>
-							<input type="text" class="form-control" id="name" aria-describedby="nameHelp">
-							<div id="nameHelp" class="form-text">Surname/First Name/Middle Name</div>
-						</div>
-						<div class="mb-4">
-							<label for="email" class="form-label">Email Address</label>
-							<input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-							<div id="emailHelp" class="form-text">We'll never share your email.</div>
+							<label for="name" class="form-label">Username</label>
+							<input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp">
 						</div>
 						<div class="mb-4">
 							<label for="password" class="form-label">Password</label>
-							<input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
+							<input type="password" class="form-control" name="password" id="password" aria-describedby="passwordHelp">
 							<div id="passwordHelp" class="form-text">Password must be over 6 characters long.</div>
 						</div>
 						<button type="submit" class="btn btn-secondary w-100">Sign up</button>

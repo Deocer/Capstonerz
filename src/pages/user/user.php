@@ -120,7 +120,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
     <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
       <h4 class="text-light bg-dark text-center  p-3">Recomended Places</h4>
 		 		<?php 
-				 $des = new RecomendedP($_SESSION['lat'],$_SESSION['lot'] );
+				 //$des = new RecomendedP($_SESSION['lat'],$_SESSION['lot'] );
 		 		 ?>
 
     </div>
