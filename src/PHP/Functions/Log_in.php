@@ -24,7 +24,6 @@ include '../model/user.php';
 
 					 	}
 
-			  		echo 'log in successful';
 			  		session_start();
 			  		$_SESSION['Id'] =  $res[$ctr]['UserID'];
 			  		$_SESSION['UserName'] =  $res[$ctr]['UserName'];
@@ -33,6 +32,7 @@ include '../model/user.php';
 
 					echo $_SESSION['UserName'];
 					echo $_SESSION['Id'];
+					header("location:../../pages/user/user.php");
 			  		return $res;
 
 			  }
@@ -59,6 +59,17 @@ if (isset($_POST['Username']) &&  isset($_POST['Password'])){
 
 $s = new Log();
 $s->LogUser($_POST['Username'],$_POST['Password']);
+}else{
+
+
+	echo 'nada';
+}
+
+
+if (isset($_GET['Username']) &&  isset($_GET['Password'])){
+
+$s = new Log();
+$s->LogUser($_GET['Username'],$_GET['Password']);
 }else{
 
 

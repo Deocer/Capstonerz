@@ -7,6 +7,22 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 
 }else{
 
+if (isset($_GET["error"])) {
+
+		if ($_GET["error"] == "emptyinput") {
+				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Fill in all fields!<p>";
+			}elseif ($_GET["error"] == "name") {
+				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Invalid Name!<p>";
+			}elseif ($_GET["error"] == "Shortname") {
+				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Username Too Short!<p>";
+			}elseif ($_GET["error"] == "Shortpass") {
+				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Password Too Short!<p>";
+			}elseif ($_GET["error"] == "nameTaken") {
+				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Username Already Taken!<p>";
+			}
+}
+
+
 }
  ?>
 <!DOCTYPE html>
