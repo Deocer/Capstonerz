@@ -2,11 +2,23 @@
 $lat = '14.6507';
 $lot = '121.1029';
 
+$loc = 'Marikina';
+
 $MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=10&origin='.$lat.','.$lot.'');
 
-
-// Echo out a sample image 
 $near = json_decode($MapquestData, TRUE);
+
+$Geocoding = file_get_contents("http://www.mapquestapi.com/geocoding/v1/address?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&location=".$loc."");
+   
+
+
+$geo = json_decode($Geocoding, TRUE);
+
+
+echo $geo['results']['0']['locations']['0']['latLng']['lat'];
+echo $geo['results']['0']['locations']['0']['latLng']['lng'];    
+
+echo '<pre>',print_r($geo),'</pre>';
 
 
 //https://places.ls.hereapi.com/places/v1/categories/places?at=41.8369%2C-87.684&apiKey=H6XyiCT0w1t9GgTjqhRXxDMrVj9h78ya3NuxlwM7XUs

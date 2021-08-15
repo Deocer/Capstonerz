@@ -80,7 +80,7 @@ $near = json_decode($MapquestData, TRUE);
             <div class="collapse navbar-collapse order-last" id="nav">
               <ul class="navbar-nav flex-column w-100 justify-content-center">
               <li class="nav-item">
-                <a href="#" class="nav-link active">Home</a>
+                <a href="user.php" class="nav-link active">Home</a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">My Travels</a>
@@ -110,7 +110,7 @@ $near = json_decode($MapquestData, TRUE);
     <div class="col-3 text-center mx-auto bg-light">
       <h4 class="text-light bg-dark text-center  p-3">Recomended Places</h4>
         <?php 
-         $des = new RecomendedP($lat,$lot);
+         $des = new NearbyP($nm,$lat,$lot);
          ?>
     </div>
   </div>

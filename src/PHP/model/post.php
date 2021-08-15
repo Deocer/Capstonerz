@@ -22,8 +22,8 @@ class database{
 		$stmt = $conn->prepare("INSERT INTO post (PostTitle, Cont, Tag, Rating, UserID) VALUES (?, ?,?,?,?)");
 		$stmt->bind_param("sssii", $title, $cont, $tag, $rating, $id);
 		$stmt->execute();
-		echo "Post created successfully";
 		$stmt->close();
+		header("location:../../pages/user/user.php");
 	}
 
 	protected function fetchPost(){

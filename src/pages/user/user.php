@@ -75,13 +75,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 
 			<ul class="nav nav-pills nav-fill">
 				  <li class="nav-item">
-				    <a class="nav-link" aria-current="page" href="#">Active</a>
+				    <a class="nav-link" aria-current="page" href="#">Latest Feed</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="#">Link</a>
+				    <a class="nav-link" href="#">My Reccomended Feed</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="#">Link</a>
+				    <a class="nav-link" href="#">My Post</a>
 				  </li>
 				  <li class="nav-item">
 				    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">New post</button>
@@ -120,7 +120,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
     <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
       <h4 class="text-light bg-dark text-center  p-3">Recomended Places</h4>
 		 		<?php 
-				 //$des = new RecomendedP($_SESSION['lat'],$_SESSION['lot'] );
+				 $des = new RecomendedP($_SESSION['lat'],$_SESSION['lot'] );
 		 		 ?>
 
     </div>
