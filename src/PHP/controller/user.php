@@ -1,6 +1,5 @@
 <?php 
-include '../model/user.php';
-
+include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php'); 
 
 /**
 	 * 
@@ -12,6 +11,12 @@ include '../model/user.php';
 		{
 		 $this->insert($Username, $Pass, $Lat, $Lot);
 		}
+
+		function LocUser($Lat, $Lot,$id)
+		{
+		 $this->secloc($Lat, $Lot,$id);
+		}
+
 	}
 
  ?>

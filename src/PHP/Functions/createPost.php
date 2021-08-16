@@ -10,10 +10,11 @@ $cont =$_POST['cont'];
 $rating =$_POST['rating'];
 $tag = 'temp';
 $id = $_SESSION['Id'];
+$name = $_SESSION['UserName'];
 
 $c = new PostControl();
 
-$c->CreatePost($title, $cont,$tag, $rating, $id);
+$c->CreatePost($title, $cont,$tag, $rating, $id,$name);
 
 }
 

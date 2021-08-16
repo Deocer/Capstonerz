@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (isset($_SESSION['UserName'])) {
-$URL='src/pages/user/user.php';
+$URL='user/user.php';
 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 

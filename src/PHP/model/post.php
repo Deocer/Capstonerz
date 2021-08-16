@@ -17,10 +17,10 @@ class database{
 		}
 	}
 
-	protected function insert($title, $cont, $tag, $rating, $id){
+	protected function insert($title, $cont, $tag, $rating, $id, $name){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("INSERT INTO post (PostTitle, Cont, Tag, Rating, UserID) VALUES (?, ?,?,?,?)");
-		$stmt->bind_param("sssii", $title, $cont, $tag, $rating, $id);
+		$stmt = $conn->prepare("INSERT INTO post (PostTitle, Cont, Tag, Rating, UserID, Username) VALUES (?, ?,?,?,?,?)");
+		$stmt->bind_param("sssiis", $title, $cont, $tag, $rating, $id,$name);
 		$stmt->execute();
 		$stmt->close();
 		header("location:../../pages/user/user.php");

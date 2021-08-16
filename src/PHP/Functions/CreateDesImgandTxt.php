@@ -8,7 +8,7 @@ class Destination{
 
 	public function __construct($loc) {
 
-     $otherData = file_get_contents("https://serpapi.com/search.json?q=".$loc."&api_key=8a87e73f3aeb43182c76b9a78233ece1af910d9108e8d63a72b82bc1b7218b2f");
+     $otherData = file_get_contents("https://serpapi.com/search.json?q=".$loc."&api_key=5abb827c3a719fae430f8e4626c2c8eaed8c9d592e3f1b7d6889401606ba7deb");
 
 				$near2 = json_decode($otherData, TRUE);
 

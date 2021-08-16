@@ -23,7 +23,8 @@ class PostView extends database
 								    </div>
 								    <div class="col-md-8">
 								      <div class="card-body">
-								        <h5 class="card-title">'.$res[$ctr]['PostTitle'].'</h5>
+								     	<h5 class="card-title">'.$res[$ctr]['Username'].'</h5>
+								        <p class="card-title"><b>'.$res[$ctr]['PostTitle'].'</b></p>
 								        <p class="card-text">'.$res[$ctr]['Cont'].'</p>
 								        <p class="card-text"><small class="text-muted">'.$res[$ctr]['Tag'].'</small></p>
 								      </div>
@@ -36,9 +37,6 @@ class PostView extends database
 		 }
 		}
 	}
-
-echo 'here'
-
 
 
  ?>

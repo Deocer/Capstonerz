@@ -12,7 +12,7 @@ class database{
 		mysqli_connect_error();
 		}
 		else{
-		echo 'pasok';
+		echo '';
 		}
 	}
 
@@ -23,6 +23,22 @@ class database{
 		$stmt->execute();
 		echo "New record created successfully";
 		$stmt->close();
+	}
+
+
+	protected function secloc ($Lat, $Lot,$id){
+		echo 'saxa';
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("UPDATE WUser SET Lat = ?,Lot = ? WHERE UserID = ? ");
+		$stmt->bind_param("ssi",$Lat, $Lot,$id);
+		$stmt->execute();
+		echo "Location Set";
+
+		$_SESSION['lat'] = $Lat;
+		$_SESSION['lot'] = $Lot;
+
+		$stmt->close();
+		header("location:../../pages/user/user.php");
 	}
 
 	protected function fetch($Username, $Pass){
