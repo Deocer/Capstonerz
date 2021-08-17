@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2021 at 03:39 PM
+-- Generation Time: Aug 17, 2021 at 11:44 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `capstone`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `itinerary`
+--
+
+CREATE TABLE `itinerary` (
+  `PlaceID` int(11) NOT NULL,
+  `PlaceName` varchar(255) DEFAULT NULL,
+  `Des` varchar(255) NOT NULL,
+  `lat` varchar(255) DEFAULT NULL,
+  `lot` varchar(255) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `UserID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `itinerary`
+--
+
+INSERT INTO `itinerary` (`PlaceID`, `PlaceName`, `Des`, `lat`, `lot`, `img`, `UserID`) VALUES
+(6, 'Victims of Martial Law Memorial Wall, Manila', 'Victims of Martial Law (Memorial Wall) is a memorial in Metro Manila. Victims of Martial Law (Memorial Wall) is situated in 659, close to Bonifacio Shrine.', '14.5912034', '120.9814083', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Y5HXtePhbYNI_jYF0g2F9uZF9mY4uw2hm0yjVguJqA', 1);
 
 -- --------------------------------------------------------
 
@@ -57,20 +80,17 @@ CREATE TABLE `post` (
   `PostTitle` varchar(55) DEFAULT NULL,
   `Cont` varchar(255) DEFAULT NULL,
   `Tag` varchar(55) DEFAULT NULL,
-  `Rating` int(11) NOT NULL DEFAULT 0,
+  `Rating` int(11) DEFAULT NULL,
   `UserID` int(11) DEFAULT NULL,
-  `Username` varchar(15) NOT NULL
+  `UserName` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`PostID`, `PostTitle`, `Cont`, `Tag`, `Rating`, `UserID`, `Username`) VALUES
-(12, 'eqwewqe', 'weqeqwewqewq', 'temp', 3, 10, 'Wander123'),
-(13, 'dupli?', 'wqeqwe', 'temp', 3, 10, 'Wander123'),
-(14, 'What', 'weqwee', 'temp', 5, 10, 'Wander123'),
-(15, 'Mine', 'weqweqewqe', 'temp', 1, 1, 'Deocer');
+INSERT INTO `post` (`PostID`, `PostTitle`, `Cont`, `Tag`, `Rating`, `UserID`, `UserName`) VALUES
+(1, 'ewewqe', 'qweqweqweqwe', 'temp', 4, 1, 'Deocer');
 
 -- --------------------------------------------------------
 
@@ -91,30 +111,18 @@ CREATE TABLE `wuser` (
 --
 
 INSERT INTO `wuser` (`UserID`, `UserName`, `Pass`, `Lat`, `Lot`) VALUES
-(1, 'Deocer', 'Morales', '14.5995', '120.9842'),
-(2, 'Deoce', 'Morales', '14.5995', '120.9842'),
-(3, 'Deo', 'Morales', '14.5995', '120.9842'),
-(4, 'Ignition', 'deocer', '0', '0'),
-(5, 'wewqeqweeqwe', 'ewewqeweeqe', '0', '0'),
-(6, 'Jorahtheandal', 'dedeocer', '0', '0'),
-(7, 'KhalDrogo', 'daenerystargeyan', '0', '0'),
-(8, 'Helena123', 'deocer', '0', '0'),
-(9, 'Lorenz123', 'deocer', '0', '0'),
-(10, 'Wander123', 'deocer', '0', '0'),
-(11, 'Ronda123', 'eqweqwewqe', '0', '0'),
-(12, 'Ronda321', 'deocer', '0', '0'),
-(13, 'Ronda213', 'deocer', '0', '0'),
-(20, 'ewqewqeqeqeqweeq', 'ewqeqewq', '15.708776', '121.105041'),
-(21, 'weqeweqweqqqqq', 'weqeqwewqe', '14.633108', '121.099354'),
-(22, 'wqeqeqqqqqqqqqq', 'ewqewqwe', '14.633108', '121.099354'),
-(23, 'wqewqeqeq', 'ewqewqeqe', '7.063976', '125.60831'),
-(24, 'ewqewqeq', 'ewqewqe', '0', '0'),
-(25, 'ewewqeeeqewqewqe', 'eweewewewewe', '16.716802', '121.683293'),
-(26, 'Barathna', '12234221', '16.412007', '120.593394');
+(1, 'Deocer', 'Morales', '14.590607', '120.979901');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `itinerary`
+--
+ALTER TABLE `itinerary`
+  ADD PRIMARY KEY (`PlaceID`),
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `panes`
@@ -149,6 +157,12 @@ ALTER TABLE `wuser`
 --
 
 --
+-- AUTO_INCREMENT for table `itinerary`
+--
+ALTER TABLE `itinerary`
+  MODIFY `PlaceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `panes`
 --
 ALTER TABLE `panes`
@@ -164,29 +178,35 @@ ALTER TABLE `places`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `wuser`
 --
 ALTER TABLE `wuser`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `itinerary`
+--
+ALTER TABLE `itinerary`
+  ADD CONSTRAINT `itinerary_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `wuser` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `panes`
 --
 ALTER TABLE `panes`
-  ADD CONSTRAINT `panes_ibfk_1` FOREIGN KEY (`PostID`) REFERENCES `post` (`PostID`);
+  ADD CONSTRAINT `panes_ibfk_1` FOREIGN KEY (`PostID`) REFERENCES `post` (`PostID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `post`
 --
 ALTER TABLE `post`
-  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `wuser` (`UserID`);
+  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `wuser` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (isset($_SESSION['variable']) == false) {
+if (isset($_SESSION['Id']) == false) {
 $URL=($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/index.php');
 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
@@ -23,13 +23,18 @@ if (isset($_GET['desc'])){
   $desc = $_GET['desc'];
 }
 
+if (isset($_GET['img'])){
+  $img = $_GET['img'];
+}
+
+$id = $_SESSION['Id'];
+
 
 $MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=10&origin='.$lat.','.$lot.'');
 
 
 // Echo out a sample image 
 $near = json_decode($MapquestData, TRUE);
-
  ?>
 
 <html>
@@ -100,15 +105,26 @@ $near = json_decode($MapquestData, TRUE);
         </aside>
     </div>
 
-    <div class="col-6 mx-auto bg-light">
+    <div class="col-6 mx-auto bg-light text-center">
       <h4 class=" text-light bg-dark text-center  p-3"><?php echo $nm; ?></h4>
       <div id="map" class="mx-auto" style="width: 100%; height: 300px;"></div>
       <br>
       <p><?php echo $desc; ?></p>
+      <br>
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" aria-current="page" href="#">Show Directions</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" aria-current="page" href="../../PHP/controller/itinerary.php?nm=<?php echo $nm; ?>&desc=<?php echo $desc; ?>&lat=<?php echo $lat; ?>&lot=<?php echo $lot; ?>&img=<?php echo $img;?>&id=<?php echo $id;?>">Add To Itinerary</a>
+        </li>
+      </ul>
+
+      <br><br><br>
     </div>
 
     <div class="col-3 text-center mx-auto bg-light">
-      <h4 class="text-light bg-dark text-center  p-3">Recomended Places</h4>
+      <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
         <?php 
          $des = new NearbyP($nm,$lat,$lot);
          ?>

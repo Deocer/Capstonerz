@@ -1,17 +1,16 @@
 <?php
 session_start();
-if (isset($_SESSION['UserName']) == false) {
+if (isset($_SESSION['UserName']) & isset($_SESSION['Id'])  == false) {
 $URL='../../../index.php';
 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
+$id = $_SESSION['Id'];
 include '../../PHP/Functions/CreateRecList.php';
-include '../../Class/Components.php';
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 
-
-
-
+$place = array();
+$des = new RecomendedP();
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +20,6 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
   <link rel="stylesheet" type="text/css" href="../../css/style.css">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
  	<title></title>
- 	<script>
-    $(document).ready(function(){
-        $("#Modal").modal('show');
-    });
-</script>
  </head>
  <body>
 
@@ -43,7 +37,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 	              <img src="../../imgs/wander logo.png" class="img-fluid rounded-pill navbar-brand">
 	            </a>
 	            <img src="../../imgs/logo.jpg" alt="profile picture" width="50%" height="60%" class=" rounded-circle my-4 p-1 d-none d-md-block shadow  mx-auto"/>
-	           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap"><?php echo $_SESSION['UserName']; ?></a>
+	           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap"><?php echo $_SESSION['Id']; ?><?php echo $_SESSION['UserName']; ?></a>
 	          </div>
 	              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
 	                <span class="navbar-toggler-icon"></span>
@@ -55,10 +49,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 	              <a href="#" class="nav-link active">Home</a>
 	            </li>
 	            <li class="nav-item">
-	              <a href="#" class="nav-link">My Travels</a>
-	            </li>
-	            <li class="nav-item">
-	              <a href="#" class="nav-link">My Reviews</a>
+	              <a href="itinerary.php" class="nav-link">My Travels</a>
 	            </li>
 	            <li class="nav-item">
 	              <a href="#" class="nav-link">Settings</a>
@@ -93,22 +84,21 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 
 <div class="tab-content">
   <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  	  	<h2>1</h2>
   				<?php 
 					$p = new PostView();
 					$p->ShowPost();
 					?>	
 
   </div>
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-  	
-
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
+  	<h3>5</h3>
   </div>
-  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-  	
-
-  </div>
-  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-  	
+   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+ 	<h2>3</h2>
+  	  		<?php 
+					$p->UsPost($_SESSION['Id']);
+					?>
 
   </div>
 </div>
@@ -130,9 +120,62 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 	      		</div>
 
 							<div class="modal-body">
-								<?php 
-											$form = new Form(); 
-								 ?>
+								<div class="container-fluid" style="overflow:hidden;">
+								    <form action="../../PHP/Functions/createPost.php" method="post">
+										  <div>
+											  <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+											</div>
+											<br>
+											<div>
+											  <textarea class="form-control" id="exampleFormControlTextarea1" name="cont" placeholder="Tell Us About Your Experience!" rows="5" ></textarea>
+											</div>
+											<br>
+										  <div class="container-fluid">
+
+										  	<div class="row">
+
+													  	<div class="col">
+
+													  		<button type="button" name="tag" value="test" class="btn btn-primary">
+																  Notifications <span class="badge bg-secondary"></span>
+																</button>
+
+													  	</div>
+
+													  	<div class="col">
+													  		 <fieldset>
+															    <span class="star-cb-group">
+															      <input type="radio" id="rating-5" name="rating" value="5" />
+															      <label for="rating-5">5</label>
+															      <input type="radio" id="rating-4" name="rating" value="4" />
+															      <label for="rating-4">4</label>
+															      <input type="radio" id="rating-3" name="rating" value="3" />
+															      <label for="rating-3">3</label>
+															      <input type="radio" id="rating-2" name="rating" value="2" />
+															      <label for="rating-2">2</label>
+															      <input type="radio" id="rating-1" name="rating" value="1" />
+															      <label for="rating-1">1</label>
+															      <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" />
+															      <label for="rating-0">0</label>
+															    </span>
+															  </fieldset>
+													  	</div>
+
+										  	</div>
+										  	
+
+										  </div>
+										  <br>
+
+										  <div class="mb-3">
+										  <input class="form-control" type="file" id="formFileMultiple" multiple>
+										</div>
+
+											<br>
+										  <div>
+										    <button type="submit" class="btn btn-primary">Sign in</button>
+										  </div>
+										</form>
 									 
 							</div>
 						</div>
@@ -144,9 +187,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
     </div>
 
     <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
-      <h4 class="text-light bg-dark text-center  p-3">Recomended Places</h4>
+      <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
 		 		<?php 
-				  $des = new RecomendedP($_SESSION['lat'],$_SESSION['lot'] );
+				  $des->locations($_SESSION['lat'],$_SESSION['lot']);
+
 		 		 ?>
 
     </div>
@@ -156,11 +200,6 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 
   
 </section>
-<?php 
-	$form = new Intro(); 
-
- ?>
-
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
  </body>

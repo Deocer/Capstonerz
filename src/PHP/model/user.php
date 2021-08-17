@@ -49,7 +49,6 @@ class database{
 		$stmt->execute();
 
 		$result = $stmt->get_result();
-
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 

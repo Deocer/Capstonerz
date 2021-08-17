@@ -1,5 +1,6 @@
 <?php 
-include '../model/post.php';
+
+include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/post.php');
 /**
 	 * 
 	 */
@@ -16,6 +17,24 @@ include '../model/post.php';
 		{
 		 
 		 $res =  $this->fetchPost();
+
+		 return $res;
+		 
+		}
+
+		function UserPost($id)
+		{
+		 
+		 $res =  $this->fetchUser($id);
+
+		 return $res;
+		 
+		}
+
+		function TagPost($tag)
+		{
+		 
+		 $res =  $this->fetchTag($tag);
 
 		 return $res;
 		 

@@ -12,7 +12,7 @@ class Maker extends database
 		{
 			if ($res = $this->verify($Username) == null) {
 				$this->insert($Username, $Pass, '0', '0');
-				header('location:Log_in.php?Username='.$Username.'&Password='.$Pass.''); 
+				header('location:../controller/user.php?Username='.$Username.'&Password='.$Pass.''); 
 			}else{
 				header("location:../../pages/Signup.php?error=nameTaken");
 			}

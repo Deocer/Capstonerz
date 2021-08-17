@@ -66,7 +66,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                 <figcaption class="blockquote-footer">
                     <p class="h3 text-light">LOOK. CHECK-OUT. TRAVEL.</p>
                 </figcaption>
-                <a href="SignUp.html"><button type="button" class="btn btn-light mt-5 p-2" id="button">Get Started</button></a>
+                <a href="src/pages/Signup.php"><button type="button" class="btn btn-light mt-5 p-2" id="button">Get Started</button></a>
             </figure>
         </div>
     </div>   

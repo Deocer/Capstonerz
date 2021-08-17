@@ -59,7 +59,7 @@ if (isset($_GET["error"])) {
 						</div>
 						<button type="submit" class="btn btn-secondary w-100">Sign up</button>
 					</form>
-					<p class="mb-0 text-center">Already a member? <a href="Login.html">Log in Here.</a></p>
+					<p class="mb-0 text-center">Already a member? <a href="Login.php">Log in Here.</a></p>
 				</div>
 			</div>			
 		</div>

@@ -44,14 +44,10 @@ class database{
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $UserID);
 		$stmt->execute();
-		$result = $stmt->get_result(); // get the mysqli result
-		$user = $result->fetch_assoc(); // fetch data 
 
-		foreach($user as $r){
-			echo $r;
-		}
+		$result = $stmt->get_result();
 
-		return $result;	
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
 

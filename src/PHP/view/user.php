@@ -1,11 +1,11 @@
 <?php 
-include '../model/user.php';
+include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/user.php');
 
 
 /**
 	 * 
 	 */
-	class UserView extends database
+	class UserView extends UserControl 
 	{		
 
 		function GetUser($Username, $Pass)

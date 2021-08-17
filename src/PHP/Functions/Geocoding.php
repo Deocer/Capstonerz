@@ -29,6 +29,7 @@ $id = $_SESSION['Id'];
 	$i = new UserControl();
 
 	$i-> LocUser($lat,$lot,$id);
+	
 
 	}
 	else{

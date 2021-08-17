@@ -32,7 +32,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 						<img src="../imgs/wander logo.png" class="w-50 rounded-pill">
 					</div>
 					<p class="h4 text-center">Log-in Page</p>
-					<form action=" ../../src/PHP/Functions/Log_in.php" method="post">
+					<form action=" ../../src/PHP/controller/user.php" method="post">
 						<div class="mb-4">
 							<label for="email" class="form-label">Username</label>
 							<input type="text" class="form-control" id="text" name ="Username" aria-describedby="emailHelp">
@@ -48,7 +48,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 						</div>
 						<button type="submit" class="btn btn-secondary w-100">Login</button>
 					</form>
-					<p class="mb-0 text-center">Not registered yet? <a href="Signup.html">Sign-Up Here.</a></p>
+					<p class="mb-0 text-center">Not registered yet? <a href="Signup.php">Sign-Up Here.</a></p>
 				</div>
 				
 			</div>			

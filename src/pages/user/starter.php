@@ -60,11 +60,11 @@ include '../../PHP/Functions/Geocoding.php';
   </button>
 </div>
 
-<div class="container mx-auto text-center" style="margin: auto;">
+<div class="container mx-auto text-center" style="margin: auto;opacity: 1;">
    <form action="../../PHP/Functions/Geocoding.php" method="post" class="form" style="width:40%; margin: auto;">
     <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Recipient's username" name="loc">
-    <button class="btn btn-outline-secondary" id="place-search-input" id="button-addon2">Button</button>
+    <input type="text" class="form-control" placeholder="Please Enter Your Location" name="loc">
+    <button class="btn btn-outline-secondary btn-success " id="place-search-input" id="button-addon2" style="color:white;">Button</button>
   </form> 
 </div>
 
