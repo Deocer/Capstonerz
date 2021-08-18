@@ -59,7 +59,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
 	      </aside>
     </div>
     <div class="col-9 mx-auto bg-light">
-    	<h4 class=" text-light bg-dark text-center  p-3">MY PREVIOUS DESTINATIONS</h4>
+    	<h4 class=" text-light bg-dark text-center  p-3">MY DESTINATIONS</h4>
     	<div class="d-flex">
     		<?php 
 					$p = new ItemView();

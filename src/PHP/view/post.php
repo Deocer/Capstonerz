@@ -27,6 +27,7 @@ class PostView extends PostControl
 								        <p class="card-title"><b>'.$res[$ctr]['PostTitle'].'</b></p>
 								        <p class="card-text">'.$res[$ctr]['Cont'].'</p>
 								        <p class="card-text"><small class="text-muted">'.$res[$ctr]['Tag'].'</small></p>
+								        '.$res[$ctr]['Rating'].'<span class="fa fa-star"></span>
 								      </div>
 								    </div>
 								  </div>

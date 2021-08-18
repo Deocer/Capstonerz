@@ -7,6 +7,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 
 include '../../PHP/Functions/CreateRecList.php';
+include '../../PHP/controller/place.php';
 if (isset($_GET['lat'])){
 $lat = $_GET['lat'];
 }
@@ -28,6 +29,9 @@ if (isset($_GET['img'])){
 }
 
 $id = $_SESSION['Id'];
+
+$s = new PlaceControl();
+$s->AddItem($id,$_GET['nm'],$_GET['desc'],$_GET['lat'],$_GET['lot'],$_GET['img']);
 
 
 $MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=10&origin='.$lat.','.$lot.'');

@@ -18,6 +18,7 @@ $des = new RecomendedP();
  <head>
  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
  	<title></title>
  </head>
@@ -67,48 +68,45 @@ $des = new RecomendedP();
 
     	<h4 class=" text-light bg-dark text-center  p-3">TRAVEL FEED</h4>
 
-<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Latest Feed</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My Reccomended Feed</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Post</button>
-  </li>
-  <li class="nav-item" role="presentation">
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">New post</button>
-  </li>
-</ul>
+	<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+	  <li class="nav-item" role="presentation">
+	    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Latest Feed</button>
+	  </li>
+	  <li class="nav-item" role="presentation">
+	    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My Reccomended Feed</button>
+	  </li>
+	  <li class="nav-item" role="presentation">
+	    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Post</button>
+	  </li>
+	  <li class="nav-item" role="presentation">
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">New post</button>
+	  </li>
+	</ul>
 
-<div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-  	  	<h2>1</h2>
-  				<?php 
-					$p = new PostView();
-					$p->ShowPost();
-					?>	
+	<div class="tab-content">
+	  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+	  				<?php 
+						$p = new PostView();
+						$p->ShowPost();
+						?>	
 
-  </div>
-  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
-  	<h3>5</h3>
-  </div>
-   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
- 	<h2>3</h2>
-  	  		<?php 
-					$p->UsPost($_SESSION['Id']);
-					?>
+	  </div>
+	  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
+	  </div>
+	   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+	  	  		<?php 
+						$p->UsPost($_SESSION['Id']);
+						?>
 
-  </div>
-</div>
+	  </div>
+	</div>
 
-<script>
-  var firstTabEl = document.querySelector('#myTab li:last-child a')
-  var firstTab = new bootstrap.Tab(firstTabEl)
+	<script>
+	  var firstTabEl = document.querySelector('#myTab li:last-child a')
+	  var firstTab = new bootstrap.Tab(firstTabEl)
 
-  firstTab.show()
-</script>
+	  firstTab.show()
+	</script>
 
 			<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered" >
@@ -173,7 +171,7 @@ $des = new RecomendedP();
 
 											<br>
 										  <div>
-										    <button type="submit" class="btn btn-primary">Sign in</button>
+										    <button type="submit" class="btn btn-primary">Post</button>
 										  </div>
 										</form>
 									 
@@ -188,10 +186,44 @@ $des = new RecomendedP();
 
     <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
       <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
-		 		<?php 
-				  $des->locations($_SESSION['lat'],$_SESSION['lot']);
+			<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+				  <li class="nav-item" role="presentation">
+				    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#landmark" type="button" role="tab" aria-controls="home" aria-selected="true">Landmarks</button>
+				  </li>
+				  <li class="nav-item" role="presentation">
+				    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#restaurants" type="button" role="tab" aria-controls="profile" aria-selected="false">Food</button>
+				  </li>
+				  <li class="nav-item" role="presentation">
+				    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#tourist" type="button" role="tab" aria-controls="messages" aria-selected="false">Spots</button>
+				  </li>
+				</ul>
 
-		 		 ?>
+				<div class="tab-content">
+				  <div class="tab-pane active" id="landmark" role="tabpanel" aria-labelledby="home-tab">
+				  				<?php 
+									$des->locations('landmark',$_SESSION['lat'],$_SESSION['lot']);
+									?>	
+
+				  </div>
+				  <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
+				  				<?php 
+									$des->locations('dining',$_SESSION['lat'],$_SESSION['lot']);
+									?>	
+				  </div>
+				   <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
+				  	  		<?php 
+									$des->locations('tourist_attractions',$_SESSION['lat'],$_SESSION['lot']);
+									?>
+
+				  </div>
+				</div>
+
+				<script>
+				  var firstTabEl = document.querySelector('#myTab li:last-child a')
+				  var firstTab = new bootstrap.Tab(firstTabEl)
+
+				  firstTab.show()
+				</script>
 
     </div>
 
