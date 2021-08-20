@@ -20,22 +20,23 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 		function GetUser($Username, $Pass)
 		{
 		  $res = $this->fetch($Username, $Pass);
+		  echo $res;
 			 if ( $res != null) {
 
 					 for ($ctr=0; $ctr < 0; $ctr++) { 
 
-					 	 echo $res[$ctr]['UserName'];
-					 	 echo $res[$ctr]['Pass'];
-					 	 echo $res[$ctr]['Lat'];
-					 	 echo $res[$ctr]['Lot'];
+					 	 echo $res[1];
+					 	 echo $res[2];
+					 	 echo $res[3];
+					 	 echo $res[4];
 
 					 	}
 
 			  		session_start();
-			  		$_SESSION['Id'] =  $res[$ctr]['UserID'];
-			  		$_SESSION['UserName'] =  $res[$ctr]['UserName'];
-					$_SESSION['lat'] =  $res[$ctr]['Lat'];
-					$_SESSION['lot'] =  $res[$ctr]['Lot'];
+			  		$_SESSION['Id'] =  $res[0];
+			  		$_SESSION['UserName'] =  $res[1];
+					$_SESSION['lat'] =  $res[3];
+					$_SESSION['lot'] =  $res[4];
 
 					echo $_SESSION['UserName'];
 					echo $_SESSION['Id'];
@@ -65,18 +66,19 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 
 					 for ($ctr=0; $ctr < 0; $ctr++) { 
 
-					 	 echo $res[$ctr]['UserName'];
-					 	 echo $res[$ctr]['Pass'];
-					 	 echo $res[$ctr]['Lat'];
-					 	 echo $res[$ctr]['Lot'];
+					 	
+					 	 echo $res[1];
+					 	 echo $res[2];
+					 	 echo $res[3];
+					 	 echo $res[4];
 
 					 	}
 
 			  		session_start();
-			  		$_SESSION['Id'] =  $res[$ctr]['UserID'];
-			  		$_SESSION['UserName'] =  $res[$ctr]['UserName'];
-					$_SESSION['lat'] =  $res[$ctr]['Lat'];
-					$_SESSION['lot'] =  $res[$ctr]['Lot'];
+			  		$_SESSION['Id'] =  $res[0];
+			  		$_SESSION['UserName'] =  $res[1];
+					$_SESSION['lat'] =  $res[3];
+					$_SESSION['lot'] =  $res[4];
 
 					echo $_SESSION['UserName'];
 					echo $_SESSION['Id'];

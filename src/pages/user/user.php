@@ -38,7 +38,7 @@ $des = new RecomendedP();
 	              <img src="../../imgs/wander logo.png" class="img-fluid rounded-pill navbar-brand">
 	            </a>
 	            <img src="../../imgs/logo.jpg" alt="profile picture" width="50%" height="60%" class=" rounded-circle my-4 p-1 d-none d-md-block shadow  mx-auto"/>
-	           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap"><?php echo $_SESSION['Id']; ?><?php echo $_SESSION['UserName']; ?></a>
+	           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap"><?php echo $_SESSION['UserName']; ?></a>
 	          </div>
 	              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
 	                <span class="navbar-toggler-icon"></span>

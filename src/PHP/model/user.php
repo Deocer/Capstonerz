@@ -19,7 +19,8 @@ class database{
 	protected function insert($Username, $Pass, $Lat, $Lot){
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$stmt = $conn->prepare("INSERT INTO WUser (UserName, Pass, Lat, Lot) VALUES (?, ?, ?,?)");
-		$stmt->bind_param("ssss", $Username, $Pass, $Lat, $Lot);
+		$hasher_pwd = password_hash($Pass, PASSWORD_DEFAULT);
+		$stmt->bind_param("ssss", $Username, $hasher_pwd, $Lat, $Lot);
 		$stmt->execute();
 		echo "New record created successfully";
 		$stmt->close();
@@ -43,13 +44,24 @@ class database{
 
 	protected function fetch($Username, $Pass){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM WUser WHERE Username = ? AND Pass = ? "; 
+		$sql = "SELECT * FROM WUser WHERE Username = ?"; 
 		$stmt = $conn->prepare($sql); 
-		$stmt->bind_param("ss", $Username, $Pass);
+		$stmt->bind_param("s", $Username);
 		$stmt->execute();
 
 		$result = $stmt->get_result();
-		return $data = $result->fetch_all(MYSQLI_ASSOC);
+		$row = mysqli_fetch_array($result, MYSQLI_NUM);
+		foreach ($row as $r){
+			echo $r;
+		}
+		echo "</br>";
+		$hash = $row[2];
+
+		if (password_verify($Pass,$hash)) {
+			return $data = $row;
+			}
+
+
 	}
 
 		protected function verify($Username){
