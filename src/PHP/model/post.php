@@ -9,11 +9,9 @@ class database{
 		// Check connection
 		if(mysqli_connect_errno())
 		{
-		echo 'fain in display' .
 		mysqli_connect_error();
 		}
 		else{
-		echo '';
 		}
 	}
 
@@ -23,12 +21,19 @@ class database{
 		$stmt->bind_param("sssiis", $title, $cont, $tag, $rating, $id,$name);
 		$stmt->execute();
 		$stmt->close();
-		header("location:../../pages/user/user.php");
+	}
+
+	protected function paneinsert($src, $id, $name){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("INSERT INTO panes (Datum, PostID, PostName) VALUES (?,?,?)");
+		$stmt->bind_param("sis", $src, $id, $name);
+		$stmt->execute();
+		$stmt->close();
 	}
 
 	protected function fetchPost(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("SELECT * FROM post  ORDER BY PostID DESC LIMIT 10");
+		$stmt = $conn->prepare("SELECT * FROM post  ORDER BY PostID DESC LIMIT 5");
 		$stmt->execute();
 
 		$result = $stmt->get_result();
@@ -38,11 +43,35 @@ class database{
 	}
 
 
-		protected function fetchUser($UserID){
+	protected function fetchUser($UserID){
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$sql = "SELECT * FROM post WHERE UserID = ?"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $UserID);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+	protected function fetchPop($UserID,$title,$name){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM post WHERE UserID = ? AND PostTitle = ? AND UserName = ?"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("iss", $UserID,$title,$name);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+		$row = mysqli_fetch_array($result, MYSQLI_NUM);
+		return $hash = $row[0];
+	}
+
+	protected function fetchPic($id){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT datum FROM panes WHERE PostID = ?"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("i", $id);
 		$stmt->execute();
 
 		$result = $stmt->get_result();
@@ -60,10 +89,6 @@ class database{
 		$result = $stmt->get_result(); // get the mysqli result
 		$user = $result->fetch_assoc(); // fetch data 
 
-		foreach($user as $r){
-			echo $r;
-		}
-
 		return $result;	
 	}
 
@@ -75,10 +100,6 @@ class database{
 		$stmt->execute();
 		$result = $stmt->get_result(); // get the mysqli result
 		$user = $result->fetch_assoc(); // fetch data 
-
-		foreach($user as $r){
-			echo $r;
-		}
 
 		return $result;	
 	}

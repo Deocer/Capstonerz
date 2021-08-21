@@ -10,7 +10,7 @@ class RecomendedP{
 
 
 	public function locations($q,$lat,$lot) {
-     $otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',17z&type=search&api_key=d4695701201ab8facf230dda811a2a9498a3f62cabf1b0815fcf68d0fb3239c3');
+     $otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',17z&type=search&api_key=81b8e6e0714792664635680a2b6eefc393b48f610ec270d0f068b25f1f838f2e');
 			$near2 = json_decode($otherData, TRUE);
 
 			for ($i=0; $i < 1; $i++) { 
@@ -46,7 +46,7 @@ class NearbyP{
 	public $lot  = array('','');
 
 	public function __construct($nm,$lat,$lot) {
-     $otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q=tourist_landmark&ll=@'.$lat.','.$lot.',10z&type=search&api_key=d4695701201ab8facf230dda811a2a9498a3f62cabf1b0815fcf68d0fb3239c3');
+     $otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q=tourist_landmark&ll=@'.$lat.','.$lot.',10z&type=search&api_key=81b8e6e0714792664635680a2b6eefc393b48f610ec270d0f068b25f1f838f2e');
 			$near2 = json_decode($otherData, TRUE);
 
 			for ($i=0; $i < 1; $i++) 

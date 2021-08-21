@@ -119,7 +119,7 @@ $des = new RecomendedP();
 
 							<div class="modal-body">
 								<div class="container-fluid" style="overflow:hidden;">
-								    <form action="../../PHP/Functions/createPost.php" method="post">
+								    <form action="../../PHP/Functions/createPost.php" method="post" enctype="multipart/form-data">
 										  <div>
 											  <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
 											</div>
@@ -166,7 +166,7 @@ $des = new RecomendedP();
 										  <br>
 
 										  <div class="mb-3">
-										  <input class="form-control" type="file" id="formFileMultiple" multiple>
+										  <input name="file[]" type="file" multiple="multiple" />
 										</div>
 
 											<br>

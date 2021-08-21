@@ -7,11 +7,9 @@ class database{
 		// Check connection
 		if(mysqli_connect_errno())
 		{
-		echo 'fain in display' .
 		mysqli_connect_error();
 		}
 		else{
-		echo '';
 		}
 	}
 
@@ -20,9 +18,9 @@ class database{
 		$stmt = $conn->prepare("INSERT INTO itinerary (PlaceName,Des, lat, lot, img,UserID) VALUES (?, ?,?,?,?,?)");
 		$stmt->bind_param("sssssi", $name,$des, $lat, $lot,$img, $id);
 		$stmt->execute();
-		echo 'added';
 		$stmt->close();
 		header("location:../../pages/user/user.php");
+		exit();
 	}
 
 	protected function fetch($id){

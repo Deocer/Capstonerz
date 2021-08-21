@@ -124,3 +124,19 @@ $s = new Intro();
 
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <form action="upload.php" method="post" enctype="multipart/form-data" >
+    
+    <input name="file[]" type="file" multiple="multiple" />
+    <input type="submit" name="upload">
+
+  </form>
+</body>
+</html>
+

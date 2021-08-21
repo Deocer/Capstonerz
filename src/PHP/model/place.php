@@ -7,11 +7,9 @@ class database{
 		// Check connection
 		if(mysqli_connect_errno())
 		{
-		echo 'fain in display' .
 		mysqli_connect_error();
 		}
 		else{
-		echo '';
 		}
 	}
 
