@@ -1,5 +1,5 @@
 <?php 
-class database{
+class data{
 
 	public function __construct(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
@@ -21,17 +21,34 @@ class database{
 		$stmt->close();
 	}
 
-	protected function fetch($name){
+	protected function fetch($lat,$lot){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM places WHERE Pname = ?"; 
+		$sql = "SELECT * FROM places WHERE Lat BETWEEN ? AND ? AND Lot BETWEEN ? AND ?"; 
 		$stmt = $conn->prepare($sql); 
-		$stmt->bind_param("s", $name);
+		$lat1 = $lat +1;
+		$lot1 = $lot +1;
+		$stmt->bind_param("ssss", $lat,$lat1,$lot,$lot1);
 		$stmt->execute();
 
 		$result = $stmt->get_result();
 
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
+
+	protected function placename(){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT Pname FROM places"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+
+
+	}
+
+
 
 
 }

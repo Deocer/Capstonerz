@@ -20,7 +20,7 @@ function uploader($id,$Name){
         $file_ext = explode('.', $file_name);
         $file_ext = strtolower(end($file_ext));
 
-        $allowed = array('txt','jpg','srt');
+        $allowed = array('txt','jpg','srt','png','jpeg',);
 
         if (in_array($file_ext, $allowed)) {
             if ($file_error === 0) {
@@ -49,7 +49,7 @@ if (isset($_POST['title']) &&  isset($_POST['cont']) && isset($_POST['rating']))
 $title =$_POST['title'];
 $cont =$_POST['cont'];
 $rating =$_POST['rating'];
-$tag = 'temp';
+$tag = $_POST['tag'];
 $id = $_SESSION['Id'];
 $name = $_SESSION['UserName'];
 

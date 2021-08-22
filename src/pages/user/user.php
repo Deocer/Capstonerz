@@ -8,6 +8,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 $id = $_SESSION['Id'];
 include '../../PHP/Functions/CreateRecList.php';
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/place.php');
 
 $place = array();
 $des = new RecomendedP();
@@ -30,7 +31,7 @@ $des = new RecomendedP();
   <div class="row p-0 m-0">
 
 
-    <div class="col-2" style="height: 1240px;">
+    <div class="col-2" style="height: 3180px;">
       <aside class="p-0 bg-dark " style="height: 100%;">
 	        <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
 	          <div class="text-center p-3">
@@ -134,9 +135,12 @@ $des = new RecomendedP();
 
 													  	<div class="col">
 
-													  		<button type="button" name="tag" value="test" class="btn btn-primary">
-																  Notifications <span class="badge bg-secondary"></span>
-																</button>
+																<?php 
+																	$s = new PlaceView();
+
+																	$s->Places();
+
+																 ?>
 
 													  	</div>
 
@@ -201,18 +205,18 @@ $des = new RecomendedP();
 				<div class="tab-content">
 				  <div class="tab-pane active" id="landmark" role="tabpanel" aria-labelledby="home-tab">
 				  				<?php 
-									$des->locations('landmark',$_SESSION['lat'],$_SESSION['lot']);
+									//$des->locations('landmark',$_SESSION['lat'],$_SESSION['lot']);
 									?>	
 
 				  </div>
 				  <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
 				  				<?php 
-									$des->locations('dining',$_SESSION['lat'],$_SESSION['lot']);
+									//$des->locations('dining',$_SESSION['lat'],$_SESSION['lot']);
 									?>	
 				  </div>
 				   <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
 				  	  		<?php 
-									$des->locations('tourist_attractions',$_SESSION['lat'],$_SESSION['lot']);
+									//$des->locations('tourist_attractions',$_SESSION['lat'],$_SESSION['lot']);
 									?>
 
 				  </div>
@@ -235,5 +239,26 @@ $des = new RecomendedP();
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
  </body>
+<script type="text/javascript">
+  function reply_click(obj)
+  {
+  		 var modal = document.getElementById("myModal");
+  		 var span = document.getElementsByClassName("close")[0];
+
+       modal.style.display = "block";
+       document.getElementById("modalpic").src = obj.src;
+
+
+			window.onclick = function(event) {
+			  if (event.target == modal) {
+			    modal.style.display = "none";
+			  }
+			}
+
+
+  }
+</script>
 
  </html>
+
+ 

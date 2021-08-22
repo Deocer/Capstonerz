@@ -8,6 +8,7 @@ class PostView extends PostControl
 		function ShowPost()
 		{
 		 $i = 0;
+		 $pic = 0;
 		 $res =  $this->GetPost();
 		 foreach($res as $r ){
 		 	$i++;
@@ -17,62 +18,131 @@ class PostView extends PostControl
 		 		$pic = 0;
 		 		$img =  $this->Pic($res[$ctr]['PostID']);
 
-
 		 		echo '
-<div class="card" style="width:100%;height:90%;">
-  <h5 class="card-header"></h5>
-  <div class="card-body">
-    <div class="container">
-      <div class="row align-items-start">
-        <div class="col-1 px-2">
-         <img src="../../imgs/wander logo.png"  class="d-block" alt="..." style="width:50px; height: 50px; border: solid white; border-radius: 50px;">
-        </div>
-        <div class="col-6 py-2">
-          <h5 class="card-title">'.$res[$ctr]['UserName'].'</h5>
-        </div>
-      </div>
-    <p class="card-text"'.$res[$ctr]['PostTitle'].'</p>
-    <p>'.$res[$ctr]['Cont'].'</p>
-    <div id="carouselExampleIndicators" class="carousel slide" style="height: 50%;"data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">';
+					<div class="card" style="width:100%;height:90%;">
+					  <h5 class="card-header"></h5>
+					  <div class="card-body">
+					    <div class="container">
+					      <div class="row align-items-start">
+					        <div class="col-1 px-2">
+					         <img src="../../imgs/wander logo.png"  class="d-block" alt="..." style="width:50px; height: 50px; border: solid white; border-radius: 50px;">
+					        </div>
+					        <div class="col-6 py-2">
+					          <h5 class="card-title">'.$res[$ctr]['UserName'].'</h5>
+					        </div>
+					      </div>
+					    <p class="card-text"'.$res[$ctr]['PostTitle'].'</p>
+					    <p>'.$res[$ctr]['Cont'].'</p>';
 
-			 	echo '
-				 	<div class="carousel-item active">
-				 		<img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" alt="../../imgs/background.jpg">
-				 	</div>';
-
-  
-				foreach($img as $im ){
-
-				 	echo '
-				 	<div class="carousel-item">
-				 		<img src="'.$im['datum'].'" style="height: 100%;" class="img-fluid rounded-start" alt="../../imgs/background.jpg">
-				 	</div>';
-
+		 	foreach($img as $im ){
+		 		  $pic++;
 				 }
 
+				if ($pic > 0) {
+					switch ($pic) {
+				  case $pic == 1 :
+				   echo '
+				 		<img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)"  alt="../../imgs/background.jpg"></br>';
+				    break;
+				  case $pic == 2:
+				    echo '<div class="container">
+								  <div class="row g-1">
+								    <div class="col p-0">
+								     <img src="'.$img[0]['datum'].'" style="height: 100%;" value="'.$img[0]['datum'].'"  class="img-fluid" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 100%;"  value="'.$img[1]['datum'].'"class="img-fluid" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+					case $pic == 3:
+				    echo '<div class="container">
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[2]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+				  case $pic == 4:
+				    echo '<div class="container">
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[2]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								     <div class="col">
+								     <img src="'.$img[3]['datum'].'" style="height: 100%;" class="img-fluid rounded-start"onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+				 	  case  $pic > 4:
+				    echo '<div class="container">
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[2]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								     <div class="col">
+								     <p>'.$pic.'</p>
+								     <img src="'.$img[3]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+				  default:
+				    echo "";
+				}
+				}
+
+				
+
+				echo '
+					   <br><p class="card-title"><sub>'.$res[$ctr]['Tag'].'</sub></p> '.$res[$ctr]['Rating'].'<span class="fa fa-star"></span>
+					  </div>
+					</div>
+
+					</div>';
 
 echo'
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-   <p class="card-title"><sub>'.$res[$ctr]['Tag'].'t</sub></p> '.$res[$ctr]['Rating'].'<span class="fa fa-star"></span>
-  </div>
-</div>
 
-</div>';
+		<div id="myModal" class="postmodal" style"display:none;">
+
+				<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				 <img src="" style="height: 500px; width:1200px;" id = "modalpic" class="img-fluid" alt="../../imgs/background.jpg">
+				</div>
+
+		</div>
+
+
+					';
+
+
+
 		 	}
 		}
 
