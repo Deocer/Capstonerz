@@ -25,6 +25,15 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 
 		 return $res;
 		 }
+
+
+		 function Getplaces($lat,$lot)
+		{
+		 
+		 $res =  $this->select();
+
+		 return $res;
+		 }
 		
 
 		

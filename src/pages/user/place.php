@@ -72,15 +72,15 @@ $near = json_decode($MapquestData, TRUE);
   <body style="border: 0; margin: 0;">
 <section class="container-fluid">
   <div class="row">
-    <div class="col-2">
-      <aside class="p-0 bg-dark ">
+    <div class="col-2" style="height: 3180px;">
+      <aside class="p-0 bg-dark " style="height: 100%;">
           <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
             <div class="text-center p-3">
               <a href="#" class="navbar-brand" id="WANDER">
-                <img src="../../imgs/wander logo.png" class="img-fluid rounded-pill">
+                <img src="../../imgs/wander logo.png" class="img-fluid rounded-pill navbar-brand">
               </a>
               <img src="../../imgs/logo.jpg" alt="profile picture" width="50%" height="60%" class=" rounded-circle my-4 p-1 d-none d-md-block shadow  mx-auto"/>
-             <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap">User#222121</a>
+             <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap"><?php echo $_SESSION['UserName']; ?></a>
             </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
                   <span class="navbar-toggler-icon"></span>
@@ -92,16 +92,13 @@ $near = json_decode($MapquestData, TRUE);
                 <a href="user.php" class="nav-link active">Home</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">My Travels</a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">My Reviews</a>
+                <a href="itinerary.php" class="nav-link">My Travels</a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">Settings</a>
               </li>
               <li class="nav-item">
-                <a href="index.html" class="nav-link">Logout</a>
+                <a href="../../PHP/Functions/Log_out.php" class="nav-link">Logout</a>
               </li>
             </ul>
             </div>      

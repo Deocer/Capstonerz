@@ -19,7 +19,7 @@ class database{
 		$stmt->bind_param("sssssi", $name,$des, $lat, $lot,$img, $id);
 		$stmt->execute();
 		$stmt->close();
-		header("location:../../pages/user/user.php");
+		header("location:../../pages/user/itinerary.php");
 		exit();
 	}
 

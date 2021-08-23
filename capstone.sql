@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2021 at 10:20 AM
+-- Generation Time: Aug 23, 2021 at 07:22 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -42,12 +42,14 @@ CREATE TABLE `itinerary` (
 --
 
 INSERT INTO `itinerary` (`PlaceID`, `PlaceName`, `Des`, `lat`, `lot`, `img`, `UserID`) VALUES
-(6, 'Victims of Martial Law Memorial Wall, Manila', 'Victims of Martial Law (Memorial Wall) is a memorial in Metro Manila. Victims of Martial Law (Memorial Wall) is situated in 659, close to Bonifacio Shrine.', '14.5912034', '120.9814083', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Y5HXtePhbYNI_jYF0g2F9uZF9mY4uw2hm0yjVguJqA', 1),
-(8, 'People\'s Park in the Sky', 'People\'s Park in the Sky, formerly known as the Palace in the Sky, is an incomplete mansion ...', '14.1416667', '121.0219444', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY0ZVruJxdtsz-Qvu8mOuW6rgdlDVS3J9Ga1wHZ1e0iQ', 1),
-(9, 'Puerta De Isabela II', 'Puerta de Isabel II ... This north entrance to Intramuros was the last gate built by the Spanish, in 1863. Suggest an Edit. Related tour ...', '14.5941886', '120.9762076', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAhdddGsKjC_Gxokxk9DoYMmGWCHS6e0QCvnxXyaSWIQ', 1),
-(10, 'Barbara\'s Heritage Restaurant', 'Barbara\'s is the Best Heritage Restaurant in Manila, located in Intramuros in the early 90s revolutionizing the way Filipinos celebrate their own culture.', '14.5894156', '120.9752694', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMU7Z_YKBMMxgOALG-5SkuikoS5TjtodNZSUwjKRo', 1),
-(12, 'Heroes Square', 'Heroes\' Square ... Heroes\' Sq is the largest and most symbolic square in Budapest. It is dominated by the Millenary Monument (Ezeréves emlékmű), a 36m-high pillar ...', '14.592327', '120.971818', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNrBG8QUbtcNSRU8ubZEA4xRri9uJRhNIpC-ovBzYKnw', 1),
-(14, 'Greenbelt Park', 'Greenbelt Park is a park in Greenbelt, Maryland, that is managed by the National Park Service. The forested park lies approximately 10 miles (16 km) ...', '14.5527276', '121.0222429', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0h7V_e-3W9ml6eler4Z6lBpK_7zyNvhrHnRQZYFu89A', 5);
+(14, 'Greenbelt Park', 'Greenbelt Park is a park in Greenbelt, Maryland, that is managed by the National Park Service. The forested park lies approximately 10 miles (16 km) ...', '14.5527276', '121.0222429', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0h7V_e-3W9ml6eler4Z6lBpK_7zyNvhrHnRQZYFu89A', 5),
+(15, 'Victims of Martial Law Memorial Wall, Manila', 'Victims of Martial Law (Memorial Wall) is a memorial in Metro Manila. Victims of Martial Law (Memorial Wall) is situated northwest of Tanque.', '14.5912034', '120.9814083', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Y5HXtePhbYNI_jYF0g2F9uZF9mY4uw2hm0yjVguJqA', 60),
+(16, 'Luneta Park', 'Rizal Park, also known as Luneta Park or simply Luneta, is a historic urban park located in Ermita, Manila, Philippines. It is considered one of the largest urban parks in Asia, covering an area of 58 hectares.', '14.5831', '120.9794', 'https://faq.ph/wp-content/uploads/2015/08/Rizal-Monument-Rizal-park.jpg', 60),
+(17, 'Victims of Martial Law Memorial Wall, Manila', 'Victims of Martial Law (Memorial Wall) is a memorial in Metro Manila. Victims of Martial Law (Memorial Wall) is situated northwest of Tanque.', '14.5912034', '120.9814083', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Y5HXtePhbYNI_jYF0g2F9uZF9mY4uw2hm0yjVguJqA', 60),
+(18, 'Manila Ocean Park', 'The Manila Ocean Park is a oceanarium in Manila, Philippines. It is owned by China Oceanis Philippines Inc., a subsidiary of China Oceanis Inc., a Singaporean-registered firm. It is located behind the Quirino Grandstand at Rizal Park', '14.5792', '120.9726', 'https://lh3.googleusercontent.com/proxy/U4KAK9QgRdz39HzBKWp5OEjwjjGSyjwIPaE0INIzIY6J3exzRDAmWiT7cVliefcz8GJSwofmvJFuyODBnHHxKyj4udNQfCt5u-T2B9JkTwPzJqZytokBUqhEv-9dCQ1S5zNOVxhkx2Xs0OJpMmpkcA', 60),
+(19, 'Manila Ocean Park', 'The Manila Ocean Park is a oceanarium in Manila, Philippines. It is owned by China Oceanis Philippines Inc., a subsidiary of China Oceanis Inc., a Singaporean-registered firm. It is located behind the Quirino Grandstand at Rizal Park', '14.5792', '120.9726', 'https://lh3.googleusercontent.com/proxy/U4KAK9QgRdz39HzBKWp5OEjwjjGSyjwIPaE0INIzIY6J3exzRDAmWiT7cVliefcz8GJSwofmvJFuyODBnHHxKyj4udNQfCt5u-T2B9JkTwPzJqZytokBUqhEv-9dCQ1S5zNOVxhkx2Xs0OJpMmpkcA', 61),
+(20, 'Sunset Point', 'Sunset Point. Bryce Canyon National Park. Red and white rock fins stand among distant spires and forested landscape Sunset Point provides views of narrow ...', '14.4393355', '120.4537027', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaytNkBYcBJ749Fr27t-NZL8W3uc8kRDQT532V_7Gy1g', 61),
+(21, 'People\'s Park in the Sky', 'People\'s Park in the Sky, formerly known as the Palace in the Sky, is an incomplete mansion ...', '14.1416667', '121.0219444', 'https://serpapi.com/searches/6123042e359e99cf36064168/images/c94eb7a192b84b912dd0afb35eceaabc62aa6df787229fb4ec3dfec72764ae73.jpeg', 61);
 
 -- --------------------------------------------------------
 
@@ -67,27 +69,12 @@ CREATE TABLE `panes` (
 --
 
 INSERT INTO `panes` (`PaneID`, `Datum`, `PostID`, `PostName`) VALUES
-(1, '../../uploads/61208fa6411806.98641936.srt', NULL, '45'),
-(2, '../../uploads/61208fdf9d2b60.97833681.srt', NULL, '45'),
-(3, '../../uploads/6120900a2b1268.87910208.srt', 36, '45'),
-(4, '../../uploads/612090afe24809.04249128.jpg', 38, '45'),
-(5, '../../uploads/612091345697f3.01464957.srt', 18, '45'),
-(6, '../../uploads/6120919cdca461.95098160.srt', 40, '45'),
-(7, '../../uploads/61209264df3720.18062359.jpg', NULL, '45'),
-(8, '../../uploads/61209282cf0211.36363155.srt', NULL, '45'),
-(9, '../../uploads/612092a17ec4b0.76654569.jpg', NULL, '45'),
-(10, '../../uploads/6120930ae33cf6.10515278.srt', 45, '45'),
-(11, '../../uploads/61209375003536.68599437.srt', 46, 'deocer123'),
-(12, '../../uploads/6120948c359a84.29757300.srt', 47, 'deocer123'),
-(13, '../../uploads/6120948c3fec37.10726655.srt', 47, 'deocer123'),
-(14, '../../uploads/612094c31d0051.99363647.srt', 48, 'deocer123'),
-(15, '../../uploads/6120a4898cd009.10970531.jpg', 49, 'deocer123'),
-(16, '../../uploads/6120a4ba0f82c9.25923431.jpg', 50, 'deocer123'),
-(17, '../../uploads/6120a50a0f11b2.35883862.jpg', 51, 'deocer123'),
-(18, '../../uploads/6120a50a25fc57.85449848.jpg', 51, 'deocer123'),
-(19, '../../uploads/6120a5a87d27f7.82959394.jpg', 52, 'deocer123'),
-(20, '../../uploads/6120a5a8b2ebc1.88105301.jpg', 52, 'deocer123'),
-(21, '../../uploads/6120b3c35c9e72.31058763.jpg', 53, 'Pizza123');
+(40, '../../uploads/612308bb3b10f8.61855279.jpeg', 68, 'deocer123'),
+(41, '../../uploads/612308bb4d0274.14033495.jpeg', 68, 'deocer123'),
+(42, '../../uploads/612308bb5d4cb6.66501655.jpg', 68, 'deocer123'),
+(43, '../../uploads/612308bb759907.08029065.jpg', 68, 'deocer123'),
+(44, '../../uploads/61230bbfe294a0.90672871.jpeg', 69, 'deocer123'),
+(45, '../../uploads/61230bc030cc27.73246453.jpeg', 69, 'deocer123');
 
 -- --------------------------------------------------------
 
@@ -110,15 +97,20 @@ CREATE TABLE `places` (
 
 INSERT INTO `places` (`PlaceID`, `Pname`, `Des`, `Lat`, `Lot`, `img`) VALUES
 (1, 'Campulabo Island', 'Previous Tulang Diot Island: White sand beach in Camotes, Cebu · Next Ultimate Guide: Venetian-inspired Food Park at J Centre Mall – Cebu ...', '10.3156992', '123.8854366', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkcSb_n4DnpunGx1Kq9NwaUDPPGhVJZ9KAzdEguL_Lyg'),
-(5, 'Bellissima Fattoria', 'We are a family-owned and operated winery and cidery located in the heart of Central New York. 180 Wiltsieville Rd, Hannibal, NY 13074.', '10.3651121', '123.8300916', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTt6qeSyERX95awXE2ZlIv-84qnCgZDGmlZ_HkA56cQg'),
+(5, 'Bellissima Fattoria', 'Bellissima Fattoria (beautiful farm in English) is a private vacation farm in Brgy. Bonbon, Cebu City. The farm is owned and developed by J.Lim Business Ventures & Development Inc. To know more, check our pages or message us, we\'ll be glad to accommodate.', '10.3651121', '123.8300916', 'https://media-cdn.tripadvisor.com/media/photo-s/1b/fa/09/c2/la-nostra-struttura-vista.jpg'),
 (7, 'Heroes Square', 'Heroes\' Square ... Heroes\' Sq is the largest and most symbolic square in Budapest. It is dominated by the Millenary Monument (Ezeréves emlékmű), a 36m-high pillar ...', '14.592327', '120.971818', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNrBG8QUbtcNSRU8ubZEA4xRri9uJRhNIpC-ovBzYKnw'),
 (8, 'The Breakfast Haven', '189 Followers, 231 Following, 33 Posts - See Instagram photos and videos from The Breakfast Haven (@thebreakfasthaven)', '14.4845327', '120.8944765', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKC_w3Q3VU-a76nhOikLPKTLtYSX8CW6vMsioCJwYN'),
 (9, 'Puerta De Isabela II', 'Puerta de Isabel II ... This north entrance to Intramuros was the last gate built by the Spanish, in 1863. Suggest an Edit. Related tour ...', '14.5941886', '120.9762076', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAhdddGsKjC_Gxokxk9DoYMmGWCHS6e0QCvnxXyaSWIQ'),
 (10, 'People\'s Park in the Sky', 'People\'s Park in the Sky, formerly known as the Palace in the Sky, is an incomplete mansion ...', '14.1416667', '121.0219444', 'https://serpapi.com/searches/611cd62e5b54ef8b0471b1de/images/c94eb7a192b84b912dd0afb35eceaabc62aa6df787229fb4ec3dfec72764ae73.jpeg'),
 (12, 'Greenbelt Park', 'Greenbelt Park is a park in Greenbelt, Maryland, that is managed by the National Park Service. The forested park lies approximately 10 miles (16 km) ...', '14.5527276', '121.0222429', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0h7V_e-3W9ml6eler4Z6lBpK_7zyNvhrHnRQZYFu89A'),
-(13, 'Ilustrado Restaurant', 'Restaurant ', '14.5875418', '120.9770326', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJKo21s7Q694gvMW3j4tOjjAGydRsNzH2K4SbifBosw'),
-(14, 'Trails to Antartica', 'Explore the most popular trails in Antarctica with hand-curated trail maps and driving directions as well as detailed reviews and photos from hikers, ...', '14.5796375', '120.9722185', 'IMAGE NOT AVAILABLE'),
-(16, 'San Diego Gardens', 'San Diego is a garden bonanza, especially botanical gardens. These are some of the best places to take in the abundance of plants that call San Diego ...', '14.585814', '120.9757118', 'IMAGE NOT AVAILABLE');
+(13, 'Ilustrado Restaurant', 'Traditional Filipino cuisine served in an old-school, Spanish-style venue with antique decor.', '14.5875418', '120.9770326', 'https://b.zmtcdn.com/data/pictures/7/6305557/53f8435f91df642c36cc927964c599ad.jpg?fit=around|750:500&crop=750:500;*,*'),
+(14, 'Trails to Antartica', 'The first penguin park facility in the country. Trails to Antarctica: The Penguin Quest brings you closer to the coldest and most mysterious place on earth. Take a journey to discover a world like no other. It features a walk-through exhibit where you can', '14.5796375', '120.9722185', 'https://cmsapi.manilaoceanpark.com/storage/uploads/TTA1_1554349008.jpg'),
+(16, 'San Diego Gardens', 'San Diego is a garden bonanza, especially botanical gardens. These are some of the best places to take in the abundance of plants that call San Diego ...', '14.585814', '120.9757118', 'https://www.sandiego.org/-/media/images/sdta-site/things-to-do/parks-and-gardens/japanesefriendshipgarden-727x545-1.jpg?h=545&la=en&w=727'),
+(18, 'Luneta Park', 'Rizal Park, also known as Luneta Park or simply Luneta, is a historic urban park located in Ermita, Manila, Philippines. It is considered one of the largest urban parks in Asia, covering an area of 58 hectares.', '14.5831', '120.9794', 'https://faq.ph/wp-content/uploads/2015/08/Rizal-Monument-Rizal-park.jpg'),
+(19, 'Manila Ocean Park', 'The Manila Ocean Park is a oceanarium in Manila, Philippines. It is owned by China Oceanis Philippines Inc., a subsidiary of China Oceanis Inc., a Singaporean-registered firm. It is located behind the Quirino Grandstand at Rizal Park', '14.5792', '120.9726', 'https://lh3.googleusercontent.com/proxy/U4KAK9QgRdz39HzBKWp5OEjwjjGSyjwIPaE0INIzIY6J3exzRDAmWiT7cVliefcz8GJSwofmvJFuyODBnHHxKyj4udNQfCt5u-T2B9JkTwPzJqZytokBUqhEv-9dCQ1S5zNOVxhkx2Xs0OJpMmpkcA'),
+(20, 'Victims of Martial Law Memorial Wall, Manila', 'Victims of Martial Law (Memorial Wall) is a memorial in Metro Manila. Victims of Martial Law (Memorial Wall) is situated northwest of Tanque.', '14.5912034', '120.9814083', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2Y5HXtePhbYNI_jYF0g2F9uZF9mY4uw2hm0yjVguJqA'),
+(23, 'Sunset Point', 'Sunset Point. Bryce Canyon National Park. Red and white rock fins stand among distant spires and forested landscape Sunset Point provides views of narrow ...', '14.4393355', '120.4537027', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaytNkBYcBJ749Fr27t-NZL8W3uc8kRDQT532V_7Gy1g'),
+(34, 'Spanish Gate', 'The Subic Spanish Gate, located at the corner of Dewey Avenue and Samson Road in the City of Olongapo, Zambales province, Philippines, was built in 1885 when the Spanish Navy authorized the construction ', '14.8174623', '120.2834326', 'https://live.staticflickr.com/227/465013485_6c9e9cb456_b.jpg');
 
 -- --------------------------------------------------------
 
@@ -141,56 +133,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`PostID`, `PostTitle`, `Cont`, `Tag`, `Rating`, `UserID`, `UserName`) VALUES
-(1, 'ewewqe', 'qweqweqweqwe', 'temp', 4, 1, 'Deocer'),
-(3, 'Puntang baby', 'rwqewqeqwe', 'temp', 3, 1, 'Deocer'),
-(5, 'rockrock paper', 'ewqeqewqeq', 'temp', 5, 1, 'Deocer'),
-(7, 'ewqeqewq', 'ewqewqeqe', 'temp', 4, 48, 'olyy111223'),
-(8, 'ewqewqe', 'wqqewqeq', 'temp', 4, NULL, NULL),
-(9, 'rweqrwq', 'wqewqewqeq', 'temp', 3, 53, 'deocer32312'),
-(10, 'this love', 'eqwewqeqeqe', 'temp', 4, 45, 'deocer123'),
-(11, 'ewqewqe', 'ewqeqewq', 'temp', 3, 45, 'deocer123'),
-(12, 'wewqewq', 'ewqwqeqe', 'temp', 3, 45, 'deocer123'),
-(13, 'weqewqe', 'wqeqee', 'temp', 3, 45, 'deocer123'),
-(14, 'ewqewqe', 'wewqewqe', 'temp', 3, 45, 'deocer123'),
-(15, 'eewqewq', 'ewewqeqe', 'temp', 4, 45, 'deocer123'),
-(16, 'wew', 'ww', 'temp', 1, 45, 'deocer123'),
-(17, 'ewewqe', 'wewqeqe', 'temp', 3, 45, 'deocer123'),
-(18, 'w', 'w', 'temp', 1, 45, 'deocer123'),
-(19, 'dsadad', 'sdsadsad', 'temp', 4, 45, 'deocer123'),
-(20, 'e', 'e', 'temp', 2, 45, 'deocer123'),
-(21, 'ewewqe', 'qweqeqe', 'temp', 4, 45, 'deocer123'),
-(22, 'w', 'w', 'temp', 3, 45, 'deocer123'),
-(23, 'w', 'w', 'temp', 4, 45, 'deocer123'),
-(24, 'ew', 'ewqeqe', 'temp', 3, 45, 'deocer123'),
-(25, 'wqeqewq', 'ewqeqeqe', 'temp', 3, 45, 'deocer123'),
-(26, 'w', 'w', 'temp', 3, 45, 'deocer123'),
-(27, 'w', 'w', 'temp', 3, 45, 'deocer123'),
-(28, 'eweqeqw', 'ewqewqe', 'temp', 3, 45, 'deocer123'),
-(29, 'ewqeq', 'ewqewqe', 'temp', 3, 45, 'deocer123'),
-(30, 'cont', 'weqwewqeewqeqe', 'temp', 4, 45, 'deocer123'),
-(31, 'ewqeqe', 'weq', 'temp', 4, 45, 'deocer123'),
-(32, 'ewqewqeq', 'ewqeq', 'temp', 4, 45, 'deocer123'),
-(33, '', '', 'temp', 1, 45, 'deocer123'),
-(34, 'e', 'e', 'temp', 3, 45, 'deocer123'),
-(35, 'w', 'w', 'temp', 3, 45, 'deocer123'),
-(36, 'ewe', 'wqeqeqe', 'temp', 3, 45, 'deocer123'),
-(37, 'ewe', 'wqeqeqe', 'temp', 3, 45, 'deocer123'),
-(38, 'trypic', 'wqeqeqe', 'temp', 3, 45, 'deocer123'),
-(39, 'w', 'w', 'temp', 4, 45, 'deocer123'),
-(40, 'uniwwe', 'eqwewqeqwe', 'temp', 3, 45, 'deocer123'),
-(41, 'ww', 'w', 'temp', 3, 45, 'deocer123'),
-(42, 'ww', 'w', 'temp', 3, 45, 'deocer123'),
-(43, 'wewqewqeqeq', 'wweqwew', 'temp', 3, 45, 'deocer123'),
-(44, 'e2qe224242', 'wewqe', 'temp', 3, 45, 'deocer123'),
-(45, 'ewqe232', 'ewewqe', 'temp', 3, 45, 'deocer123'),
-(46, 'eweqeq4r2424', 'ewqewqeq', 'temp', 3, 45, 'deocer123'),
-(47, 'eweqee222233', 'eweqe', 'temp', 3, 45, 'deocer123'),
-(48, 'eweq2e23232313', 'eqweqweq', 'temp', 4, 45, 'deocer123'),
-(49, 'picture', 'ewqeqewe', 'temp', 4, 45, 'deocer123'),
-(50, 'wqeqwe222233', 'ewqewqewqe', 'temp', 3, 45, 'deocer123'),
-(51, 'ewqeqe222', 'ewqeqweq', 'temp', 3, 45, 'deocer123'),
-(52, 'weewqe', 'eqwewqeqe', 'temp', 3, 45, 'deocer123'),
-(53, 'Pizaa Fun', 'Pizza is an Italian dish consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients, which is then baked at a high temperature, traditionally in a wood-fired oven.', 'temp', 5, 59, 'Pizza123');
+(68, 'Jojo: Stone Ocean', 'Stone Ocean is the sixth story arc of the Japanese manga series JoJo\'s Bizarre Adventure, written and illustrated by Hirohiko Araki. It was serialized in Weekly Shōnen Jump from January 1, 2000 to April 21, 2003 and was collected into 17 tankōbon volumes', '', 5, 61, 'deocer123'),
+(69, 'Nebula', 'A nebula is a distinct body of interstellar clouds. Originally, the term was used to describe any diffused astronomical object, including galaxies beyond the Milky Way', '', 3, 61, 'deocer123');
 
 -- --------------------------------------------------------
 
@@ -211,13 +155,11 @@ CREATE TABLE `wuser` (
 --
 
 INSERT INTO `wuser` (`UserID`, `UserName`, `Pass`, `Lat`, `Lot`) VALUES
-(1, 'Deocer', 'Morales', '14.590607', '120.979901'),
 (5, 'WonderofU', 'deocer', '14.556885', '121.023532'),
 (44, 'ewqewqeweqw', '$2y$10$.tWR5ViIdlO7WghONPYfD.ZkYyfd5ljCa4viEnj29ZaVEvpEIwtBO', '0', '0'),
-(45, 'deocer123', '$2y$10$sIiNmM8VFjNzGXv3jh8Eme.OHP7mbO6Gi5hAxb8fplVCZzhMdYh.q', '0', '0'),
 (47, 'deocer1234', '$2y$10$BuGJnV/QlA2rEqegSIaUIO12NfuhXq1kyZBsNMqEmK5n2W1iTDAB2', '0', '0'),
 (48, 'olyy111223', '$2y$10$S3qTqDiCnOjDnoE724tg0el/74qAIHTd6hw/LgyqlnYMAIUVR7cK6', '43.97842', '4.91962'),
-(50, 'deocer321', '$2y$10$jZmhuAMnUBUTNJcpVoPlWOYq9GC3yqgklRp/yUiEp1lsgjF0R.CcG', '43.97842', '4.91962'),
+(50, 'deocer321', '$2y$10$jZmhuAMnUBUTNJcpVoPlWOYq9GC3yqgklRp/yUiEp1lsgjF0R.CcG', '14.630607', '120.979901'),
 (51, 'rororo123', '$2y$10$Cn/JGDoZ2bAhv4UzWsGYTuT9/sY5KjZxhF7Ak/AlYLba.whIFRzNG', '0', '0'),
 (52, 'deocer3231', '$2y$10$ZbjP72zkDx44Wcf3FVMGteKYpGKK5fQSzJI202rz9EaB90Jwv8M2a', '0', '0'),
 (53, 'deocer32312', '$2y$10$pcHKuIMSH7pa47VTlHGz8uvNYuzwkrJl7q9tt27/uRdw7xPyeNF6u', '13.12448', '123.869703'),
@@ -226,7 +168,10 @@ INSERT INTO `wuser` (`UserID`, `UserName`, `Pass`, `Lat`, `Lot`) VALUES
 (56, 'Jojolion', '$2y$10$GvT9QZAgYIJdWKv4orKIbOZv30J/q1iuPtlFsg3cCj0RtvKdQedlu', '16.027818', '120.74472'),
 (57, 'rwqrwqrrrwqrq', '$2y$10$k6WxZcGFa7oq/QzWZUJPD.W..yMQ96uDRIMFN8cdCcqBzDtxoh2iO', '43.97842', '4.91962'),
 (58, 'ewqewweeeewwwwwwee', '$2y$10$cEZaWB8RM7icv20Rj.TJJegB.HrckG.47cEtZIPDdXkTE5P65.PUi', '14.57061', '121.01691'),
-(59, 'Pizza123', '$2y$10$KtJowEaH26YG/KNdxrgTouw1uWOx6qkShR6RcUL11.OjnEPV0SxB6', '14.590607', '120.979901');
+(59, 'Pizza123', '$2y$10$KtJowEaH26YG/KNdxrgTouw1uWOx6qkShR6RcUL11.OjnEPV0SxB6', '14.590607', '120.979901'),
+(60, 'dedelion', '$2y$10$BvoYZQCNLwrkAfSnfkyPruwDNIMwPzDC5gN54kInWsQhE93IL.x2y', '14.580607', '120.979901'),
+(61, 'deocer123', '$2y$10$S2UapU3N.t5xXP3mXA/0HO8u1g8IRKAIFyz35dyFnoSBKNEhwGi3y', '14.590607', '120.979901'),
+(62, 'admin123', '$2y$10$JsW4zURwGg6PlYZr3KJ7men/YGpULfOBpEdQF4IR6Zj9TV7eCE7C2', '14.633108', '121.099354');
 
 --
 -- Indexes for dumped tables
@@ -275,31 +220,31 @@ ALTER TABLE `wuser`
 -- AUTO_INCREMENT for table `itinerary`
 --
 ALTER TABLE `itinerary`
-  MODIFY `PlaceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `PlaceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `panes`
 --
 ALTER TABLE `panes`
-  MODIFY `PaneID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `PaneID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `places`
 --
 ALTER TABLE `places`
-  MODIFY `PlaceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `PlaceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `wuser`
 --
 ALTER TABLE `wuser`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- Constraints for dumped tables

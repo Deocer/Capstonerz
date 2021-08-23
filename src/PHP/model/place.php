@@ -21,13 +21,36 @@ class data{
 		$stmt->close();
 	}
 
-	protected function fetch($lat,$lot){
+	protected function fetch($name){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM places WHERE Pname = ?"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("s", $name);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+	protected function rec($lat,$lot){
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$sql = "SELECT * FROM places WHERE Lat BETWEEN ? AND ? AND Lot BETWEEN ? AND ?"; 
 		$stmt = $conn->prepare($sql); 
 		$lat1 = $lat +1;
 		$lot1 = $lot +1;
 		$stmt->bind_param("ssss", $lat,$lat1,$lot,$lot1);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+	protected function select(){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM places ORDER BY PlaceID DESC LIMIT 20"; 
+		$stmt = $conn->prepare($sql); 
 		$stmt->execute();
 
 		$result = $stmt->get_result();

@@ -12,6 +12,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/place.php');
 
 $place = array();
 $des = new RecomendedP();
+$plc = new PlaceView();
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@ $des = new RecomendedP();
  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="../../css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
  	<title></title>
  </head>
@@ -191,32 +193,41 @@ $des = new RecomendedP();
     <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
       <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
 			<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#landmark" type="button" role="tab" aria-controls="home" aria-selected="true">Landmarks</button>
+					<li class="nav-item" role="presentation">
+				    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#places" type="button" role="tab" aria-controls="home" aria-selected="true"><span class="material-icons">map</span></button>
 				  </li>
 				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#restaurants" type="button" role="tab" aria-controls="profile" aria-selected="false">Food</button>
+				    <button class="nav-link" id="place-tab" data-bs-toggle="tab" data-bs-target="#landmark" type="button" role="tab" aria-controls="place" aria-selected="true"><span class="material-icons">place</span></button>
 				  </li>
 				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#tourist" type="button" role="tab" aria-controls="messages" aria-selected="false">Spots</button>
+				    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#restaurants" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="material-icons">restaurant</span></button>
+				  </li>
+				  <li class="nav-item" role="presentation">
+				    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#tourist" type="button" role="tab" aria-controls="messages" aria-selected="false"><span class="material-icons">festival</span></button>
 				  </li>
 				</ul>
 
 				<div class="tab-content">
-				  <div class="tab-pane active" id="landmark" role="tabpanel" aria-labelledby="home-tab">
+				  <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
 				  				<?php 
-									//$des->locations('landmark',$_SESSION['lat'],$_SESSION['lot']);
+									$plc->Recplace();
+									?>	
+
+				  </div>
+				  <div class="tab-pane" id="landmark" role="tabpanel" aria-labelledby="place-tab">
+				  				<?php 
+									$des->locations('landmark',$_SESSION['lat'],$_SESSION['lot']);
 									?>	
 
 				  </div>
 				  <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
 				  				<?php 
-									//$des->locations('dining',$_SESSION['lat'],$_SESSION['lot']);
+									$des->locations('dining',$_SESSION['lat'],$_SESSION['lot']);
 									?>	
 				  </div>
 				   <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
 				  	  		<?php 
-									//$des->locations('tourist_attractions',$_SESSION['lat'],$_SESSION['lot']);
+									$des->locations('tourist_attractions',$_SESSION['lat'],$_SESSION['lot']);
 									?>
 
 				  </div>

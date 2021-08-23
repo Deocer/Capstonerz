@@ -23,6 +23,14 @@ class database{
 		$stmt->close();
 	}
 
+	protected function delete($id){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("DELETE FROM  post WHERE PostID  = ?");
+		$stmt->bind_param("i",$id);
+		$stmt->execute();
+		$stmt->close();
+	}
+
 	protected function paneinsert($src, $id, $name){
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$stmt = $conn->prepare("INSERT INTO panes (Datum, PostID, PostName) VALUES (?,?,?)");

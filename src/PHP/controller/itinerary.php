@@ -34,7 +34,7 @@ $s = new ItemControl();
 $s->AddItem($_GET['nm'],$_GET['desc'],$_GET['lat'],$_GET['lot'],$_GET['img'], $_GET['id']);
 }else{
 
-	echo 'nada';
+
 }
 
  ?>
