@@ -7,48 +7,41 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 
 include '../../PHP/Functions/CreateRecList.php';
-include '../../PHP/controller/place.php';
-if (isset($_GET['lat'])){
-$lat = $_GET['lat'];
-}
-
-if (isset($_GET['lot'])){
-$lot = $_GET['lot'];
-}
-
-if (isset($_GET['nm'])){
-  $nm = $_GET['nm'];
-}
-
-if (isset($_GET['desc'])){
-  $desc = $_GET['desc'];
-}
-
-if (isset($_GET['img'])){
-  $img = $_GET['img'];
-}
-
+include '../../PHP/view/place.php';
 $id = $_SESSION['Id'];
-
+if (isset($_GET['lat']) && isset($_GET['lot']) && isset($_GET['nm']) && isset($_GET['desc']) && isset($_GET['img']) ){
+$lat = $_GET['lat'];
+$lot = $_GET['lot'];
+$nm = $_GET['nm'];
+$desc = $_GET['desc'];
+$img = $_GET['img'];
 $s = new PlaceControl();
 $s->AddItem($id,$_GET['nm'],$_GET['desc'],$_GET['lat'],$_GET['lot'],$_GET['img']);
+}
 
 
-$MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=10&origin='.$lat.','.$lot.'');
+$MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=10&origin=14.5995,120.9842');
 
 
 // Echo out a sample image 
 $near = json_decode($MapquestData, TRUE);
+
+$id = $_SESSION['Id'];
+
+$plc = new PlaceView();
  ?>
 
-<html>
-  <head>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-  <meta charset="utf-8">
-    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+<!DOCTYPE html>
+ <html>
+ <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
-
+  <title></title>
     <script type="text/javascript">
       window.onload = function() {
         L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
@@ -67,11 +60,15 @@ $near = json_decode($MapquestData, TRUE);
         map.addControl(L.mapquest.control());
       }
     </script>
-  </head>
+ </head>
+ <body>
 
-  <body style="border: 0; margin: 0;">
 <section class="container-fluid">
-  <div class="row">
+
+
+  <div class="row p-0 m-0">
+
+
     <div class="col-2" style="height: 3180px;">
       <aside class="p-0 bg-dark " style="height: 100%;">
           <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
@@ -92,7 +89,7 @@ $near = json_decode($MapquestData, TRUE);
                 <a href="user.php" class="nav-link active">Home</a>
               </li>
               <li class="nav-item">
-                <a href="itinerary.php" class="nav-link">My Travels</a>
+                <a href="#" class="nav-link">My Travels</a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">Settings</a>
@@ -106,7 +103,8 @@ $near = json_decode($MapquestData, TRUE);
         </aside>
     </div>
 
-    <div class="col-6 mx-auto bg-light text-center">
+    <div class="col-6 mx-auto bg-light">
+
       <h4 class=" text-light bg-dark text-center  p-3"><?php echo $nm; ?></h4>
       <div id="map" class="mx-auto" style="width: 100%; height: 300px;"></div>
       <br>
@@ -124,15 +122,61 @@ $near = json_decode($MapquestData, TRUE);
       <br><br><br>
     </div>
 
-    <div class="col-3 text-center mx-auto bg-light">
+    <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
       <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
-        <?php 
-         $des = new NearbyP($nm,$lat,$lot);
-         ?>
-    </div>
-  </div>
-</section>
+      <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#places" type="button" role="tab" aria-controls="home" aria-selected="true"><span class="material-icons">map</span></button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="place-tab" data-bs-toggle="tab" data-bs-target="#landmark" type="button" role="tab" aria-controls="place" aria-selected="true"><span class="material-icons">place</span></button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#restaurants" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="material-icons">restaurant</span></button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#tourist" type="button" role="tab" aria-controls="messages" aria-selected="false"><span class="material-icons">festival</span></button>
+          </li>
+        </ul>
 
+        <div class="tab-content">
+          <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
+                  <?php 
+                  $plc->Recplace();
+                  ?>
+
+          </div>
+          <div class="tab-pane " id="landmark" role="tabpanel" aria-labelledby="place-tab">
+                  <?php 
+                  $des = new NearbyP('landmark',$lat,$lot);
+                  ?>
+
+          </div>
+          <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
+ 
+          </div>
+           <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
+
+
+          </div>
+        </div>
+
+        <script>
+          var firstTabEl = document.querySelector('#myTab li:last-child a')
+          var firstTab = new bootstrap.Tab(firstTabEl)
+
+          firstTab.show()
+        </script>
+
+    </div>
+
+
+  </div>
+
+  
+</section>
+  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-  </body>
-</html>
+ </body>
+
+ </html>
