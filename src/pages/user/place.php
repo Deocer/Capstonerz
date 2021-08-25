@@ -148,15 +148,19 @@ $plc = new PlaceView();
           </div>
           <div class="tab-pane " id="landmark" role="tabpanel" aria-labelledby="place-tab">
                   <?php 
-                  $des = new NearbyP('landmark',$lat,$lot);
+                  $des = new NearbyP($nm,'landmark',$lat,$lot);
                   ?>
 
           </div>
           <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
- 
+                  <?php 
+                  $des = new NearbyP($nm,'restaurants',$lat,$lot);
+                  ?>
           </div>
            <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
-
+                  <?php 
+                  $des = new NearbyP($nm,'tourist',$lat,$lot);
+                  ?>
 
           </div>
         </div>
