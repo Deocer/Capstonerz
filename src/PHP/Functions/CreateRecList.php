@@ -2,29 +2,71 @@
 include 'Location_Card.php';
 
 class RecomendedP{
-	public $destination = array('','');
-	public $lat  = array('','');
-	public $lot  = array('','');
-	public $pl = array();
-	public $mk;
-
 
 	public function locations($q,$lat,$lot) {
-     $otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',17z&type=search&api_key=412f58d5afee3ae8a5100096b3cd67c93e5d61838d5e8391083d8f3bb034f40e');
+		$destination = array();
+		$la  = array();
+		$lo  = array();
+		$des = array();
+		$img = array();
+		$type = array();
+		$rating = array();
+		$hours = array();
+		$address = array();
+
+     	$otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',18z&type=search&api_key=e95b95fffecfd181bf523f5144b765c3afc39b7fc6f44c572dd61832828aa431');
 			$near2 = json_decode($otherData, TRUE);
-
-			for ($i=0; $i < 1; $i++) { 
+			for ($i=0; $i < 19; $i++) { 
 				$this->destination[$i] = $near2['local_results'][$i]['title'];
-				$this->lat[$i] = $near2['local_results'][$i]['gps_coordinates']['latitude'];
-				$this->lot[$i] = $near2['local_results'][$i]['gps_coordinates']['longitude'];
+				$this->la[$i] = $near2['local_results'][$i]['gps_coordinates']['latitude'];
+				$this->lo[$i] = $near2['local_results'][$i]['gps_coordinates']['longitude'];
+				$this->type[$i] = $near2['local_results'][$i]['type'];;
 
-				$mk = new Place_Box();
-				$mk->getLoc(str_replace(' ','%20',$this->destination[$i]),$this->lat[$i],$this->lot[$i]);
+				if(isset($near2['local_results'][$i]['rating']) == false){
+					$this->rating[$i] ='0';
 
+				}else{
+					$this->rating[$i] =$near2['local_results'][$i]['rating'];
+				}
+
+				if(isset($near2['local_results'][$i]['address']) == false){
+					$this->address[$i] ='';
+
+				}else{
+					$this->address[$i] =$near2['local_results'][$i]['address'];
+				}
+
+
+
+				if(isset($near2['local_results'][$i]['hours']) == false){
+					$this->hours[$i] ='';
+
+				}else{
+					$this->hours[$i] =$near2['local_results'][$i]['hours'];
+				}
+
+
+				if(isset($near2['local_results'][$i]['thumbnail']) == false){
+					$this->img[$i] ='IMAGE NOT AVAILABLE';
+
+				}else{
+					$this->img[$i] = $near2['local_results'][$i]['thumbnail'];
+				}
+
+				if(isset($near2['local_results'][$i]['description']) == false){
+					$this->des[$i] ='';
+
+				}else{
+					$this->des[$i] = $near2['local_results'][$i]['description'];
+				}
+			$mk = new Place_Box();
+			$mk->getLoc(str_replace(' ','%20',$this->destination[$i]),$this->la[$i],$this->lo[$i],$this->des[$i],$this->img[$i],$this->type[$i],$this->rating[$i],$this->hours[$i],$this->address[$i]);	
 
 			}
+				
 
-  	}
+
+		}
 
   	public function getimg()
 	{
@@ -45,28 +87,71 @@ class NearbyP{
 	public $lat  = array('','');
 	public $lot  = array('','');
 
+
 	public function __construct($nm,$q,$lat,$lot) {
-     $otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',10z&type=search&api_key=412f58d5afee3ae8a5100096b3cd67c93e5d61838d5e8391083d8f3bb034f40e');
+$destination = array();
+		$la  = array();
+		$lo  = array();
+		$des = array();
+		$img = array();
+		$type = array();
+		$rating = array();
+		$hours = array();
+		$address = array();
+
+     	$otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',17z&type=search&api_key=e95b95fffecfd181bf523f5144b765c3afc39b7fc6f44c572dd61832828aa431');
 			$near2 = json_decode($otherData, TRUE);
+			for ($i=0; $i < 10; $i++) { 
 
-			for ($i=0; $i < 1; $i++) 
-			{
-					if ($near2['local_results'][$i]['title'] != $nm) {
+				if ($near2['local_results'][$i]['title'] != $nm) {
 					 	$this->destination[$i] = $near2['local_results'][$i]['title'];
-					 	$this->lat[$i] = $near2['local_results'][$i]['gps_coordinates']['latitude'];
-						$this->lot[$i] = $near2['local_results'][$i]['gps_coordinates']['longitude'];
 					 }
-					 else{
-					 	$this->destination[$i] ='Cosset Corporation';
-					 	$this->lat[$i] ='ewqeq';
-					 	$this->lot[$i] ='ewqeqw';
+				else{
+					 	$this->destination[$i] ='';
 					 } 
-					 
-				
+				$this->la[$i] = $near2['local_results'][$i]['gps_coordinates']['latitude'];
+				$this->lo[$i] = $near2['local_results'][$i]['gps_coordinates']['longitude'];
+				$this->type[$i] = $near2['local_results'][$i]['type'];;
 
-				$pl = new Place_Box();
-				$pl->getLoc(str_replace(' ','%20',$this->destination[$i]),$this->lat[$i],$this->lot[$i]);
+				if(isset($near2['local_results'][$i]['rating']) == false){
+					$this->rating[$i] ='';
 
+				}else{
+					$this->rating[$i] =$near2['local_results'][$i]['rating'];
+				}
+
+				if(isset($near2['local_results'][$i]['address']) == false){
+					$this->address[$i] ='';
+
+				}else{
+					$this->address[$i] =$near2['local_results'][$i]['address'];
+				}
+
+
+
+				if(isset($near2['local_results'][$i]['hours']) == false){
+					$this->hours[$i] ='';
+
+				}else{
+					$this->hours[$i] =$near2['local_results'][$i]['hours'];
+				}
+
+
+				if(isset($near2['local_results'][$i]['thumbnail']) == false){
+					$this->img[$i] ='IMAGE NOT AVAILABLE';
+
+				}else{
+					$this->img[$i] = $near2['local_results'][$i]['thumbnail'];
+				}
+
+				if(isset($near2['local_results'][$i]['description']) == false){
+					$this->des[$i] ='';
+
+				}else{
+					$this->des[$i] = $near2['local_results'][$i]['description'];
+				}
+			$mk = new Place_Box();
+			$mk->getLoc(str_replace(' ','%20',$this->destination[$i]),$this->la[$i],$this->lo[$i],$this->des[$i],$this->img[$i],$this->type[$i],$this->rating[$i],$this->hours[$i],$this->address[$i]);	
 
 			}
   	}

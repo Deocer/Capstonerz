@@ -54,13 +54,22 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
           </nav>   
         </aside>
     </div>
-    <div class="col-9 mx-auto bg-light">
+    <div class="col-6 mx-auto bg-light">
     	<h4 class=" text-light bg-dark text-center  p-3">MY DESTINATIONS</h4>
     		<?php 
 					$p = new ItemView();
 					$p->Myitem($_SESSION['Id']);
 
     		 ?>
+    </div>
+
+    <div class="col-3 mx-auto bg-light">
+      <h4 class=" text-light bg-dark text-center  p-3">MY DESTINATIONS</h4>
+        <?php 
+          $p = new ItemView();
+          $p->Myitem($_SESSION['Id']);
+
+         ?>
     </div>
 
 

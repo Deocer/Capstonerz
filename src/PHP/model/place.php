@@ -13,10 +13,10 @@ class data{
 		}
 	}
 
-	protected function insert($name,$des, $lat, $lot,$img){
+	protected function insert($name,$des, $lat, $lot,$img,$rating,$type){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("INSERT INTO places (Pname,Des, Lat, Lot, img) VALUES (?,?,?,?,?)");
-		$stmt->bind_param("sssss", $name,$des, $lat, $lot,$img);
+		$stmt = $conn->prepare("INSERT INTO places (Pname,Des, Lat, Lot, img, rating, type) VALUES (?,?,?,?,?,?,?)");
+		$stmt->bind_param("sssssis", $name,$des, $lat, $lot,$img,$rating,$type);
 		$stmt->execute();
 		$stmt->close();
 	}

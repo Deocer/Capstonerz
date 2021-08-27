@@ -15,8 +15,8 @@ class database{
 
 	protected function insert($name,$des, $lat, $lot,$img, $id){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("INSERT INTO itinerary (PlaceName,Des, lat, lot, img,UserID) VALUES (?, ?,?,?,?,?)");
-		$stmt->bind_param("sssssi", $name,$des, $lat, $lot,$img, $id);
+		$stmt = $conn->prepare("INSERT INTO itinerary (PlaceName,Des, lat, lot, img,UserID,Pname) VALUES (?, ?,?,?,?,?,?)");
+		$stmt->bind_param("sssssis", $name,$des, $lat, $lot,$img, $id, $name);
 		$stmt->execute();
 		$stmt->close();
 		header("location:../../pages/user/itinerary.php");

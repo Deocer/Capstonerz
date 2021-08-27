@@ -9,14 +9,16 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 include '../../PHP/Functions/CreateRecList.php';
 include '../../PHP/view/place.php';
 $id = $_SESSION['Id'];
-if (isset($_GET['lat']) && isset($_GET['lot']) && isset($_GET['nm']) && isset($_GET['desc']) && isset($_GET['img']) ){
+if (isset($_GET['lat']) && isset($_GET['lot']) && isset($_GET['nm']) && isset($_GET['desc']) && isset($_GET['img']) && isset($_GET['class']) && isset($_GET['rating']) ){
 $lat = $_GET['lat'];
 $lot = $_GET['lot'];
 $nm = $_GET['nm'];
 $desc = $_GET['desc'];
 $img = $_GET['img'];
+$class = $_GET['class'];
+$rating = $_GET['rating'];
 $s = new PlaceControl();
-$s->AddItem($id,$_GET['nm'],$_GET['desc'],$_GET['lat'],$_GET['lot'],$_GET['img']);
+$s->AddItem($id,$_GET['nm'],$_GET['desc'],$_GET['lat'],$_GET['lot'],$_GET['img'],$_GET['rating'],$_GET['class']);
 }
 
 

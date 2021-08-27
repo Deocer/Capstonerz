@@ -11,7 +11,6 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/place.php');
 
 $place = array();
-$des = new RecomendedP();
 $plc = new PlaceView();
 ?>
 
@@ -30,7 +29,7 @@ $plc = new PlaceView();
 <section class="container-fluid">
 
 
-  <div class="row p-0 m-0">
+  <div class="row p-0 m-1">
 
 
     <div class="col-2" style="height: 3180px;">
@@ -113,7 +112,7 @@ $plc = new PlaceView();
 
 			<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered" >
-				  <div class="modal-content" style="width: 1400px; height: 500px;">
+				  <div class="modal-content" style="width: 1400px;">
 
 				  	 <div class="modal-header text-center ">
 				  	 		<h5>Post</h5>
@@ -121,7 +120,7 @@ $plc = new PlaceView();
 	      		</div>
 
 							<div class="modal-body">
-								<div class="container-fluid" style="overflow:hidden;">
+								<div class="container-fluid" style="">
 								    <form action="../../PHP/Functions/createPost.php" method="post" enctype="multipart/form-data">
 										  <div>
 											  <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
@@ -179,6 +178,7 @@ $plc = new PlaceView();
 										  <div>
 										    <button type="submit" class="btn btn-primary">Post</button>
 										  </div>
+										  <br>
 										</form>
 									 
 							</div>
@@ -190,7 +190,7 @@ $plc = new PlaceView();
 
     </div>
 
-    <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
+    <div class="col-4 text-center mx-auto bg-light" style="overflow: hidden;margin-left: 5px;">
       <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
 			<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
@@ -216,18 +216,21 @@ $plc = new PlaceView();
 				  </div>
 				  <div class="tab-pane" id="landmark" role="tabpanel" aria-labelledby="place-tab">
 				  				<?php 
-									$des->locations('landmark',$_SESSION['lat'],$_SESSION['lot']);
+				  				$lan = new RecomendedP();
+									$lan->locations('Historic_landmarks',$_SESSION['lat'],$_SESSION['lot']);
 									?>	
 
 				  </div>
 				  <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
 				  				<?php 
-									$des->locations('dining',$_SESSION['lat'],$_SESSION['lot']);
+				  				$res = new RecomendedP();
+									$res->locations('restaurants',$_SESSION['lat'],$_SESSION['lot']);
 									?>	
 				  </div>
 				   <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
 				  	  		<?php 
-									$des->locations('tourist_attractions',$_SESSION['lat'],$_SESSION['lot']);
+				  	  			$tou = new RecomendedP();
+								   	$tou->locations('tourist_places',$_SESSION['lat'],$_SESSION['lot']);
 									?>
 
 				  </div>
