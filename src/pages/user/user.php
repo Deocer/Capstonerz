@@ -29,7 +29,7 @@ $plc = new PlaceView();
 <section class="container-fluid">
 
 
-  <div class="row p-0 m-1">
+  <div class="row p-0 gx-3">
 
 
     <div class="col-2" style="height: 3180px;">
@@ -66,131 +66,135 @@ $plc = new PlaceView();
 	      </aside>
     </div>
 
-    <div class="col-6 mx-auto bg-light">
+  <div class="col-6 mx-auto">
 
-    	<h4 class=" text-light bg-dark text-center  p-3">TRAVEL FEED</h4>
+<div class="container bg-light">
+	<h4 class=" text-light bg-dark text-center  p-3">TRAVEL FEED</h4>
 
-	<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-	  <li class="nav-item" role="presentation">
-	    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Latest Feed</button>
-	  </li>
-	  <li class="nav-item" role="presentation">
-	    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My Reccomended Feed</button>
-	  </li>
-	  <li class="nav-item" role="presentation">
-	    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Post</button>
-	  </li>
-	  <li class="nav-item" role="presentation">
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">New post</button>
-	  </li>
-	</ul>
+		<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Latest Feed</button>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My Reccomended Feed</button>
+		  </li>
+		  <li class="nav-item" role="presentation">
+		    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Post</button>
+		  </li>
+		  <li class="nav-item" role="presentation">
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">New post</button>
+		  </li>
+		</ul>
 
-	<div class="tab-content">
-	  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-	  				<?php 
-						$p = new PostView();
-						$p->ShowPost();
-						?>	
+		<div class="tab-content">
+		  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+		  				<?php 
+							$p = new PostView();
+							$p->ShowPost();
+							?>	
 
-	  </div>
-	  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
-	  </div>
-	   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-	  	  		<?php 
-						$p->UsPost($_SESSION['Id']);
-						?>
+		  </div>
+		  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
+		  </div>
+		   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+		  	  		<?php 
+							$p->UsPost($_SESSION['Id']);
+							?>
 
-	  </div>
-	</div>
+		  </div>
+		</div>
 
-	<script>
-	  var firstTabEl = document.querySelector('#myTab li:last-child a')
-	  var firstTab = new bootstrap.Tab(firstTabEl)
+		<script>
+		  var firstTabEl = document.querySelector('#myTab li:last-child a')
+		  var firstTab = new bootstrap.Tab(firstTabEl)
 
-	  firstTab.show()
-	</script>
+		  firstTab.show()
+		</script>
 
-			<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" >
-				  <div class="modal-content" style="width: 1400px;">
+				<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" >
+					  <div class="modal-content" style="width: 1400px;">
 
-				  	 <div class="modal-header text-center ">
-				  	 		<h5>Post</h5>
-				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      		</div>
+					  	 <div class="modal-header text-center ">
+					  	 		<h5>Post</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      		</div>
 
-							<div class="modal-body">
-								<div class="container-fluid" style="">
-								    <form action="../../PHP/Functions/createPost.php" method="post" enctype="multipart/form-data">
-										  <div>
-											  <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+								<div class="modal-body">
+									<div class="container-fluid" style="">
+									    <form action="../../PHP/Functions/createPost.php" method="post" enctype="multipart/form-data">
+											  <div>
+												  <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+												</div>
+												<br>
+												<div>
+												  <textarea class="form-control" id="exampleFormControlTextarea1" name="cont" placeholder="Tell Us About Your Experience!" rows="5" ></textarea>
+												</div>
+												<br>
+											  <div class="container-fluid">
+
+											  	<div class="row">
+
+														  	<div class="col">
+
+																	<?php 
+																		$s = new PlaceView();
+
+																		$s->Places();
+
+																	 ?>
+
+														  	</div>
+
+														  	<div class="col">
+														  		 <fieldset>
+																    <span class="star-cb-group">
+																      <input type="radio" id="rating-5" name="rating" value="5" />
+																      <label for="rating-5">5</label>
+																      <input type="radio" id="rating-4" name="rating" value="4" />
+																      <label for="rating-4">4</label>
+																      <input type="radio" id="rating-3" name="rating" value="3" />
+																      <label for="rating-3">3</label>
+																      <input type="radio" id="rating-2" name="rating" value="2" />
+																      <label for="rating-2">2</label>
+																      <input type="radio" id="rating-1" name="rating" value="1" />
+																      <label for="rating-1">1</label>
+																      <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" />
+																      <label for="rating-0">0</label>
+																    </span>
+																  </fieldset>
+														  	</div>
+
+											  	</div>
+											  	
+
+											  </div>
+											  <br>
+
+											  <div class="mb-3">
+											  <input name="file[]" type="file" multiple="multiple" />
 											</div>
-											<br>
-											<div>
-											  <textarea class="form-control" id="exampleFormControlTextarea1" name="cont" placeholder="Tell Us About Your Experience!" rows="5" ></textarea>
-											</div>
-											<br>
-										  <div class="container-fluid">
 
-										  	<div class="row">
-
-													  	<div class="col">
-
-																<?php 
-																	$s = new PlaceView();
-
-																	$s->Places();
-
-																 ?>
-
-													  	</div>
-
-													  	<div class="col">
-													  		 <fieldset>
-															    <span class="star-cb-group">
-															      <input type="radio" id="rating-5" name="rating" value="5" />
-															      <label for="rating-5">5</label>
-															      <input type="radio" id="rating-4" name="rating" value="4" />
-															      <label for="rating-4">4</label>
-															      <input type="radio" id="rating-3" name="rating" value="3" />
-															      <label for="rating-3">3</label>
-															      <input type="radio" id="rating-2" name="rating" value="2" />
-															      <label for="rating-2">2</label>
-															      <input type="radio" id="rating-1" name="rating" value="1" />
-															      <label for="rating-1">1</label>
-															      <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" />
-															      <label for="rating-0">0</label>
-															    </span>
-															  </fieldset>
-													  	</div>
-
-										  	</div>
-										  	
-
-										  </div>
-										  <br>
-
-										  <div class="mb-3">
-										  <input name="file[]" type="file" multiple="multiple" />
-										</div>
-
-											<br>
-										  <div>
-										    <button type="submit" class="btn btn-primary">Post</button>
-										  </div>
-										  <br>
-										</form>
-									 
+												<br>
+											  <div>
+											    <button type="submit" class="btn btn-primary">Post</button>
+											  </div>
+											  <br>
+											</form>
+										 
+								</div>
 							</div>
-						</div>
-	    		</div>
-				</div>
-			</div>
+		    		</div>
+					</div>
+				</div>	
+</div>
+
+  
 			
 
-    </div>
+ </div>
 
-    <div class="col-4 text-center mx-auto bg-light" style="overflow: hidden;margin-left: 5px;">
+    <div class="col text-center mx-auto bg-light" style="overflow: hidden;margin-left: 5px;">
       <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
 			<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation">
@@ -230,7 +234,7 @@ $plc = new PlaceView();
 				   <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
 				  	  		<?php 
 				  	  			$tou = new RecomendedP();
-								   	$tou->locations('tourist_places',$_SESSION['lat'],$_SESSION['lot']);
+								   	$tou->locations('tourist',$_SESSION['lat'],$_SESSION['lot']);
 									?>
 
 				  </div>

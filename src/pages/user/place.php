@@ -8,17 +8,21 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 
 include '../../PHP/Functions/CreateRecList.php';
 include '../../PHP/view/place.php';
+include '../../PHP/view/review.php';
 $id = $_SESSION['Id'];
-if (isset($_GET['lat']) && isset($_GET['lot']) && isset($_GET['nm']) && isset($_GET['desc']) && isset($_GET['img']) && isset($_GET['class']) && isset($_GET['rating']) ){
+if (isset($_GET['lat']) && isset($_GET['lot']) && isset($_GET['nm']) && isset($_GET['desc']) && isset($_GET['img']) && isset($_GET['class']) && isset($_GET['rating'])  && isset($_GET['price'])  && isset($_GET['hours'])  && isset($_GET['address']) ){
 $lat = $_GET['lat'];
 $lot = $_GET['lot'];
 $nm = $_GET['nm'];
 $desc = $_GET['desc'];
 $img = $_GET['img'];
-$class = $_GET['class'];
 $rating = $_GET['rating'];
+$class = $_GET['class'];
+$price = $_GET['price'];
+$hour = $_GET['hours'];
+$address = $_GET['address'];
 $s = new PlaceControl();
-$s->AddItem($id,$_GET['nm'],$_GET['desc'],$_GET['lat'],$_GET['lot'],$_GET['img'],$_GET['rating'],$_GET['class']);
+$s->AddItem($id,$nm,$desc, $lat, $lot,$img,$rating,$class,$price,$hour,$address);
 }
 
 
@@ -31,6 +35,7 @@ $near = json_decode($MapquestData, TRUE);
 $id = $_SESSION['Id'];
 
 $plc = new PlaceView();
+$rev = new ReviewView();
  ?>
 
 <!DOCTYPE html>
@@ -71,7 +76,7 @@ $plc = new PlaceView();
   <div class="row p-0 m-0">
 
 
-    <div class="col-2" style="height: 3180px;">
+    <div class="col-2" style="height: 5180px;">
       <aside class="p-0 bg-dark " style="height: 100%;">
           <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
             <div class="text-center p-3">
@@ -91,7 +96,7 @@ $plc = new PlaceView();
                 <a href="user.php" class="nav-link active">Home</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">My Travels</a>
+                <a href="itinerary.php" class="nav-link">My Travels</a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">Settings</a>
@@ -105,26 +110,90 @@ $plc = new PlaceView();
         </aside>
     </div>
 
-    <div class="col-6 mx-auto bg-light">
+    <div class="col-6 mx-auto" >
+      <div class="container-fluid bg-light" style="height: 100%;">
+        <h4 class=" text-light bg-dark text-center  p-3"><?php echo $nm; ?></h4>
+        <div class="row">
+          <div class="col-lg-8">
+            <div id="map" class="mx-auto" style="width: 100%; height: 300px;"></div>
+          </div>
+          <div class="col-4">
+            <div class="card mb-1" style="width:100%;">
+                  <div class="card-body">
+                    <p class="card-title"><b><small class="text-muted"></small></b></p>
+                    <p class=""><small class="text-muted">Rating from Google Review : <span class="fa fa-star"><?php echo $rating ?></span></small></p>
+                    <p class=""><sub class="text-muted"></sub><small>Price Point :<?php echo $price ?></small></p>
+                    <p class=""><sub class="text-muted"></sub><small>Operating Hours :<?php echo $hour ?></small></p>
+                  </div>
+                <a class="btn btn-outline-primary" aria-current="page" href="#">Show Directions</a>
+                <a class="btn btn-outline-primary" aria-current="page" href="../../PHP/controller/itinerary.php?nm=<?php echo $nm; ?>&id=<?php echo $id; ?>">Add To Itinerary</a>
+            </div>
+          </div>
+        </div>
+        <reviews>
+<br><br><br><br>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Reviews
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <form action="../../PHP/controller/review.php" method="post">
+                   <div>
+                       <input class="form-control" style="display: none;" name="place" value="<?php echo $nm ?>">
+                       <input class="form-control" style="display: none;" name="id" value="<?php echo $_SESSION['Id'] ?>">
+                       <input class="form-control" style="display: none;" name="name" value="<?php echo $_SESSION['UserName'] ?>">
+                    </div>   
+                    <div>
+                       <textarea class="form-control" style="overflow:auto;resize:none" id="exampleFormControlTextarea1" name="cont" placeholder="Tell Us About Your Experience!" rows="3"  required></textarea>
+                    </div>
+                    <br>
+                    <div class="container-fluid">
 
-      <h4 class=" text-light bg-dark text-center  p-3"><?php echo $nm; ?></h4>
-      <div id="map" class="mx-auto" style="width: 100%; height: 300px;"></div>
-      <br>
-      <p><?php echo $desc; ?></p>
-      <br>
-      <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-          <a class="btn btn-outline-primary" aria-current="page" href="#">Show Directions</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-primary" aria-current="page" href="../../PHP/controller/itinerary.php?nm=<?php echo $nm; ?>&desc=<?php echo $desc; ?>&lat=<?php echo $lat; ?>&lot=<?php echo $lot; ?>&img=<?php echo $img;?>&id=<?php echo $id;?>">Add To Itinerary</a>
-        </li>
-      </ul>
-
-      <br><br><br>
+                       <div class="row">
+                          <div class="col">
+                              <label>Rating :</label>
+                              <fieldset>
+                              <span class="star-cb-group">
+                              <input type="radio" id="rating-5" name="rating" value="5" />
+                              <label for="rating-5">5</label>
+                              <input type="radio" id="rating-4" name="rating" value="4" />
+                              <label for="rating-4">4</label>
+                              <input type="radio" id="rating-3" name="rating" value="3" />
+                              <label for="rating-3">3</label>
+                              <input type="radio" id="rating-2" name="rating" value="2" />
+                              <label for="rating-2">2</label>
+                              <input type="radio" id="rating-1" name="rating" value="1" />
+                              <label for="rating-1">1</label>
+                              <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" />
+                              <label for="rating-0">0</label>
+                              </span>
+                              </fieldset>
+                          </div>
+                          <div class="col mx-auto text-center">
+                          <button type="submit" class="btn btn-primary">Post</button>
+                          </div>
+                        </div>
+                    </div>
+                </form>
+                <br><br>
+                <h2><?php echo $nm; ?> Reviews:</h2>
+                <?php 
+                  $rev->ShowPost($nm);
+                  ?>
+                </div>
+              </div>
+            </div>
+          </div>       
+        </reviews>
+      </div>
+<br><br><br><br> 
     </div>
 
-    <div class="col-3 text-center mx-auto bg-light" style="overflow: hidden;">
+    <div class="col text-center mx-auto bg-light" style="overflow: hidden;">
       <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
       <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -181,7 +250,11 @@ $plc = new PlaceView();
 
   
 </section>
-  
+<section>
+  <footer class="bg-dark">
+    
+  </footer>
+</section>  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
  </body>
 

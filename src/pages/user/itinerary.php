@@ -14,6 +14,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
  <html>
  <head>
  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="../../css/style.css">
  	<title></title>
  </head>
@@ -55,10 +56,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
         </aside>
     </div>
     <div class="col-6 mx-auto bg-light">
-    	<h4 class=" text-light bg-dark text-center  p-3">MY DESTINATIONS</h4>
+    	<h4 class=" text-light bg-dark text-center  p-3">MY DESTINATION MAP</h4>
     		<?php 
-					$p = new ItemView();
-					$p->Myitem($_SESSION['Id']);
+
 
     		 ?>
     </div>

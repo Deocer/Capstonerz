@@ -5,7 +5,7 @@ include 'CreateDesImgandTxt.php';
 class Place_Box{
   private $q;
 
-  public function getLoc($q,$lat,$lot,$desc,$imgurl,$type,$rating,$hours,$address) {
+  public function getLoc($q,$lat,$lot,$desc,$imgurl,$type,$rating,$hours,$address,$price) {
   if ($q != '') {
     $destination_box = '
   <div class="card mb-1" style="width:100%;">
@@ -13,8 +13,9 @@ class Place_Box{
     <div class="col">
       <div class="card-body">
 
-        <p class="card-title"><a href="../../pages/user/place.php?nm='.$q.'&lat='.$lat.'&lot='.$lot.'&desc='.$desc.'&img='.$imgurl.'&class='.$type.'&rating='.$rating.'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.str_replace('%20',' ',$q).'</small></b></a></p>
-        <p class=""><small class="text-muted"><span class="fa fa-star"></span> '.$rating.'</small></p>
+        <p class="card-title"><a href="../../pages/user/place.php?nm='.$q.'&lat='.$lat.'&lot='.$lot.'&desc='.$desc.'&img='.$imgurl.'&class='.$type.'&rating='.$rating.'&address='.$address.'&hours='.$hours.'&price='.$price.'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.str_replace('%20',' ',$q).'</small></b></a></p>
+        <p class=""><small class="text-muted"><span class="fa fa-star star"></span> '.$rating.'</small></p>
+        <p class=""><sub class="text-muted">Price Point :'.$price.'</sub></p>
         <p class=""><sub class="text-muted">'.$hours.'</sub></p>
         <p class=""><sub class="text-muted">'.$address.'</sub></p>
 

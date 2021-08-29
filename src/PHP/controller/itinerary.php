@@ -1,5 +1,4 @@
 <?php 
-
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/itinerary.php');
 /**
 	 * 
@@ -7,9 +6,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/itinerary.php');
 	class ItemControl extends database
 	{
 		
-		function AddItem($name,$des, $lat, $lot,$img, $id)
+		function AddItem($name,$id,$pname)
 		{
-		 $this->insert($name,$des, $lat, $lot,$img, $id);
+		 $this->insert($name,$id,$pname);
 		}
 
 
@@ -27,11 +26,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/itinerary.php');
 	}
 
 
-if ( isset($_GET['desc']) && isset($_GET['nm']) && isset($_GET['lat']) && isset($_GET['lot']) && isset($_GET['img'])){
-
+if (isset($_GET['nm']) ){
 
 $s = new ItemControl();
-$s->AddItem($_GET['nm'],$_GET['desc'],$_GET['lat'],$_GET['lot'],$_GET['img'], $_GET['id']);
+$s->AddItem($_GET['nm'],$_GET['id'],$_GET['nm']);
 }else{
 
 

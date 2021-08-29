@@ -13,6 +13,7 @@ class RecomendedP{
 		$rating = array();
 		$hours = array();
 		$address = array();
+		$price = array();
 
      	$otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',18z&type=search&api_key=e95b95fffecfd181bf523f5144b765c3afc39b7fc6f44c572dd61832828aa431');
 			$near2 = json_decode($otherData, TRUE);
@@ -20,7 +21,21 @@ class RecomendedP{
 				$this->destination[$i] = $near2['local_results'][$i]['title'];
 				$this->la[$i] = $near2['local_results'][$i]['gps_coordinates']['latitude'];
 				$this->lo[$i] = $near2['local_results'][$i]['gps_coordinates']['longitude'];
-				$this->type[$i] = $near2['local_results'][$i]['type'];;
+
+
+				if(isset($near2['local_results'][$i]['type']) == false){
+					$this->type[$i] ='Tourist Attraction';
+
+				}else{
+					$this->type[$i] =$near2['local_results'][$i]['type'];
+				}
+
+				if(isset($near2['local_results'][$i]['price']) == false){
+					$this->price[$i] ='$';
+
+				}else{
+					$this->price[$i] =$near2['local_results'][$i]['price'];
+				}
 
 				if(isset($near2['local_results'][$i]['rating']) == false){
 					$this->rating[$i] ='0';
@@ -60,7 +75,7 @@ class RecomendedP{
 					$this->des[$i] = $near2['local_results'][$i]['description'];
 				}
 			$mk = new Place_Box();
-			$mk->getLoc(str_replace(' ','%20',$this->destination[$i]),$this->la[$i],$this->lo[$i],$this->des[$i],$this->img[$i],$this->type[$i],$this->rating[$i],$this->hours[$i],$this->address[$i]);	
+			$mk->getLoc(str_replace(' ','%20',$this->destination[$i]),$this->la[$i],$this->lo[$i],$this->des[$i],$this->img[$i],$this->type[$i],$this->rating[$i],$this->hours[$i],$this->address[$i],$this->price[$i]);	
 
 			}
 				
@@ -98,6 +113,7 @@ $destination = array();
 		$rating = array();
 		$hours = array();
 		$address = array();
+		$price = array();
 
      	$otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',17z&type=search&api_key=e95b95fffecfd181bf523f5144b765c3afc39b7fc6f44c572dd61832828aa431');
 			$near2 = json_decode($otherData, TRUE);
@@ -111,10 +127,23 @@ $destination = array();
 					 } 
 				$this->la[$i] = $near2['local_results'][$i]['gps_coordinates']['latitude'];
 				$this->lo[$i] = $near2['local_results'][$i]['gps_coordinates']['longitude'];
-				$this->type[$i] = $near2['local_results'][$i]['type'];;
+
+				if(isset($near2['local_results'][$i]['type']) == false){
+					$this->type[$i] ='Tourist Attraction';
+
+				}else{
+					$this->type[$i] =$near2['local_results'][$i]['type'];
+				}
+
+				if(isset($near2['local_results'][$i]['price']) == false){
+					$this->price[$i] ='$';
+
+				}else{
+					$this->price[$i] =$near2['local_results'][$i]['price'];
+				}
 
 				if(isset($near2['local_results'][$i]['rating']) == false){
-					$this->rating[$i] ='';
+					$this->rating[$i] ='-';
 
 				}else{
 					$this->rating[$i] =$near2['local_results'][$i]['rating'];
@@ -151,7 +180,7 @@ $destination = array();
 					$this->des[$i] = $near2['local_results'][$i]['description'];
 				}
 			$mk = new Place_Box();
-			$mk->getLoc(str_replace(' ','%20',$this->destination[$i]),$this->la[$i],$this->lo[$i],$this->des[$i],$this->img[$i],$this->type[$i],$this->rating[$i],$this->hours[$i],$this->address[$i]);	
+			$mk->getLoc(str_replace(' ','%20',$this->destination[$i]),$this->la[$i],$this->lo[$i],$this->des[$i],$this->img[$i],$this->type[$i],$this->rating[$i],$this->hours[$i],$this->address[$i],$this->price[$i]);	
 
 			}
   	}

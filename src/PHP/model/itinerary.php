@@ -13,12 +13,13 @@ class database{
 		}
 	}
 
-	protected function insert($name,$des, $lat, $lot,$img, $id){
+	protected function insert($name,$id,$pname){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("INSERT INTO itinerary (PlaceName,Des, lat, lot, img,UserID,Pname) VALUES (?, ?,?,?,?,?,?)");
-		$stmt->bind_param("sssssis", $name,$des, $lat, $lot,$img, $id, $name);
+		$stmt = $conn->prepare("INSERT INTO itinerary (PlaceName,UserID,Pname) VALUES (?,?,?)");
+		$stmt->bind_param("sis", $name,$id,$pname);
 		$stmt->execute();
 		$stmt->close();
+		echo "inserted";
 		header("location:../../pages/user/itinerary.php");
 		exit();
 	}

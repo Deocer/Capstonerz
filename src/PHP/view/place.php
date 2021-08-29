@@ -20,8 +20,8 @@ class PlaceView extends PlaceControl
 					    <div class="col">
 					      <div class="card-body">
 
-					        <p class="card-title"><a href="../../pages/user/place.php??nm='.$res[$ctr]['PlaceName'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['Rating'].'&rating='.$res[$ctr]['type'].'"&class='.$type.'&rating='.$rating.'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.$res[$ctr]['Pname'].'</small></b></a></p>
-					        <p class=""><small class="text-muted"><span class="fa fa-star"></span> </small></p>
+					        <p class="card-title"><a href="../../pages/user/place.php??nm='.$res[$ctr]['PlaceName'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'"&class='.$type.'&rating='.$rating.'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.$res[$ctr]['Pname'].'</small></b></a></p>
+					        <p class=""><small class="text-muted"><span class="fa fa-star star"></span> </small></p>
 					        <p class=""><sub class="text-muted"></sub></p>
 					        <p class=""><sub class="text-muted"></sub></p>
 
@@ -50,11 +50,11 @@ class PlaceView extends PlaceControl
 					  <div class="row g-0">
 					    <div class="col">
 					      <div class="card-body">
-
-					        <p class="card-title"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['Rating'].'&rating='.$res[$ctr]['type'].'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.$res[$ctr]['Pname'].'</small></b></a></p>
-					        <p class=""><small class="text-muted"><span class="fa fa-star"></span> </small></p>
-					        <p class=""><sub class="text-muted"></sub></p>
-					        <p class=""><sub class="text-muted"></sub></p>
+					        <p class="card-title"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.$res[$ctr]['Pname'].'</small></b></a></p>
+					        <p class=""><small class="text-muted">Google Reviews :<span class="fa fa-star star"></span>'.$res[$ctr]['Rating'].'</small></p>
+					        <p class=""><small class="text-muted">Price Point :'.$res[$ctr]['price'].'</small></p>
+					        <p class=""><sub class="text-muted">'.$res[$ctr]['hours'].'</sub></p>
+					        <p class=""><sub class="text-muted" style ="font-size:10px;">'.$res[$ctr]['address'].'</sub></p>
 
 					      </div>
 					    </div>
