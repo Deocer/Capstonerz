@@ -145,8 +145,8 @@ $plc = new PlaceView();
 																	 ?>
 
 														  	</div>
-
-														  	<div class="col">
+														  	<br>
+														  	<div class>
 														  		 <fieldset>
 																    <span class="star-cb-group">
 																      <input type="radio" id="rating-5" name="rating" value="5" />

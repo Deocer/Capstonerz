@@ -7,6 +7,12 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
 
+$MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=20');
+
+
+// Echo out a sample image 
+$near = json_decode($MapquestData, TRUE);
+
  ?>
 
 
@@ -15,8 +21,11 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
  <head>
  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
   <link rel="stylesheet" type="text/css" href="../../css/style.css">
- 	<title></title>
+ 	<title>My Travel Itinerary</title>
+
  </head>
  <body>
 
@@ -57,19 +66,17 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
     </div>
     <div class="col-6 mx-auto bg-light">
     	<h4 class=" text-light bg-dark text-center  p-3">MY DESTINATION MAP</h4>
-    		<?php 
-
-
-    		 ?>
+      <div id="map" class="mx-auto" style="width: 100%; height: 300px; overflow: hidden;"></div>
     </div>
 
     <div class="col-3 mx-auto bg-light">
       <h4 class=" text-light bg-dark text-center  p-3">MY DESTINATIONS</h4>
-        <?php 
+      <?php  
           $p = new ItemView();
           $p->Myitem($_SESSION['Id']);
 
          ?>
+
     </div>
 
 

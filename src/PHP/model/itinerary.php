@@ -26,7 +26,7 @@ class database{
 
 	protected function fetch($id){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM itinerary WHERE UserID = ?"; 
+		$sql = "SELECT * FROM itinerary WHERE UserID = ? ORDER BY PlcID DESC LIMIT 100"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $id);
 		$stmt->execute();

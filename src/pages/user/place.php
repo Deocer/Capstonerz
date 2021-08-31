@@ -48,7 +48,8 @@ $rev = new ReviewView();
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
-  <title></title>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <title><?php echo $nm; ?></title>
     <script type="text/javascript">
       window.onload = function() {
         L.mapquest.key = 'lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24';
@@ -64,7 +65,6 @@ $rev = new ReviewView();
           draggable: false
         }).bindPopup('<?php echo $nm;?>').addTo(map);
 
-        map.addControl(L.mapquest.control());
       }
     </script>
  </head>
@@ -125,8 +125,8 @@ $rev = new ReviewView();
                     <p class=""><sub class="text-muted"></sub><small>Price Point :<?php echo $price ?></small></p>
                     <p class=""><sub class="text-muted"></sub><small>Operating Hours :<?php echo $hour ?></small></p>
                   </div>
-                <a class="btn btn-outline-primary" aria-current="page" href="#">Show Directions</a>
-                <a class="btn btn-outline-primary" aria-current="page" href="../../PHP/controller/itinerary.php?nm=<?php echo $nm; ?>&id=<?php echo $id; ?>">Add To Itinerary</a>
+                <a class="btn btn-outline-primary" aria-current="page"  onclick="add()">Show Directions</a>
+                <a class="btn btn-outline-primary" aria-current="page" onclick="add()">Add To Itinerary</a>
             </div>
           </div>
         </div>
@@ -236,13 +236,6 @@ $rev = new ReviewView();
           </div>
         </div>
 
-        <script>
-          var firstTabEl = document.querySelector('#myTab li:last-child a')
-          var firstTab = new bootstrap.Tab(firstTabEl)
-
-          firstTab.show()
-        </script>
-
     </div>
 
 
@@ -257,5 +250,16 @@ $rev = new ReviewView();
 </section>  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
  </body>
+ <script type="text/javascript">
+   function add() {
+  Swal.fire({
+      title: "Success!",
+      text: "Redirecting in 2 seconds.",
+      icon: "success",
+}).then(function() {
+     window.location.href = "../../PHP/controller/itinerary.php?nm=<?php echo $nm; ?>&id=<?php echo $id; ?>";
+});
+}
+ </script>
 
  </html>

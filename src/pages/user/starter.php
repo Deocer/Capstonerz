@@ -1,7 +1,5 @@
 <?php   
 include '../../PHP/Functions/Geocoding.php';
-
-
  ?>
 
 
@@ -20,8 +18,11 @@ include '../../PHP/Functions/Geocoding.php';
 
 <body>
 
-<h3 style="margin: auto; text-align: center; font-weight: bolder; color: white;">GETTING STARTED</h3>
-<div id="carouselExampleCaptions" class="carousel slide mx-auto" data-bs-ride="carousel" style="width:60%; margin: auto;">
+<h3 style="margin: auto; text-align: center; font-weight: bolder; color: white;" class="bg-dark">GETTING STARTED</h3>
+<br>
+<h5 style="margin: auto; text-align: center; font-weight: bold; color: white;">Almost there! Please Enter your current City State so that we may fetch you some nearby travelling spots!</h5>
+<br>
+<div id="carouselExampleCaptions" class="carousel slide mx-auto" data-bs-ride="carousel" style="width:60%; height: 40%; margin: auto;">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -29,21 +30,21 @@ include '../../PHP/Functions/Geocoding.php';
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../../imgs/1.jpg" class="d-block w-100" alt="...">
+      <img src="../../imgs/1.jpg" class="d-block w-100" alt="..." style="width:60%; height: 400px; margin: auto;">
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="../../imgs/2.jpg" class="d-block w-100" alt="...">
+      <img src="../../imgs/2.jpg" class="d-block w-100" alt="..." style="width:60%; height: 400px; margin: auto;">
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="../../imgs/3.jpg" class="d-block w-100" alt="...">
+      <img src="../../imgs/3.jpg" class="d-block w-100" alt="..." style="width:60%; height: 400px; margin: auto;">
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
@@ -59,11 +60,11 @@ include '../../PHP/Functions/Geocoding.php';
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
+<br><br>
 <div class="container mx-auto text-center" style="margin: auto;opacity: 1;">
    <form action="../../PHP/Functions/Geocoding.php" method="post" class="form" style="width:40%; margin: auto;">
     <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Please Enter Your Location" name="loc">
+    <input type="text" class="form-control" placeholder="Please Your Current City Location" name="loc">
     <button class="btn btn-outline-secondary btn-success " id="place-search-input" id="button-addon2" style="color:white;">Button</button>
   </form> 
 </div>

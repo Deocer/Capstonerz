@@ -8,6 +8,9 @@ class ItemView extends ItemControl
 		function Myitem($id)
 		{
 		 $i = 0;
+		 $lat = array();
+		 $lot = array();
+		 $name = array();
 		 $s = new PlaceControl();
 		 $res =  $this->GetItem($id);
 		 foreach($res as $r ){
@@ -39,8 +42,44 @@ class ItemView extends ItemControl
 					</div>
 
 						';
+		 	$lat[$ctr] = $place[0]['Lat'];
+		 	$lot[$ctr] = $place[0]['Lot'];
+		 	$name[$ctr] = $place[0]['Pname'];
+
 		 	}
-		}
+
+
+echo '
+      <script type="text/javascript">
+      window.onload = function() {
+        L.mapquest.key = "lYrP4vF3Uk5zgTiGGuEzQGwGIVDGuy24";
+
+        var map = L.mapquest.map("map", {
+          center: [14.5995,120.9842],
+          layers: L.mapquest.tileLayer("map"),
+          zoom:12
+        });
+
+';
+for ($i=0; $i < count($lat); $i++) { 
+	$nm = strval($name[$i]);
+	echo '
+         L.marker(['.$lat[$i].','.$lot[$i].'], {
+          icon: L.mapquest.icons.marker(),
+          draggable: false
+        }).bindPopup("'.$nm.'").addTo(map);
+	';
+}
+
+echo  '
+      }
+    </script>
+
+
+
+
+';
+}
 
 
 

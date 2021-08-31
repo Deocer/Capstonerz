@@ -41,7 +41,7 @@ class database{
 
 	protected function fetchPost(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("SELECT * FROM post  ORDER BY PostID DESC LIMIT 5");
+		$stmt = $conn->prepare("SELECT * FROM post  ORDER BY PostID DESC LIMIT 25");
 		$stmt->execute();
 
 		$result = $stmt->get_result();
