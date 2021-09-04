@@ -41,7 +41,7 @@ class database{
 
 	protected function fetch($Username, $Pass){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM wuser WHERE Username = ?"; 
+		$sql = "SELECT * FROM wuser WHERE BINARY Username = ? "; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("s", $Username);
 		$stmt->execute();

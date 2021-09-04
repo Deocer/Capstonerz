@@ -1,12 +1,20 @@
 <?php 
 session_start();
 if (isset($_SESSION['UserName'])) {
-$URL='src/pages/user/user.php';
+$URL='user/user.php';
 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 
 }else{
 
+}
+
+
+if (isset($_GET["error"])) {
+
+		if ($_GET["error"] == "Wrong") {
+				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Wrong Username or Password!<p>";
+			}
 }
  ?>
 
