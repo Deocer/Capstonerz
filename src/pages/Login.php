@@ -9,13 +9,6 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 
 }
 
-
-if (isset($_GET["error"])) {
-
-		if ($_GET["error"] == "Wrong") {
-				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Wrong Username or Password!<p>";
-			}
-}
  ?>
 
 
@@ -27,6 +20,7 @@ if (isset($_GET["error"])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/log-in.css">
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<title>WANDER | Travel Website</title>
 </head>
 <body>
@@ -64,5 +58,30 @@ if (isset($_GET["error"])) {
 	</div>	
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<?php 
+
+if (isset($_GET["error"])) {
+
+		if ($_GET["error"] == "Wrong") {
+				echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				      title: 'Oops..',
+				      text: 'Wrong UserName or Password!',
+				      icon: 'error'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
+			}
+}
+
+
+ ?>
 </body>
 </html>

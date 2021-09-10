@@ -22,6 +22,7 @@ $plc = new PlaceView();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  	<title></title>
  </head>
  <body>
@@ -257,6 +258,27 @@ $plc = new PlaceView();
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
  </body>
+ <?php 
+
+echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				  	  title: 'Welcome Back ". $_SESSION['UserName']."'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
+
+
+
+
+
+  ?>
 <script type="text/javascript">
   function reply_click(obj)
   {

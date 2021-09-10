@@ -7,22 +7,6 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 
 }else{
 
-if (isset($_GET["error"])) {
-
-		if ($_GET["error"] == "emptyinput") {
-				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Fill in all fields!<p>";
-			}elseif ($_GET["error"] == "name") {
-				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Invalid Name!<p>";
-			}elseif ($_GET["error"] == "Shortname") {
-				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Username Too Short!<p>";
-			}elseif ($_GET["error"] == "Shortpass") {
-				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Password Too Short!<p>";
-			}elseif ($_GET["error"] == "nameTaken") {
-				echo "<p class= 'button_1' style='background-color:tomato; width:200px; text-align:center;margin:auto;'>Username Already Taken!<p>";
-			}
-}
-
-
 }
  ?>
 <!DOCTYPE html>
@@ -33,6 +17,7 @@ if (isset($_GET["error"])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/log-in.css">
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<title>WANDER | Travel Website</title>
 </head>
 <body>
@@ -67,4 +52,95 @@ if (isset($_GET["error"])) {
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
+
+<?php 
+
+
+if (isset($_GET["error"])) {
+
+		if ($_GET["error"] == "emptyinput") {
+			echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				      title: 'Oops..',
+				      text: 'Fill in all fields!',
+				      icon: 'error'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
+
+			}elseif ($_GET["error"] == "name") {
+			echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				      title: 'Oops..',
+				      text: 'Invalid Name!',
+				      icon: 'error'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
+			}elseif ($_GET["error"] == "Shortname") {
+			echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				      title: 'Oops..',
+				      text: 'Username Too Short!',
+				      icon: 'error'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
+			}elseif ($_GET["error"] == "Shortpass") {
+			echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				      title: 'Oops..',
+				      text: 'Password Too Short!',
+				      icon: 'error'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
+			}elseif ($_GET["error"] == "nameTaken") {
+			echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				      title: 'Oops..',
+				      text: 'Username Already Taken!',
+				      icon: 'error'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
+			}
+}
+
+ ?>
 </html>
