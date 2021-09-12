@@ -7,8 +7,11 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 
 include '../../PHP/Functions/CreateRecList.php';
-include '../../PHP/view/place.php';
 include '../../PHP/view/review.php';
+class Place extends PlaceView
+  {
+
+  }
 $id = $_SESSION['Id'];
 if (isset($_GET['lat']) && isset($_GET['lot']) && isset($_GET['nm']) && isset($_GET['desc']) && isset($_GET['img']) && isset($_GET['class']) && isset($_GET['rating'])  && isset($_GET['price'])  && isset($_GET['hours'])  && isset($_GET['address']) ){
 $lat = $_GET['lat'];
@@ -21,10 +24,7 @@ $class = $_GET['class'];
 $price = $_GET['price'];
 $hour = $_GET['hours'];
 $address = $_GET['address'];
-$s = new PlaceControl();
-$s->AddItem($id,$nm,$desc, $lat, $lot,$img,$rating,$class,$price,$hour,$address);
 }
-
 
 $MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=10&origin=14.5995,120.9842');
 
@@ -34,7 +34,7 @@ $near = json_decode($MapquestData, TRUE);
 
 $id = $_SESSION['Id'];
 
-$plc = new PlaceView();
+$plc = new Place();
 $rev = new ReviewView();
  ?>
 
@@ -213,24 +213,24 @@ $rev = new ReviewView();
         <div class="tab-content">
           <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
                   <?php 
-                  $plc->Recplace();
+                  $des = new NearbyP($nm,'Historic_landmarks',$lat,$lot);
                   ?>
 
           </div>
           <div class="tab-pane " id="landmark" role="tabpanel" aria-labelledby="place-tab">
                   <?php 
-                  $des = new NearbyP($nm,'landmark',$lat,$lot);
+                  $plc->Nearplace('Historical landmark',$_SESSION['City']);
                   ?>
 
           </div>
           <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
                   <?php 
-                  $des = new NearbyP($nm,'restaurants',$lat,$lot);
+                  $plc->Nearplace('Restaurant',$_SESSION['City']);;
                   ?>
           </div>
            <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
                   <?php 
-                  $des = new NearbyP($nm,'tourist',$lat,$lot);
+                  $plc->Nearplace('Tourist attraction',$_SESSION['City']);
                   ?>
 
           </div>

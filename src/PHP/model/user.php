@@ -24,19 +24,16 @@ class database{
 	}
 
 
-	protected function secloc ($Lat, $Lot,$id){
-		echo 'saxa';
+	protected function secloc ($Lat, $Lot,$Loc,$Budget,$id){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("UPDATE wuser SET Lat = ?,Lot = ? WHERE UserID = ? ");
-		$stmt->bind_param("ssi",$Lat, $Lot,$id);
+		$stmt = $conn->prepare("UPDATE wuser SET Lat = ?, Lot = ?, Location = ?, Budget = ? WHERE UserID = ? ");
+		$stmt->bind_param("ssssi",$Lat, $Lot,$Loc,$Budget,$id);
 		$stmt->execute();
 
 		$_SESSION['lat'] = $Lat;
 		$_SESSION['lot'] = $Lot;
 
 		$stmt->close();
-		header("location:../../pages/user/user.php");
-		exit();
 	}
 
 	protected function fetch($Username, $Pass){

@@ -13,10 +13,10 @@ class data{
 		}
 	}
 
-	protected function insert($name,$des, $lat, $lot,$img,$rating,$type,$price,$hours,$address){
+	protected function insert($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("INSERT INTO places (Pname,Des, Lat, Lot, img, rating, type,price,hours,address) VALUES (?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("ssssssssss", $name,$des, $lat, $lot,$img,$rating,$type,$price,$hours,$address);
+		$stmt = $conn->prepare("INSERT INTO places (Pname,Des, Lat, Lot, img, rating, reviews, type,price,hours,address,City) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("ssssssssssss",$name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city);
 		$stmt->execute();
 		$stmt->close();
 	}
@@ -33,13 +33,12 @@ class data{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
-	protected function rec($lat,$lot){
+
+	protected function rec($type,$city){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM places WHERE Lat BETWEEN ? AND ? AND Lot BETWEEN ? AND ?"; 
+		$sql = "SELECT * FROM places WHERE type = ? AND City = ? ORDER BY reviews DESC LIMIT 25"; 
 		$stmt = $conn->prepare($sql); 
-		$lat1 = $lat +1;
-		$lot1 = $lot +1;
-		$stmt->bind_param("ssss", $lat,$lat1,$lot,$lot1);
+		$stmt->bind_param("ss",$type,$city);
 		$stmt->execute();
 
 		$result = $stmt->get_result();

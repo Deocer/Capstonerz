@@ -12,9 +12,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 		 $this->insert($Username, $Pass, $Lat, $Lot);
 		}
 
-		function LocUser($Lat, $Lot,$id)
+		function LocUser($Lat, $Lot,$Loc,$Budget,$id)
 		{
-		 $this->secloc($Lat, $Lot,$id);
+		 $this->secloc($Lat, $Lot,$Loc,$Budget,$id);
 		}
 
 		function GetUser($Username, $Pass)
@@ -36,6 +36,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 			  		$_SESSION['UserName'] =  $res[1];
 					$_SESSION['lat'] =  $res[3];
 					$_SESSION['lot'] =  $res[4];
+					$_SESSION['City'] = $res[5];
+					$_SESSION['Permit'] = 'false';
 
 
 
@@ -69,6 +71,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 			  		$_SESSION['UserName'] =  $res[1];
 					$_SESSION['lat'] =  $res[3];
 					$_SESSION['lot'] =  $res[4];
+					$_SESSION['City'] = 'w';
+					$_SESSION['Permit'] = 'true';
 
 
 					header("location:../../pages/user/starter.php");

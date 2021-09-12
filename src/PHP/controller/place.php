@@ -7,12 +7,12 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 	class PlaceControl extends data
 	{
 		
-		function AddItem($id,$name,$des, $lat, $lot,$img,$rating,$type,$price,$hours,$address)
+		function AddItem($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city)
 		{
-			if ($this->fetch($id) == null) {
-				 $this->insert($name,$des, $lat, $lot,$img,$rating,$type,$price,$hours,$address);
+			if ($this->fetch($name) == null) {
+				 $this->insert($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city);
+				 echo "g";
 			}else{
-				header("location:../../pages/user/user.php");
 			}
 		
 		}
@@ -26,10 +26,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 		 return $res;
 		 }
 	
-		function GetNear($lat,$lot)
+		function GetNear($type,$city)
 		{
 		 
-		 $res =  $this->rec($lat,$lot);
+		 $res =  $this->rec($type,$city);
 
 		 return $res;
 		 }
