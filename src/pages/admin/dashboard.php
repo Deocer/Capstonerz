@@ -10,7 +10,6 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 $id = $_SESSION['Id'];
 include '../../PHP/Functions/CreateRecList.php';
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
-include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/place.php');
 $place = array();
 $des = new RecomendedP();
 $plc = new PlaceView();
@@ -111,6 +110,88 @@ $plc = new PlaceView();
 
     </div>
 
+
+    <div class="col text-center mx-auto bg-light" style="overflow: hidden;margin-left: 5px;">
+      <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
+			<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+					<li class="nav-item" role="presentation">
+				    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#places" type="button" role="tab" aria-controls="home" aria-selected="true"><span class="material-icons">map</span></button>
+				  </li>
+				  <li class="nav-item" role="presentation">
+				    <button class="nav-link" id="place-tab" data-bs-toggle="tab" data-bs-target="#landmark" type="button" role="tab" aria-controls="place" aria-selected="true"><span class="material-icons">place</span></button>
+				  </li>
+				  <li class="nav-item" role="presentation">
+				    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#restaurants" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="material-icons">restaurant</span></button>
+				  </li>
+				  <li class="nav-item" role="presentation">
+				    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#tourist" type="button" role="tab" aria-controls="messages" aria-selected="false"><span class="material-icons">festival</span></button>
+				  </li>
+				</ul>
+
+				<div class="tab-content">
+				  <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
+				  				<?php 
+									$plc->Nearplace('Museum',$_SESSION['City']);
+									$plc->Nearplace('Sports complex',$_SESSION['City']);
+									$plc->Nearplace('Event venue',$_SESSION['City']);
+									$plc->Nearplace('Performing arts theater',$_SESSION['City']);
+									$plc->Nearplace('Nature preserve',$_SESSION['City']);
+									$plc->Nearplace('Modern art museum',$_SESSION['City']);
+									$plc->Nearplace('Historical place',$_SESSION['City']);
+									$plc->Nearplace('Heritage museum',$_SESSION['City']);
+									$plc->Nearplace('Art center',$_SESSION['City']);
+									$plc->Nearplace('Local history museum',$_SESSION['City']);
+									$plc->Nearplace('Art gallery',$_SESSION['City']);
+									$plc->Nearplace('National park',$_SESSION['City']);
+									$plc->Nearplace('Motel',$_SESSION['City']);
+									$plc->Nearplace('Catholic cathedral',$_SESSION['City']);
+									$plc->Nearplace('Spa',$_SESSION['City']);		
+								
+									?>	
+
+				  </div>
+				  <div class="tab-pane" id="landmark" role="tabpanel" aria-labelledby="place-tab">
+				  				<?php 
+									$plc->Nearplace('Historical landmark',$_SESSION['City']);
+									$plc->Nearplace('Church',$_SESSION['City']);
+									$plc->Nearplace('Shopping Mall',$_SESSION['City']);
+									?>	
+
+				  </div>
+				  <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
+				  				<?php 
+									$plc->Nearplace('Restaurant',$_SESSION['City']);
+									$plc->Nearplace('Western restaurant',$_SESSION['City']);
+									$plc->Nearplace('Hotel',$_SESSION['City']);
+									$plc->Nearplace('Modern European restaurant',$_SESSION['City']);
+									$plc->Nearplace('Buffet restaurant',$_SESSION['City']);
+									$plc->Nearplace('Thai restaurant',$_SESSION['City']);
+									$plc->Nearplace('Mexican restaurant',$_SESSION['City']);
+									$plc->Nearplace('Fine dining restaurant',$_SESSION['City']);
+									$plc->Nearplace('Filipino restaurant',$_SESSION['City']);
+									$plc->Nearplace('Italian restaurant',$_SESSION['City']);
+									$plc->Nearplace('Vegan restaurant',$_SESSION['City']);
+									$plc->Nearplace('Mediterranean restaurant',$_SESSION['City']);
+									$plc->Nearplace('Bar & grill',$_SESSION['City']);		
+									?>	
+				  </div>
+				   <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
+				  	  		<?php 
+									$plc->Nearplace('Tourist attraction',$_SESSION['City']);
+									$plc->Nearplace('Park',$_SESSION['City']);
+									?>
+
+				  </div>
+				</div>
+
+				<script>
+				  var firstTabEl = document.querySelector('#myTab li:last-child a')
+				  var firstTab = new bootstrap.Tab(firstTabEl)
+
+				  firstTab.show()
+				</script>
+
+    </div>
 
 
   </div>
