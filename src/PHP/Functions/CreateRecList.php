@@ -6,7 +6,7 @@ class RecomendedP{
 
 	public function locations($q,$lat,$lot,$City) {
 
-		$otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',18z&type=search&api_key=09fd17b5b4f1204c1498d970c13ca27e81a72babcc06b44c1ee813bbe25f79c9');
+		$otherData = file_get_contents('https://serpapi.com/search.json?engine=google_maps&q='.$q.'&ll=@'.$lat.','.$lot.',18z&type=search&api_key=67b118349b5da98f6ab53f4476d1ed23374498830bde80e4fc26da64e046f598');
 		$near2 = json_decode($otherData, TRUE);
 		//echo '<pre>',print_r($near2),'</pre>';
 		//Variables for the Local Results Scrape

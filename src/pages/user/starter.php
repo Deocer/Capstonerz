@@ -57,6 +57,19 @@ include '../../PHP/Functions/Geocoding.php';
       </select>
     </div>
     <br>
+    <div>
+     <label>What Kind of Destinations Do you Frequently Visit</label>
+      <br>
+      <select class="form-select" aria-label="Please Your Current City Location" name="prize">
+        <option value="Restaurants">Restaurants</option>
+        <option value="Park">Park</option>
+        <option value="Art gallery">Art gallery</option>
+        <option value="Hotels">Hotels</option>
+        <option value="Spa">Spa</option>
+        <option value="Tourist attraction">Tourist attraction</option>
+      </select>
+    </div>
+    <br>
     <div style="color:white;margin: auto;text-align: center;">
        <button class="btn btn-outline-secondary btn-success " id="place-search-input" id="button-addon2" style="color:white;margin: auto;">Button</button>
     </div>

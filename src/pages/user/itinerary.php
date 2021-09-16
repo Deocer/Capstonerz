@@ -7,11 +7,12 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
 
-$MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=20');
+//$MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=20');
 
 
-// Echo out a sample image 
-$near = json_decode($MapquestData, TRUE);
+
+// Echo out a sample image /
+//$near = json_decode($MapquestData, TRUE);
 
  ?>
 
@@ -64,21 +65,27 @@ $near = json_decode($MapquestData, TRUE);
           </nav>   
         </aside>
     </div>
-    <div class="col-6 mx-auto bg-light">
-    	<h4 class=" text-light bg-dark text-center  p-3">MY DESTINATION MAP</h4>
-      <div id="map" class="mx-auto" style="width: 100%; height: 300px; overflow: hidden;"></div>
-    </div>
 
-    <div class="col-3 mx-auto bg-light">
-      <h4 class=" text-light bg-dark text-center  p-3">MY DESTINATIONS</h4>
+
+    <div class="col mx-auto bg-light">
+    	<h4 class=" text-light bg-dark text-center  p-3">MY DESTINATION MAP</h4>
+      <div id="map" class="mx-auto" style="width: 100%; height: 400px; overflow: hidden;"></div>
+      <h5 class=" text-dark text-center">MY DESTINATIONS</h5>
       <?php  
           $p = new ItemView();
-          $p->Myitem($_SESSION['Id']);
-
          ?>
-
+      <div class="row g-0 container-fluid" style="width: 80%; text-align: center;margin: auto;">
+       <?php  
+          $p->Myitem($_SESSION['Id']);
+        ?> 
+      </div>
+      <?php 
+          $p->Mapper();
+       ?>
+     
     </div>
 
+</div>
 
 </section>
 

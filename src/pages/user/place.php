@@ -1,9 +1,10 @@
 <?php 
 session_start();
-if (isset($_SESSION['Id']) == false) {
-$URL=($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/index.php');
-echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+if (isset($_SESSION['Id'])) {
+
+}else{
+header("location:../../../index.php");
+ exit();
 }
 
 include '../../PHP/Functions/CreateRecList.php';
@@ -25,12 +26,6 @@ $price = $_GET['price'];
 $hour = $_GET['hours'];
 $address = $_GET['address'];
 }
-
-$MapquestData = file_get_contents('http://www.mapquestapi.com/search/v2/radius?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&maxMatches=10&origin=14.5995,120.9842');
-
-
-// Echo out a sample image 
-$near = json_decode($MapquestData, TRUE);
 
 $id = $_SESSION['Id'];
 
