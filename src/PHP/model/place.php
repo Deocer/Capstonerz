@@ -33,12 +33,23 @@ class data{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
-
-	protected function rec($type,$city){
+	protected function Recommend($name,$type){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM places WHERE type = ? AND City = ? ORDER BY reviews DESC LIMIT 25"; 
+		$sql = "SELECT * FROM places WHERE Pname <> ? AND type = ?"; 
 		$stmt = $conn->prepare($sql); 
-		$stmt->bind_param("ss",$type,$city);
+		$stmt->bind_param("ss", $name,$type);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+
+	protected function fetchbytype($type){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM places WHERE type = ? "; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("s",$type);
 		$stmt->execute();
 
 		$result = $stmt->get_result();
@@ -48,7 +59,7 @@ class data{
 
 	protected function select(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM places ORDER BY PlaceID DESC LIMIT 20"; 
+		$sql = "SELECT * FROM places ORDER BY PlaceID"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->execute();
 

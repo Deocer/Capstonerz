@@ -8,23 +8,23 @@ class ItemView extends ItemControl
 		 public $lot = array();
 		 public $name = array();
 
-		function haversine($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo)
-		{
-		  // convert from degrees to radians
-		  $earthRadius = 6371000;
-		  $latFrom = deg2rad($latitudeFrom);
-		  $lonFrom = deg2rad($longitudeFrom);
-		  $latTo = deg2rad($latitudeTo);
-		  $lonTo = deg2rad($longitudeTo);
+			function haversine(
+			  $latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371)
+			{
+			  // convert from degrees to radians
+			  $latFrom = deg2rad($latitudeFrom);
+			  $lonFrom = deg2rad($longitudeFrom);
+			  $latTo = deg2rad($latitudeTo);
+			  $lonTo = deg2rad($longitudeTo);
 
-		  $latDelta = $latTo - $latFrom;
-		  $lonDelta = $lonTo - $lonFrom;
+			  $latDelta = $latTo - $latFrom;
+			  $lonDelta = $lonTo - $lonFrom;
 
-		  $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
-		    cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
-		  return $angle * $earthRadius;
-		}
-		
+			  $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+			    cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+			  return $angle * $earthRadius;
+			}
+					
 		function Myitem($id)
 		{
 		 $i = 0;
@@ -48,28 +48,24 @@ class ItemView extends ItemControl
 					  </div>
 					</div>
 						';
-		 	$this->lat[$ctr] = $place[0]['Lat'];
+		  $this->lat[$ctr] = $place[0]['Lat'];
 		  $this->lot[$ctr] = $place[0]['Lot'];
 		  $this->name[$ctr] = $place[0]['Pname'];
 
 		 	}
-}
+		}
 
-		function mapper(){
+		function mapper($lat,$lot){
 			$p = new ItemView();
 			$sorted = array();
 			$ctr = count($this->lat)-1;
-             echo '<pre>',print_r($this->name),'</pre>';
-             echo $this->name[0];
-             echo '<pre>',print_r( array_reverse($this->name)),'</pre>';
-             $this->name = array_reverse($this->name);
-             echo $this->name[0];
+			echo $ctr;
              
-			 for ($c=1; $c < count($this->lat); $c++) { 
+			 for ($c=0; $c < count($this->lat); $c++) { 
 					 echo "<br>";
 					 echo  $this->name[$c];
 					 echo "<br>";
-					 echo $sorted[$p-> haversine($this->lat[0],$this->lot[0],$this->lat[$c],$this->lot[$c])] =  $c;
+					 echo $sorted[$p-> haversine($lat,$lot,$this->lat[$c],$this->lot[$c])] =  $c;
 					 ;
 			 }
 			 ksort($sorted);
@@ -78,49 +74,134 @@ class ItemView extends ItemControl
 			 	echo $f;
 			 }
 
-				echo '
+if ($ctr == -1) {
+		echo '
 				      <script type="text/javascript">
 				      window.onload = function() {
 				        L.mapquest.key = "UBI3Wc0udk0csdys2DFuAJAdhxdX00E9";
 
 				        var map = L.mapquest.map("map", {
-				          center: ['.$this->lat[0].','.$this->lot[0].'],
+				          center: ['.$lat.','.$lot.'],
 				          layers: L.mapquest.tileLayer("map"),
 				          zoom:15
 				        });
-
-				';
-				for ($i=0; $i < count($this->lat); $i++) { 
-					$nm = strval($this->name[$i]);
-					echo '
-				         L.marker(['.$this->lat[$i].','.$this->lot[$i].'], {
+				         L.marker(['.$lat.','.$lot.'], {
 				          icon: L.mapquest.icons.marker(),
 				          draggable: false
-				        }).bindPopup("'.$nm.'").addTo(map);
-					';
-				}
+				        }).bindPopup("Current Location").addTo(map);
+					}
+					</script>';
 
+}else{
+echo "
+   <script type='text/javascript'>
+window.onload = function () {
+    L.mapquest.key = 'UBI3Wc0udk0csdys2DFuAJAdhxdX00E9';
 
+    addDirections();
+    var directions;
+    var directionsLayer; 
 
-				echo  '
-				        L.mapquest.directions().route({
-				          start: "'.$this->lat[0].','.$this->lot[0].'",
-				          waypoints: [
-				          ';
-				          	foreach($sorted as $f){
-							 	echo '"'.$this->lat[$f].','.$this->lot[$f].'",';
-							 }
-				echo     ']
-				        });
-				      }
-				    </script>
-				';
+    function addDirections() {
+
+      directions = L.mapquest.directions();
+      directions.route({
+        locations: [".'"'.$lat.','.$lot.'"'.",";
+
+			foreach($sorted as $f){
+			echo '"'.$this->lat[$f].','.$this->lot[$f].'",';
 		}
+
+ echo  "]
+      }, createMap);
+    }
+
+    function createMap(err, response) {
+      console.log(response);
+
+      var map = L.mapquest.map('map', {
+        center: L.mapquest.util.getCenterFromBoundingBox(response.route.boundingBox),
+        layers: L.mapquest.tileLayer('map'),
+        zoom: L.mapquest.util.getZoomFromBoundingBox(response.route.boundingBox) + 1
+      });
+
+      var DirectionsLayerWithCustomMarkers = L.mapquest.DirectionsLayer.extend({
+
+        createStartMarker: function(location, stopNumber) {
+          console.log(location);
+          console.log(stopNumber);
+
+                return L.mapquest.textMarker(location.latLng, {
+                  text: 'Start',
+                  type: 'marker',
+                  icon: {
+                    primaryColor: '#333333',
+                    secondaryColor: '#333333',
+                    size: 'sm',
+                    symbol: stopNumber
+                  }
+                });
+
+        },
+
+        createWaypointMarker: function(location, stopNumber) {
+         console.log(location);
+         console.log(stopNumber);
+
+                return L.mapquest.textMarker(location.latLng, {
+                  text: stopNumber,
+                  type: 'marker',
+                  icon: {
+                    primaryColor: '#333333',
+                    secondaryColor: '#333333',
+                    size: 'sm',
+                    symbol: stopNumber
+                  }
+                });
+
+        },
+
+        createEndMarker: function(location, stopNumber) {
+          console.log(location);
+          console.log(stopNumber);
+
+                return L.mapquest.textMarker(location.latLng, {
+                  text: 'End',
+                  type: 'marker',
+                  icon: {
+                    primaryColor: '#333333',
+                    secondaryColor: '#333333',
+                    size: 'sm',
+                    symbol: stopNumber
+                  }
+                });
+
+        }
+
+      });
+
+      directionsLayer = new DirectionsLayerWithCustomMarkers({
+        directionsResponse: response
+      }).addTo(map);
+
+      var narrativeControl = L.mapquest.narrativeControl({
+        directionsResponse: response,
+        compactResults: false
+      });
+
+      narrativeControl.setDirectionsLayer(directionsLayer);
+      narrativeControl.addTo(map);
+    }
+  }
+    </script>
+
+
+";
 
 }
 
 
+		}
 
-
-
- ?>
+}
+?>

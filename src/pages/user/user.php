@@ -6,7 +6,6 @@ echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
 echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 $id = $_SESSION['Id'];
-echo $_SESSION['City'];
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/place.php');
 $place = array();
@@ -214,54 +213,57 @@ $plc = new PlaceView();
 				<div class="tab-content">
 				  <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
 				  				<?php 
-									$plc->Nearplace('Museum',$_SESSION['City']);
-									$plc->Nearplace('Sports complex',$_SESSION['City']);
-									$plc->Nearplace('Event venue',$_SESSION['City']);
-									$plc->Nearplace('Performing arts theater',$_SESSION['City']);
-									$plc->Nearplace('Nature preserve',$_SESSION['City']);
-									$plc->Nearplace('Modern art museum',$_SESSION['City']);
-									$plc->Nearplace('Historical place',$_SESSION['City']);
-									$plc->Nearplace('Heritage museum',$_SESSION['City']);
-									$plc->Nearplace('Art center',$_SESSION['City']);
-									$plc->Nearplace('Local history museum',$_SESSION['City']);
-									$plc->Nearplace('Art gallery',$_SESSION['City']);
-									$plc->Nearplace('National park',$_SESSION['City']);
-									$plc->Nearplace('Motel',$_SESSION['City']);
-									$plc->Nearplace('Catholic cathedral',$_SESSION['City']);
-									$plc->Nearplace('Spa',$_SESSION['City']);		
+				  				//$plc-> Allplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City']);
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Museum');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Sports complex');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Event venue');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Performing arts theater');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Sports complex');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Nature preserve');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Modern art museum');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Historical place');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Heritage museum');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Art center');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Local history museum');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Art gallery');
+									$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Motel');
+									$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Catholic cathedral');
+									$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Spa');
+
 								
 									?>	
 
 				  </div>
 				  <div class="tab-pane" id="landmark" role="tabpanel" aria-labelledby="place-tab">
 				  				<?php 
-									$plc->Nearplace('Historical landmark',$_SESSION['City']);
-									$plc->Nearplace('Church',$_SESSION['City']);
-									$plc->Nearplace('Shopping Mall',$_SESSION['City']);
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Historical landmark');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Church');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Shopping Mall');
 									?>	
 
 				  </div>
 				  <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
 				  				<?php 
-									$plc->Nearplace('Restaurant',$_SESSION['City']);
-									$plc->Nearplace('Western restaurant',$_SESSION['City']);
-									$plc->Nearplace('Hotel',$_SESSION['City']);
-									$plc->Nearplace('Modern European restaurant',$_SESSION['City']);
-									$plc->Nearplace('Buffet restaurant',$_SESSION['City']);
-									$plc->Nearplace('Thai restaurant',$_SESSION['City']);
-									$plc->Nearplace('Mexican restaurant',$_SESSION['City']);
-									$plc->Nearplace('Fine dining restaurant',$_SESSION['City']);
-									$plc->Nearplace('Filipino restaurant',$_SESSION['City']);
-									$plc->Nearplace('Italian restaurant',$_SESSION['City']);
-									$plc->Nearplace('Vegan restaurant',$_SESSION['City']);
-									$plc->Nearplace('Mediterranean restaurant',$_SESSION['City']);
-									$plc->Nearplace('Bar & grill',$_SESSION['City']);		
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Restaurant');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Western restaurant');		
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Hotel');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Modern European restaurant');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Buffet restaurant');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Thai restaurant');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Mexican restaurant');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Fine dining restaurant');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Filipino restaurant');	
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Italian restaurant');	
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Vegan restaurant');	
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Mediterranean restaurant');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Bar & grill');			  				
 									?>	
 				  </div>
 				   <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
 				  	  		<?php 
-									$plc->Nearplace('Tourist attraction',$_SESSION['City']);
-									$plc->Nearplace('Park',$_SESSION['City']);
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Tourist attraction');
+				  				$plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City'],'Park');
+
 									?>
 
 				  </div>

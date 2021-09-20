@@ -20,7 +20,7 @@ include '../../PHP/Functions/Geocoding.php';
 
 <h3 style="margin: auto; text-align: center; font-weight: bolder; color: white;" class="bg-dark">GETTING STARTED</h3>
 <br>
-<h5 style="margin: auto; text-align: center; font-weight: bold; color: white;">Almost there! Please Enter your current City State so that we may fetch you some nearby travelling spots!</h5>
+<h5 style="margin: auto; text-align: center; font-weight: bold; color: white;">Almost there! Please Enter your current District in Manila so that we may fetch you some nearby travelling spots!</h5>
 <br>
 
 <div class="container-sm bg-light" style="width: 50%;">
@@ -28,23 +28,22 @@ include '../../PHP/Functions/Geocoding.php';
       <br>
       <label>Please Your Current City Location</label>
       <br>
-      <select class="form-select" aria-label="Please Your Current City Location" name="loc">
-        <option value="Manila">Manila</option>
-        <option value="Mandaluyong">Mandaluyong</option>
-        <option value="Marikina">Marikina</option>
-        <option value="Pasig">Pasig</option>
-        <option value="Quezon_City">Quezon City</option>
-        <option value="San Juan">San Juan</option>
-        <option value="Malabon">Malabon</option>
-        <option value="Navotas">Navotas</option>
-        <option value="Valenzuela">Valenzuela</option>
-        <option value="Las_Pinas">Las Pinas</option>
-        <option value="Makati">Makati</option>
-        <option value="Muntinlupa">Muntinlupa</option>
-        <option value="Paranaque">Paranaque</option>
-        <option value="Pasay">Pasay City</option>
-        <option value="Pateros">Pateros</option>
-        <option value="Taguig">Taguig</option>
+      <select class="form-select" aria-label="District" name="loc">
+        <option value="Binondo">Binondo</option>
+        <option value="Ermita">Ermita</option>
+        <option value="Intramuros">Intramuros</option>
+        <option value="Malate">Malate</option>
+        <option value="Paco">Paco</option>
+        <option value="Pandacan">Pandacan</option>
+        <option value="Port Area">Port Area</option>
+        <option value="Quiapo">Quiapo</option>
+        <option value="Sampaloc">Sampaloc</option>
+        <option value="San Miguel">San Miguel</option>
+        <option value="San Nicolas">San Nicolas</option>
+        <option value="Santa Ana">Santa Ana</option>
+        <option value="Santa Cruz">Santa Cruz</option>
+        <option value="Santa Mesa">Santa Mesa</option>
+        <option value="Tondo">Tondo</option>
       </select>
      <br>
     <div>

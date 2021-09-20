@@ -17,14 +17,14 @@ $id = $_SESSION['Id'];
 	$id = $_SESSION['Id'];
 
 
-	$Geocoding = file_get_contents("http://www.mapquestapi.com/geocoding/v1/address?key=UBI3Wc0udk0csdys2DFuAJAdhxdX00E9&location=".$loc.",Philippines");
+	$Geocoding = file_get_contents("https://us1.locationiq.com/v1/search.php?key=pk.afe673b433d0909e7601c9ea96162a9e&q=".$loc.",Manila&format=json");
 	   
 
 	$geo = json_decode($Geocoding, TRUE);
 
 
-	$lat =  $geo['results']['0']['locations']['0']['latLng']['lat'];
-	$lot =  $geo['results']['0']['locations']['0']['latLng']['lng'];
+	$lat =  $geo[0]['lat'];
+	$lot =  $geo[0]['lon'];
 
 	$i = new UserControl();
 	$_SESSION['Permit'] = 'false';

@@ -25,11 +25,20 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 
 		 return $res;
 		 }
-	
-		function GetNear($type,$city)
+
+		 function GetRecommended($name,$type)
 		{
 		 
-		 $res =  $this->rec($type,$city);
+		 $res =  $this->Recommend($name,$type);
+
+		 return $res;
+		 }
+
+	
+		function GetByType($type)
+		{
+		 
+		 $res =  $this->fetchbytype($type);
 
 		 return $res;
 		 }

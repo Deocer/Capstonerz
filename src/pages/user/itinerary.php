@@ -80,7 +80,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
         ?> 
       </div>
       <?php 
-          $p->Mapper();
+          $p->mapper($_SESSION['lat'],$_SESSION['lot']);
        ?>
      
     </div>

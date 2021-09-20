@@ -208,24 +208,52 @@ $rev = new ReviewView();
         <div class="tab-content">
           <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
                   <?php 
-                  $des = new NearbyP($nm,'Historic_landmarks',$lat,$lot);
+                  $plc-> Recplace($lat,$lot,$nm,'Museum');
+                  $plc-> Recplace($lat,$lot,$nm,'Sports complex');
+                  $plc-> Recplace($lat,$lot,$nm,'Performing arts theater');
+                  $plc-> Recplace($lat,$lot,$nm,'Sports complex');
+                  $plc-> Recplace($lat,$lot,$nm,'Nature preserve');
+                  $plc-> Recplace($lat,$lot,$nm,'Modern art museum');
+                  $plc-> Recplace($lat,$lot,$nm,'Historical place');
+                  $plc-> Recplace($lat,$lot,$nm,'Heritage museum');
+                  $plc-> Recplace($lat,$lot,$nm,'Art center');
+                  $plc-> Recplace($lat,$lot,$nm,'Local history museum');
+                  $plc-> Recplace($lat,$lot,$nm,'Art gallery');
+                  $plc-> Recplace($lat,$lot,$nm,'Motel');
+                  $plc-> Recplace($lat,$lot,$nm,'Catholic cathedral');
+                  $plc-> Recplace($lat,$lot,$nm,'Spa');
                   ?>
 
           </div>
           <div class="tab-pane " id="landmark" role="tabpanel" aria-labelledby="place-tab">
                   <?php 
-                  $plc->Nearplace('Historical landmark',$_SESSION['City']);
+                  $plc-> Recplace($lat,$lot,$nm,'Historical landmark');
+                  $plc-> Recplace($lat,$lot,$nm,'Church');
+                  $plc-> Recplace($lat,$lot,$nm,'Shopping Mall');
                   ?>
 
           </div>
           <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
                   <?php 
-                  $plc->Nearplace('Restaurant',$_SESSION['City']);;
+                  $plc-> Recplace($lat,$lot,$nm,'Restaurant');
+                  $plc-> Recplace($lat,$lot,$nm,'Western restaurant');   
+                  $plc-> Recplace($lat,$lot,$nm,'Hotel');
+                  $plc-> Recplace($lat,$lot,$nm,'Modern European restaurant');
+                  $plc-> Recplace($lat,$lot,$nm,'Buffet restaurant');
+                  $plc-> Recplace($lat,$lot,$nm,'Thai restaurant');
+                  $plc-> Recplace($lat,$lot,$nm,'Mexican restaurant');
+                  $plc-> Recplace($lat,$lot,$nm,'Fine dining restaurant');
+                  $plc-> Recplace($lat,$lot,$nm,'Filipino restaurant');  
+                  $plc-> Recplace($lat,$lot,$nm,'Italian restaurant'); 
+                  $plc-> Recplace($lat,$lot,$nm,'Vegan restaurant'); 
+                  $plc-> Recplace($lat,$lot,$nm,'Mediterranean restaurant');
+                  $plc-> Recplace($lat,$lot,$nm,'Bar & grill');
                   ?>
           </div>
            <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
                   <?php 
-                  $plc->Nearplace('Tourist attraction',$_SESSION['City']);
+                  $plc-> Recplace($lat,$lot,$nm,'Tourist attraction');
+                  $plc-> Recplace($lat,$lot,$nm,'Park');
                   ?>
 
           </div>
