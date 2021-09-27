@@ -1,7 +1,7 @@
 
 /* Optional: Makes the sample page fill the window. */
 body{
-  background-image: url("../imgs/background.jpg");
+  background-color: grey;
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -135,4 +135,54 @@ body{
 
 textarea {
   resize: none;
+}
+
+.placecard{
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 5px 5px 10px 4px rgba(0,0,0,0.5);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  padding: 14px 80px 18px 36px;
+  cursor: pointer;
+}
+
+.placecard:hover{
+  transform: scale(1.05);
+  box-shadow: 0 10px 10px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+ .con {
+  width: 800px;
+  height: 420px; /* height given for illustration */
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+  margin: auto;
+  text-align: center;
+  overflow: auto;
+}
+
+.post{
+  overflow: auto;
+  height: 420px;
+  margin: auto;
+
+}
+
+.item {
+  margin: 2px;
+  height: 200px;
+  flex: 0 1 calc(20% - 8px);
+  position: relative;
+  text-align: center;
+  margin: auto;
+  color: white;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
 }

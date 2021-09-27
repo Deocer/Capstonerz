@@ -47,7 +47,7 @@ class data{
 
 	protected function fetchbytype($type){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM places WHERE type = ? "; 
+		$sql = "SELECT * FROM places WHERE type = ?"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("s",$type);
 		$stmt->execute();

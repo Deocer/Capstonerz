@@ -24,6 +24,16 @@ class database{
 		exit();
 	}
 
+	protected function delete($id){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("DELETE FROM  itinerary WHERE PlcID  = ?");
+		$stmt->bind_param("i",$id);
+		$stmt->execute();
+		$stmt->close();
+		header("location:../../pages/user/itinerary.php");
+		exit();
+	}
+
 	protected function fetch($id){
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$sql = "SELECT * FROM itinerary WHERE UserID = ? ORDER BY PlcID DESC LIMIT 100"; 

@@ -21,6 +21,11 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/itinerary.php');
 		 
 		}
 
+		function DeleteItem($id)
+		{
+		 $this->delete($id);
+		}
+
 		
 
 	}
@@ -34,5 +39,15 @@ $s->AddItem($_GET['nm'],$_GET['id'],$_GET['nm']);
 
 
 }
+
+if (isset($_GET['delete']) ){
+
+$s = new ItemControl();
+$s->DeleteItem($_GET['delete']);
+}else{
+
+
+}
+
 
  ?>
