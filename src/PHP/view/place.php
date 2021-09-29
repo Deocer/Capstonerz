@@ -81,7 +81,7 @@ class PlaceView extends PlaceControl
 		 $i = 0;
 		 $sorted = array();
 		 $keys = array();
-		 $res =  $this->GetByType($type);
+		 $res =  $this->GetByType($place,$type);
 		 foreach($res as $r ){
 		 	$i++;
 		 }

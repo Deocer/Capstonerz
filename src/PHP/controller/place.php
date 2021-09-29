@@ -35,10 +35,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 		 }
 
 	
-		function GetByType($type)
+		function GetByType($district,$type)
 		{
 		 
-		 $res =  $this->fetchbytype($type);
+		 $res =  $this->fetchbytype($district,$type);
 
 		 return $res;
 		 }

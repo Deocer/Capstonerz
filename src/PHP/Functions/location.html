@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+       <html>
+       <head>
+         <meta charset="utf-8">
+         <title></title>
+       </head>
+       <body>
+       <p></p>
+       </body>
+       <script type="text/javascript">
+            function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+              x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+          function showPosition(position) {
+          var lat = position.coords.latitude;
+          var lot = position.coords.longitude;
+          window.location="../../pages/user/user.php?lat="+lat+"&lot="+lot;
+          }
+        getLocation();
+       </script>
+       </html>       
+

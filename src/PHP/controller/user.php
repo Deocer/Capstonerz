@@ -34,15 +34,12 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
                     session_start();
 			  		$_SESSION['Id'] =  $res[0];
 			  		$_SESSION['UserName'] =  $res[1];
-					$_SESSION['lat'] =  $res[3];
-					$_SESSION['lot'] =  $res[4];
-					$_SESSION['City'] = $res[5];
 					$_SESSION['Permit'] = 'false';
 
 
 
 					
-			  		header("location:../../pages/user/user.php");
+			  		header("location:../../PHP/Functions/location.html");
 			  		exit();
 
 			  }

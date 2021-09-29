@@ -15,7 +15,7 @@ class data{
 
 	protected function insert($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("INSERT INTO places (Pname,Des, Lat, Lot, img, rating, reviews, type,price,hours,address,City) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt = $conn->prepare("INSERT INTO places (Pname,Des, Lat, Lot, img, rating, reviews, type,price,hours,address,District) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 		$stmt->bind_param("ssssssssssss",$name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city);
 		$stmt->execute();
 		$stmt->close();
@@ -45,17 +45,18 @@ class data{
 	}
 
 
-	protected function fetchbytype($type){
+	protected function fetchbytype($district,$type){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM places WHERE type = ?"; 
+		$sql = "SELECT * FROM places WHERE District =? AND type = ?"; 
 		$stmt = $conn->prepare($sql); 
-		$stmt->bind_param("s",$type);
+		$stmt->bind_param("ss",$district,$type);
 		$stmt->execute();
 
 		$result = $stmt->get_result();
 
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
+
 
 	protected function select(){
 		$conn = mysqli_connect('localhost','root','root','capstone');

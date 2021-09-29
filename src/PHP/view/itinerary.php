@@ -60,21 +60,34 @@ class ItemView extends ItemControl
 			$p = new ItemView();
 			$sorted = array();
 			$ctr = count($this->lat)-1;
-			echo $ctr;
-             
+echo "<br>"; 
+echo "Step 1 : Show All Items in Itinerary";
+echo "<br>";        
 			 for ($c=0; $c < count($this->lat); $c++) { 
 					 echo "<br>";
 					 echo  $this->name[$c];
 					 echo "<br>";
-					 echo $sorted[$p-> haversine($lat,$lot,$this->lat[$c],$this->lot[$c])] =  $c;
+					 echo $c;
+					 echo $sorted[$c] =  $p-> haversine($lat,$lot,$this->lat[$c],$this->lot[$c]);
 					 ;
 			 }
-			 ksort($sorted);
-			 echo '<pre>',print_r($sorted),'</pre>';
-			 foreach($sorted as $f){
-			 	echo $f;
-			 }
+			 asort($sorted);
+echo "<br>"; 
+echo "<br>"; 
+echo "Step 2 : Sort the items and use store in another array using their counter key as their array key";
+echo "<br>"; 
 
+			 echo '<pre>',print_r($sorted),'</pre>';
+
+
+			 $s = array_keys($sorted);
+
+echo "<br>"; 
+echo "<br>"; 
+echo "Step 3 : Sort Then Place the Array keys in another array to have access to the original items in the itinerary";
+echo "<br>"; 
+
+			 echo '<pre>',print_r($s),'</pre>';
 if ($ctr == -1) {
 		echo '
 				      <script type="text/javascript">
@@ -108,10 +121,10 @@ window.onload = function () {
       directions = L.mapquest.directions();
       directions.route({
         locations: [".'"'.$lat.','.$lot.'"'.",";
-
-			foreach($sorted as $f){
-			echo '"'.$this->lat[$f].','.$this->lot[$f].'",';
-		}
+			 for ($ctr=0; $ctr < count($sorted); $ctr++) { 
+						echo '"'.$this->lat[$s[$ctr]].','.$this->lot[$s[$ctr]].'",';
+					 
+			 }
 
  echo  "]
       }, createMap);
