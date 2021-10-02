@@ -3,7 +3,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/itinerary.php');
 /**
 	 * 
 	 */
-	class ItemControl extends database
+	class ItemControl extends itinerarydatabase
 	{
 		
 		function AddItem($name,$id,$pname)

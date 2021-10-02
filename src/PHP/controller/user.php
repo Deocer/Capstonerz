@@ -4,17 +4,17 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 /**
 	 * 
 	 */
-	class UserControl extends database
+	class UserControl extends userdatabase
 	{
 		
-		function CreateUser($Username, $Pass, $Lat, $Lot)
+		function CreateUser($Username, $Pass, $Status)
 		{
-		 $this->insert($Username, $Pass, $Lat, $Lot);
+		 $this->insert($Username, $Pass, $Status);
 		}
 
-		function LocUser($Lat, $Lot,$Loc,$Budget,$id)
+		function LocUser($Budget,$id)
 		{
-		 $this->secloc($Lat, $Lot,$Loc,$Budget,$id);
+		 $this->secloc($Budget,$id);
 		}
 
 		function GetUser($Username, $Pass)
@@ -66,9 +66,6 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 			  		session_start();
 			  		$_SESSION['Id'] =  $res[0];
 			  		$_SESSION['UserName'] =  $res[1];
-					$_SESSION['lat'] =  $res[3];
-					$_SESSION['lot'] =  $res[4];
-					$_SESSION['City'] = 'w';
 					$_SESSION['Permit'] = 'true';
 
 
@@ -94,6 +91,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 		{
 		 $this->verify($Username);
 		}
+
+		function fetchUsers()
+		{
+		 $res = $this->selectAll();
+		 return $res;
+		}
+
 
 
 	}

@@ -206,7 +206,7 @@ class PlaceView extends PlaceControl
 		  foreach($res as $r ){
 		 	$i++;
 		 }
-		 echo "<select name='tag'>";
+		 echo "<select name='tag' style='width:60%;'>";
 		 	echo "<option value=''> </option>";
 		  for ($ctr=0; $ctr < $i; $ctr++) { 
 

@@ -4,7 +4,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 /**
 	 * 
 	 */
-	class PlaceControl extends data
+	class PlaceControl extends placedatabase
 	{
 		
 		function AddItem($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city)

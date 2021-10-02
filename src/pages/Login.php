@@ -31,7 +31,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 				<img src="../imgs/background.jpg" class=" w-50 d-none d-sm-block" width="">
 				<div class="col-sm-8 col-md-6 col-lg-4 bg-white rounded p-4 shadow">
 					<div class="row justify-content-center mb-2">
-						<img src="../imgs/wander logo.png" class="w-50 rounded-pill">
+						<img src="../imgs/logo.png" class="w-50 rounded-pill">
 					</div>
 					<p class="h4 text-center">Log-in Page</p>
 					<form action=" ../../src/PHP/controller/user.php" method="post">

@@ -45,7 +45,7 @@ class ItemView extends ItemControl
 					        <p class="card-title"><a href="../../pages/user/place.php?nm='.$place[0]['Pname'].'&lat='.$place[0]['Lat'].'&lot='.$place[0]['Lot'].'&desc='.$place[0]['Des'].'&img='.$place[0]['img'].'&class='.$place[0]['type'].'&rating='.$place[0]['Rating'].'&address='.$place[0]['address'].'&hours='.$place[0]['hours'].'&price='.$place[0]['price'].'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.$place[0]['Pname'].'</small></b></a></p>
 					        <br>
 					        <p class=""><small class="text-muted"><span class="fa fa-star star"></span>'.$place[0]['Rating'].'</small></p>
-					        <a class="btn btn-outline-primary" aria-current="page" href="../../PHP/controller/itinerary.php?delete='.$res[0]['PlcID'].'">Add To Itinerary</a>
+					        <a class="btn btn-danger" aria-current="page" href="../../PHP/controller/itinerary.php?delete='.$res[0]['PlcID'].'">Remove from Itinerary</a>
 					  </div>
 					</div>
 						';

@@ -1,6 +1,6 @@
 <?php 
 
-class database{
+class userdatabase{
 
 	public function __construct(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
@@ -14,20 +14,20 @@ class database{
 		}
 	}
 
-	protected function insert($Username, $Pass, $Lat, $Lot){
+	protected function insert($Username, $Pass, $Status){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("INSERT INTO wuser (UserName, Pass, Lat, Lot) VALUES (?, ?, ?,?)");
+		$stmt = $conn->prepare("INSERT INTO wuser (UserName, Pass, Status) VALUES (?, ?, ?)");
 		$hasher_pwd = password_hash($Pass, PASSWORD_DEFAULT);
-		$stmt->bind_param("ssss", $Username, $hasher_pwd, $Lat, $Lot);
+		$stmt->bind_param("sss", $Username, $hasher_pwd, $Status);
 		$stmt->execute();
 		$stmt->close();
 	}
 
 
-	protected function secloc ($Lat, $Lot,$Loc,$Budget,$id){
+	protected function secloc ($Budget,$id){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("UPDATE wuser SET Lat = ?, Lot = ?, Location = ?, Budget = ? WHERE UserID = ? ");
-		$stmt->bind_param("ssssi",$Lat, $Lot,$Loc,$Budget,$id);
+		$stmt = $conn->prepare("UPDATE wuser SET  Budget = ? WHERE UserID = ? ");
+		$stmt->bind_param("si",$Budget,$id);
 		$stmt->execute();
 
 		$_SESSION['lat'] = $Lat;
@@ -65,6 +65,20 @@ class database{
 
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
+
+		protected function selectAll(){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM wuser"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+
+
 }
 
  ?>

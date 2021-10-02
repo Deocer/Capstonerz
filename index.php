@@ -22,13 +22,24 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     <link rel="stylesheet" type="text/css" href="src/css/style.css">
     <title>WANDER | Travel Website</title>
 </head>
+<style type="text/css">
+body{
+  background-image: url(src/imgs/background.jpg);
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+}    
+
+</style>
 <body>
     <!-- Navbar -->
 </div>
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark navbar-fixed-top">
+  <nav class="navbar navbar-expand-lg bg-light navbar-dark navbar-fixed-top">
         <div class="container">
             <a href="#" class="navbar-brand" id="WANDER">
-                <img src="src/imgs/wander logo.png" class="img-fluid rounded-pill">
+                <img src="src/imgs/logo.png" class="img rounded-pill" style="width:100%;height: 50px;">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
@@ -38,16 +49,16 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="Home.html" class="nav-link">Home</a>
+                        <a href="Home.html" class="nav-link" style="color: plum;"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#About" class="nav-link">About Us</a>
+                        <a href="#About" class="nav-link" style="color: plum;"><b>About Us</b></a>
                     </li>
                     <li class="nav-item">
-                        <a href="src/pages/Login.php" class="nav-link">Log In</a>
+                        <a href="src/pages/Login.php" class="nav-link" style="color: plum;"><b>Log In</b></a>
                     </li>
                     <li class="nav-item">
-                        <a href="src/pages/Signup.php" class="nav-link">Sign Up</a>
+                        <a href="src/pages/Signup.php" class="nav-link" style="color: plum;"><b>Sign Up</b></a>
                     </li>
                 </ul>
             </div>

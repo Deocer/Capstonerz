@@ -26,26 +26,6 @@ include '../../PHP/Functions/Geocoding.php';
 <div class="container-sm bg-light" style="width: 50%;">
   <form action="../../PHP/Functions/Geocoding.php" method="post" >
       <br>
-      <label>Please Your Current City Location</label>
-      <br>
-      <select class="form-select" aria-label="District" name="loc">
-        <option value="Binondo">Binondo</option>
-        <option value="Ermita">Ermita</option>
-        <option value="Intramuros">Intramuros</option>
-        <option value="Malate">Malate</option>
-        <option value="Paco">Paco</option>
-        <option value="Pandacan">Pandacan</option>
-        <option value="Port Area">Port Area</option>
-        <option value="Quiapo">Quiapo</option>
-        <option value="Sampaloc">Sampaloc</option>
-        <option value="San Miguel">San Miguel</option>
-        <option value="San Nicolas">San Nicolas</option>
-        <option value="Santa Ana">Santa Ana</option>
-        <option value="Santa Cruz">Santa Cruz</option>
-        <option value="Santa Mesa">Santa Mesa</option>
-        <option value="Tondo">Tondo</option>
-      </select>
-     <br>
     <div>
       <label>Preferred Price Point For Destinations</label>
       <br>

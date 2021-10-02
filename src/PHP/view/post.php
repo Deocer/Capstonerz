@@ -1,5 +1,4 @@
 <?php 
-
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/post.php');
 
 class PostView extends PostControl
@@ -24,10 +23,15 @@ class PostView extends PostControl
 					    <div class="container">
 					      <div class="row align-items-start">
 					        <div class="col-1 px-2">
-					         <img src="../../imgs/logo.jpg"  class="d-block" alt="..." style="width:50px; height: 50px; border: solid white; border-radius: 50px;">
+					         <img src="../../imgs/logo.png"  class="d-block" alt="..." style="width:50px; height: 50px; border: solid white; border-radius: 50px;">
 					        </div>
-					        <div class="col-6 py-2">
+					        <div class="col-7 py-2">
 					          <h5 class="card-title" style ="font-size:14px;">'.$res[$ctr]['UserName'].'</h5>
+					        </div>
+					        <div class="col py-2 text-end">
+						         <a type="button" onClick="flagP('.$res[$ctr]['PostID'].','.$_SESSION['Id'].')" ><span class="material-icons text-danger">report_problem</span>
+						         </a>
+
 					        </div>
 					      </div>
 					      <br>
@@ -156,46 +160,20 @@ echo'
 		 }
 
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
+		 		$f= 0;
 		 		$pic = 0;
 		 		$img =  $this->Pic($res[$ctr]['PostID']);
+		 		$flag =  $this->fetchPlag($res[$ctr]['PostID']);
+		 		foreach($flag as $flg ){
+		 		$f++;
+		 		}
 
 		 		echo '
-					<div class="card">
-					  <h5 class="card-header"></h5>
-					  <div class="card-body">
-					    <div class="container">
-					      <div class="row align-items-start">
-					        <div class="col-1 px-2">
-					         <img src="../../imgs/wander logo.png"  class="d-block" alt="..." style="width:50px; height: 50px; border: solid white; border-radius: 50px;">
-					        </div>
-					        <div class="col-6 py-2">
-					          <h5 class="card-title">'.$res[$ctr]['UserName'].'</h5>
-					        </div>
-					      </div>
-					      <br>
-					    <p class="card-text">'.$res[$ctr]['PostTitle'].'</p>
-					    <p>'.$res[$ctr]['Cont'].'</p>
-
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModal'.$res[$ctr]['PostID'].'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-						        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						      </div>
-						      <div class="modal-body">
-						        '.$res[$ctr]['PostTitle'].'
-						      </div>
-						      <div class="modal-footer">
-						        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						         <a href="../../PHP/controller/post.php?nm='.$res[$ctr]['PostID'].'" class="btn btn-primary " type="button" >Delete '.$res[$ctr]['PostID'].'</a>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-
-
+		 		  <tr>
+		 		    <th scope="row">'.$res[$ctr]['PostID'].'</th>
+				    <td>'.$res[$ctr]['PostTitle'].'</td>
+				    <td>'.$res[$ctr]['Cont'].'</td>
+				    <td>
 					    ';
 
 		 	foreach($img as $im ){
@@ -206,16 +184,16 @@ echo'
 					switch ($pic) {
 				  case $pic == 1 :
 				   echo '
-				 		<img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)"  alt="../../imgs/background.jpg"></br>';
+				 		<img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)"  alt="../../imgs/background.jpg"></br>';
 				    break;
 				  case $pic == 2:
 				    echo '<div class="container">
 								  <div class="row g-1">
 								    <div class="col p-0">
-								     <img src="'.$img[0]['datum'].'" style="height: 200px;width: 100%;"  value="'.$img[0]['datum'].'"  class="img-fluid" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;"  value="'.$img[0]['datum'].'"  class="img-fluid" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								    <div class="col">
-								     <img src="'.$img[1]['datum'].'" style="height: 200px;width: 100%;"   value="'.$img[1]['datum'].'"class="img-fluid" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[1]['datum'].'" style="height: 20px;width: 20px;"   value="'.$img[1]['datum'].'"class="img-fluid" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								  </div>
 								</div>';
@@ -224,15 +202,15 @@ echo'
 				    echo '<div class="container">
 								  <div class="row g-1 gx-1">
 								    <div class="col">
-								     <img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								    <div class="col">
-								     <img src="'.$img[1]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[1]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								  </div>
 								  <div class="row g-1">
 								    <div class="col">
-								     <img src="'.$img[2]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[2]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								  </div>
 								</div>';
@@ -241,18 +219,18 @@ echo'
 				    echo '<div class="container">
 								  <div class="row g-1">
 								    <div class="col mt-1">
-								     <img src="'.$img[0]['datum'].'" style="height: 200px;width: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								    <div class="col mt-1">
-								     <img src="'.$img[1]['datum'].'" style="height: 200px;width: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[1]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								  </div>
 								  <div class="row g-1 mt-1">
 								    <div class="col mt-1">
-								     <img src="'.$img[2]['datum'].'" style="height: 200px;width: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[2]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								     <div class="col mt-1">
-								     <img src="'.$img[3]['datum'].'" style="height: 200px;width: 100%;" class="img-fluid rounded-start"onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[3]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start"onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								  </div>
 								</div>';
@@ -261,19 +239,19 @@ echo'
 				    echo '<div class="container">
 								  <div class="row g-1 gx-1">
 								    <div class="col">
-								     <img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								    <div class="col">
-								     <img src="'.$img[1]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[1]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								  </div>
 								  <div class="row g-1">
 								    <div class="col">
-								     <img src="'.$img[2]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[2]['datum'].'"style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								     <div class="col">
 								     <p>'.$pic.'</p>
-								     <img src="'.$img[3]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								     <img src="'.$img[3]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
 								    </div>
 								  </div>
 								</div>';
@@ -285,12 +263,12 @@ echo'
 
 
 echo'
-			 <br><p class="card-title"><sub>'.$res[$ctr]['Tag'].'</sub></p> '.$res[$ctr]['Rating'].'<span class="fa fa-star"></span>
-			</div>
-			'.$res[$ctr]['PostID'].'
-		</div>
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal'.$res[$ctr]['PostID'].'">Delete Post</button>
-	</div>
+					</td>
+				    <td>'.$f.'</td>
+				    <td>
+						<button type="button" class="btn btn-danger" onClick="deleteP('.$res[$ctr]['PostID'].')">Delete Post</button>
+				    </td>
+		 		  </tr>
 
 ';
 

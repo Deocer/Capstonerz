@@ -10,8 +10,9 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 $id = $_SESSION['Id'];
 include '../../PHP/Functions/CreateRecList.php';
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/user.php');
 $place = array();
-$des = new RecomendedP();
+$users = new UserView();
 $plc = new PlaceView();
 ?>
 
@@ -23,6 +24,7 @@ $plc = new PlaceView();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  	<title></title>
  </head>
  <body>
@@ -33,41 +35,37 @@ $plc = new PlaceView();
   <div class="row p-0 m-0">
 
 
-    <div class="col-2" style="height: 3180px;">
+    <div class="col-1" style="height: 3180px;">
       <aside class="p-0 bg-dark " style="height: 100%;">
-	        <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
-	          <div class="text-center p-3">
-	            <a href="#" class="navbar-brand" id="WANDER">
-	              <img src="../../imgs/wander logo.png" class="img-fluid rounded-pill navbar-brand">
-	            </a>
-	            <img src="../../imgs/logo.jpg" alt="profile picture" width="50%" height="60%" class=" rounded-circle my-4 p-1 d-none d-md-block shadow  mx-auto"/>
-	           <a href="#" class="navbar-brand mx-0 font-weight-bold  text-nowrap"><?php echo $_SESSION['UserName']; ?></a>
-	          </div>
-	              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-	                <span class="navbar-toggler-icon"></span>
-	              </button>
-	          
-	          <div class="collapse navbar-collapse order-last" id="nav">
-	            <ul class="navbar-nav flex-column w-100 justify-content-center">
-	            <li class="nav-item">
-	              <a href="#" class="nav-link active">Home</a>
-	            </li>
-	            <li class="nav-item">
-	              <a href="itinerary.php" class="nav-link">My Travels</a>
-	            </li>
-	            <li class="nav-item">
-	              <a href="#" class="nav-link">Settings</a>
-	            </li>
-	            <li class="nav-item">
-	              <a href="../../PHP/Functions/Log_out.php" class="nav-link">Logout</a>
-	            </li>
-	          </ul>
-	          </div>      
-	        </nav>   
-	      </aside>
+          <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
+          <br>
+          <span class="material-icons text-light">account_circle</span>
+            <br>
+            <div class="collapse navbar-collapse order-last" id="nav">
+              <ul class="navbar-nav flex-column w-100 justify-content-center">
+              <li class="nav-item">
+                <a href="#" class="nav-link active"><span class="material-icons">home</span></a>
+                <br>
+              </li>
+              <li class="nav-item">
+                <a href="itinerary.php" class="nav-link"><span class="material-icons">travel_explore</span></a>
+                <br>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link"><span class="material-icons">settings</span></a>
+                <br>
+              </li>
+              <li class="nav-item">
+                <a href="../../PHP/Functions/Log_out.php" class="nav-link"><span class="material-icons">logout</span></a>
+                <br>
+              </li>
+            </ul>
+            </div>      
+          </nav>   
+        </aside>
     </div>
 
-    <div class="col-6 mx-auto bg-light">
+    <div class="col mx-auto bg-light">
 
     	<h4 class=" text-light bg-dark text-center  p-3">TRAVEL FEED</h4>
 
@@ -85,13 +83,58 @@ $plc = new PlaceView();
 
 	<div class="tab-content">
 	  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-	  				<?php 
+			<table class="table">
+			  <thead>
+			    <tr class="table-dark">
+			      <th scope="col">Post ID</th>
+						<th scope="col">Post Title</th>
+						<th scope="col">Content</th>
+						<th scope="col">Images</th>
+						<th scope="col">Flags</th>
+						<th scope="col"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				 <?php 
 						$p = new PostView();
 						$p->AdminPost();
-						?>	
+					?>
+			  </tbody>
+			</table>	
+			<script type="text/javascript">
 
+		    function deleteP(id) {
+				    Swal.fire({
+				      title: 'Do you want to delete this post?',
+				      showCancelButton: true,
+				      confirmButtonText: 'Delete Post',
+				      confirmButtonColor: '#8CD4F5',
+				    }).then((result) => {
+				      if (result.isConfirmed) {
+				        window.location.href = "../../PHP/controller/post.php?nm="+id;
+				      } 
+				    });
+		  }
+
+     </script>
 	  </div>
 	  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
+			<table class="table">
+			  <thead>
+			    <tr class="table-dark">
+				    <th scope="col">User ID</th>
+				    <th scope="col">User Name</th>
+				    <th scope="col">Post</th>
+				    <th scope="col">Flagged</th>
+				    <th scope="col">User Status</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				 <?php 
+						$users->AdminUsers();
+					?>
+			  </tbody>
+			</table>	
 	  </div>
 	   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
 	  	  		<?php 
@@ -111,87 +154,6 @@ $plc = new PlaceView();
     </div>
 
 
-    <div class="col text-center mx-auto bg-light" style="overflow: hidden;margin-left: 5px;">
-      <h4 class="text-light bg-dark text-center  p-3">Recommended Places</h4>
-			<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-					<li class="nav-item" role="presentation">
-				    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#places" type="button" role="tab" aria-controls="home" aria-selected="true"><span class="material-icons">map</span></button>
-				  </li>
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="place-tab" data-bs-toggle="tab" data-bs-target="#landmark" type="button" role="tab" aria-controls="place" aria-selected="true"><span class="material-icons">place</span></button>
-				  </li>
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#restaurants" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="material-icons">restaurant</span></button>
-				  </li>
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#tourist" type="button" role="tab" aria-controls="messages" aria-selected="false"><span class="material-icons">festival</span></button>
-				  </li>
-				</ul>
-
-				<div class="tab-content">
-				  <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
-				  				<?php 
-									$plc->Nearplace('Museum',$_SESSION['City']);
-									$plc->Nearplace('Sports complex',$_SESSION['City']);
-									$plc->Nearplace('Event venue',$_SESSION['City']);
-									$plc->Nearplace('Performing arts theater',$_SESSION['City']);
-									$plc->Nearplace('Nature preserve',$_SESSION['City']);
-									$plc->Nearplace('Modern art museum',$_SESSION['City']);
-									$plc->Nearplace('Historical place',$_SESSION['City']);
-									$plc->Nearplace('Heritage museum',$_SESSION['City']);
-									$plc->Nearplace('Art center',$_SESSION['City']);
-									$plc->Nearplace('Local history museum',$_SESSION['City']);
-									$plc->Nearplace('Art gallery',$_SESSION['City']);
-									$plc->Nearplace('National park',$_SESSION['City']);
-									$plc->Nearplace('Motel',$_SESSION['City']);
-									$plc->Nearplace('Catholic cathedral',$_SESSION['City']);
-									$plc->Nearplace('Spa',$_SESSION['City']);		
-								
-									?>	
-
-				  </div>
-				  <div class="tab-pane" id="landmark" role="tabpanel" aria-labelledby="place-tab">
-				  				<?php 
-									$plc->Nearplace('Historical landmark',$_SESSION['City']);
-									$plc->Nearplace('Church',$_SESSION['City']);
-									$plc->Nearplace('Shopping Mall',$_SESSION['City']);
-									?>	
-
-				  </div>
-				  <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
-				  				<?php 
-									$plc->Nearplace('Restaurant',$_SESSION['City']);
-									$plc->Nearplace('Western restaurant',$_SESSION['City']);
-									$plc->Nearplace('Hotel',$_SESSION['City']);
-									$plc->Nearplace('Modern European restaurant',$_SESSION['City']);
-									$plc->Nearplace('Buffet restaurant',$_SESSION['City']);
-									$plc->Nearplace('Thai restaurant',$_SESSION['City']);
-									$plc->Nearplace('Mexican restaurant',$_SESSION['City']);
-									$plc->Nearplace('Fine dining restaurant',$_SESSION['City']);
-									$plc->Nearplace('Filipino restaurant',$_SESSION['City']);
-									$plc->Nearplace('Italian restaurant',$_SESSION['City']);
-									$plc->Nearplace('Vegan restaurant',$_SESSION['City']);
-									$plc->Nearplace('Mediterranean restaurant',$_SESSION['City']);
-									$plc->Nearplace('Bar & grill',$_SESSION['City']);		
-									?>	
-				  </div>
-				   <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
-				  	  		<?php 
-									$plc->Nearplace('Tourist attraction',$_SESSION['City']);
-									$plc->Nearplace('Park',$_SESSION['City']);
-									?>
-
-				  </div>
-				</div>
-
-				<script>
-				  var firstTabEl = document.querySelector('#myTab li:last-child a')
-				  var firstTab = new bootstrap.Tab(firstTabEl)
-
-				  firstTab.show()
-				</script>
-
-    </div>
 
 
   </div>
@@ -201,26 +163,6 @@ $plc = new PlaceView();
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
  </body>
-<script type="text/javascript">
-  function reply_click(obj)
-  {
-  		 var modal = document.getElementById("myModal");
-  		 var span = document.getElementsByClassName("close")[0];
-
-       modal.style.display = "block";
-       document.getElementById("modalpic").src = obj.src;
-
-
-			window.onclick = function(event) {
-			  if (event.target == modal) {
-			    modal.style.display = "none";
-			  }
-			}
-
-
-  }
-</script>
-
  </html>
 
  

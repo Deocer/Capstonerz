@@ -4,7 +4,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/review.php');
 /**
 	 * 
 	 */
-	class ReviewControl extends database
+	class ReviewControl extends reviewdatabase
 	{
 		
 		function CreateReview($place, $cont,$rating, $id, $name)

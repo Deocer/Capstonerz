@@ -11,7 +11,7 @@ class Maker extends database
 		function NewUser($Username, $Pass)
 		{
 			if ($res = $this->verify($Username) == null) {
-				$this->insert($Username, $Pass, '0', '0');
+				$this->insert($Username, $Pass, 'Normal');
 				header('location:../controller/user.php?Username='.$Username.'&Password='.$Pass.''); 
 			}else{
 				header("location:../../pages/Signup.php?error=nameTaken");

@@ -1,5 +1,5 @@
 <?php 
-class data{
+class placedatabase{
 
 	public function __construct(){
 		$conn = mysqli_connect('localhost','root','root','capstone');

@@ -1,7 +1,7 @@
 <?php 
 
 
-class database{
+class postdatabase{
 
 	public function __construct(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
@@ -110,6 +110,51 @@ class database{
 		$user = $result->fetch_assoc(); // fetch data 
 
 		return $result;	
+	}
+
+
+	protected function flag($id, $pid){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("INSERT INTO pflags (UserID, PostID) VALUES (?, ?)");
+		$stmt->bind_param("ii", $id, $pid);
+		$stmt->execute();
+		$stmt->close();
+	}
+
+	
+	protected function fetchflag($PostID){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM pflags WHERE PostID = ?"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("i", $PostID);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+	protected function verifyflag($id, $pid){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM pflags WHERE UserID = ? AND PostID =?"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("ii", $id, $pid);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+	protected function flagUser(){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM post INNER JOIN pflags ON pflags.PostID = post.PostID"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 }
 

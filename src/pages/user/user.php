@@ -20,8 +20,8 @@ $Geocoding = file_get_contents("https://us1.locationiq.com/v1/search.php?key=pk.
 
 }
 if(isset($_GET['lat']) && isset($_GET['lot']) ){
-  echo $_SESSION['lat'] = $_GET['lat'];
-  echo $_SESSION['lot'] = $_GET['lot'];
+  $_SESSION['lat'] = $_GET['lat'];
+  $_SESSION['lot'] = $_GET['lot'];
   $Geocoding = file_get_contents("https://us1.locationiq.com/v1/reverse.php?key=pk.afe673b433d0909e7601c9ea96162a9e&lat=".
     $_SESSION['lat']."&lon=".$_SESSION['lot']."&format=json");
 
@@ -440,6 +440,21 @@ echo
 
 
   }
+
+  function flagP(pid,uid) {
+    Swal.fire({
+      title: 'Do you want to report this post?',
+      showCancelButton: true,
+      confirmButtonText: 'Report',
+      confirmButtonColor: '#8CD4F5',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "../../PHP/controller/post.php?flagID="+pid+"&UID="+uid;
+      } 
+    });
+  }
+
+
 </script>
 
  </html>
