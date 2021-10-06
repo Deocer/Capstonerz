@@ -5,7 +5,7 @@ include '../model/user.php';
 /**
 	 * 
 	 */
-class Maker extends database
+class Maker extends userdatabase
 {		
 
 		function NewUser($Username, $Pass)

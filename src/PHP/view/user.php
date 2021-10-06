@@ -13,19 +13,19 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/user.php');
 			 $p = new PostControl();
 			 $i = 0;
 			 $pl =0;
-			 $fl =0;
 			 $res = $this->fetchUsers();
 			 foreach($res as $r){
 		 		$i++;
 		 	 }
 		 	 for ($ctr=0; $ctr < $i; $ctr++) { 
+		 	 	$fl =0;
 		 	 	$post  = $p->UserPost($res[$ctr]['UserID']);
 		 	 	$pl=0;
 		 	 	foreach($post as $r ){
 		 			$pl++;
 		 	 	}
-			 	$flaged = $p->UserPostFlags();
-		 	 	foreach($post as $r ){
+			 	$flaged = $p->UserPostFlags($res[$ctr]['UserID']);
+		 	 	foreach($flaged as $d ){
 		 			$fl++;
 		 	 	}
 			 	 echo '
@@ -35,6 +35,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/user.php');
 					    <td>'.$pl.'</td>
 					    <td>'.$fl.'</td>
 					    <td>'.$res[$ctr]['Status'].'</td>
+					    <td>
+						<button type="button" class="btn btn-success" onClick="Unflag('.$res[$ctr]['UserID'].')">Unflag User</button>
+						<button type="button" class="btn btn-danger" onClick="FlagU('.$res[$ctr]['UserID'].')">Flag User</button>
+				        </td>
 					  <tr>
 			 	 ';
 

@@ -98,6 +98,20 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 		 return $res;
 		}
 
+	    function StatUsers($id)
+		{
+		 $res = $this->setstat($id);
+		 header("location:../../pages/admin/dashboard.php");
+		 exit();
+		}
+
+	    function UnStatUsers($id)
+		{
+		 $res = $this->unstat($id);
+		 header("location:../../pages/admin/dashboard.php");
+		 exit();
+		}
+
 
 
 	}
@@ -118,6 +132,24 @@ if (isset($_GET['Username']) &&  isset($_GET['Password'])){
 
 $s = new UserControl();
 $s->StarterUser($_GET['Username'],$_GET['Password']);
+}else{
+
+}
+
+if (isset($_GET['Status'])){
+
+
+$s = new UserControl();
+$s->StatUsers($_GET['Status']);
+}else{
+
+}
+
+if (isset($_GET['Unstat'])){
+
+
+$s = new UserControl();
+$s->UnStatUsers($_GET['Unstat']);
 }else{
 
 }

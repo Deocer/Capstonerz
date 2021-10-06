@@ -146,10 +146,11 @@ class postdatabase{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
-	protected function flagUser(){
+	protected function flagUser($id){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM post INNER JOIN pflags ON pflags.PostID = post.PostID"; 
-		$stmt = $conn->prepare($sql); 
+		$sql = "SELECT TrnsID FROM pflags INNER JOIN post ON post.UserID = ? "; 
+		$stmt = $conn->prepare($sql);
+		$stmt->bind_param("i", $id); 
 		$stmt->execute();
 
 		$result = $stmt->get_result();
@@ -158,4 +159,10 @@ class postdatabase{
 	}
 }
 
+/*
+
+FROM ((post
+INNER JOIN pflags ON pflags.PostID = post.PostID)
+INNER JOIN wusers ON post.UserID = wusers.UserID);
+*/
  ?>

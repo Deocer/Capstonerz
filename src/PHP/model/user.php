@@ -54,7 +54,7 @@ class userdatabase{
 
 	}
 
-		protected function verify($Username){
+	protected function verify($Username){
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$sql = "SELECT * FROM wuser WHERE Username = ?"; 
 		$stmt = $conn->prepare($sql); 
@@ -66,7 +66,7 @@ class userdatabase{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
-		protected function selectAll(){
+	protected function selectAll(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$sql = "SELECT * FROM wuser"; 
 		$stmt = $conn->prepare($sql); 
@@ -77,7 +77,21 @@ class userdatabase{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
+	protected function setstat ($id){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("UPDATE wuser SET  Status = 'Flagged' WHERE UserID = ? ");
+		$stmt->bind_param("i",$id);
+		$stmt->execute();
+		$stmt->close();
+	}
 
+	protected function unstat ($id){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("UPDATE wuser SET  Status = 'Normal' WHERE UserID = ? ");
+		$stmt->bind_param("i",$id);
+		$stmt->execute();
+		$stmt->close();
+	}
 
 }
 

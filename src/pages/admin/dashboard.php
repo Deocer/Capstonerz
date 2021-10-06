@@ -125,8 +125,9 @@ $plc = new PlaceView();
 				    <th scope="col">User ID</th>
 				    <th scope="col">User Name</th>
 				    <th scope="col">Post</th>
-				    <th scope="col">Flagged</th>
+				    <th scope="col">Flagged Post</th>
 				    <th scope="col">User Status</th>
+				    <th scope="col"></th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -134,7 +135,36 @@ $plc = new PlaceView();
 						$users->AdminUsers();
 					?>
 			  </tbody>
-			</table>	
+			</table>
+			<script type="text/javascript">
+
+		    function FlagU(id) {
+				    Swal.fire({
+				      title: 'Flagging this User may restrict His/Her access. Do you want to continue?',
+				      showCancelButton: true,
+				      confirmButtonText: 'Flag User',
+				      confirmButtonColor: '#8CD4F5',
+				    }).then((result) => {
+				      if (result.isConfirmed) {
+				        window.location.href = "../../PHP/controller/user.php?Status="+id;
+				      } 
+				    });
+		  }
+
+		  function Unflag(id) {
+				    Swal.fire({
+				      title: 'Unflagging a User gives them all previous access. Do you want to continue?',
+				      showCancelButton: true,
+				      confirmButtonText: 'Unflag User',
+				      confirmButtonColor: '#8CD4F5',
+				    }).then((result) => {
+				      if (result.isConfirmed) {
+				        window.location.href = "../../PHP/controller/user.php?Unstat="+id;
+				      } 
+				    });
+		  }
+
+     </script>	
 	  </div>
 	   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
 	  	  		<?php 

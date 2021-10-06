@@ -91,10 +91,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/post.php');
 		 
 		}
 
-	    function UserPostFlags()// Queries the Flags table to get all post made .
+	    function UserPostFlags($id)// Queries the Flags table to get all post made .
 		{
 		 
-		 $res =  $this->flagUser();
+		 $res =  $this->flagUser($id);
 
 		 return $res;
 		 
