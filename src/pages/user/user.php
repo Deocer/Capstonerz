@@ -1,10 +1,13 @@
 <?php
 session_start();
-if (isset($_SESSION['UserName']) & isset($_SESSION['Id'])  == false) {
+if (isset($_SESSION['UserName']) & isset($_SESSION['Id'])) {
+
+}else{
 $URL='../../../index.php';
 echo "<script type='text/javascript'>document.location.href='{$URL}';</script>";
-echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';  
 }
+
 $id = $_SESSION['Id'];
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/place.php');
@@ -13,7 +16,7 @@ $plc = new PlaceView();
 $place = 'Binondo';
 if (isset($_GET['place'])) {
 $place = $_GET['place'];
-$Geocoding = file_get_contents("https://us1.locationiq.com/v1/search.php?key=pk.afe673b433d0909e7601c9ea96162a9e&q=".$_SESSION['City'].",Manila&format=json");
+$Geocoding = file_get_contents("https://us1.locationiq.com/v1/search.php?key=pk.afe673b433d0909e7601c9ea96162a9e&q=".$_GET['place'].",Manila&format=json");
      
 
   $geo = json_decode($Geocoding, TRUE);
@@ -27,11 +30,8 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
 
    $geo = json_decode($Geocoding, TRUE);
-  $_SESSION['City'] = $geo['display_name'];
+   $_SESSION['City'] = $geo['display_name'];
 }
-
-
-
 
 ?>
 
