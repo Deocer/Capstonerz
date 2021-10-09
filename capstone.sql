@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 06, 2021 at 01:46 PM
+-- Generation Time: Oct 09, 2021 at 05:40 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -42,8 +42,13 @@ INSERT INTO `itinerary` (`PlcID`, `PlaceName`, `UserID`, `Pname`) VALUES
 (152, 'Binondo Church', 61, 'Binondo Church'),
 (153, 'Golden Fortune Seafood Restaurant', 61, 'Golden Fortune Seafood Restaurant'),
 (155, 'Rizal Park', 98, 'Rizal Park'),
-(156, 'National Museum of Natural History', 98, 'National Museum of Natural History'),
-(157, 'DonJar Big Burgers Balut Tondo', 62, 'DonJar Big Burgers Balut Tondo');
+(157, 'DonJar Big Burgers Balut Tondo', 62, 'DonJar Big Burgers Balut Tondo'),
+(162, 'National Museum of Anthropology', 114, 'National Museum of Anthropology'),
+(164, 'National Museum of Natural History', 114, 'National Museum of Natural History'),
+(165, 'Casa Manila', 114, 'Casa Manila'),
+(166, '24k Bakery', 114, '24k Bakery'),
+(168, 'Chinese Garden', 114, 'Chinese Garden'),
+(169, 'Paco Park and Cemetery', 98, 'Paco Park and Cemetery');
 
 -- --------------------------------------------------------
 
@@ -365,37 +370,40 @@ CREATE TABLE `post` (
   `Tag` varchar(55) DEFAULT NULL,
   `Rating` int(11) DEFAULT NULL,
   `UserID` int(11) NOT NULL,
-  `UserName` varchar(25) NOT NULL
+  `UserName` varchar(25) NOT NULL,
+  `Status` varchar(10) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`PostID`, `PostTitle`, `Cont`, `Tag`, `Rating`, `UserID`, `UserName`) VALUES
-(70, 'Manila Ocean Park', 'The Manila Ocean Park is a oceanarium in Manila, Philippines. It is owned by China Oceanis Philippines Inc., a subsidiary of China Oceanis Inc., a Singaporean-registered firm. It is located behind the Quirino Grandstand at Rizal Park.', 'Manila Ocean Park', 5, 61, 'deocer123'),
-(74, 'Manila', 'Manila, the capital of the Philippines, is a densely populated bayside city on the island of Luzon, which mixes Spanish colonial architecture with modern skyscrapers. Intramuros, a walled city in colonial times, is the heart of Old Manila. It’s home to th', '', 1, 61, 'deocer123'),
-(75, 'Manila', 'Manila, the capital of the Philippines, is a densely populated bayside city on the island of Luzon, which mixes Spanish colonial architecture with modern skyscrapers. Intramuros, a walled city in colonial times, is the heart of Old Manila. It’s home to th', '', 3, 61, 'deocer123'),
-(76, 'Baguio', 'Baguio, on the Philippines’ Luzon island, is a mountain town of universities and resorts. Called the “City of Pines,” it’s particularly popular in summer due to unusually cooler weather. At its center is Burnham Park, with gardens and a lake. Nearby, Bagu', '', 1, 61, 'deocer123'),
-(77, 'Baguio', 'Baguio, on the Philippines’ Luzon island, is a mountain town of universities and resorts. Called the “City of Pines,” it’s particularly popular in summer due to unusually cooler weather. At its center is Burnham Park, with gardens and a lake. Nearby, Bagu', '', 1, 61, 'deocer123'),
-(78, 'Tagaytay', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake', '', 1, 61, 'deocer123'),
-(79, 'Taal Volcano', 'Taal Volcano is a large caldera filled by Taal Lake in the Philippines. Located in the province of Batangas, the volcano is one of the most active volcanoes in the country, with 34 recorded historical eruptions, all of which were concentrated on Volcano I', '', 2, 61, 'deocer123'),
-(80, 'Taal Volcano', 'Taal Volcano is a large caldera filled by Taal Lake in the Philippines. Located in the province of Batangas, the volcano is one of the most active volcanoes in the country, with 34 recorded historical eruptions, all of which were concentrated on Volcano I', '', 1, 61, 'deocer123'),
-(81, 'Batangas', 'Batangas, officially the Province of Batangas is a province in the Philippines located in the Calabarzon region on Luzon. Its capital is the city of Batangas, and is bordered by the provinces of Cavite and Laguna to the north, and Quezon to the east', '', 2, 61, 'deocer123'),
-(84, 'a popular ', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake.', '', 1, 61, 'deocer123'),
-(85, 'Tagaytay is a popular holiday town south of Manila ', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake. Overlooking the area, People’s Park in the Sky occupies', '', 2, 61, 'deocer123'),
-(86, 'Holiday town south of Manila ', 'Tagaytay is a popular holiday town south of Manila ', '', 1, 61, 'deocer123'),
-(87, 'Tagaytay holiday ', 'Tagaytay is a popular holiday town south of Manila ', '', 2, 61, 'deocer123'),
-(88, 'Tagaytay is a popular ', 'Tagaytay is a popular holiday town south of Manila ', '', 1, 61, 'deocer123'),
-(89, 'Tagaytay town south of Manila ', 'Tagaytay is a popular holiday town south of Manila ', '', 2, 61, 'deocer123'),
-(90, 'South of Manila ', 'Tagaytay is a popular holiday town south of Manila ', '', 2, 61, 'deocer123'),
-(92, 'Hiking!', '', '9 SPOONS - The Bayleaf Intramuros', 3, 61, 'deocer123'),
-(93, 'Hiking', '', 'Eat All You Can Food Corporation', 2, 61, 'deocer123'),
-(94, 'Luneta', 'The Luneta Park tagalog draws its name from the word lunette, meaning “crescent-shaped structure for defense used in fortifications in the 17th to 18th centuries.” The original name of Luneta Park is Bagumbayan.', 'Rizal Park', 5, 61, 'deocer123'),
-(95, ' Rizal Park', 'Rizal Park is one of the largest urban parks in Asia. At 140 acres, the park is home to the National Museum Complex, the Rizal Monument, a series of gardens, public art and event venues. The National Museum Complex consists of the National Museums of Fine', 'Rizal Park', 3, 61, 'deocer123'),
-(97, 'The National Museum, a Trust of the Government', 'Is an educational, scientific and cultural institution that acquires, documents, preserves, exhibits, and fosters scholarly study and public appreciation of works of art, specimens, and cultural and historical artifacts', 'National Museum of the Philippines', 4, 61, 'deocer123'),
-(99, 're', 'rerer', 'Ang Tunay Beef House', 2, 98, 'deocer231'),
-(101, 'Post with Pic', 'w', 'Ampie', 3, 98, 'deocer231');
+INSERT INTO `post` (`PostID`, `PostTitle`, `Cont`, `Tag`, `Rating`, `UserID`, `UserName`, `Status`) VALUES
+(70, 'Manila Ocean Park', 'The Manila Ocean Park is a oceanarium in Manila, Philippines. It is owned by China Oceanis Philippines Inc., a subsidiary of China Oceanis Inc., a Singaporean-registered firm. It is located behind the Quirino Grandstand at Rizal Park.', 'Manila Ocean Park', 5, 61, 'deocer123', 'Active'),
+(74, 'Manila', 'Manila, the capital of the Philippines, is a densely populated bayside city on the island of Luzon, which mixes Spanish colonial architecture with modern skyscrapers. Intramuros, a walled city in colonial times, is the heart of Old Manila. It’s home to th', '', 1, 61, 'deocer123', 'Active'),
+(75, 'Manila', 'Manila, the capital of the Philippines, is a densely populated bayside city on the island of Luzon, which mixes Spanish colonial architecture with modern skyscrapers. Intramuros, a walled city in colonial times, is the heart of Old Manila. It’s home to th', '', 3, 61, 'deocer123', 'Active'),
+(76, 'Baguio', 'Baguio, on the Philippines’ Luzon island, is a mountain town of universities and resorts. Called the “City of Pines,” it’s particularly popular in summer due to unusually cooler weather. At its center is Burnham Park, with gardens and a lake. Nearby, Bagu', '', 1, 61, 'deocer123', 'Active'),
+(77, 'Baguio', 'Baguio, on the Philippines’ Luzon island, is a mountain town of universities and resorts. Called the “City of Pines,” it’s particularly popular in summer due to unusually cooler weather. At its center is Burnham Park, with gardens and a lake. Nearby, Bagu', '', 1, 61, 'deocer123', 'Active'),
+(78, 'Tagaytay', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake', '', 1, 61, 'deocer123', 'Active'),
+(79, 'Taal Volcano', 'Taal Volcano is a large caldera filled by Taal Lake in the Philippines. Located in the province of Batangas, the volcano is one of the most active volcanoes in the country, with 34 recorded historical eruptions, all of which were concentrated on Volcano I', '', 2, 61, 'deocer123', 'Active'),
+(80, 'Taal Volcano', 'Taal Volcano is a large caldera filled by Taal Lake in the Philippines. Located in the province of Batangas, the volcano is one of the most active volcanoes in the country, with 34 recorded historical eruptions, all of which were concentrated on Volcano I', '', 1, 61, 'deocer123', 'Active'),
+(81, 'Batangas', 'Batangas, officially the Province of Batangas is a province in the Philippines located in the Calabarzon region on Luzon. Its capital is the city of Batangas, and is bordered by the provinces of Cavite and Laguna to the north, and Quezon to the east', '', 2, 61, 'deocer123', 'Active'),
+(84, 'a popular ', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake.', '', 1, 61, 'deocer123', 'Active'),
+(85, 'Tagaytay is a popular holiday town south of Manila ', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake. Overlooking the area, People’s Park in the Sky occupies', '', 2, 61, 'deocer123', 'Active'),
+(86, 'Holiday town south of Manila ', 'Tagaytay is a popular holiday town south of Manila ', '', 1, 61, 'deocer123', 'Active'),
+(87, 'Tagaytay holiday ', 'Tagaytay is a popular holiday town south of Manila ', '', 2, 61, 'deocer123', 'Active'),
+(88, 'Tagaytay is a popular ', 'Tagaytay is a popular holiday town south of Manila ', '', 1, 61, 'deocer123', 'Active'),
+(89, 'Tagaytay town south of Manila ', 'Tagaytay is a popular holiday town south of Manila ', '', 2, 61, 'deocer123', 'Active'),
+(90, 'South of Manila ', 'Tagaytay is a popular holiday town south of Manila ', '', 2, 61, 'deocer123', 'Active'),
+(92, 'Hiking!', '', '9 SPOONS - The Bayleaf Intramuros', 3, 61, 'deocer123', 'Active'),
+(93, 'Hiking', '', 'Eat All You Can Food Corporation', 2, 61, 'deocer123', 'Active'),
+(94, 'Luneta', 'The Luneta Park tagalog draws its name from the word lunette, meaning “crescent-shaped structure for defense used in fortifications in the 17th to 18th centuries.” The original name of Luneta Park is Bagumbayan.', 'Rizal Park', 5, 61, 'deocer123', 'Active'),
+(95, ' Rizal Park', 'Rizal Park is one of the largest urban parks in Asia. At 140 acres, the park is home to the National Museum Complex, the Rizal Monument, a series of gardens, public art and event venues. The National Museum Complex consists of the National Museums of Fine', 'Rizal Park', 3, 61, 'deocer123', 'Active'),
+(97, 'The National Museum, a Trust of the Government', 'Is an educational, scientific and cultural institution that acquires, documents, preserves, exhibits, and fosters scholarly study and public appreciation of works of art, specimens, and cultural and historical artifacts', 'National Museum of the Philippines', 4, 61, 'deocer123', 'Archived'),
+(99, 're', 'rerer', 'Ang Tunay Beef House', 2, 98, 'deocer231', 'Active'),
+(101, 'Post with Pic', 'w', 'Ampie', 3, 98, 'deocer231', 'Archived'),
+(104, 'ewqeq', 'ewewqeq', 'Bahay Tsinoy, Museum of Chinese in Philippine Life', 3, 114, 'Lolabunny69', 'Active'),
+(105, 'ewqeqw', 'eqewqeqwe', 'Baluarte de San Diego', 3, 62, 'admin123', 'Archived');
 
 -- --------------------------------------------------------
 
@@ -459,9 +467,10 @@ CREATE TABLE `wuser` (
 --
 
 INSERT INTO `wuser` (`UserID`, `UserName`, `Pass`, `Status`, `Budget`) VALUES
-(61, 'deocer123', '$2y$10$S2UapU3N.t5xXP3mXA/0HO8u1g8IRKAIFyz35dyFnoSBKNEhwGi3y', 'Normal', '$$'),
+(61, 'deocer123', '$2y$10$S2UapU3N.t5xXP3mXA/0HO8u1g8IRKAIFyz35dyFnoSBKNEhwGi3y', 'Flagged', '$$'),
 (62, 'admin123', '$2y$10$JsW4zURwGg6PlYZr3KJ7men/YGpULfOBpEdQF4IR6Zj9TV7eCE7C2', 'Normal', ''),
-(98, 'deocer231', '$2y$10$BuEvCu7oZgrT4pG1HoilVe385TqR4qvgHeMpfVAy4cdwaQ7egAWB2', 'Normal', '$');
+(98, 'deocer231', '$2y$10$BuEvCu7oZgrT4pG1HoilVe385TqR4qvgHeMpfVAy4cdwaQ7egAWB2', 'Normal', '$'),
+(114, 'Lolabunny69', '$2y$10$iwMdcdyRW5fxfgitM6ns9eS5c2yk3OPQTzdtB.KB4HZNJCE/M.qs2', 'Normal', 'Res');
 
 --
 -- Indexes for dumped tables
@@ -533,7 +542,7 @@ ALTER TABLE `wuser`
 -- AUTO_INCREMENT for table `itinerary`
 --
 ALTER TABLE `itinerary`
-  MODIFY `PlcID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `PlcID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `panes`
@@ -557,7 +566,7 @@ ALTER TABLE `places`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -575,7 +584,7 @@ ALTER TABLE `uflags`
 -- AUTO_INCREMENT for table `wuser`
 --
 ALTER TABLE `wuser`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- Constraints for dumped tables

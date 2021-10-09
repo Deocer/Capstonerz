@@ -71,13 +71,13 @@ $plc = new PlaceView();
 
 	<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
 	  <li class="nav-item" role="presentation">
-	    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Latest Feed</button>
+	    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Active Post</button>
 	  </li>
 	  <li class="nav-item" role="presentation">
-	    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My Reccomended Feed</button>
+	    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Archived Post</button>
 	  </li>
 	  <li class="nav-item" role="presentation">
-	    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Post</button>
+	    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">User Control</button>
 	  </li>
 	</ul>
 
@@ -91,6 +91,7 @@ $plc = new PlaceView();
 						<th scope="col">Content</th>
 						<th scope="col">Images</th>
 						<th scope="col">Flags</th>
+						<th scope="col">Status</th>
 						<th scope="col"></th>
 			    </tr>
 			  </thead>
@@ -105,9 +106,9 @@ $plc = new PlaceView();
 
 		    function deleteP(id) {
 				    Swal.fire({
-				      title: 'Do you want to delete this post?',
+				      title: 'Do you want to Remove this post?',
 				      showCancelButton: true,
-				      confirmButtonText: 'Delete Post',
+				      confirmButtonText: 'Remove Post',
 				      confirmButtonColor: '#8CD4F5',
 				    }).then((result) => {
 				      if (result.isConfirmed) {
@@ -119,58 +120,91 @@ $plc = new PlaceView();
      </script>
 	  </div>
 	  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
-			<table class="table">
+
+				<table class="table">
 			  <thead>
 			    <tr class="table-dark">
-				    <th scope="col">User ID</th>
-				    <th scope="col">User Name</th>
-				    <th scope="col">Post</th>
-				    <th scope="col">Flagged Post</th>
-				    <th scope="col">User Status</th>
-				    <th scope="col"></th>
+			      <th scope="col">Post ID</th>
+						<th scope="col">Post Title</th>
+						<th scope="col">Content</th>
+						<th scope="col">Images</th>
+						<th scope="col">Flags</th>
+						<th scope="col">Status</th>
+						<th scope="col"></th>
 			    </tr>
 			  </thead>
 			  <tbody>
 				 <?php 
-						$users->AdminUsers();
+						$c = new PostView();
+						$c->AdminArchive();
 					?>
 			  </tbody>
-			</table>
+			</table>	
 			<script type="text/javascript">
 
-		    function FlagU(id) {
+		    function restoreP(id) {
 				    Swal.fire({
-				      title: 'Flagging this User may restrict His/Her access. Do you want to continue?',
+				      title: 'Do you want to Restore this post?',
 				      showCancelButton: true,
-				      confirmButtonText: 'Flag User',
+				      confirmButtonText: 'Restore Post',
 				      confirmButtonColor: '#8CD4F5',
 				    }).then((result) => {
 				      if (result.isConfirmed) {
-				        window.location.href = "../../PHP/controller/user.php?Status="+id;
+				        window.location.href = "../../PHP/controller/post.php?res="+id;
 				      } 
 				    });
 		  }
 
-		  function Unflag(id) {
-				    Swal.fire({
-				      title: 'Unflagging a User gives them all previous access. Do you want to continue?',
-				      showCancelButton: true,
-				      confirmButtonText: 'Unflag User',
-				      confirmButtonColor: '#8CD4F5',
-				    }).then((result) => {
-				      if (result.isConfirmed) {
-				        window.location.href = "../../PHP/controller/user.php?Unstat="+id;
-				      } 
-				    });
-		  }
+     </script>		
 
-     </script>	
 	  </div>
 	   <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-	  	  		<?php 
-						
+				<table class="table">
+				  <thead>
+				    <tr class="table-dark">
+					    <th scope="col">User ID</th>
+					    <th scope="col">User Name</th>
+					    <th scope="col">Post</th>
+					    <th scope="col">Flagged Post</th>
+					    <th scope="col">User Status</th>
+					    <th scope="col"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+					 <?php 
+							$users->AdminUsers();
 						?>
+				  </tbody>
+				</table>
+				<script type="text/javascript">
 
+			   function FlagU(id) {
+					    Swal.fire({
+					      title: 'Flagging this User may restrict His/Her access. Do you want to continue?',
+					      showCancelButton: true,
+					      confirmButtonText: 'Flag User',
+					      confirmButtonColor: '#8CD4F5',
+					    }).then((result) => {
+					      if (result.isConfirmed) {
+					        window.location.href = "../../PHP/controller/user.php?Status="+id;
+					      } 
+					    });
+			  }
+
+			  function Unflag(id) {
+					    Swal.fire({
+					      title: 'Unflagging a User gives them all previous access. Do you want to continue?',
+					      showCancelButton: true,
+					      confirmButtonText: 'Unflag User',
+					      confirmButtonColor: '#8CD4F5',
+					    }).then((result) => {
+					      if (result.isConfirmed) {
+					        window.location.href = "../../PHP/controller/user.php?Unstat="+id;
+					      } 
+					    });
+			  }
+
+	     </script>	
 	  </div>
 	</div>
 
@@ -196,3 +230,25 @@ $plc = new PlaceView();
  </html>
 
  
+*/
+
+Please take a note of the details below these are needed to access your account.
+Your account is now active.
+
+Control panel username:	b22_29994007
+Control panel password:	**********
+Control panel URL:	cpanel.byethost22.com
+MySQL username	b22_29994007
+MySQL password:	**********
+MySQL hostname:	sql202.byethost22.com
+FTP username:	b22_29994007
+FTP password:	**********
+FTP host name:	ftp.byethost22.com
+Your Website URL:	http://wander.byethost22.com
+ 	 
+Thank you for choosing us to host your websites!
+
+byethost22.com hosting services 2021
+
+
+*/

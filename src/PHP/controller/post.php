@@ -17,6 +17,11 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/post.php');
 		 $this->delete($id);
 		}
 
+		function RestorePost($id)
+		{
+		 $this->restore($id);
+		}
+
 		function Pane($src, $id, $name)
 		{
 		 $this->paneinsert($src, $id, $name);
@@ -32,10 +37,28 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/post.php');
 		 
 		}
 
+		function GetArchive()
+		{
+		 
+		 $res =  $this->fetchArchive();
+
+		 return $res;
+		 
+		}
+
 		function UserPost($id)
 		{
 		 
 		 $res =  $this->fetchUser($id);
+
+		 return $res;
+		 
+		}
+
+		function UserArchive($id)
+		{
+		 
+		 $res =  $this->fetchUserArchive($id);
 
 		 return $res;
 		 
@@ -113,6 +136,17 @@ if (isset($_GET['nm'])){
 $d = new PostControl();
 
 $d->DeletePost($_GET['nm']);
+
+header("location:../../pages/admin/dashboard.php");
+exit();
+}
+
+if (isset($_GET['res'])){
+
+
+$d = new PostControl();
+
+$d->RestorePost($_GET['res']);
 
 header("location:../../pages/admin/dashboard.php");
 exit();

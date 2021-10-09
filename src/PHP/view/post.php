@@ -265,8 +265,9 @@ echo'
 echo'
 					</td>
 				    <td>'.$f.'</td>
+				    <td>'.$res[$ctr]['Status'].'</td>
 				    <td>
-						<button type="button" class="btn btn-danger" onClick="deleteP('.$res[$ctr]['PostID'].')">Delete Post</button>
+						<button type="button" class="btn btn-danger" onClick="deleteP('.$res[$ctr]['PostID'].')">Remove Post</button>
 				    </td>
 		 		  </tr>
 
@@ -277,6 +278,134 @@ echo'
 		}
 	
 
+
+		function AdminArchive()
+		{
+		 $i = 0;
+		 $pic = 0;
+		 $res =  $this->GetArchive();
+		 foreach($res as $r ){
+		 	$i++;
+		 }
+
+		 for ($ctr=0; $ctr < $i; $ctr++) { 
+		 		$f= 0;
+		 		$pic = 0;
+		 		$img =  $this->Pic($res[$ctr]['PostID']);
+		 		$flag =  $this->fetchPlag($res[$ctr]['PostID']);
+		 		foreach($flag as $flg ){
+		 		$f++;
+		 		}
+
+		 		echo '
+		 		  <tr>
+		 		    <th scope="row">'.$res[$ctr]['PostID'].'</th>
+				    <td>'.$res[$ctr]['PostTitle'].'</td>
+				    <td>'.$res[$ctr]['Cont'].'</td>
+				    <td>
+					    ';
+
+		 	foreach($img as $im ){
+		 		  $pic++;
+				 }
+
+				if ($pic > 0) {
+					switch ($pic) {
+				  case $pic == 1 :
+				   echo '
+				 		<img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)"  alt="../../imgs/background.jpg"></br>';
+				    break;
+				  case $pic == 2:
+				    echo '<div class="container">
+								  <div class="row g-1">
+								    <div class="col p-0">
+								     <img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;"  value="'.$img[0]['datum'].'"  class="img-fluid" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 20px;width: 20px;"   value="'.$img[1]['datum'].'"class="img-fluid" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+					case $pic == 3:
+				    echo '<div class="container">
+								  <div class="row g-1 gx-1">
+								    <div class="col">
+								     <img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[2]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+				  case $pic == 4:
+				    echo '<div class="container">
+								  <div class="row g-1">
+								    <div class="col mt-1">
+								     <img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								    <div class="col mt-1">
+								     <img src="'.$img[1]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								  <div class="row g-1 mt-1">
+								    <div class="col mt-1">
+								     <img src="'.$img[2]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								     <div class="col mt-1">
+								     <img src="'.$img[3]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start"onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+				 	  case  $pic > 4:
+				    echo '<div class="container">
+								  <div class="row g-1 gx-1">
+								    <div class="col">
+								     <img src="'.$img[0]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[2]['datum'].'"style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								     <div class="col">
+								     <p>'.$pic.'</p>
+								     <img src="'.$img[3]['datum'].'" style="height: 20px;width: 20px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/background.jpg">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+				  default:
+				    echo "";
+				}
+		}
+
+
+echo'
+					</td>
+				    <td>'.$f.'</td>
+				    <td>'.$res[$ctr]['Status'].'</td>
+				    <td>
+						<button type="button" class="btn btn-success" onClick="restoreP('.$res[$ctr]['PostID'].')">Restore Post</button>
+				    </td>
+		 		  </tr>
+
+';
+
+
+		 	}
+		}
+	
 
 
 
@@ -312,7 +441,26 @@ echo'
 		 	}
 		}
 
+		function UsArchive($id)
+		{
+		 $i = 0;
+		 $res =  $this->UserArchive($id);
+		 foreach($res as $r ){
+		 	$i++;
+		 }
 
+		 if ($i == 0) {
+		 	echo "No";
+		 }else{
+		 	echo "<p><b>".$i."</b> of your post has been deemed offensive or innapropriate</p><br>";
+				 for ($ctr=0; $ctr < $i; $ctr++) { 
+				 		echo "<p><b>".$res[$ctr]['PostTitle']."</b></p>";
+				 }
+
+		 }
+
+
+		}
 
 
 		function TgPost($tag)

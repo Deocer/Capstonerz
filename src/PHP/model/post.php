@@ -25,7 +25,15 @@ class postdatabase{
 
 	protected function delete($id){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("DELETE FROM  post WHERE PostID  = ?");
+		$stmt = $conn->prepare("UPDATE post SET  Status = 'Archived' WHERE PostID  = ?");
+		$stmt->bind_param("i",$id);
+		$stmt->execute();
+		$stmt->close();
+	}
+
+	protected function restore($id){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("UPDATE post SET  Status = 'Active' WHERE PostID  = ?");
 		$stmt->bind_param("i",$id);
 		$stmt->execute();
 		$stmt->close();
@@ -41,7 +49,18 @@ class postdatabase{
 
 	protected function fetchPost(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("SELECT * FROM post  ORDER BY PostID DESC LIMIT 25");
+		$stmt = $conn->prepare("SELECT * FROM post WHERE Status  = 'Active' ORDER BY PostID DESC LIMIT 25");
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+
+	}
+
+	protected function fetchArchive(){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("SELECT * FROM post WHERE Status  = 'Archived' ORDER BY PostID DESC LIMIT 25");
 		$stmt->execute();
 
 		$result = $stmt->get_result();
@@ -53,7 +72,19 @@ class postdatabase{
 
 	protected function fetchUser($UserID){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM post WHERE UserID = ?"; 
+		$sql = "SELECT * FROM post WHERE UserID = ? AND Status  = 'Active'"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("i", $UserID);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+	protected function fetchUserArchive($UserID){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM post WHERE UserID = ? AND Status  = 'Archived'"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $UserID);
 		$stmt->execute();
@@ -65,7 +96,7 @@ class postdatabase{
 
 	protected function fetchPop($UserID,$title,$name){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM post WHERE UserID = ? AND PostTitle = ? AND UserName = ?"; 
+		$sql = "SELECT * FROM post WHERE UserID = ? AND PostTitle = ? AND UserName = ? AND Status = 'Active'"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("iss", $UserID,$title,$name);
 		$stmt->execute();
@@ -90,7 +121,7 @@ class postdatabase{
 
 		protected function fetchTag($Tag){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM post WHERE Tag = ?"; 
+		$sql = "SELECT * FROM post WHERE Tag = ? AND Status = 'Active'"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("s", $Tag);
 		$stmt->execute();
@@ -102,7 +133,7 @@ class postdatabase{
 
 		protected function fetchRating($Rating){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$sql = "SELECT * FROM post WHERE Rating = ? "; 
+		$sql = "SELECT * FROM post WHERE Rating = ? AND Status = 'Active' "; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $Rating);
 		$stmt->execute();

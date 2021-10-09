@@ -35,7 +35,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 			  		$_SESSION['Id'] =  $res[0];
 			  		$_SESSION['UserName'] =  $res[1];
 					$_SESSION['Permit'] = 'false';
-
+					$_SESSION['Status'] = $res[3];
 
 
 					

@@ -33,6 +33,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
    $_SESSION['City'] = $geo['display_name'];
 }
 
+
 ?>
 
 
@@ -49,7 +50,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
   <title></title>
  </head>
 
- <body>
+ <body onload="Notif()">
 <section class="container-fluid">
 
 
@@ -102,7 +103,13 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
         <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Post</button>
       </li>
       <li class="nav-item" role="presentation">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="material-icons">create</span></button>
+
+        <?php 
+          if ($_SESSION['Status'] == 'Normal') {
+            echo '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><span class="material-icons">create</span></button>';
+          }
+         ?>
+
       </li>
     </ul>
 
@@ -231,6 +238,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
        <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
               <?php 
               $p->UsPost($_SESSION['Id']);
+              $p->UsArchive($_SESSION['Id']);
               ?>
 
       </div>
@@ -402,26 +410,6 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 </script>
  </body>
 
- <?php 
-
-echo 
-        "
-         <script type='text/javascript'>
-           function error() {
-          Swal.fire({
-              title: 'Welcome Back ". $_SESSION['UserName']."'
-          })
-        }
-        error();
-        </script>
-        ";
-
-
-
-
-
-  ?>
-
 <script type="text/javascript">
   function reply_click(obj)
   {
@@ -452,6 +440,26 @@ echo
         window.location.href = "../../PHP/controller/post.php?flagID="+pid+"&UID="+uid;
       } 
     });
+  }
+
+  function Notif() {
+
+      Swal.fire({
+         title: '<?php echo "Welcome Back ".$_SESSION['UserName']; ?>',
+        icon: 'info',
+        html:
+          '<?php 
+
+            $p->UsArchive($_SESSION['Id']);
+
+
+
+          ?>',
+        showCloseButton: true,
+        confirmButtonText:
+          'Okay'
+      });
+
   }
 
 
