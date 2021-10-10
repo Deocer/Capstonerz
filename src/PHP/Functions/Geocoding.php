@@ -7,18 +7,18 @@ if (isset($_SESSION['Id']) && $_SESSION['Permit'] != 'false') {
 $id = $_SESSION['Id'];
 
 
-
-
 	if (isset($_POST['prize'])) {
 
 
 	$prize = $_POST['prize'];
-	$id = $_SESSION['Id'];
+	$district = $_POST['district'];
+	$type = $_POST['type'];
+
 
 
 	$i = new UserControl();
 	$_SESSION['Permit'] = 'false';
-	$i-> LocUser($prize,$id);
+	$i-> SetUser($prize,$type,$district,$id);
 	header("location:../../PHP/Functions/location.html");
 	exit();
 	

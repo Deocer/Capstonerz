@@ -45,6 +45,27 @@ class placedatabase{
 	}
 
 
+	protected function fetchbyUserValue($district,$type,$price){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+
+		if ($price == '$') {
+			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, (price = ?) ASC LIMIT 20";
+		}elseif ($price == '$$') {
+			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, (price = ?) ASC LIMIT 20";
+		}elseif ($price == '$$$') {
+			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, (price = ?) DESC LIMIT 20";
+		}
+
+
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("sss",$district,$type,$price);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
 	protected function fetchbytype($district,$type){
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$sql = "SELECT * FROM places WHERE District =? AND type = ?"; 

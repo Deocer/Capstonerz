@@ -13,15 +13,14 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/place.php');
 $place = array();
 $plc = new PlaceView();
-$place = 'Binondo';
+$place =  $_SESSION['district'];
+$price =  $_SESSION['price'];
+$type =  $_SESSION['type'];
+
 if (isset($_GET['place'])) {
-$place = $_GET['place'];
-$Geocoding = file_get_contents("https://us1.locationiq.com/v1/search.php?key=pk.afe673b433d0909e7601c9ea96162a9e&q=".$_GET['place'].",Manila&format=json");
-     
-
-  $geo = json_decode($Geocoding, TRUE);
-
+  $place =  $_GET['place'];
 }
+
 if(isset($_GET['lat']) && isset($_GET['lot']) ){
   $_SESSION['lat'] = $_GET['lat'];
   $_SESSION['lot'] = $_GET['lot'];
@@ -355,11 +354,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
                   <?php 
                   //$plc-> Allplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City']);
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Museum');
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Sports complex');
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Historical place');
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Museum');
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Motel');
+                  $plc-> Valueplace($_SESSION['lat'],$_SESSION['lot'],$place,$type,$price);
                   ?>  
 
           </div>

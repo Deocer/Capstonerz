@@ -82,27 +82,21 @@ class Validations{
 
 
         if ($valid->emptyInput($name, $password) !== false) {
-        	header("location:../../pages/Signup.php?error=emptyinput");
-        	exit();
-        }
-
-         if ($valid->Invalidname($name) !== false) {
-        	header("location:../../pages/Signup.php?error=name");
-        	exit();
-        }
-         if ($valid->Namelength($name) !== false) {
-            header("location:../../pages/Signup.php?error=Shortname");
-            exit();
-        }
-
-         if ($valid->Passlength($password) !== false) {
+        		header("location:../../pages/Signup.php?error=emptyinput");
+        		exit();
+        }elseif ($valid->Invalidname($name) !== false) {
+        		header("location:../../pages/Signup.php?error=name");
+        		exit();
+        }elseif ($valid->Namelength($name) !== false) {
+         	header("location:../../pages/Signup.php?error=Shortname");
+        	 	exit();        	
+        }elseif ($valid->Passlength($password) !== false) {
             header("location:../../pages/Signup.php?error=Shortpass");
             exit();
+        }else{
+		      $s = new Maker();
+				$s->NewUser($_POST['name'],$_POST['password']);
         }
-
-        $s = new Maker();
-		$s->NewUser($_POST['name'],$_POST['password']);
-
 
  	} 
     else{

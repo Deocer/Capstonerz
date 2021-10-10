@@ -24,10 +24,10 @@ class userdatabase{
 	}
 
 
-	protected function secloc ($Budget,$id){
+	protected function secloc ($Budget,$des,$district,$id){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("UPDATE wuser SET  Budget = ? WHERE UserID = ? ");
-		$stmt->bind_param("si",$Budget,$id);
+		$stmt = $conn->prepare("UPDATE wuser SET  Budget = ?, destype = ?, district = ? WHERE UserID = ? ");
+		$stmt->bind_param("sssi",$Budget,$des,$district,$id);
 		$stmt->execute();
 
 		$_SESSION['lat'] = $Lat;

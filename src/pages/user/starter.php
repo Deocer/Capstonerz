@@ -37,9 +37,33 @@ include '../../PHP/Functions/Geocoding.php';
     </div>
     <br>
     <div>
+     <label>Which district in Manila City do you want to visit?</label>
+      <br>
+      <select class="form-select" aria-label="Please Your Current City Location" name="district">
+        <option value="Tondo">Tondo</option>
+        <option value="Binondo">Binondo</option>
+        <option value="Port Area">Port Area</option>
+        <option value="Ermita">Ermita</option>
+        <option value="Malate">Malate</option>
+        <option value="Santa Ana">Santa Ana</option>
+        <option value="Sta. Mesa">Sta. Mesa</option>
+        <option value="Sampaloc">Sampaloc</option>
+        <option value="Sta Cruz">Sta Cruz</option>
+        <option value="Quiapo">Quiapo</option>
+        <option value="San Miguel">San Miguel</option>
+        <option value="Intramuros">Intramuros</option>
+        <option value="Paco">Paco</option>
+        <option value="Pandacan">Pandacan</option>
+        <option value="San Andres">San Andres</option>
+        <option value="San Nicolas">San Nicolas</option>
+      </select>
+    </div>
+    <br>
+    <br>
+    <div>
      <label>What Kind of Destinations Do you Frequently Visit</label>
       <br>
-      <select class="form-select" aria-label="Please Your Current City Location" name="prize">
+      <select class="form-select" aria-label="Please Your Current City Location" name="type">
         <option value="Restaurants">Restaurants</option>
         <option value="Park">Park</option>
         <option value="Art gallery">Art gallery</option>

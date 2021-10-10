@@ -43,6 +43,14 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 		 return $res;
 		 }
 
+		function GetByValue($district,$type,$price)
+		{
+		 
+		 $res =  $this->fetchbyUserValue($district,$type,$price);
+
+		 return $res;
+		 }
+
 
 		 function Getplaces()
 		{

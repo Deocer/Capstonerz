@@ -7,6 +7,7 @@ class ItemView extends ItemControl
 		 public $lat = array();
 		 public $lot = array();
 		 public $name = array();
+		 public $place = array();
 
 			function haversine(
 			  $latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371)
@@ -28,6 +29,7 @@ class ItemView extends ItemControl
 		function Myitem($id)
 		{
 		 $i = 0;
+		 $place = array();
 		 $s = new PlaceControl();
 		 $res =  $this->GetItem($id);
 		 foreach($res as $r ){
@@ -49,10 +51,20 @@ class ItemView extends ItemControl
 					  </div>
 					</div>
 						';
+				$pstring = '<div class="card" style="width:180px;margin:auto;">
+					<br>
+					  <img src="'.$place[0]['img'].'" class="mx-auto" alt="..." style="width:100px; height:100px; margin:auto;">
+					  <div class="card-body">
+					        <p class="card-title"><a href="../../pages/user/place.php?nm='.$place[0]['Pname'].'&lat='.$place[0]['Lat'].'&lot='.$place[0]['Lot'].'&desc='.$place[0]['Des'].'&img='.$place[0]['img'].'&class='.$place[0]['type'].'&rating='.$place[0]['Rating'].'&address='.$place[0]['address'].'&hours='.$place[0]['hours'].'&price='.$place[0]['price'].'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.$place[0]['Pname'].'</small></b></a></p>
+					        <br>
+					        <p class=""><small class="text-muted"><span class="fa fa-star star"></span>'.$place[0]['Rating'].'</small></p>
+					        <a class="btn btn-danger" aria-current="page" href="../../PHP/controller/itinerary.php?delete='.$res[$ctr]['PlcID'].'">Remove from Itinerary</a>
+					  </div>
+					</div>';
 		  $this->lat[$ctr] = $place[0]['Lat'];
 		  $this->lot[$ctr] = $place[0]['Lot'];
 		  $this->name[$ctr] = $place[0]['Pname'];
-
+		  $this->place[$ctr] = $pstring;
 		 	}
 		}
 
@@ -82,12 +94,22 @@ echo "<br>";
 
 			 $s = array_keys($sorted);
 
+
 echo "<br>"; 
 echo "<br>"; 
 echo "Step 3 : Sort Then Place the Array keys in another array to have access to the original items in the itinerary";
 echo "<br>"; 
 
 			 echo '<pre>',print_r($s),'</pre>';
+
+
+$limit = count($s) -1;
+for ($i=0; $i <= $limit; $i++) {
+	 $ald = $i +1;
+	 echo "Destination #".$ald;
+	 echo $this->place[$s[$i]];
+}
+
 if ($ctr == -1) {
 		echo '
 				      <script type="text/javascript">

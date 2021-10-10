@@ -7,17 +7,17 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 	class UserControl extends userdatabase
 	{
 		
-		function CreateUser($Username, $Pass, $Status)
+		function CreateUser($Username, $Pass, $Status)// Used in the registration process to input
 		{
 		 $this->insert($Username, $Pass, $Status);
 		}
 
-		function LocUser($Budget,$id)
+		function SetUser($Budget,$des,$district,$id)// Used to set the user's budget
 		{
-		 $this->secloc($Budget,$id);
+		 $this->secloc($Budget,$des,$district,$id);
 		}
 
-		function GetUser($Username, $Pass)
+		function GetUser($Username, $Pass)// Used of the user log in
 		{
 		  $res = $this->fetch($Username, $Pass);
 
@@ -36,6 +36,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 			  		$_SESSION['UserName'] =  $res[1];
 					$_SESSION['Permit'] = 'false';
 					$_SESSION['Status'] = $res[3];
+					$_SESSION['price'] = $res[4];
+					$_SESSION['type'] = $res[5];
+					$_SESSION['district'] = $res[6];
 
 
 					
@@ -51,7 +54,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 		}
 
 
-		function StarterUser($Username, $Pass)
+		function StarterUser($Username, $Pass)// Only in the registration process. This function points the user to the starter page
 		{
 		  $res = $this->fetch($Username, $Pass);
 			 if ( $res != null) {
@@ -67,7 +70,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 			  		$_SESSION['Id'] =  $res[0];
 			  		$_SESSION['UserName'] =  $res[1];
 					$_SESSION['Permit'] = 'true';
-
+					$_SESSION['Status'] = $res[3];
+					$_SESSION['price'] = $res[4];
+					$_SESSION['type'] = $res[5];
+					$_SESSION['district'] = $res[6];
 
 					header("location:../../pages/user/starter.php");
 			  		exit();
@@ -87,25 +93,25 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 			  }		 
 		}
 
-		function VerUser($Username)
+		function VerUser($Username)// Verifies if Username is Taken
 		{
 		 $this->verify($Username);
 		}
 
-		function fetchUsers()
+		function fetchUsers()//Select All User
 		{
 		 $res = $this->selectAll();
 		 return $res;
 		}
 
-	    function StatUsers($id)
+	    function StatUsers($id)//Flag User
 		{
 		 $res = $this->setstat($id);
 		 header("location:../../pages/admin/dashboard.php");
 		 exit();
 		}
 
-	    function UnStatUsers($id)
+	    function UnStatUsers($id)//Unflag the User
 		{
 		 $res = $this->unstat($id);
 		 header("location:../../pages/admin/dashboard.php");
