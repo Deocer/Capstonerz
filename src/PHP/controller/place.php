@@ -51,6 +51,21 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 		 return $res;
 		 }
 
+		function SortPrice($district,$type,$price)
+		{
+		 
+		 $res =  $this->SortbyPrice($district,$type,$price);
+
+		 return $res;
+		 }
+
+		function SortRating($district,$type)
+		{
+		 
+		 $res =  $this->SortbyRating($district,$type);
+
+		 return $res;
+		 }
 
 		 function Getplaces()
 		{

@@ -346,7 +346,8 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           <a href="?kind=Shopping"><span class="badge rounded-pill bg-success">Shopping</span></a> 
           <a href="?kind=Park"><span class="badge rounded-pill bg-danger">Park</span></a> 
           <a href="?kind=Restaurant"><span class="badge rounded-pill bg-warning">Restaurant</span></a> 
-          <a href="?kind=Tourist attraction"><span class="badge rounded-pill bg-info ">Tourist attraction</span></a> 
+          <a href="?kind=Tourist attraction"><span class="badge rounded-pill bg-info ">Tourist attraction</span></a>
+          <a href="?reco"><span class="badge rounded-pill bg-info ">Recommended for you</span></a>  
           <br> 
           <br>
       <form class="row g-3">
@@ -357,20 +358,39 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
          ?>
         <div class="col-auto">
           <?php 
-                  if (isset($_GET['kind'])) {
-                      echo '
 
-                      <div class="dropdown">     
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Sort By : 
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <li><a class="dropdown-item" href="?sort=Distance">Distance</a></li>
-                          <li><a class="dropdown-item" href="?sort=Prize">Prize</a></li>
-                          <li><a class="dropdown-item" href="?sort=Popular">Popularity</a></li>
-                        </ul>
-                      </div>
+                  if (isset($_GET['kind']) || isset($_GET['sort'])) {
 
-                      ';
+                      if(isset($_GET['sort']) == false ) {
+                          echo '
+
+                          <div class="dropdown">     
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Sort By : Distance
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item active" href="?sort=Distance&kind='.$_SESSION['kind'].'">Distance</a></li>
+                              <li><a class="dropdown-item" href="?sort=Price&kind='.$_SESSION['kind'].'">Prize</a></li>
+                              <li><a class="dropdown-item" href="?sort=Popular&kind='.$_SESSION['kind'].'">Popularity</a></li>
+                            </ul>
+                          </div>
+
+                          ';
+                      }else{
+                          echo '
+
+                          <div class="dropdown">     
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Sort By : '.$_GET['sort'].'
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item active" href="?sort=Distance&kind='.$_SESSION['kind'].'">Distance</a></li>
+                              <li><a class="dropdown-item" href="?sort=Price&kind='.$_SESSION['kind'].'">Prize</a></li>
+                              <li><a class="dropdown-item" href="?sort=Popular&kind='.$_SESSION['kind'].'">Popularity</a></li>
+                            </ul>
+                          </div>
+
+                          ';                       
+                      }
+
                   }
            ?>
 
@@ -386,8 +406,16 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
       </form>
 
        <?php 
-          if (isset($_GET['kind'])) {
-            $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,$_GET['kind']);
+          if (isset($_GET['kind']) && isset($_GET['sort']) == false) {
+            $plc-> DistanceSort($_SESSION['lat'],$_SESSION['lot'],$place,$_GET['kind']);
+          }elseif(isset($_GET['kind']) && isset($_GET['sort'])) {
+             if ($_GET['sort'] == 'Distance') { 
+               $plc-> DistanceSort($_SESSION['lat'],$_SESSION['lot'],$place,$_GET['kind']);
+            }elseif ($_GET['sort'] == 'Price') {
+               $plc-> PriceSort($_SESSION['lat'],$_SESSION['lot'],$place,$_GET['kind'],$_SESSION['price']);
+            }elseif ($_GET['sort'] == 'Popular') {
+               $plc-> RatingSort($_SESSION['lat'],$_SESSION['lot'],$place,$_GET['kind']);
+            } 
           }else{
             $plc-> Valueplace($_SESSION['lat'],$_SESSION['lot'],$place,$type,$price);
           }
