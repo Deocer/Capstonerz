@@ -126,7 +126,6 @@ class PostView extends PostControl
 				
 
 				echo '
-					   <br><p class="card-title"><sub>'.$res[$ctr]['Tag'].'</sub></p> '.$res[$ctr]['Rating'].'<span class="fa fa-star"></span>
 					  </div>
 					</div>
 
@@ -422,16 +421,15 @@ echo'
 
 					<div class="card mb-3 pt-2" style="width: 100%;">
 								  <div class="row g-0">
-								    <div class="col-md-4">
-								      <img src="../../imgs/background.jpg" style="height: 100%;" class="img-fluid rounded-start" alt="...">
-								    </div>
-								    <div class="col-md-8">
+								    <div class="col">
 								      <div class="card-body">
 								     	<h5 class="card-title">'.$res[$ctr]['UserName'].'</h5>
 								        <p class="card-title"><b>'.$res[$ctr]['PostTitle'].'</b></p>
 								        <p class="card-text">'.$res[$ctr]['Cont'].'</p>
-								        <p class="card-text"><small class="text-muted">'.$res[$ctr]['Tag'].'</small></p>
 								      </div>
+								    </div>
+								    <div class="col">
+								     <button type="button" class="btn btn-success" onClick="deleteP('.$res[$ctr]['PostID'].')">Delete Post</button>
 								    </div>
 								  </div>
 								</div>

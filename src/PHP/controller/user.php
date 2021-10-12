@@ -39,6 +39,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 					$_SESSION['price'] = $res[4];
 					$_SESSION['type'] = $res[5];
 					$_SESSION['district'] = $res[6];
+					$_SESSION['Auth'] = $res[7];
 
 
 					

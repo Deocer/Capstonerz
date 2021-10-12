@@ -7,14 +7,19 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/post.php');
 	class PostControl extends postdatabase
 	{
 		
-		function CreatePost($title, $cont, $tag, $rating, $id,$name)
+		function CreatePost($title, $cont, $id, $name)
 		{
-		 $this->insert($title, $cont, $tag, $rating, $id,$name);
+		 $this->insert($title, $cont, $id, $name);
 		}
 
 		function DeletePost($id)
 		{
 		 $this->delete($id);
+		}
+
+		function UserDeletePost($id)
+		{
+		 $this->Userdelete($id);
 		}
 
 		function RestorePost($id)
@@ -140,6 +145,20 @@ $d->DeletePost($_GET['nm']);
 header("location:../../pages/admin/dashboard.php");
 exit();
 }
+
+
+if (isset($_GET['usd'])){
+
+
+$d = new PostControl();
+
+$d->UserDeletePost($_GET['usd']);
+
+header("location:../../pages/user/user.php");
+exit();
+}
+
+
 
 if (isset($_GET['res'])){
 

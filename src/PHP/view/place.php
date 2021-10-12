@@ -25,7 +25,7 @@ class PlaceView extends PlaceControl
 
 
 
-		function DistanceSort($lat,$lot,$place,$type)//By default when a user selects a type of destination. All places listed are sorted by Distance
+		function DistanceSort($lat,$lot,$place,$type,$city)//By default when a user selects a type of destination. All places listed are sorted by Distance
 		{
 		 $p = new PlaceView();
 		 $i = 0;
@@ -54,7 +54,7 @@ class PlaceView extends PlaceControl
 					            <div class="col">
 					                <div class="card-block px-2">
 					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$k]['Pname'].'&lat='.$res[$k]['Lat'].'&lot='.$res[$k]['Lot'].'&desc='.$res[$k]['Des'].'&img='.$res[$k]['img'].'&class='.$res[$k]['type'].'&rating='.$res[$k]['Rating'].'&address='.$res[$k]['address'].'&hours='.$res[$k]['hours'].'&price='.$res[$k]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$k]['Pname'].'</b></a></p>
-					                    <p class="text-muted" style ="font-size:12px;"><span class="material-icons">place</span> <b>'.round($sorted[$k]).' KM</b> From Your Location: <b>'.$_SESSION['City'].'</b></p>
+					                    <p class="text-muted" style ="font-size:12px;"><span class="material-icons">place</span> <b>'.round($sorted[$k]).' KM</b> From Your Location: <b>'.$city.'</b></p>
 					                    <p class="text-muted" style ="font-size:9px;"><small>'.$res[$k]['type'].'</small></p>
 
 					                </div>
@@ -70,7 +70,7 @@ class PlaceView extends PlaceControl
 
 
 
-		function PriceSort($lat,$lot,$place,$type,$price)// Sorted by price by the sql query this only needs to be outputed.
+		function PriceSort($lat,$lot,$place,$type,$price,$city)// Sorted by price by the sql query this only needs to be outputed.
 		{
 		 $p = new PlaceView();
 		 $i = 0;
@@ -112,7 +112,7 @@ class PlaceView extends PlaceControl
 
 				echo				' 	<p class="text-muted" style ="font-size:9px;">
 										<span class="material-icons">place</span>
-				 						<b>'.round($sorted).' KM</b> From Your Location: <b>'.$_SESSION['City'].'</b></p>
+				 						<b>'.round($sorted).' KM</b> From Your Location: <b>'.$city.'</b></p>
 
 					                </div>
 					            </div>
@@ -127,7 +127,7 @@ class PlaceView extends PlaceControl
 
 
 
-		function RatingSort($lat,$lot,$place,$type)// Places outputed are based on user specifications. But are not sorted in any way
+		function RatingSort($lat,$lot,$place,$type,$city)// Places outputed are based on user specifications. But are not sorted in any way
 		{
 		 $p = new PlaceView();
 		 $i = 0;
@@ -151,7 +151,7 @@ class PlaceView extends PlaceControl
 					                    <p class="text-muted" style ="font-size:15px;"><span class="material-icons">star</span></p>
 					                    <p class="text-muted" style ="font-size:12px;">'.$res[$ctr]['Rating'].'</p>
 					                    <p class="text-muted" style ="font-size:12px;">'.$res[$ctr]['reviews'].'</p>
-					                     <p class="text-muted" style ="font-size:9px;"><span class="material-icons">place</span> <b>'.round($sorted).' KM</b> From Your Location: <b>'.$_SESSION['City'].'</b></p>
+					                     <p class="text-muted" style ="font-size:9px;"><span class="material-icons">place</span> <b>'.round($sorted).' KM</b> From Your Location: <b>'.$city.'</b></p>
 
 					                </div>
 					            </div>
@@ -166,7 +166,7 @@ class PlaceView extends PlaceControl
 
 
 
-		function Valueplace($lat,$lot,$place,$type,$price)// Places outputed are based on user specifications. But are not sorted in any way
+		function Valueplace($lat,$lot,$place,$type,$price,$city)// Places outputed are based on user specifications. But are not sorted in any way
 		{
 		 $p = new PlaceView();
 		 $i = 0;
@@ -187,7 +187,7 @@ class PlaceView extends PlaceControl
 					            <div class="col">
 					                <div class="card-block px-2">
 					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>
-					                    <p class="text-muted" style ="font-size:12px;"><span class="material-icons">place</span> <b>'.round($sorted).' KM</b> From Your Location: <b>'.$_SESSION['City'].'</b></p>
+					                    <p class="text-muted" style ="font-size:12px;"><span class="material-icons">place</span> <b>'.round($sorted).' KM</b> From Your Location: <b>'.$city.'</b></p>
 					                    <p class="text-muted" style ="font-size:12px;"><small>'.$res[$ctr]['price'].'</small></p>
 					                    <p class="text-muted" style ="font-size:9px;"><small>'.$res[$ctr]['type'].'</small></p>
 
@@ -265,5 +265,64 @@ class PlaceView extends PlaceControl
 		 	}
 		 echo "</select>";
 	}
+
+	function Search($name,$lat,$lot){
+		 $p = new PlaceView();
+		 $i = 0;
+		 $res =  $this-> SearchName($name);
+		  foreach($res as $r ){
+		 	$i++;
+		 }
+
+		  for ($ctr=0; $ctr < $i; $ctr++) { 
+		  		$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+				echo '
+					  <div class="card placecard">
+					        <div class="row no-gutters">
+					            <div class="col-4">
+					                <img src="'.$res[$ctr]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
+					            </div>
+					            <div class="col">
+					                <div class="card-block px-2">
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>
+					                    <p class="text-muted" style ="font-size:15px;"><span class="material-icons">star</span></p>
+					                    <p class="text-muted" style ="font-size:12px;">'.$res[$ctr]['Rating'].'</p>
+					                    <p class="text-muted" style ="font-size:12px;">'.$res[$ctr]['reviews'].'</p>
+					                     <p class="text-muted" style ="font-size:9px;"><span class="material-icons">place</span> <b>'.round($sorted).' KM</b> From Your Location: <b>'.$_SESSION['City'].'</b></p>
+
+					                </div>
+					            </div>
+					        </div>
+					  </div>						
+ 			 ';
+
+		 	}
+
+	}
 }
+$d = new PlaceView();
+
+if (isset($_POST['default'])){
+echo $d->DistanceSort($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['default'],$_POST['city']);
+}
+
+if (isset($_POST['reco'])){
+echo $d->Valueplace($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['type'],$_POST['price'],$_POST['city'] );
+
+}
+
+if (isset($_POST['distance'])){
+echo $d->DistanceSort($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['type'],$_POST['city'] );
+
+}
+
+if (isset($_POST['prize'])){
+echo $d->PriceSort($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['type'],$_POST['price'],$_POST['city'] );
+}
+
+if (isset($_POST['popularity'])){
+echo $d->RatingSort($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['type'],$_POST['city'] );
+
+}
+
  ?>

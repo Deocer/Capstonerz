@@ -44,9 +44,26 @@ $plc = new PlaceView();
             <div class="collapse navbar-collapse order-last" id="nav">
               <ul class="navbar-nav flex-column w-100 justify-content-center">
               <li class="nav-item">
-                <a href="#" class="nav-link active"><span class="material-icons">home</span></a>
+                <a href="../user/user.php" class="nav-link active"><span class="material-icons">home</span></a>
                 <br>
               </li>
+
+
+                  <?php 
+
+                        if ($_SESSION['Auth'] == 'Admin') {
+                          echo '
+                              <li class="nav-item">
+                                <a href="../admin/dashboard.php" class="nav-link active"><span class="material-icons">
+                                dashboard
+                                </span></a>
+                                <br>
+                              </li>
+                          ';
+                        }
+                   ?>
+
+
               <li class="nav-item">
                 <a href="itinerary.php" class="nav-link"><span class="material-icons">travel_explore</span></a>
                 <br>

@@ -85,7 +85,14 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 		 return $res;
 		 }
 					
+		function SearchName($name)
+		{
+		 
+		 $res =  $this->SearchPlace($name);
 
+		 return $res;
+		 }
+			
 	}
 
 

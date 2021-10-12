@@ -44,7 +44,7 @@ function uploader($id,$Name){
 }
 
 
-if (isset($_POST['title']) &&  isset($_POST['cont']) && isset($_POST['rating'])){
+if (isset($_POST['title']) &&  isset($_POST['cont'])){
 
 $title =$_POST['title'];
 $cont =$_POST['cont'];
@@ -56,7 +56,7 @@ $name = $_SESSION['UserName'];
 
 $d = new PostControl();
 
-$d->CreatePost($title, $cont,$tag, $rating, $id,$name);
+$d->CreatePost($title, $cont,$id,$name);
 
 $num  = $d->Pop($id,$title,$name);
 

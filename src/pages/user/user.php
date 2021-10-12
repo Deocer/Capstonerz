@@ -11,15 +11,15 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 $id = $_SESSION['Id'];
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/post.php');
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/place.php');
-$place = array();
+
+if (isset($_GET['place'])) {
+  $_SESSION['district'] =  $_GET['place'];
+}
 $plc = new PlaceView();
 $place =  $_SESSION['district'];
 $price =  $_SESSION['price'];
 $type =  $_SESSION['type'];
 
-if (isset($_GET['place'])) {
-  $place =  $_GET['place'];
-}
 
 if(isset($_GET['lat']) && isset($_GET['lot']) ){
   $_SESSION['lat'] = $_GET['lat'];
@@ -48,6 +48,279 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title></title>
  </head>
+ 
+ <script>
+  $(document).ready(function(){
+    $("#input").keyup(function(){
+          $( "#result" ).empty();
+          $( "#demo" ).empty();
+          $.ajax({
+              url: '../../PHP/Functions/SearchDes.php',
+              type:'post',
+              data: {search: $(this).val()},
+              success:function(result){
+                  $("#result").html(result);
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#landmark").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "Historical landmark",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>",
+                      
+            },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   <?php $destype = 'Landmark' ?>
+                   $('#des').val("Historical landmark");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#church").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "church",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>"
+            },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   <?php $destype = 'Church' ?>
+                   $('#des').val("Church");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#shopping").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "Shopping",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>"
+            },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Shopping' ?>
+                   $('#des').val("Shopping");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+
+    $("#park").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "park",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>"
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Park' ?>
+                   $('#des').val("Park");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#restaurant").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "Restaurant",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>"
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Restaurant' ?>
+                   $('#des').val("Restaurant");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+
+    $("#attraction").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "Tourist attraction",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>"
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Tourist Attraction' ?>
+                   $('#des').val("Tourist Attraction");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#reco").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      reco: "reco",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>",
+                      price: "<?php echo $_SESSION['price']?>",
+                      type: "<?php echo $_SESSION['type']?>",
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+   $("#distance").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      distance: "",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>",
+                      type:$('#des').val()
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   $('#des').html( "<?php echo $destype?>");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+   $("#prize").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      prize:  "<?php echo $_SESSION['destype']?>",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>",
+                      price: "<?php echo $_SESSION['price']?>",
+                      type: $('#des').val()
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   $('#des').html( "<?php echo $destype?>");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+   $("#popularity").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      popularity:  "<?php echo $_SESSION['destype']?>",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>",
+                      type: $('#des').val()
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   $('#des').html( "<?php echo $destype?>");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+
+    $('#input').blur(function()
+    {
+    if( !$(this).val() ) {
+         $( "#result" ).empty();
+    }
+    });
+  });
+
+</script>
 
  <body onload="Notif()">
 <section class="container-fluid">
@@ -68,6 +341,23 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                 <a href="#" class="nav-link active"><span class="material-icons">home</span></a>
                 <br>
               </li>
+
+
+                  <?php 
+
+                        if ($_SESSION['Auth'] == 'Admin') {
+                          echo '
+                              <li class="nav-item">
+                                <a href="../admin/dashboard.php" class="nav-link"><span class="material-icons">
+                                dashboard
+                                </span></a>
+                                <br>
+                              </li>
+                          ';
+                        }
+                   ?>
+
+
               <li class="nav-item">
                 <a href="itinerary.php" class="nav-link"><span class="material-icons">travel_explore</span></a>
                 <br>
@@ -271,42 +561,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                         </div>
                         <br>
                         <div class="container-fluid">
-
-                          <div class="row">
-
-                                <div class="col">
-
-                                  <?php 
-                                    $s = new PlaceView();
-
-                                    $s->Places();
-
-                                   ?>
-
-                                </div>
-                                <br>
-                                <div class>
-                                   <fieldset>
-                                    <span class="star-cb-group">
-                                      <input type="radio" id="rating-5" name="rating" value="5" />
-                                      <label for="rating-5">5</label>
-                                      <input type="radio" id="rating-4" name="rating" value="4" />
-                                      <label for="rating-4">4</label>
-                                      <input type="radio" id="rating-3" name="rating" value="3" />
-                                      <label for="rating-3">3</label>
-                                      <input type="radio" id="rating-2" name="rating" value="2" />
-                                      <label for="rating-2">2</label>
-                                      <input type="radio" id="rating-1" name="rating" value="1" />
-                                      <label for="rating-1">1</label>
-                                      <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" />
-                                      <label for="rating-0">0</label>
-                                    </span>
-                                  </fieldset>
-                                </div>
-
-                          </div>
                           
-
                         </div>
                         <br>
 
@@ -334,58 +589,51 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
  </div>
 
     <div class="col text-center mx-auto bg-light" style="overflow: auto;height:720px;overflow-x: hidden;">
-      <h4 class="text-light bg-dark text-center  p-1" style="font-family: Caveat; font-weight: bolder;"> Places In <?php echo $place; ?></h4>
-      <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#places" type="button" role="tab" aria-controls="home" aria-selected="true"><span class="material-icons">map</span></button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="place-tab" data-bs-toggle="tab" data-bs-target="#landmark" type="button" role="tab" aria-controls="place" aria-selected="true"><span class="material-icons">place</span></button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#restaurants" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="material-icons">restaurant</span></button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#tourist" type="button" role="tab" aria-controls="messages" aria-selected="false"><span class="material-icons">festival</span></button>
-          </li>
-        </ul>
+      <div class="bg-dark text-center  p-0" style="font-family: Caveat; font-weight: bolder;">
+         <h4 class="text-light bg-dark text-center  p-1" style="font-family: Caveat; font-weight: bolder;"> Places In <?php echo $place; ?></h4>
+         <h4 class="text-light bg-dark text-center  p-1" style="font-family: Caveat; font-weight: bolder;"> Recommended Places For You
+        <span class="badge rounded-pill bg-warning text-dark"><?php echo $price ?></span>
+        <span class="badge rounded-pill bg-light text-dark"><?php echo $type ?></span>
+        </h4>     
+      </div>
+          <p id="landmark"><span class="badge rounded-pill bg-primary hover-zoom">Historical landmark</span></p> 
+          <p id="church"><span class="badge rounded-pill bg-secondary">Church</span></p> 
+          <p id="shopping"><span class="badge rounded-pill bg-success">Shopping</span></p> 
+          <p id="park"><span class="badge rounded-pill bg-danger">Park</span></p> 
+          <p id="restaurant"><span class="badge rounded-pill bg-warning">Restaurant</span></p> 
+          <p id="attraction"><span class="badge rounded-pill bg-info ">Tourist attraction</span></p>
+          <p id="reco"><span class="badge rounded-pill bg-info ">Recommended for you</span></p>  
+          <br> 
+          <br>
+      <div class="row g-3">
 
-        <div class="tab-content">
-          <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
-                  <?php 
-                  //$plc-> Allplace($_SESSION['lat'],$_SESSION['lot'],$_SESSION['City']);
-                  $plc-> Valueplace($_SESSION['lat'],$_SESSION['lot'],$place,$type,$price);
-                  ?>  
+        <input id="des" type="" name="">
 
-          </div>
-          <div class="tab-pane" id="landmark" role="tabpanel" aria-labelledby="place-tab">
-                  <?php 
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Historical landmark');
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Church');
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Shopping');
-                  ?>  
-
-          </div>
-          <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
-                  <?php 
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Restaurant');                
-                  ?>  
-          </div>
-           <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
-                  <?php 
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Tourist attraction');
-                  $plc-> Typeplace($_SESSION['lat'],$_SESSION['lot'],$place,'Park');
-                  ?>
-
-          </div>
+        <div class="col-auto">
+            <div class="dropdown">     
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Sort By :
+                 </button>
+                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><p id="distance" class="dropdown-item" >Distance</p></li>
+                    <li><p id="prize" class="dropdown-item" >Prize</p></li>
+                    <li><p id="popularity"class="dropdown-item">Popularity</p></li>
+                </ul>
+           </div>
+                    
         </div>
+        <div class="col-auto">
+          <input type="text" class="form-control" id="input" placeholder="Search Place in Manila">
+        </div>
+      </div>
+      <p id="result"></p>
+      <div id="demo">      
+       <?php 
+            $plc-> Valueplace($_SESSION['lat'],$_SESSION['lot'],$place,$type,$price,$_SESSION['City']);
+       ?> 
+      </div>
 
-        <script>
-          var firstTabEl = document.querySelector('#myTab li:last-child a')
-          var firstTab = new bootstrap.Tab(firstTabEl)
 
-          firstTab.show()
-        </script>
+
 
     </div>
 
@@ -394,15 +642,11 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
   
 </section>
+
   
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="../../plugins/jquery.rwdImageMaps.min.js"></script>
-<script src>
-  $(document).ready(function(e){
-    $('img[usemap]').rwdImageMaps();
-  });
-</script>
  </body>
 
 <script type="text/javascript">
@@ -439,6 +683,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
   function Notif() {
 
+
       Swal.fire({
          title: '<?php echo "Welcome Back ".$_SESSION['UserName']; ?>',
         icon: 'info',
@@ -456,6 +701,19 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
       });
 
   }
+
+   function deleteP(id) {
+            Swal.fire({
+              title: 'Do you want to Remove this post?',
+              showCancelButton: true,
+              confirmButtonText: 'Remove Post',
+              confirmButtonColor: '#8CD4F5',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = "../../PHP/controller/post.php?usd="+id;
+              } 
+            });
+      }
 
 
 </script>

@@ -15,10 +15,10 @@ class postdatabase{
 		}
 	}
 
-	protected function insert($title, $cont, $tag, $rating, $id, $name){
+	protected function insert($title, $cont, $id, $name){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("INSERT INTO post (PostTitle, Cont, Tag, Rating, UserID, Username) VALUES (?, ?,?,?,?,?)");
-		$stmt->bind_param("sssiis", $title, $cont, $tag, $rating, $id,$name);
+		$stmt = $conn->prepare("INSERT INTO post (PostTitle, Cont, UserID, Username) VALUES (?, ?,?,?)");
+		$stmt->bind_param("ssis", $title, $cont, $id,$name);
 		$stmt->execute();
 		$stmt->close();
 	}
@@ -26,6 +26,14 @@ class postdatabase{
 	protected function delete($id){
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$stmt = $conn->prepare("UPDATE post SET  Status = 'Archived' WHERE PostID  = ?");
+		$stmt->bind_param("i",$id);
+		$stmt->execute();
+		$stmt->close();
+	}
+
+	protected function Userdelete($id){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$stmt = $conn->prepare("UPDATE post SET  Status = 'Deleted' WHERE PostID  = ?");
 		$stmt->bind_param("i",$id);
 		$stmt->execute();
 		$stmt->close();
@@ -49,7 +57,7 @@ class postdatabase{
 
 	protected function fetchPost(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("SELECT * FROM post WHERE Status  = 'Active' ORDER BY PostID DESC LIMIT 25");
+		$stmt = $conn->prepare("SELECT * FROM post WHERE Status  = 'Active' ORDER BY PostID DESC LIMIT 10");
 		$stmt->execute();
 
 		$result = $stmt->get_result();
@@ -60,7 +68,7 @@ class postdatabase{
 
 	protected function fetchArchive(){
 		$conn = mysqli_connect('localhost','root','root','capstone');
-		$stmt = $conn->prepare("SELECT * FROM post WHERE Status  = 'Archived' ORDER BY PostID DESC LIMIT 25");
+		$stmt = $conn->prepare("SELECT * FROM post WHERE Status  = 'Archived' ORDER BY PostID DESC");
 		$stmt->execute();
 
 		$result = $stmt->get_result();

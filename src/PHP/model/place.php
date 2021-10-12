@@ -56,7 +56,6 @@ class placedatabase{
 			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, price DESC LIMIT 20";
 		}
 
-
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("ss",$district,$type);
 		$stmt->execute();
@@ -130,6 +129,19 @@ class placedatabase{
 		$conn = mysqli_connect('localhost','root','root','capstone');
 		$sql = "SELECT Pname FROM places"; 
 		$stmt = $conn->prepare($sql); 
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+
+
+	}
+
+	protected function SearchPlace($name){
+		$conn = mysqli_connect('localhost','root','root','capstone');
+		$sql = "SELECT * FROM places WHERE Pname LIKE '".$name."%' "; 
+		$stmt = $conn->prepare($sql);
 		$stmt->execute();
 
 		$result = $stmt->get_result();
