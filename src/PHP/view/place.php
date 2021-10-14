@@ -325,4 +325,8 @@ echo $d->RatingSort($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['type'
 
 }
 
+if (isset($_POST['rec'])){
+echo $d->Recplace($_POST['lat'],$_POST['lot'],$_POST['nm'],$_POST['class']);
+}
+
  ?>

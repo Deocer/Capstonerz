@@ -1,22 +1,13 @@
 <?php 
-
-
 class postdatabase{
 
-	public function __construct(){
-		$conn = mysqli_connect('localhost','root','root','capstone');
-
-		// Check connection
-		if(mysqli_connect_errno())
-		{
-		mysqli_connect_error();
-		}
-		else{
-		}
-	}
+	public $host = 'localhost';
+	public $username ='root';
+	public $password ='root';
+	public $dbname = 'capstone';
 
 	protected function insert($title, $cont, $id, $name){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);  
 		$stmt = $conn->prepare("INSERT INTO post (PostTitle, Cont, UserID, Username) VALUES (?, ?,?,?)");
 		$stmt->bind_param("ssis", $title, $cont, $id,$name);
 		$stmt->execute();
@@ -24,7 +15,7 @@ class postdatabase{
 	}
 
 	protected function delete($id){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname); 
 		$stmt = $conn->prepare("UPDATE post SET  Status = 'Archived' WHERE PostID  = ?");
 		$stmt->bind_param("i",$id);
 		$stmt->execute();
@@ -32,7 +23,7 @@ class postdatabase{
 	}
 
 	protected function Userdelete($id){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname); 
 		$stmt = $conn->prepare("UPDATE post SET  Status = 'Deleted' WHERE PostID  = ?");
 		$stmt->bind_param("i",$id);
 		$stmt->execute();
@@ -40,7 +31,7 @@ class postdatabase{
 	}
 
 	protected function restore($id){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
 		$stmt = $conn->prepare("UPDATE post SET  Status = 'Active' WHERE PostID  = ?");
 		$stmt->bind_param("i",$id);
 		$stmt->execute();
@@ -48,7 +39,7 @@ class postdatabase{
 	}
 
 	protected function paneinsert($src, $id, $name){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
 		$stmt = $conn->prepare("INSERT INTO panes (Datum, PostID, PostName) VALUES (?,?,?)");
 		$stmt->bind_param("sis", $src, $id, $name);
 		$stmt->execute();
@@ -56,7 +47,7 @@ class postdatabase{
 	}
 
 	protected function fetchPost(){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
 		$stmt = $conn->prepare("SELECT * FROM post WHERE Status  = 'Active' ORDER BY PostID DESC LIMIT 10");
 		$stmt->execute();
 
@@ -67,7 +58,7 @@ class postdatabase{
 	}
 
 	protected function fetchArchive(){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname); 
 		$stmt = $conn->prepare("SELECT * FROM post WHERE Status  = 'Archived' ORDER BY PostID DESC");
 		$stmt->execute();
 
@@ -79,7 +70,7 @@ class postdatabase{
 
 
 	protected function fetchUser($UserID){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);  
 		$sql = "SELECT * FROM post WHERE UserID = ? AND Status  = 'Active'"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $UserID);
@@ -91,7 +82,7 @@ class postdatabase{
 	}
 
 	protected function fetchUserArchive($UserID){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
 		$sql = "SELECT * FROM post WHERE UserID = ? AND Status  = 'Archived'"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $UserID);
@@ -103,7 +94,7 @@ class postdatabase{
 	}
 
 	protected function fetchPop($UserID,$title,$name){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);  
 		$sql = "SELECT * FROM post WHERE UserID = ? AND PostTitle = ? AND UserName = ? AND Status = 'Active'"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("iss", $UserID,$title,$name);
@@ -115,7 +106,7 @@ class postdatabase{
 	}
 
 	protected function fetchPic($id){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);  
 		$sql = "SELECT datum FROM panes WHERE PostID = ?"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $id);
@@ -128,7 +119,7 @@ class postdatabase{
 
 
 		protected function fetchTag($Tag){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);  
 		$sql = "SELECT * FROM post WHERE Tag = ? AND Status = 'Active'"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("s", $Tag);
@@ -140,7 +131,7 @@ class postdatabase{
 	}
 
 		protected function fetchRating($Rating){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
 		$sql = "SELECT * FROM post WHERE Rating = ? AND Status = 'Active' "; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $Rating);
@@ -153,7 +144,7 @@ class postdatabase{
 
 
 	protected function flag($id, $pid){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
 		$stmt = $conn->prepare("INSERT INTO pflags (UserID, PostID) VALUES (?, ?)");
 		$stmt->bind_param("ii", $id, $pid);
 		$stmt->execute();
@@ -162,7 +153,7 @@ class postdatabase{
 
 	
 	protected function fetchflag($PostID){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname); 
 		$sql = "SELECT * FROM pflags WHERE PostID = ?"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("i", $PostID);
@@ -174,7 +165,7 @@ class postdatabase{
 	}
 
 	protected function verifyflag($id, $pid){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname); 
 		$sql = "SELECT * FROM pflags WHERE UserID = ? AND PostID =?"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("ii", $id, $pid);
@@ -186,7 +177,7 @@ class postdatabase{
 	}
 
 	protected function flagUser($id){
-		$conn = mysqli_connect('localhost','root','root','capstone');
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);  
 		$sql = "SELECT TrnsID FROM pflags INNER JOIN post ON post.UserID = ? "; 
 		$stmt = $conn->prepare($sql);
 		$stmt->bind_param("i", $id); 

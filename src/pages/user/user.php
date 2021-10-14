@@ -41,7 +41,8 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
  <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="../../css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
@@ -267,7 +268,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
               url: '../../PHP/view/place.php',
               type:'post',
               data: {
-                      prize:  "<?php echo $_SESSION['destype']?>",
+                      prize:  "",
                       lat: <?php echo $_SESSION['lat']?>,
                       lot: <?php echo $_SESSION['lot']?>,
                       district: "<?php echo $_SESSION['district']?>",
@@ -292,7 +293,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
               url: '../../PHP/view/place.php',
               type:'post',
               data: {
-                      popularity:  "<?php echo $_SESSION['destype']?>",
+                      popularity:  "",
                       lat: <?php echo $_SESSION['lat']?>,
                       lot: <?php echo $_SESSION['lot']?>,
                       district: "<?php echo $_SESSION['district']?>",
@@ -329,51 +330,33 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
   <div class="row p-0 gx-3">
 
 
-    <div class="col-1" style="">
-      <aside class="p-0 bg-dark " style="height: 100%;">
-          <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
-          <br>
-          <span class="material-icons text-light">account_circle</span>
-            <br>
-            <div class="collapse navbar-collapse order-last" id="nav">
-              <ul class="navbar-nav flex-column w-100 justify-content-center">
-              <li class="nav-item">
-                <a href="#" class="nav-link active"><span class="material-icons">home</span></a>
-                <br>
-              </li>
-
-
+    <div class="col-1" style="padding: 0;">
+          <aside class="p-0 bg-dark " style="height: 100%;">
+            <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
+              <br> <span class="material-icons text-light fs-1 text py-1">account_circle</span>
+              <p class="text-light">
+                <?php echo $_SESSION['UserName']; ?>
+              </p>
+              <br>
+              <div class="collapse navbar-collapse order-last" id="nav">
+                <ul style="display:block;margin: 0;padding: 0;">
+                  <li><span class="material-icons p-3 text-light">home</span><a href="user.php"><i class="fw-bold text-light">Home</i></a></li>
+                  <br>
                   <?php 
 
                         if ($_SESSION['Auth'] == 'Admin') {
                           echo '
-                              <li class="nav-item">
-                                <a href="../admin/dashboard.php" class="nav-link"><span class="material-icons">
-                                dashboard
-                                </span></a>
-                                <br>
-                              </li>
+                              <li><span class="material-icons p-3 text-light">dashboard</span><a href="../admin/dashboard.php"><i class="fw-bold text-light">Dashboard</i></a></li>
                           ';
                         }
                    ?>
-
-
-              <li class="nav-item">
-                <a href="itinerary.php" class="nav-link"><span class="material-icons">travel_explore</span></a>
-                <br>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link"><span class="material-icons">settings</span></a>
-                <br>
-              </li>
-              <li class="nav-item">
-                <a href="../../PHP/Functions/Log_out.php" class="nav-link"><span class="material-icons">logout</span></a>
-                <br>
-              </li>
-            </ul>
-            </div>      
-          </nav>   
-        </aside>
+                    <li><span class="material-icons p-3 text-light">travel_explore</span><a href="itinerary.php"><i class="fw-bold text-light">Itinerary</i></a></li>
+                    <br>
+                    <li><span class="material-icons p-3 text-light">logout</span><a href="../../PHP/Functions/Log_out.php"><i class="fw-bold text-light">Log Out</i></a></li>
+                </ul>
+              </div>
+            </nav>
+          </aside>
     </div>
 
 <div class="col-7 mx-auto" style="overflow: auto;height:720px">
@@ -524,7 +507,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
               $p->ShowPost();
               ?>  
       </div>
-       <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+       <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab" style="margin:auto;">
               <?php 
               $p->UsPost($_SESSION['Id']);
               $p->UsArchive($_SESSION['Id']);
@@ -596,18 +579,17 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
         <span class="badge rounded-pill bg-light text-dark"><?php echo $type ?></span>
         </h4>     
       </div>
-          <p id="landmark"><span class="badge rounded-pill bg-primary hover-zoom">Historical landmark</span></p> 
-          <p id="church"><span class="badge rounded-pill bg-secondary">Church</span></p> 
-          <p id="shopping"><span class="badge rounded-pill bg-success">Shopping</span></p> 
-          <p id="park"><span class="badge rounded-pill bg-danger">Park</span></p> 
-          <p id="restaurant"><span class="badge rounded-pill bg-warning">Restaurant</span></p> 
-          <p id="attraction"><span class="badge rounded-pill bg-info ">Tourist attraction</span></p>
-          <p id="reco"><span class="badge rounded-pill bg-info ">Recommended for you</span></p>  
-          <br> 
-          <br>
+          <button  id="landmark" class="btn"><i class="fa fa-monument"></i> Historical landmark</button>
+          <button  id="church" class="btn"><i class="fa fa-church"></i> Church</button>
+          <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i> Shopping</button>
+          <button  id="park" class="btn"><i class="fa fa-tree"></i> Park</button>
+          <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i> Restaurant</button>
+          <button  id="attraction" class="btn"><i class="fa fa-landmark"></i> Tourist attraction</button>
+          <button  id="reco" class="btn"><i class="fa fa-map-marker"></i> Recommended for you</button>  
+
       <div class="row g-3">
 
-        <input id="des" type="" name="">
+        <input id="des" type="" name="" style="display:none">
 
         <div class="col-auto">
             <div class="dropdown">     

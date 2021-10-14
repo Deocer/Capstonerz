@@ -1,6 +1,7 @@
 <?php 
 
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/post.php');
+
 /**
 	 * 
 	 */

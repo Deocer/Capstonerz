@@ -1,5 +1,5 @@
 <?php   
-include '../../PHP/Functions/Geocoding.php';
+session_start();
  ?>
 
 
@@ -30,9 +30,9 @@ include '../../PHP/Functions/Geocoding.php';
       <label>Preferred Price Point For Destinations</label>
       <br>
       <select class="form-select" aria-label="Please Your Current City Location" name="prize">
-        <option value="$">I prefer travel on a lower budget</option>
-        <option value="$$">Average budget </option>
-        <option value="$$$">I only travel on premium destinations</option>
+        <option value="1">I prefer travel on a lower budget</option>
+        <option value="2">Average budget </option>
+        <option value="3">I only travel on premium destinations</option>
       </select>
     </div>
     <br>

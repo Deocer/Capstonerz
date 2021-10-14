@@ -36,50 +36,32 @@ $plc = new PlaceView();
 
 
     <div class="col-1" style="height: 3180px;">
-      <aside class="p-0 bg-dark " style="height: 100%;">
-          <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
-          <br>
-          <span class="material-icons text-light">account_circle</span>
-            <br>
-            <div class="collapse navbar-collapse order-last" id="nav">
-              <ul class="navbar-nav flex-column w-100 justify-content-center">
-              <li class="nav-item">
-                <a href="../user/user.php" class="nav-link active"><span class="material-icons">home</span></a>
-                <br>
-              </li>
-
-
+          <aside class="p-0 bg-dark " style="height: 100%;">
+            <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
+              <br> <span class="material-icons text-light fs-1 text py-1">account_circle</span>
+              <p class="text-light">
+                <?php echo $_SESSION['UserName']; ?>
+              </p>
+              <br>
+              <div class="collapse navbar-collapse order-last" id="nav">
+                <ul  style="display:block;margin: 0;padding: 0;">
+                  <li><span class="material-icons p-3 text-light">home</span><a href="../user/user.php"><i class="fw-bold text-light">Home</i></a></li>
+                  <br>
                   <?php 
 
                         if ($_SESSION['Auth'] == 'Admin') {
                           echo '
-                              <li class="nav-item">
-                                <a href="../admin/dashboard.php" class="nav-link active"><span class="material-icons">
-                                dashboard
-                                </span></a>
-                                <br>
-                              </li>
+                              <li><span class="material-icons p-3 text-light">dashboard</span><a href="../admin/dashboard.php"><i class="fw-bold text-light">Dashboard</i></a></li>
                           ';
                         }
                    ?>
-
-
-              <li class="nav-item">
-                <a href="itinerary.php" class="nav-link"><span class="material-icons">travel_explore</span></a>
-                <br>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link"><span class="material-icons">settings</span></a>
-                <br>
-              </li>
-              <li class="nav-item">
-                <a href="../../PHP/Functions/Log_out.php" class="nav-link"><span class="material-icons">logout</span></a>
-                <br>
-              </li>
-            </ul>
-            </div>      
-          </nav>   
-        </aside>
+                    <li><span class="material-icons p-3 text-light">travel_explore</span><a href="../itinerary/itinerary.php"><i class="fw-bold text-light">Itinerary</i></a></li>
+                    <br>
+                    <li><span class="material-icons p-3 text-light">logout</span><a href="../../Log_out.php"><i class="fw-bold text-light">Log Out</i></a></li>
+                </ul>
+              </div>
+            </nav>
+          </aside>
     </div>
 
     <div class="col mx-auto bg-light">

@@ -1,4 +1,7 @@
 <?php 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 
 /**
@@ -31,7 +34,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 
 
 
-                    session_start();
+
 			  		$_SESSION['Id'] =  $res[0];
 			  		$_SESSION['UserName'] =  $res[1];
 					$_SESSION['Permit'] = 'false';
@@ -67,7 +70,6 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 
 					 	}
 
-			  		session_start();
 			  		$_SESSION['Id'] =  $res[0];
 			  		$_SESSION['UserName'] =  $res[1];
 					$_SESSION['Permit'] = 'true';
@@ -75,6 +77,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 					$_SESSION['price'] = $res[4];
 					$_SESSION['type'] = $res[5];
 					$_SESSION['district'] = $res[6];
+					$_SESSION['Auth'] = $res[7];
 
 					header("location:../../pages/user/starter.php");
 			  		exit();
@@ -162,6 +165,3 @@ $s->UnStatUsers($_GET['Unstat']);
 }
 
  ?>
-
- 	 
- 	 

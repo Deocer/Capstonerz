@@ -38,7 +38,8 @@ $rev = new ReviewView();
   <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -67,21 +68,29 @@ $rev = new ReviewView();
   <body>
     <section class="container-fluid">
       <div class="row p-0 m-0">
-        <div class="col-1">
+        <div class="col-1" style="padding: 0;">
           <aside class="p-0 bg-dark " style="height: 100%;">
             <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
-              <br> <span class="material-icons text-light">account_circle</span>
+              <br> <span class="material-icons text-light fs-1 text py-1">account_circle</span>
+              <p class="text-light">
+                <?php echo $_SESSION['UserName']; ?>
+              </p>
               <br>
               <div class="collapse navbar-collapse order-last" id="nav">
-                <ul class="navbar-nav flex-column w-100 justify-content-center">
-                  <li class="nav-item"> <a href="user.php" class="nav-link active"><span class="material-icons">home</span></a>
-                    <br> </li>
-                  <li class="nav-item"> <a href="itinerary.php" class="nav-link"><span class="material-icons">travel_explore</span></a>
-                    <br> </li>
-                  <li class="nav-item"> <a href="#" class="nav-link"><span class="material-icons">settings</span></a>
-                    <br> </li>
-                  <li class="nav-item"> <a href="../../PHP/Functions/Log_out.php" class="nav-link"><span class="material-icons">logout</span></a>
-                    <br> </li>
+                <ul style="display:block;margin: 0;padding: 0;">
+                  <li><span class="material-icons p-3 text-light">home</span><a href="user.php"><i class="fw-bold text-light">Home</i></a></li>
+                  <br>
+                  <?php 
+
+                        if ($_SESSION['Auth'] == 'Admin') {
+                          echo '
+                              <li><span class="material-icons p-3 text-light">dashboard</span><a href="../admin/dashboard.php"><i class="fw-bold text-light">Dashboard</i></a></li>
+                          ';
+                        }
+                   ?>
+                    <li><span class="material-icons p-3 text-light">travel_explore</span><a href="itinerary.php"><i class="fw-bold text-light">Itinerary</i></a></li>
+                    <br>
+                    <li><span class="material-icons p-3 text-light">logout</span><a href="../../Log_out.php"><i class="fw-bold text-light">Log Out</i></a></li>
                 </ul>
               </div>
             </nav>
@@ -104,18 +113,74 @@ $rev = new ReviewView();
             <div class="tab-content bg-light" style="width:100%;height: 70%;">
               <div class="tab-pane active bg-light" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="row">
-                  <div class="col-lg-8">
-                    <div id="map" class="mx-auto" style="width: 100%; height: 300px;"></div>
-                  </div>
-                  <div class="col-4">
-                    <div class="card mb-1" style="width:100%;">
+                  <div id="map" class="mx-auto" style="width: 100%; height: 300px;"></div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
                       <div class="card-body">
-                        <p class="card-title"><b><small class="text-muted"></small></b></p>
-                        <p class=""><small class="text-muted">Rating from Google Review : <span class="fa fa-star"><?php echo $rating ?></span></small></p>
-                        <p class=""><sub class="text-muted"></sub><small>Price Point :<?php echo $price ?></small></p>
-                        <p class=""><sub class="text-muted"></sub><small>Operating Hours :<?php echo $hour ?></small></p>
-                      </div> <a class="btn btn-outline-primary" aria-current="page" onclick="add()">Show Directions</a> <a class="btn btn-outline-primary" aria-current="page" onclick="add()">Add To Itinerary</a> </div>
+                        <h5 class="card-title">Google Review Rating</h5>
+                        <div class="col" style="    
+                              display: flex;
+                              align-items: center;
+                              margin-left: 1em; ">
+                          <p style="font-size:30px;">
+                            <?php echo $rating ?>
+                          </p>
+                          <p><span class="material-icons" style="font-size:35px;">star</span></p>
+                        </div>                      
+                      </div>
+                    </div>
                   </div>
+                  <div class="col">
+                    <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
+                      <div class="card-body">
+                        <h5 class="card-title">Destination Price Point</h5>
+                        <?php 
+
+                                if ($price == 1) {
+                                  echo ' 
+                                  <p class=card-text" style="font-size:56px;">
+                                  <span class="material-icons" style="font-size:56px;">paid</span>
+                                  </p>';
+                                }elseif ($price == 2) {
+                                  echo '                                  
+                                  <p class=card-text" style="font-size:40px;">
+                                  <span class="material-icons" style="font-size:40px;">paid</span>
+                                  <span class="material-icons" style="font-size:40px;">paid</span>
+                                  </p>';
+                                }else{
+                                  echo '                                   
+                                  <p class=card-text" style="font-size:36px;">
+                                  <span class="material-icons" style="font-size:36px;">paid</span>
+                                  <span class="material-icons" style="font-size:36px;">paid</span>
+                                  <span class="material-icons" style="font-size:36px;">paid</span>
+                                  </p>';                          
+                                }
+
+                          ?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
+                      <div class="card-body">
+                        <h5 class="card-title">Operating Hours</h5>
+                        <p class="card-text" style="font-size:20px;font-weight: bolder;">
+                          <?php echo $hour ?>
+                        </p>                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                     <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
+                      <div class="card-body">
+                        <h5 class="card-title">Add To Itinerary</h5>
+                        <a class="btn btn-primary" aria-current="page" onclick="add()"><span class="material-icons p-3 text-light">travel_explore</span></a>                       
+                      </div>
+                    </div>
+                  </div>
+
                   <script type="text/javascript">
                   function add() {
                     Swal.fire({
@@ -234,67 +299,32 @@ $rev = new ReviewView();
             </script>
           </div>
         </div>
-        <div class="col text-center mx-auto bg-light" style="overflow: auto;height:720px;overflow-x: hidden;">
-          <h4 class="text-light bg-dark text-center  p-1" style="font-family: Caveat; font-weight: bolder;">Recommended Places</h4>
-          <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#places" type="button" role="tab" aria-controls="home" aria-selected="true"><span class="material-icons">map</span></button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="place-tab" data-bs-toggle="tab" data-bs-target="#landmark" type="button" role="tab" aria-controls="place" aria-selected="true"><span class="material-icons">place</span></button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#restaurants" type="button" role="tab" aria-controls="profile" aria-selected="false"><span class="material-icons">restaurant</span></button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#tourist" type="button" role="tab" aria-controls="messages" aria-selected="false"><span class="material-icons">festival</span></button>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="places" role="tabpanel" aria-labelledby="home-tab">
-              <?php 
-                  $plc-> Recplace($lat,$lot,$nm,'Museum');
-                  /*
-                  $plc-> Recplace($lat,$lot,$nm,'Sports complex');
-                  $plc-> Recplace($lat,$lot,$nm,'Performing arts theater');
-                  $plc-> Recplace($lat,$lot,$nm,'Sports complex');
-                  $plc-> Recplace($lat,$lot,$nm,'Nature preserve');
-                  $plc-> Recplace($lat,$lot,$nm,'Modern art museum');
-                  $plc-> Recplace($lat,$lot,$nm,'Historical place');
-                  $plc-> Recplace($lat,$lot,$nm,'Heritage museum');
-                  $plc-> Recplace($lat,$lot,$nm,'Art center');
-                  $plc-> Recplace($lat,$lot,$nm,'Local history museum');
-                  $plc-> Recplace($lat,$lot,$nm,'Art gallery');
-                  $plc-> Recplace($lat,$lot,$nm,'Motel');
-                  $plc-> Recplace($lat,$lot,$nm,'Catholic cathedral');
-                  $plc-> Recplace($lat,$lot,$nm,'Spa');
-                  */
-                  ?>
-            </div>
-            <div class="tab-pane " id="landmark" role="tabpanel" aria-labelledby="place-tab">
-              <?php 
-                  $plc-> Recplace($lat,$lot,$nm,'Tourist attraction');
-                  /*
-                  $plc-> Recplace($lat,$lot,$nm,'Historical landmark');
-                  $plc-> Recplace($lat,$lot,$nm,'Church');
-                  $plc-> Recplace($lat,$lot,$nm,'Shopping Mall');
-                  $plc-> Recplace($lat,$lot,$nm,'Hotel');
-                  */
-                  ?>
-            </div>
-            <div class="tab-pane" id="restaurants" role="tabpanel" aria-labelledby="messages-tab">
-              <?php 
-                  $plc-> Recplace($lat,$lot,$nm,'Restaurant');                 
-                  ?>
-            </div>
-            <div class="tab-pane" id="tourist" role="tabpanel" aria-labelledby="messages-tab">
-              <?php 
-                  
-                  $plc-> Recplace($lat,$lot,$nm,'Park');
-                  ?>
-            </div>
-          </div>
-        </div>
+
+    <div class="col text-center mx-auto bg-light" style="overflow: auto;height:720px;overflow-x: hidden;">
+      <div class="bg-dark text-center  p-2" style="font-weight: bolder; margin: auto; text-align:center;">
+         <h4 class="text-light bg-dark text-center  p-1" style="font-weight: bolder;">Nearby <span id="dest"></span> in <span id="name"></span><?php echo $nm; ?> </h4>        
+      </div>
+<br>
+          <button  id="landmark" class="btn"><i class="fa fa-monument"></i> Historical landmark</button>
+          <button  id="church" class="btn"><i class="fa fa-church"></i> Church</button>
+          <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i> Shopping</button>
+          <button  id="park" class="btn"><i class="fa fa-tree"></i> Park</button>
+          <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i> Restaurant</button>
+          <button  id="attraction" class="btn"><i class="fa fa-landmark"></i> Tourist attraction</button>
+          <button  id="reco" class="btn"><i class="fa fa-map-marker"></i> Recommended for you</button>
+          <br> 
+          <br>
+          <input type="text" class="form-control" id="input" placeholder="Search Place in Manila">
+
+      <p id="result"></p>
+      <div id="demo">      
+       <?php 
+            $plc-> Recplace($lat,$lot,$nm,$class);
+       ?> 
+      </div>
+
+
+    </div>
       </div>
     </section>
     <section>
@@ -302,5 +332,203 @@ $rev = new ReviewView();
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>
+ <script>
+  $(document).ready(function(){
+    $("#input").keyup(function(){
+          $( "#result" ).empty();
+          $( "#demo" ).empty();
+          $.ajax({
+              url: '../../PHP/Functions/SearchDes.php',
+              type:'post',
+              data: {search: $(this).val()},
+              success:function(result){
+                  $("#result").html(result);
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
 
+    $("#landmark").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "Historical landmark",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "Historical landmark",
+                      
+            },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   <?php $destype = 'Landmark' ?>
+                   $('#dest').html("Historical landmark");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#church").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "church",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "Church",
+            },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   <?php $destype = 'Church' ?>
+                   $('#dest').html("Church");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#shopping").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "shopping",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "Shopping",
+            },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Shopping' ?>
+                   $('#dest').html("Shopping");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+
+    $("#park").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "Park",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "Park",
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Park' ?>
+                   $('#dest').html("Park");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#restaurant").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "Restaurant",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "Restaurant",
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Restaurant' ?>
+                   $('#dest').html("Restaurant");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+
+    $("#attraction").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "Tourist attraction",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "Tourist attraction",
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Tourist Attraction' ?>
+                   $('#dest').html("Tourist Attraction");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+     $("#reco").click(function(){
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "Tourist attraction",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "<?php echo $class ?>",
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   $('#dest').html("<?php echo $class ?>");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+
+
+    $('#input').blur(function()
+    {
+    if( !$(this).val() ) {
+         $( "#result" ).empty();
+    }
+    });
+  });
+
+</script>
   </html>

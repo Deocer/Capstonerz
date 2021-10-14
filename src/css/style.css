@@ -186,3 +186,59 @@ textarea {
   bottom: 8px;
   left: 16px;
 }
+
+li {
+    overflow: hidden;
+    list-style: none;
+    white-space:nowrap;
+    margin-right: 10px;
+    border-radius: 25px;
+}
+    li a {
+        font-size: 15px;
+        opacity: 0;
+        max-width: 0;
+        display: inline-block;
+        text-decoration: none;
+        transition: max-width 1s ease-out .1s, opacity 1s ease-out .1s, color;
+    }
+        li span:hover {
+            color: #c33;
+        }
+        li a i {
+            float:right;
+            display: block;
+            padding-right: 1em;
+            font:1em/1 'rokkitt', sans-serif;
+            font-size: 14px;
+        }
+    li b {
+        line-height:1;
+        font-size: 25px;
+        display: inline-block;
+        padding:.125em .375em;
+    }
+    li:hover {}
+        li:hover a {
+            opacity: 1;
+            max-width: 150px;
+            transition: max-width .2s ease-out .1s, opacity 1s ease-out .1s, color .2s;
+        }
+
+.btn-label {
+  position: relative;
+  left: -12px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px 0 0 3px;
+}
+
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.btn {
+  margin-bottom: 10px;
+}

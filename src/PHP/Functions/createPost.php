@@ -1,21 +1,19 @@
 <?php 
 session_start();
 
-include '../controller/post.php';
+include $_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/post.php';
 
 
 function uploader($id,$Name){
 
-    if (isset($_FILES['file'])  ) {
-    $total = count($_FILES['file']);
+    if (isset($_FILES['file'])) {
+    $total = count($_FILES['file']['name']);
     for( $i=0 ; $i < $total ; $i++ ) {
 
-
-
-        echo $file_name = $_FILES['file']['name'][$i];
-        echo $file_tmp = $_FILES['file']['tmp_name'][$i];
-        echo $file_size = $_FILES['file']['size'][$i];
-        echo $file_error = $_FILES['file']['error'][$i];
+        $file_name = $_FILES['file']['name'][$i];
+        $file_tmp = $_FILES['file']['tmp_name'][$i];
+        $file_size = $_FILES['file']['size'][$i];
+        $file_error = $_FILES['file']['error'][$i];
 
         $file_ext = explode('.', $file_name);
         $file_ext = strtolower(end($file_ext));
@@ -29,7 +27,6 @@ function uploader($id,$Name){
                     $file_name_new = uniqid('',true) . '.' .$file_ext;
                     $file_destination = '../../uploads/'. $file_name_new;
                     if (move_uploaded_file($file_tmp, $file_destination)) {
-                        echo 'vode.';
                         $x = new PostControl();
                          $x->Pane($file_destination,$id,$Name);
                         }
@@ -48,15 +45,13 @@ if (isset($_POST['title']) &&  isset($_POST['cont'])){
 
 $title =$_POST['title'];
 $cont =$_POST['cont'];
-$rating =$_POST['rating'];
-$tag = $_POST['tag'];
 $id = $_SESSION['Id'];
 $name = $_SESSION['UserName'];
 
 
 $d = new PostControl();
 
-$d->CreatePost($title, $cont,$id,$name);
+$d->CreatePost($title, $cont, $id,$name);
 
 $num  = $d->Pop($id,$title,$name);
 
@@ -66,7 +61,6 @@ header("location:../../pages/user/user.php");
 exit();
 
 }else{
-    echo 'wdwdwqd';
 }
 
 

@@ -1,8 +1,10 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/user.php'); 
-session_start();
-if (isset($_SESSION['Id']) && $_SESSION['Permit'] != 'false') {
+
+if ($_SESSION['Permit'] == 'true') {
 
 $id = $_SESSION['Id'];
 
@@ -13,15 +15,18 @@ $id = $_SESSION['Id'];
 	$prize = $_POST['prize'];
 	$district = $_POST['district'];
 	$type = $_POST['type'];
-
+	$_SESSION['price'] = $prize;
+	$_SESSION['type'] = $type;
+	$_SESSION['district'] = $district;
 
 
 	$i = new UserControl();
 	$_SESSION['Permit'] = 'false';
 	$i-> SetUser($prize,$type,$district,$id);
+
+
 	header("location:../../PHP/Functions/location.html");
-	exit();
-	
+	exit();	    
 
 	}
 	else{

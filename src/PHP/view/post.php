@@ -419,17 +419,18 @@ echo'
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
 		 		echo '
 
-					<div class="card mb-3 pt-2" style="width: 100%;">
+					<div class="card mb-3 pt-2" style="width: 80%;margin:auto;">
 								  <div class="row g-0">
 								    <div class="col">
 								      <div class="card-body">
-								     	<h5 class="card-title">'.$res[$ctr]['UserName'].'</h5>
-								        <p class="card-title"><b>'.$res[$ctr]['PostTitle'].'</b></p>
+								        <h5 class="card-title"><b>'.$res[$ctr]['PostTitle'].'</b></h5>
 								        <p class="card-text">'.$res[$ctr]['Cont'].'</p>
 								      </div>
 								    </div>
-								    <div class="col">
-								     <button type="button" class="btn btn-success" onClick="deleteP('.$res[$ctr]['PostID'].')">Delete Post</button>
+								    <div class="col-2 text-light">
+								     <button type="button" class="btn text-light" onClick="deleteP('.$res[$ctr]['PostID'].')" style="height:100%;width:100%;font-size:15px;background-color:#f8481c;"><span class="material-icons">
+											delete_forever
+											</span></button>
 								    </div>
 								  </div>
 								</div>

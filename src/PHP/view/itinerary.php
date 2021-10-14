@@ -39,28 +39,24 @@ class ItemView extends ItemControl
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
 		 		 $place = $s->GetVname($res[$ctr]['Pname']);		 		 
 
-		 		echo '
-					<div class="card" style="width:180px;margin:auto;">
-					<br>
-					  <img src="'.$place[0]['img'].'" class="mx-auto" alt="..." style="width:100px; height:100px; margin:auto;">
-					  <div class="card-body">
-					        <p class="card-title"><a href="../../pages/user/place.php?nm='.$place[0]['Pname'].'&lat='.$place[0]['Lat'].'&lot='.$place[0]['Lot'].'&desc='.$place[0]['Des'].'&img='.$place[0]['img'].'&class='.$place[0]['type'].'&rating='.$place[0]['Rating'].'&address='.$place[0]['address'].'&hours='.$place[0]['hours'].'&price='.$place[0]['price'].'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.$place[0]['Pname'].'</small></b></a></p>
-					        <br>
-					        <p class=""><small class="text-muted"><span class="fa fa-star star"></span>'.$place[0]['Rating'].'</small></p>
-					        <a class="btn btn-danger" aria-current="page" href="../../PHP/controller/itinerary.php?delete='.$res[$ctr]['PlcID'].'">Remove from Itinerary</a>
-					  </div>
-					</div>
-						';
-				$pstring = '<div class="card" style="width:180px;margin:auto;">
-					<br>
-					  <img src="'.$place[0]['img'].'" class="mx-auto" alt="..." style="width:100px; height:100px; margin:auto;">
-					  <div class="card-body">
-					        <p class="card-title"><a href="../../pages/user/place.php?nm='.$place[0]['Pname'].'&lat='.$place[0]['Lat'].'&lot='.$place[0]['Lot'].'&desc='.$place[0]['Des'].'&img='.$place[0]['img'].'&class='.$place[0]['type'].'&rating='.$place[0]['Rating'].'&address='.$place[0]['address'].'&hours='.$place[0]['hours'].'&price='.$place[0]['price'].'" class="text-body"  style="text-decoration: none" ><b><small class="text-muted">'.$place[0]['Pname'].'</small></b></a></p>
-					        <br>
-					        <p class=""><small class="text-muted"><span class="fa fa-star star"></span>'.$place[0]['Rating'].'</small></p>
-					        <a class="btn btn-danger" aria-current="page" href="../../PHP/controller/itinerary.php?delete='.$res[$ctr]['PlcID'].'">Remove from Itinerary</a>
-					  </div>
-					</div>';
+				$pstring = '
+				<div class="card mb-3" style="">
+				  <div class="row g-0">
+				    <div class="col-md-4" style="margin:auto;">
+				 				<a href="../../pages/user/place.php?nm='.$place[0]['Pname'].'&lat='.$place[0]['Lat'].'&lot='.$place[0]['Lot'].'&desc='.$place[0]['Des'].'&img='.$place[0]['img'].'&class='.$place[0]['type'].'&rating='.$place[0]['Rating'].'&address='.$place[0]['address'].'&hours='.$place[0]['hours'].'&price='.$place[0]['price'].'" class="text-body"  style="text-decoration: none;" >
+
+										<img src="'.$place[0]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:70px;height:80px;">
+
+								</a>
+				    </div>
+				    <div class="col-md-8 mx-auto" style="margin:auto;">
+				      <div class="card-body">
+				        <p class="card-title">'.$place[0]['Pname'].'</p>
+
+				      </div>
+				    </div>
+				  </div>
+				</div>';
 		  $this->lat[$ctr] = $place[0]['Lat'];
 		  $this->lot[$ctr] = $place[0]['Lot'];
 		  $this->name[$ctr] = $place[0]['Pname'];
@@ -72,43 +68,61 @@ class ItemView extends ItemControl
 			$p = new ItemView();
 			$sorted = array();
 			$ctr = count($this->lat)-1;
-echo "<br>"; 
-echo "Step 1 : Show All Items in Itinerary";
-echo "<br>";        
+//echo "<br>"; 
+//echo "Step 1 : Show All Items in Itinerary";
+//echo "<br>";        
 			 for ($c=0; $c < count($this->lat); $c++) { 
-					 echo "<br>";
-					 echo  $this->name[$c];
-					 echo "<br>";
-					 echo $c;
-					 echo $sorted[$c] =  $p-> haversine($lat,$lot,$this->lat[$c],$this->lot[$c]);
+					 $this->name[$c];
+					 $sorted[$c] =  $p-> haversine($lat,$lot,$this->lat[$c],$this->lot[$c]);
 					 ;
 			 }
 			 asort($sorted);
-echo "<br>"; 
-echo "<br>"; 
-echo "Step 2 : Sort the items and use store in another array using their counter key as their array key";
-echo "<br>"; 
+//echo "<br>"; 
+//echo "<br>"; 
+//echo "Step 2 : Sort the items and use store in another array using their counter key as their array key";
+//echo "<br>"; 
 
-			 echo '<pre>',print_r($sorted),'</pre>';
+//			 echo '<pre>',print_r($sorted),'</pre>';
 
 
 			 $s = array_keys($sorted);
 
 
-echo "<br>"; 
-echo "<br>"; 
-echo "Step 3 : Sort Then Place the Array keys in another array to have access to the original items in the itinerary";
-echo "<br>"; 
+//echo "<br>"; 
+//echo "<br>"; 
+//echo "Step 3 : Sort Then Place the Array keys in another array to have access to the original items in the itinerary";
+//echo "<br>"; 
 
-			 echo '<pre>',print_r($s),'</pre>';
+//			 echo '<pre>',print_r($s),'</pre>';
 
 
+echo '
+<div class="card mb-3" style="">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img  src="https://cdn.pngsumo.com/flat-home-house-icon-transparent-png-svg-vector-house-icon-png-512_512.png" class="img-fluid rounded-start" class="img-fluid rounded-circle m-1 "  alt="" style="width:70px;height:80px;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="card-title">Current Location</p>
+        <button type="button" id="directions" class="btn btn-primary" style="font-size:8px;">Show Directions</button>
+        <button type="button" id="nodirections" class="btn btn-primary" style="font-size:8px;">Remove Directions</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+';
 $limit = count($s) -1;
 for ($i=0; $i <= $limit; $i++) {
-	 $ald = $i +1;
-	 echo "Destination #".$ald;
+	 $ald = $i +2;
 	 echo $this->place[$s[$i]];
 }
+
 
 if ($ctr == -1) {
 		echo '
@@ -117,9 +131,9 @@ if ($ctr == -1) {
 				        L.mapquest.key = "UBI3Wc0udk0csdys2DFuAJAdhxdX00E9";
 
 				        var map = L.mapquest.map("map", {
-				          center: ['.$lat.','.$lot.'],
+				          center: [14.5878,120.9690],
 				          layers: L.mapquest.tileLayer("map"),
-				          zoom:15
+				          zoom: 15
 				        });
 				         L.marker(['.$lat.','.$lot.'], {
 				          icon: L.mapquest.icons.marker(),
@@ -130,36 +144,25 @@ if ($ctr == -1) {
 
 }else{
 echo "
-   <script type='text/javascript'>
-window.onload = function () {
-    L.mapquest.key = 'UBI3Wc0udk0csdys2DFuAJAdhxdX00E9';
-
-    addDirections();
-    var directions;
-    var directionsLayer; 
-
-    function addDirections() {
-
-      directions = L.mapquest.directions();
-      directions.route({
+    <script type='text/javascript'>
+      window.onload = function() {
+        L.mapquest.key = 'UBI3Wc0udk0csdys2DFuAJAdhxdX00E9';
+        var directions = L.mapquest.directions();
+        directions.route({
         locations: [".'"'.$lat.','.$lot.'"'.",";
-			 for ($ctr=0; $ctr < count($sorted); $ctr++) { 
-						echo '"'.$this->lat[$s[$ctr]].','.$this->lot[$s[$ctr]].'",';
-					 
-			 }
+             for ($ctr=0; $ctr < count($sorted); $ctr++) { 
+                        echo '"'.$this->lat[$s[$ctr]].','.$this->lot[$s[$ctr]].'",';
+                     
+             }
 
  echo  "]
       }, createMap);
-    }
-
-    function createMap(err, response) {
-      console.log(response);
-
-      var map = L.mapquest.map('map', {
-        center: L.mapquest.util.getCenterFromBoundingBox(response.route.boundingBox),
-        layers: L.mapquest.tileLayer('map'),
-        zoom: L.mapquest.util.getZoomFromBoundingBox(response.route.boundingBox) + 1
-      });
+    function createMap(error, response) {
+          var map = L.mapquest.map('map', {
+            center: [0,0],
+            layers: L.mapquest.tileLayer('map'),
+            zoom: 0
+          });
 
       var DirectionsLayerWithCustomMarkers = L.mapquest.DirectionsLayer.extend({
 
@@ -220,19 +223,21 @@ window.onload = function () {
         directionsResponse: response
       }).addTo(map);
 
-      var narrativeControl = L.mapquest.narrativeControl({
-        directionsResponse: response,
-        compactResults: false
-      });
+          var narrativeControl = L.mapquest.narrativeControl({
+            directionsResponse: response,
+            compactResults: true,
+            interactive: true,
+            position : 'bottomright',
+            className: 'nav'
+          });
 
-      narrativeControl.setDirectionsLayer(directionsLayer);
-      narrativeControl.addTo(map);
+          narrativeControl.setDirectionsLayer(directionsLayer);
+          narrativeControl.addTo(map);
+        }
     }
-  }
     </script>
-
-
 ";
+
 
 }
 
