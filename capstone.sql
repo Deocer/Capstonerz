@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 11, 2021 at 07:33 AM
+-- Generation Time: Oct 17, 2021 at 05:38 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -39,12 +39,16 @@ CREATE TABLE `itinerary` (
 --
 
 INSERT INTO `itinerary` (`PlcID`, `PlaceName`, `UserID`, `Pname`) VALUES
-(152, 'Binondo Church', 61, 'Binondo Church'),
 (155, 'Rizal Park', 98, 'Rizal Park'),
-(157, 'DonJar Big Burgers Balut Tondo', 62, 'DonJar Big Burgers Balut Tondo'),
 (169, 'Paco Park and Cemetery', 98, 'Paco Park and Cemetery'),
-(170, 'Puerta del Parian', 61, 'Puerta del Parian'),
-(171, 'Bahay Tsinoy, Museum of Chinese in Philippine Life', 61, 'Bahay Tsinoy, Museum of Chinese in Philippine Life');
+(172, 'Rizal Park', 62, 'Rizal Park'),
+(173, 'National Museum of Natural History', 62, 'National Museum of Natural History'),
+(174, 'Manila Ocean Park', 98, 'Manila Ocean Park'),
+(176, 'Seng Guan Temple', 128, 'Seng Guan Temple'),
+(177, 'The Minor Basilica and Metropolitan Cathedral of the Immaculate Conception', 128, 'The Minor Basilica and Metropolitan Cathedral of the Immaculate Conception'),
+(179, 'Arroceros Forest Park', 131, 'Arroceros Forest Park'),
+(180, 'Paco Park and Cemetery', 131, 'Paco Park and Cemetery'),
+(182, '88 Fast Food', 131, '88 Fast Food');
 
 -- --------------------------------------------------------
 
@@ -88,7 +92,16 @@ INSERT INTO `panes` (`PaneID`, `Datum`, `PostID`, `PostName`) VALUES
 (70, '../../uploads/6156bf6b7f09f9.81483189.jpg', 99, 'deocer231'),
 (71, '../../uploads/6156bfc184b976.79804660.jpg', 101, 'deocer231'),
 (72, '../../uploads/61613b21147625.06528170.jpeg', 109, 'deocer231'),
-(73, '../../uploads/61613b21a15b11.90431850.jpg', 109, 'deocer231');
+(73, '../../uploads/61613b21a15b11.90431850.jpg', 109, 'deocer231'),
+(77, '../../uploads/6165118f56aae1.16810281.jpg', NULL, 'admin123'),
+(78, '../../uploads/6165118f81e069.34354424.jpg', NULL, 'admin123'),
+(79, '../../uploads/6165118fb86ef5.87401257.jpg', NULL, 'admin123'),
+(80, '../../uploads/616511abef45c2.89681166.jpg', NULL, 'admin123'),
+(81, '../../uploads/616512695470b9.27083179.jpg', NULL, 'admin123'),
+(82, '../../uploads/6165144da67ff8.07881188.jpg', 112, 'admin123'),
+(83, '../../uploads/616514abf1deb2.98149844.jpg', 113, 'admin123'),
+(84, '../../uploads/616514ac385742.86996472.jpg', 113, 'admin123'),
+(85, '../../uploads/616514ac566015.65252397.jpg', 113, 'admin123');
 
 -- --------------------------------------------------------
 
@@ -125,7 +138,7 @@ CREATE TABLE `places` (
   `Des` varchar(255) DEFAULT NULL,
   `Lat` varchar(255) DEFAULT NULL,
   `Lot` varchar(255) DEFAULT NULL,
-  `img` varchar(255) DEFAULT NULL,
+  `img` varchar(800) DEFAULT NULL,
   `Rating` float NOT NULL,
   `reviews` int(5) NOT NULL,
   `type` varchar(55) NOT NULL,
@@ -353,7 +366,140 @@ INSERT INTO `places` (`PlaceID`, `Pname`, `Des`, `Lat`, `Lot`, `img`, `Rating`, 
 (1813, 'X-Bistro Laboratory', '', '14.59920374', '120.9755906', 'https://lh5.googleusercontent.com/p/AF1QipMDT6pDMVXqlwLHOHIPN55DNhkhuPf0HE4pGxmw=w408-h306-k-no', 5, 12, 'Restaurant', 3, '11am-9pm', '493, 1006 Quintin Paredes Rd, Binondo, Manila, 1006 Metro Manila', 'Binondo'),
 (1814, 'Yan\'s Foodhauz & Paluto', '', '14.61386685', '120.9775099', 'https://lh6.googleusercontent.com/proxy/-SJoyP7Opt_Esb8k_W6RvIEsjIbUgWnpj20VlPvHGuEoKldatUlHpPizyp8RuCiFG0HGQt4Es9j8RiQVfG2_R3lq-Gd0Pll32eCRjjU16Htmvp9yMoODxVPepvi5nbFu_1f4sZt8hFd_J4Z40KPlBWs8eEtoFjK0jLApbpdbXejx=w426-h240-k-no', 4.1, 30, 'Restaurant', 1, '8am-10pm', 'Quiricada St, Santa Cruz, Tondo, 1003 Metro Manila', 'Tondo'),
 (1816, 'ZCT Delicious Restaurant', '', '14.60071241', '120.9813087', 'https://lh5.googleusercontent.com/p/AF1QipP9eh_smWO6ZHPC4tLA6qq5TGrQ34qIRDG33Sg_=w408-h328-k-no', 5, 2, 'Restaurant', 1, '10am-9pm', 'Zone 029, 580 F. Torres St, Santa Cruz, Manila, 1008 Metro Manila', 'Santa Cruz'),
-(1817, 'Ongpin North Bridge Arch', 'AKA the Filipino-Chinese Friendship Bridge', '14.6025120181285', '120.976719676354', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=M1n3R_P_0XlcbTNI5QfE6Q&cb_client=search.gws-prod.gps&w=408&h=240&yaw=238.94952&pitch=0&thumbfov=100', 0, 0, 'Tourist Attraction', 1, '', '762-768, 1008 Ongpin St., Binondo', 'Binondo');
+(1817, 'Ongpin North Bridge Arch', 'AKA the Filipino-Chinese Friendship Bridge', '14.6025120181285', '120.976719676354', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=M1n3R_P_0XlcbTNI5QfE6Q&cb_client=search.gws-prod.gps&w=408&h=240&yaw=238.94952&pitch=0&thumbfov=100', 0, 0, 'Tourist Attraction', 1, '', '762-768, 1008 Ongpin St., Binondo', 'Binondo'),
+(1818, '品福小火鍋pinfu hot pot', '', '14.56323444781215', '120.99842617903349', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/158698386_101699998665746_7618157256384943620_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeH1lzRf_od1mbnsvgJ4wj7323cfOIj_FQvbdx84iP8VCz3oaSCwpaBPBmeAzx__9c8jUTZqEHF7Ovm8qG70hNuF&_nc_ohc=SonPfNNIAUwAX8b9ioU&_nc_ht=scontent.fmnl6-1.fna&oh=ff55defba78bd3c8ca8c3b11f6847153&oe=6192CE22', 0, 0, 'Restaurant', 1, '11am-9pm', '2641 Arellano Ave, San Andres Bukid, Manila, 1004 Metro Manila', 'San Andres'),
+(1819, 'Yoshimeatsu Taft', '', '14.564210453194848', '120.9983248782064', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t1.6435-9/60462512_2461380160797470_836472098103754752_n.png?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeFhlHks4iSst119rC1OGHJw94llZL5lgJv3iWVkvmWAmzesxom3RRVeBJ2TH0OxXil1jdPUS7MCbXTPkmwPhSTE&_nc_ohc=BJhnmQRwg1EAX9fygfd&_nc_ht=scontent.fmnl6-2.fna&oh=41e49034638a833f79e02937905b9a8d&oe=619299F4', 0, 0, 'Restaurant', 3, '12pm-10pm', '1021 Pablo Ocampo Street, cor Arellano Ave, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1820, 'Wow! Binalot', '', '14.570592565491438', '120.99931645510524', 'http://surl.li/akull', 0, 0, 'Eatery', 2, '', '2229-B Alejo Aquino St. Singalong Manila', 'San Andres'),
+(1821, 'Vito Cruz St. Pizza', '', '14.56060407918891, ', '120.9912793349128', 'https://lh5.googleusercontent.com/p/AF1QipOz_uyJ5yDOb1HzWw5E2TO-70r54eZxDyws1qkS=w408-h510-k-no', 0, 0, 'Fast Food', 2, '10:30am-6pm', 'P Ocampo St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1822, 'Unionbank of the Philippines MALATE', '', '14.56208728028453', '120.99522660895985', 'https://lh3.googleusercontent.com/proxy/jNAxUax2M6Uz6XNjPdYZOTZXWS9LKtoBdoo6TK8qm2TxGzmZcs6QdHWuNKP3BhDk0ST-iZxOmNILMbNemL65cXWwcN9-gmMABrOxkbrJPtDx6ry0AOmnofybKdLNMKa2_DZcQlnbSxGT5tJbgIvW4_s-ndKv2EjNleDRam001O_c=w408-h306-k-no', 0, 0, 'Bank', 2, '', '952 Juan Luna St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1823, 'Uncle Cheffy Malate ', 'The hottest Veranda in Manila. Restaurant, Bar, Cafe, and Shisha lounge. Daily live band. Awesome International cuisine, dishes from over 15 countries!', '14.57449937342203', '120.98393366817302', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/192342708_4583926348304012_1260214783787551865_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeE28A0LkF1uBKoJDkvcf-4AvkNIAe0IvhS-Q0gB7Qi-FDt3kvFT7UizPfm9RWCNuM-HTDKFf780YPUSoro8CgjM&_nc_ohc=f06WHcfKZJwAX86oLsp&_nc_ht=scontent.fmnl6-1.fna&oh=346641b7fe808750555176d59355f4c7&oe=61903E17', 0, 0, 'Restaurant', 2, '7am-12am', 'Pedro Gil Street, Ermita, Manila 1000 Manila, Philippines', 'Malate'),
+(1824, 'Tuks\' Hobby Shop', '', '14.563919698722582', '120.99929047346383', 'https://lh3.googleusercontent.com/p/AF1QipNcfgmsdnqN0_L1dhLZs3fZA7xjY4Zi6vjB520P=s1600-w2436', 0, 0, 'Store', 2, '10am-7pm', '2617 Bautista St, Bgy 756, Zone 082 STA Ana, Manila, Bautista St, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1825, 'Toys for your Tots', 'We sell a wide range of educational toys and kids furniture that can boost child\'s knowledge while coupled with fun and play!', '14.56507147637788', '120.99918416337137', 'http://surl.li/akulo', 0, 0, 'Store', 2, '9am-5pm', '1078 Consuelo St, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1826, 'The New Remedios Circle Historical Marker', '', '14.570231241220908', '120.98630075468162', 'https://images.summitmedia-digital.com/spotph/images/2020/03/14/remedios-circle1-1584197163.jpg', 0, 0, 'Historical Landmark', 1, '', '1004 Remedios Circle, Malate, Maynila, 1004 Kalakhang Maynila', 'Malate'),
+(1827, 'The Aristocrat Restaurant MALATE', '', '14.568255786238758', '120.98413071180295', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.18169-9/17629904_1506187956058135_7918490522036446740_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeFmslBPCbYbJ-sWdT4v5FU_w_OXgieNAjrD85eCJ40COnhZdFUdKtb7Vz-9EQ10qGhcxUnYPf7WRDi5Fd2oYREj&_nc_ohc=Q5IN1nBinLEAX91xKxo&_nc_ht=scontent.fmnl6-1.fna&oh=2e52282d73418884a595b9de4b048282&oe=6192B6C8', 0, 0, 'Restaurant', 3, '6am-10pm', '423 San Andres St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1828, 'Tako-Motto San Andres Manila', 'Authentic Japanese taste with a Pinoy twist', '14.576272589825228', '121.01085055468182', 'http://surl.li/akulq', 0, 0, 'Fast Food', 2, '', '2155 Mabuhay St. San Andres Manila', 'San Andres'),
+(1829, 'Ta Ramen Na', '', '14.573328343622066', '121.00232248291731', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t1.6435-9/135852122_105831424795368_7139379883126694621_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeG6egGLebAxn-tLdHNIXszv2IPaGBqAD6nYg9oYGoAPqaMmvq1MhKhS-x03Q9f0ARYjNp2vmfZ3AnsprkVd5bSk&_nc_ohc=rzAyYS9vguMAX9fTdSd&_nc_ht=scontent.fmnl6-2.fna&oh=bd5425c0fab002b47068399ff534de89&oe=61923175', 0, 0, 'Restaurant', 3, '2pm-10pm', '2263 Topacio, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1830, 'Sunflower Bakery', '', '14.575480115465178', '121.00794262746513', 'https://thesunflowerbakeryandcafe.com/wp-content/uploads/2019/11/logo-newest-300.jpg', 0, 0, 'Bakery', 2, '', '1946 Florentino Torres, San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres'),
+(1831, 'St. Scholastica\'s College', '', '14.563971304370446', '120.99650502483891', 'https://ssc.edu.ph/wp-content/uploads/2013/11/St.-Cecilias-Building1-624x415.jpg', 0, 0, 'College', 1, '', '2560 Leon Guinto St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1832, 'St. Paul University Manila - Graduate Programs', '', '14.573825571092721', '120.98634907432542', 'https://s3.eu-north-1.amazonaws.com/images.free-apply.com/uni/gallery/lg/1060800138/4459c4df312b5d74c699e15e87ab835fdad5672b.jpg', 0, 0, 'University', 1, '', '680 Pedro Gil St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1833, 'St. Casimir Learning Center', '', '14.574363421587508', '121.00042850809591', 'https://img4.findglocal.com/581/552/1276800245815522.jpg', 0, 0, 'Daycare Center', 1, '', '2162 Zafiro, 798 San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres'),
+(1834, 'St. Athanasius Memorial Chapel', '', '14.572361775681635', '121.00173653122103', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX_O9aT4jKLCzJNf7qrZbPXqiJdp_4iOiQP8csoNdmQ9qfUWfoZVGTnaLgJPLqyXXrK68&usqp=CAU', 0, 0, 'Memorial Chapel', 1, '3pm-8pm', '2284 San Andres St, San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres'),
+(1835, 'St. Anthony of Padua Parish, Singalong Church', '', '14.571623712714981', '120.99571899134534', 'https://pinoybyahero.files.wordpress.com/2012/04/p1030295.jpg', 0, 0, 'Church', 1, '', '2126 San Andres, cor Angel Linao St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1836, 'Something healthy', 'When life gives you lemon .. make LEMONADE ', '14.576131146980368', '121.0047768412398', 'http://surl.li/akulr', 0, 0, 'Café', 2, '2pm-1am', '2262 road 15 corner road 5 fabie state sta.ana manila 1009 Manila, Philippines', 'San Andres'),
+(1837, 'SM Hypermarket Adriatico', '', '14.563806838595438', '120.99003192300819', 'http://www.whiteportinc.com/wp-content/uploads/2016/07/01_SM-HYPERMART-ADRIATICO-MALATE.jpg', 4, 370, 'Supermarket', 1, '', 'SMDC Condominium (Formerly Harrison Plaza), M. Adriatico St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1838, 'Sky Garden By The Bay Restaurant', 'The very first outdoor-garden samgyupsal place in the Metro! With the most delightful view and best Korean-Filipino cuisine are here with us.', '14.559411920875727', '120.984884226033', 'https://b.zmtcdn.com/data/pictures/0/18525850/bdd03b21f42ed833fa849661a023201e.jpg?fit=around|750:500&crop=750:500;*,*', 4.3, 249, 'Restaurant', 3, '11am-10pm', 'Metro Manila, Manila, Malate, PH Metro Manila Manila Brgy 719 Zone78 Trellis 2 Asean Promenade', 'Malate'),
+(1839, 'Singalong Seventh-day Adventist Church', '', '14.572257359426192', '120.99880516826744', 'https://lh3.googleusercontent.com/p/AF1QipPKmjlF2FdFh7D6gIoJ_OnZmsnua6jrYEWkLSxh=w1024-k', 0, 0, 'Church', 1, '', '2109 Taal, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1840, 'Silong Restobar', '', '120.98271086817316', '14.57913693969482', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t31.18172-8/25542453_153732462018797_1651833571241701019_o.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeHPc2oymDPdr2tNrsWXs0-GgFPmXWD9mTSAU-ZdYP2ZNEJWC8wyCryFwwgR3nCi9ka_H-Eofsz7iYI2r6iqgMWd&_nc_ohc=GEjXlChfqdQAX-KQUXk&_nc_ht=scontent.fmnl6-2.fna&oh=6aef3b130bd73822fc9d7e49acf0660a&oe=6190704D', 0, 0, 'Restaurant', 2, '11am-12am', '1199 Ma. Orosa St, Ermita, Manila, 1000 Metro Manila', 'Malate'),
+(1841, 'Sibs Next Door', '', '14.569941465655411', '121.00022781022908', 'https://lh5.googleusercontent.com/p/AF1QipOk_f8IuLEg9Loa0K1O4_C04I1tZiljVPVz0X7S=w408-h306-k-no', 0, 0, 'Restaurant', 2, '1-11pm', '2333 G.Del Pilar, San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres'),
+(1842, 'Sedum Tea', '', '14.573557754985787', '121.00751309973393', 'https://lh5.googleusercontent.com/p/AF1QipMYW4thZXf7L7QO5A0KwcLGDAamss0saUj3Vb9O=w408-h288-k-no', 5, 1, 'Café', 2, '10am-8pm', '2458 1017 Oro-A, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1843, 'Savemore Pedro Gil', '', '14.577590541528958', '120.99192713075364', 'https://lh5.googleusercontent.com/p/AF1QipNFqnmmeFGJKd3V4PBwu6KUHMODnAziDGY68QLI=w1080-k-no', 0, 0, 'Supermarket', 1, '', 'Pedro Gil St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1844, 'SASES Basketball Court', '', '14.57166627212572', '121.00066044382292', 'https://ph.top10place.com/img_files/878210705547738', 0, 0, 'Basketball Court', 1, '', 'Perlita, San Andres Bukid, Maynila, Kalakhang Maynila', 'San Andres'),
+(1845, 'Santisima Trinidad Parish Church', '', '14.566629930637196', '120.9993333888061', 'https://www.schedules.ph/wp-content/uploads/2020/04/Santisima-Trinidad-Parish.jpg', 0, 0, 'Church', 1, '8am-5pm', '1127 Estrada St, San Andres Bukid, Manila, 1000 Metro Manila', 'San Andres'),
+(1846, 'Sancent Scullery', '', '14.574935756630316', '121.00206638277797', 'http://surl.li/akult', 0, 0, 'Restaurant', 2, '', '1649, 1017 Diamante, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1847, 'San Andres Sports Complex', '', '14.569115182512947', '120.98747458589409', 'https://lh5.googleusercontent.com/p/AF1QipN8rbvnYsfwjQBmJKK97r-dE1alot-UhpcWj7bq=w408-h306-k-no', 4.1, 16, 'Sports Complex', 1, '', '704, Malate, Manila, 1004, Metro Manila', 'Malate'),
+(1848, 'San Andres Public Market', '', '14.56983421864563', '120.98902155389585', 'https://lh5.googleusercontent.com/p/AF1QipMi5ZdP7_o1m2pZdR-nteYhypOZG3Lclxk-Eqqj=w452-h240-k-no', 0, 0, 'Market', 1, '', 'Leveriza St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1849, 'Samgyupkana - Malate Main Branch', 'Samgyupkana is here to take Korean BBQ-lovers to your happiest place with three kinds of meat to choose from and side dishes that will surely whet your appetite!', '14.570766917136247', '120.98595661228623', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t1.6435-9/86479054_2974240099273614_3946999860405731328_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeERKkTHuFmxT71qIzoW7VQPsFWjGgIy5p6wVaMaAjLmnuLhoHoJ6yqVsqFDEBlebYsh3GR_yUxNJD5g_N2TBSQS&_nc_ohc=gV624h1PoLMAX-Z8hi4&_nc_ht=scontent.fmnl6-2.fna&oh=8746feee3ebaabbf612bf637d55e8ec9&oe=6190C03B', 0, 0, 'Restaurant', 2, '11am-12am', '1776 Adriatico Street 1004 Manila, Philippines', 'Malate'),
+(1850, 'Salud\'s Bakery & Grocery', '', '14.568414663343097', '120.98919136678674', 'http://surl.li/akulx', 0, 0, 'Bakery', 1, '', '2089 Leveriza St, Malate, Manila, 1002 Metro Manila', 'Malate'),
+(1851, 'Rizal Memorial Tennis Court', 'Rizal Memorial Tennis Court is a private tennis establishment located at Adriatico St, Manila, Metro Manila, Philippines. There are 6 private tennis courts at this tennis facility. ', '14.563103915416159', '120.9914122643889', 'https://fastly.4sqi.net/img/general/600x600/214841266_h_oAlqRyOhLElEDzl5EoEe7Znxr8A5-OQwM1vSKPQE0.jpg', 0, 0, 'Tennis Court', 1, '', '1004 M. Adriatico St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1852, 'Rizal Memorial Sports Complex', '', '14.56381', '120.990623', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Rizal_Memorial_Sports_Complex_birdseye.jpg/413px-Rizal_Memorial_Sports_Complex_birdseye.jpg', 0, 0, 'Sports Complex', 1, '', '1750 M. Adriatico St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1853, 'Rizal Memorial Coliseum', '', '14.56182682768421', '120.99413391207433', 'https://upload.wikimedia.org/wikipedia/commons/3/39/Rizal_Memorial_Coliseum_-_sign_%28Malate%2C_Manila%3B_11-23-2019%29.jpg', 0, 0, 'Stadium', 1, '', 'Ocampo St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1854, 'RELX San Andres Manila', '', '14.571553371162977', '121.00325206817308', 'http://surl.li/akume', 0, 0, 'Store', 2, '', 'Zafiro St 1009 Manila, Philippines', 'San Andres'),
+(1855, 'rapsa corner', '', '14.5752030720204', '121.00510372584561', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t1.6435-9/234512188_105185671886489_2459391043724616135_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeFM1X9GzOXDpS7uDkaaFlzubbZQ9lLvXeNttlD2Uu9d4zcj9kuhTswb2XWa_pf4BSnBk7IrEz2Sg-0AJG_o1WB-&_nc_ohc=QcWABax9oFkAX_b3RII&_nc_ht=scontent.fmnl6-2.fna&oh=78690ecc7bb8e709fc6f49c570939a20&oe=6191C552', 0, 0, 'Restaurant', 2, '', 'A. Francisco, Mercurio St. San Andres Bukid, Manila', 'San Andres'),
+(1856, 'Ramon Magsaysay Center', '', '14.571835024490909', '120.982073821933', 'https://bluprint.onemega.com/wp-content/uploads/2018/05/RM-Center-feat.jpg', 4.2, 180, 'Tourist Attraction', 1, '', 'Quintos St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1857, 'Quirino Bakery', '', '14.572226780479628', '120.9971973543739', 'https://lh4.googleusercontent.com/proxy/_N6zL15qKWD77F-erdmKlO96rQfyMN8tIGdmurWXPcyQc65hi6mMeIOCDtSz-EF5vqBSRd52YKe-07KrlgtZmqqhiFy8N-IErGIpKJkX1lA1_832Sx6cKAI7i6oWIjjI9ZWXZY12zME5n1dKG8Ux0WJt3nuNfpTkUAQLvvWZu-V0=w426-h240-k-no', 0, 0, 'Bakery', 1, '6am-9pm', '1232 San Andres St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1858, 'Qualitea Milk Tea San Andres Malate', '', '14.572208373531428', '120.99797172584556', 'http://surl.li/akumb', 0, 0, 'Store', 2, '', '2113 San Andres St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1859, 'Puregold - San Andres', '', '14.570430968631726', '120.98893654793802', 'http://photos.wikimapia.org/p/00/01/43/21/23_big.jpg', 0, 0, 'Supermarket', 1, '9am-9pm', '673 San Andres St, corner Leon Ma Guerrero Street, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1860, 'Puchu Bikes', '', '14.572791238628305', '121.00054188388226', 'http://surl.li/akuma', 0, 0, 'Store', 3, '9am-6pm', '1427 San Andres St, San Andres Bukid, Manila, 1017 Metro Manila', 'Malate'),
+(1861, 'Premier The Samgyupsal', 'Korean BBQ dishes are served in a warehouse-style restaurant with tabletop grills.', '14.57150743757985', '120.98430753776411', 'https://b.zmtcdn.com/data/pictures/chains/8/18160128/52aa9025a9c08befca854b7f8f9012f5.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*', 0, 0, 'Restaurant', 3, '24hrs', 'PH Metro Manila Manila Malate 1720 Mabini Street, Cor Alonzo St, Malate, Manila, Metro Manila', 'Malate'),
+(1862, 'Pot Pot Bulalohan', '', '14.56541342152632', '121.00009126131413', 'https://lh5.googleusercontent.com/p/AF1QipM3ypax82t_ZgRH59pRRh_t3juqOvXB_FnhhogY=w1080-k-no', 0, 0, 'Restaurant', 2, '11am-10pm', '2571 Dian Street, Consuelo St, San Andres Bukid, Manila, 1014 Metro Manila', 'San Andres'),
+(1863, 'PNB MANILA-CENTURY PARK HOTEL', '', '14.56135420966174', '120.98998184425854', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=mE29AwDeKfy2F5vgPImeGQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=165.43687&pitch=0&thumbfov=100', 0, 0, 'Bank', 2, '10am-5:30pm', 'G/F Century Park Hotel P. Ocampo cor. M. Adriatico Sts Malate Manila City, 1004 Metro Manila', 'Malate'),
+(1864, 'Ping Yang Hot Pot and Dimsum Restaurant', 'PingYangHotPot - Best HOTPOT/SHABUSHABU in town,Corner J NAKPIL&ADRIATICO ST MALATE. Open for more than 30 years and still going strong!', '14.571423627826062', '120.98557820486384', 'https://10619-2.s.cdn12.com/rests/original/803_184157997.jpg', 0, 0, 'Restaurant', 3, '10am-10pm', '556 J Nakpil Street Corner Adriatico Street 1004 Manila, Philippines', 'Malate'),
+(1865, 'Philippine Women\'s University', '', '14.574598926156122', '120.98973851324858', 'https://static1.eyellowpages.ph/uploads/yp_business_photo/photo/360192/large_PWU.jpg', 0, 0, 'University', 1, '', '1743 Taft Ave, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1866, 'Philippine Christian University', '', '14.576025144369057', '120.9886859107724', 'https://lh3.googleusercontent.com/p/AF1QipMQfwQTrKsYfzp5QdLb7j6YN9vlFZuYOmuLOf3a=w1024-k', 0, 0, 'University', 1, '', '1648 Taft Ave, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1867, 'Pepper\'s Platter', 'Your ultimate comfort food!', '14.575178014297498', '121.00474765407941', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t39.30808-6/227495732_109995457996641_8550011432424685045_n.png?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeF1A-A7-J-t_0ln7YQcDRZDfpp8iywCgUB-mnyLLAKBQLQYHjZjUF7EybmlXUGXxrOD6URI7imO79vtnry_aESg&_nc_ohc=_5aLN6H-V5MAX_IQv4A&_nc_ht=scontent.fmnl6-2.fna&oh=01239b261b35f929cc3bc3bdb8169a98&oe=616FFFF1', 0, 0, 'Restaurant', 2, '', '2290 Raymundo San Andres Bukid, Manila', 'San Andres'),
+(1868, 'Paydaze Clothing', '', '14.573809266608476', '120.99978758479004', 'https://img4.fashiongloba.com/426/328/372692174263284.jpg', 0, 0, 'Clothing Store', 2, '', '1516B Aviadores, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1869, 'Paraiso ng Batang Maynila', '', '14.566320688568284', '120.98919014085749', 'http://images.metronewscentral.net/izGDYq1usi6-paraiso-ng-batang-maynila.jpg', 0, 0, 'Park', 1, '', 'Quirino Ave, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1870, 'PALACIO DE MAYNILA', '', '14.570692812221528', '120.98270682327112', 'http://palaciomaynila.com/images/Home_image.jpg', 0, 0, 'Tourist Attraction', 1, '', '1809, 1813 M. H. Del Pilar St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1871, 'Pablo Ocampo Monument and Historical Marker', '', '14.5610649150141', '120.99227851275369', 'http://photos.wikimapia.org/p/00/08/41/49/31_big.jpg', 0, 0, 'Historical Landmark', 1, '', '1004 M. Adriatico St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1872, 'Our Lady of the Assumption Parish - Malate', '', '14.566430357276863', '120.9900043004528', 'https://www.schedules.ph/wp-content/uploads/2020/04/Our-Lady-of-the-Assumption-Parish-Malate-750x600.jpg', 0, 0, 'Church', 1, '', 'Leveriza St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1873, 'Ospital ng Maynila Medical Center', '', '14.564253971457779', '120.98641813144202', 'http://images.metronewscentral.net/8tD654ml599-new-ospital-ng-maynila.jpg', 0, 0, 'Hospital', 3, '24hrs', '719 Quirino Avenue, corner Roxas Blvd, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1874, 'Ortega Sports Complex', '', '14.574322512844724', '120.99732618361907', 'https://lh5.googleusercontent.com/p/AF1QipO4RTjJr9PODahYpsbtncCpMw4wNakRSpUr9U-b=w408-h306-k-no', 0, 0, 'Basketball Court', 1, '', 'Texas, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1875, 'Original Pares Mami House', '', '14.572557942949663', '121.00170704937466', 'https://lh4.googleusercontent.com/proxy/D8QMQ_yfNqHpt_-ly4R3AU2G_l_v3m9vBZytqujgMIcgama17GKeafVGI7LaFAZgHWeNrEcDiu2NtZQqiNtrD0P0csEASfsmnh2CWhMaCd5_SrA6odR_OvAM4aHhNnx63Io63P5G0qvwarsgX6cwuE99WVUqWG8Cpc0MCA6SE1yG=w426-h240-k-no', 0, 0, 'Restaurant', 2, '24hrs', 'San Andres Ext, 805 San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres'),
+(1876, 'Onyx Day Care and Learning School', '', '14.575720415497747', '121.00174208246138', 'https://monetdt.tripod.com//sitebuildercontent/sitebuilderpictures/onyxlogo.jpg', 0, 0, 'Daycare Center', 1, '', '2155 Onyx, Santa Ana, Maynila, Kalakhang Maynila', 'Sta. Ana'),
+(1877, 'Nok-Nok Fried Flavored Chicken', '', '14.568168774476698', '121.00399070572315', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t1.6435-9/117283044_649834052299952_3770529161673755722_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeG0yNoqXHdPJBAwIKveB7THhjeadnprmCWGN5p2emuYJXfSprRXYDxnY_Rv69eS000EVxnsnrDWUX4v52ZfdsjJ&_nc_ohc=mcNjhKeZ3c0AX9mKuzi&_nc_ht=scontent.fmnl6-2.fna&oh=e755ccac376899bb1ac4e547568332be&oe=61909F98', 0, 0, 'Restaurant', 2, '', '2540 Opalo, San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres'),
+(1878, 'Ninoy Aquino Stadium', '', '14.564337728881036', '120.99129170276719', 'https://lh5.googleusercontent.com/p/AF1QipP8BBCmphmQKY3N8MqpjPTG9db6UajPqSq5lLCV', 0, 0, 'Arena', 2, '', 'Rizal Memorial Sports Complex, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1879, 'Nanay Mely\'s Kitchenette', '', '14.575963850725213', '121.00584726210752', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/fr/cp0/e15/q65/120284411_186142979797671_4176067578709641170_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_eui2=AeGwHFsQFP6fbcFb-IDIpTGdz98GJa7-CPTP3wYlrv4I9EkkzHWI2KFHqHTMJkot8Ja9Ud2acA4o6dR9p6aC2ipO&_nc_ohc=YtlzkvzRpqcAX-lXIqm&_nc_ht=scontent.fmnl6-1.fna&oh=1ad3cf45d61d702f9f0fbe2695caf3cb&oe=618F6C33 http://tny.im/q8x', 0, 0, 'Restaurant', 2, '9am-2pm', '1840 Tenorio Street, Agusto Francisco, Santa Ana, Manila, Metro Manila', 'Sta. Ana'),
+(1880, 'Museum of Contemporary Art and Design', 'College gallery for modern art housing innovative exhibits, workshops & avant-garde pieces.', '14.562737082846686', '120.9966224908128', 'https://sothebys-com.brightspotcdn.com/dims4/default/683fdea/2147483647/strip/true/crop/4096x2458+0+0/resize/800x480!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2Feb%2F21%2F7a45a6b6465682c7b11310b15553%2Fmcad-manila.jpg', 0, 0, 'Museum', 1, '', 'Ground Floor, Benilde School of Design and Arts Campus, Dominga Street, Malate, Maynila, 1004 Kalakhang Maynila', 'Malate'),
+(1881, 'Mob Bang Café', 'COFFEE | MILK TEA | TAKOYAKI | FOOD TRIP All you need in one place!', '', '', 'https://scontent.fmnl8-1.fna.fbcdn.net/v/t1.6435-9/116875052_325180432184679_5542338540515589137_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=e3f864&_nc_eui2=AeGg1m6-A51XUaDHyPn7H7ea4d7tAYshmCDh3u0BiyGYIGHoJMFW7Btx1hIq7efOuMRayyMN3BhJwQsYCy569333&_nc_ohc=ujYrm9Mbvw0', 0, 0, 'Café', 2, '10am-8pm', '2223, 1004 Fidel A.Reyes, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1882, 'Mj\'s Cafe Bar', '', '14.569493649203741', '120.98313985614745', 'https://b.zmtcdn.com/data/pictures/2/6311972/bae35e6f8550d44591eb42f1daf6fcb9_featured_v2.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*', 0, 0, 'Café/Bar', 3, '9am-9pm', 'Roxas Boulevard, Malate, Baypark, Manila City, 1004 Metro Manila', 'Malate'),
+(1883, 'MGC Eatery', '', '14.570095888133283', '120.98787772235968', 'https://scontent.fmnl4-2.fna.fbcdn.net/v/t1.6435-9/cp0/e15/q65/s320x320/72267829_114202699989738_646285006297104384_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=dd9801&efg=eyJpIjoiYiJ9&_nc_eui2=AeHxETHA27jav3ixSMvtfXN5Xgkv9hAEP3xeCS_2EAQ_fE2vliLPEKEMNjBed5TW-jWw-XSd', 0, 0, 'Eatery', 1, '', '1671 Maria Orosa St, Bgy 698, Zone 076 Malate, Manila', 'Malate'),
+(1884, 'Metropolitan Museum of Manila', 'Built in 1976, this museum features contemporary Filipino art, plus some historical artifacts.', '14.562315712347715', '120.98650425355697', 'http://ikotmnl.com/wp-content/uploads/2018/11/Vito-Cruz-4-Metropolitan-Museum-of-Art-and-Design-Manila.jpg', 0, 0, 'Museum', 1, '', 'BSP Complex, Roxas Blvd, Malate, Manila, Metro Manila', 'Malate'),
+(1885, 'Mercy\'s Eatery', '', '14.568178485939349', '120.99644168977038', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=e49HJ6kir0T7nylKtcRqvQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=131.05612&pitch=0&thumbfov=100', 0, 0, 'Eatery', 1, '', '2254-2205 Cong. A. Francisco, Malate, Maynila, 1004 Kalakhang Maynila', 'Malate'),
+(1886, 'MANZ Pet Supply', '', '14.57038495475009', '121.00515385643469', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/119126264_3333156080099994_5060875594443687292_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeE4eJ1u1u8oTm1xSKxryyDY4tXSA_bw56bi1dID9vDnpr5p3dKpM9BdMGmPs49NslZifNb4PXYWD5_4JxK3dOaz&_nc_ohc=QaugNkPvGAYAX_Kxqfc&_nc_ht=scontent.fmnl6-1.fna&oh=4e154b4db77f45d54ecefc71096e5948&oe=61902336', 0, 0, 'Store', 2, '7:30am-8pm', '2502 Alabastro St. Cor. Sagrada Familia St, San Andres Bukid Manila, Manila, 1017 Metro Manila', 'San Andres'),
+(1887, 'Manuel Acuña Roxas Monument and Historical Marker', '', '14.573370438883204', '120.98108158351799', 'https://2.bp.blogspot.com/-IHoWDG27jQ8/WORh-3hmupI/AAAAAAAABNc/tD4ByzIhosQnPrv91KhxxnKfszY8WFwEwCLcB/s1600/Remembering%2BManuel%2BManoling%2BRoxas.jpg', 0, 0, 'Historical Landmark', 1, '', '517 Roxas Boulevard, Malate, Maynila, 1004 Kalakhang Maynila', 'Malate'),
+(1888, 'Manila Vice', '', '14.569723386194129', '120.98298521743135', 'https://www.flickr.com/photos/69261971@N00/542042809', 0, 0, 'Bar', 3, '4pm-4am', 'Across, Roxas Blvd, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1889, 'Manila Fitness', '', '14.57184493866859', '121.00269126817308', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/67474317_1768912526544937_4234453281268563968_n.png?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeFDVlWP5MJUX_QpLolItmvGHvND0RoQo68e80PRGhCjr5jlWXIJo2HSa7XGEgbuAGAHhUDJA_UQHFEho00YkFak&_nc_ohc=2B57E04ErHgAX8sxNEt&_nc_ht=scontent.fmnl6-1.fna&oh=d7dac7f2a5d972159abf96995692d6e8&oe=61921A47', 0, 0, 'Gym', 2, '', '2335 Zafiro St., San Andres 1017 Manila, Philippines', 'San Andres'),
+(1890, 'MANGCHAI CAFE', '', '14.573022658768979', '121.0029513449852', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/201313822_1308210916247434_5206611675129878556_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeHb7cDP7F7kzUcrkV4AxOQcfMsYBoIVtlF8yxgGghW2UU7qVPO0m38wW7hmf3L5uN37iF58lN0bzOmcHrd9AnXi&_nc_ohc=XcP341Err7cAX8MNYzP&_nc_oc=AQl2T8sV1UvyQIXLXEhV5N5LBcjITlx-VULxwdrCpGnZG9zTcQJ0JiIIvB8QZxXZasY&_nc_ht=scontent.fmnl6-1.fna&oh=6d8a98ba9757eb4026a7c47dc4745a35&oe=6191A81F', 0, 0, 'Café', 2, '10am-9:30pm', '1624 Agusto Francisco, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1891, 'Malate Catholic School', '', '14.568623720040975', '120.98629861531502', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/05592jfMalate_Catholic_School_Barangays_Streets_Buildings_Manilafvf_03.jpg/220px-05592jfMalate_Catholic_School_Barangays_Streets_Buildings_Manilafvf_03.jpg', 0, 0, 'School', 1, '', '2115 Madre Ignacia St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1892, 'Lugawan ni Mang Kanor', '', '14.567850616466895', '120.9963895727139', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=f_Tkhm7_duPJJ1e-lHyF7A&cb_client=search.gws-prod.gps&w=408&h=240&yaw=102.42987&pitch=0&thumbfov=100', 0, 0, 'Eatery', 1, '7am-9pm', '1149 F. Torres Singalong Zapanta, Malate, Maynila, 1004 Kalakhang Maynila', 'Malate'),
+(1893, 'Lugaw One Project', '', '14.56906246751985', '121.0018979657182', 'https://lh5.googleusercontent.com/p/AF1QipOS56dglbS5Z3NfRM4fk4hzDsRF02WcgCQ71bq-=w408-h306-k-no', 0, 0, 'Restaurant', 1, '', '2414 Perlita, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1894, 'Landbank Plaza MALATE', '', '14.57267428636942', '120.98276432908361', 'https://lh5.googleusercontent.com/p/AF1QipPSD4ZoJhbdcPGcEyHigIjnIFLJLgXSjo5xIrRz=w426-h240-k-no', 0, 0, 'Bank', 2, '', '1598, 1004 M. H. Del Pilar St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1895, 'Lala\'s Pizza', '', '14.56789096965601', '120.99699413027979', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=4ZFA9KQa_p18MPoe8yF8ww&cb_client=search.gws-prod.gps&w=408&h=240&yaw=95.7485&pitch=0&thumbfov=100', 0, 0, 'Fast Food', 2, '', 'Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1896, 'KALOSph MANILA', '', '14.568588224938761', '121.00306927543123', 'https://lh5.googleusercontent.com/p/AF1QipPlRZ5vlapGGdPx6Bf2jP3GRo18tJGydj_C8SlW=w408-h306-k-no', 0, 0, 'Clothing Store', 2, '9am-6pm', '1391 Sagrada Familia St, corner Agata, Santa Ana, Manila, Metro Manila', 'San Andres'),
+(1897, 'Kain Na Chinese Carinderia', '', '14.563667298573991', '120.99951218293724', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t1.6435-9/47393164_305936060257538_8664443753370484736_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeFmyOr8A1Q9GIUngDorv39iUE3KxjneV9dQTcrGOd5X17Ed_maxRcakHcnp67MYvFGY2qRPKFr2mUZUgRHWv00H&_nc_ohc=N-eVvW83q-YAX-IKZvx&_nc_ht=scontent.fmnl6-2.fna&oh=ec3d446138ec2c080996a08602ca9ca6&oe=619217B2', 0, 0, 'Fast Food', 2, '8am-3pm', '2637 Bautista Cor a Roxas St, Santa Ana, Manila, 1009 Metro Manila', 'Sta. Ana'),
+(1898, 'JUNA Luxury Lounge', '', '14.570147299551438', '120.98285916367928', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/123194795_191686902455833_4218614733714414918_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeGzdc6_np7oaADQ5tfAgz6otTBhPaC1fwe1MGE9oLV_B1oH2k5oinmOF3dahygUdtxtV9m_uuolVd0IFspWTJn2&_nc_ohc=VuVM9r1HbDsAX-4wC9A&_nc_ht=scontent.fmnl6-1.fna&oh=a2c115d0b65d00b3adfa1fb35fc1a039&oe=618F944A', 0, 0, 'Bar', 3, '7pm-3am', 'PH, 1140 Roxas Blvd, Malate, Manila, 1000 Metro Manila', 'Malate'),
+(1899, 'Jose P. Laurel Monument and Jose P. Laurel Historical Marker', '', '14.572985540829896', '120.98131425468176', 'http://gallery.freeworldcreations.com/images/ManuelAcunaRoxas_495_2.jpg', 0, 0, 'Historical Landmark', 1, '', '517 Roxas Blvd, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1900, 'Jim\'s Pares & Mami', '', '120.98638122446583', '14.572472033034247', 'https://cdn.rcimg.net/rapsantos/images/c1430710/58ea207521cc9edebaca105671117c81.jpg', 0, 0, 'Restaurant', 3, '', '1739 Maria Orosa St, Malate, Manila, 1004 Metro Manila, Philippines', 'Malate'),
+(1901, 'Jeny Store', '', '14.567418375014347', '120.98982576774752', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=BiXjnlic8GzzTAXvg8gNpQ&cb_client=search.gws-prod.gps&w=408&h=240&yaw=214.154&pitch=0&thumbfov=100', 0, 0, 'Convenience Store', 1, '', '2164 Leveriza St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1902, 'Jaz Rock Burger Aviadores', 'We offer mouth watering Burgers, Fries, Sandwiches, Nacho, Quesadilla, Pasta, Shakes, Chills etc', '14.57462710137906', '120.9997625270543', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/118234828_100174091825070_4715749954078890686_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeFJrHoFxQP8aFVkSZAB51v69MU4aF8w7-v0xThoXzDv6w0-aLwxgejoPg43dI26y7wYQ8I_0uIp8YzhwikvurFF&_nc_ohc=7Prmj4PUsr0AX-L1AQA&_nc_ht=scontent.fmnl6-1.fna&oh=59dfdcefc02a48b866927e7fb32fc50c&oe=6190EB07', 0, 0, 'Restaurant', 2, '3am-1am', '1564 Aviadores, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1903, 'J. Lunar\'s Bakery', '', '14.573435082328968', '120.9972661902526', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t1.6435-9/37370025_1572926749484969_918434573921026048_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeGmkuK-zHtstzgYWNqVnebHGuWgu_8KRTUa5aC7_wpFNRdNeMLjGTamvFrS-wYR7D4bmpDAjLtcnQtAKolnbKu-&_nc_ohc=BFbTiCu9Vu0AX-3knYt&_nc_ht=scontent.fmnl6-2.fna&oh=c20661ba5f53f3bd13b7e8a5396aaa2d&oe=61914325', 0, 0, 'Bakery', 1, '', '2034 F. Munoz St, Malate, Manila, 1000 Metro Manila', 'Malate'),
+(1904, 'J & D Snacks & Goodies Hub', '', '14.566403328461618', '121.00257653082602', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t31.18172-8/27368634_144772972843715_5931336894504088861_o.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeFaz4Ht6sAufjvjCRRaIMK35BvTV2voJVzkG9NXa-glXOjACPN0Rqui-vWHGDBMOgMLGCcmANj5_UJFj4obxKIA&_nc_ohc=kkV9fKJD25oAX8987f5&_nc_ht=scontent.fmnl6-2.fna&oh=cba3c53d078180532eb5b891247cc729&oe=618F7ED6', 0, 0, 'Store', 2, '12pm-9:20pm', '1303 Lemery st. Vito Cruz ext. Cor, Osmeña Hwy, Manila', 'San Andres'),
+(1905, 'Ignacio Villamor Senior High School', '', '14.576235047040754', '121.0085451865514', 'https://lh3.googleusercontent.com/p/AF1QipMinwjYKvwBj-4eg7sxM_Tatp7GFEUWfviD7sss=s1600-w400', 0, 0, 'School', 1, '', '2150 San Andres Ext, San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres'),
+(1906, 'Hungree Burgers Zobel', '', '14.567397890455107', '121.00435771611176', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t31.18172-8/30921747_1000827060069074_5370635429496008262_o.png?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeG_skvAb31glJgA2aHn0Dk_gcuJ6AdFeQ2By4noB0V5DbuTqNDp7fnC6zCyuKWuPDgw2H5Fgx118xmqbSdW8ycn&_nc_ohc=Chu0xDbAs0wAX9OpiDO&_nc_ht=scontent.fmnl6-2.fna&oh=1a0a93c39748c221a40eaf6772a1bd0b&oe=61929FC4', 0, 0, 'Fast Food', 2, '', '1421-B Zobel Roxas St, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1907, 'Holy Family Parish Church', '', '14.572455415597913', '121.00745084524844', 'https://brideworthy.libpx.com/images/public/churchbanners/churches_1457272923_8793_4756.jpg?upscale=false&width=1024&height=768&signature=72c3e7aae15b5180c9155544198bcea2a28bb96b', 0, 0, 'Church', 1, '', 'Sagrada Familia, San Andres Bukid, Maynila, Kalakhang Maynila', 'San Andres'),
+(1908, 'HGHMNDS MALATE', '', '14.56561229955441', '120.99812103031785', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.18169-9/21764840_1468685749834096_6271107100823762421_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeGkKx2dScuxe1uMcxAtGdGEkAY5o2pTbs2QBjmjalNuzXsK-mz_YQaWxA7OhKoSDtZjB8b2S-UCqYuj9_ebcL-e&_nc_ohc=6msCVHgpfvYAX9TFyH0&_nc_ht=scontent.fmnl6-1.fna&oh=52b0feffc9d56af07834795a7f4c62a9&oe=618FCFF0', 0, 0, 'Store', 3, '10am-7pm', '1049 Unit 3C, Ayala Street corner Manila City PH, Arellano Ave, Malate, Manila, Metro Manila', 'Malate'),
+(1909, 'Harbour Square', 'Harbour Square is a compound with a collection of restaurants, bars and cafes. A perfect place to have dinner or coffee after attending shows from the Cultural Center of the Philippines (CCP), Folk Arts Theater or even Aliw Theater.', '14.558819795603053', '120.98410726940175', 'http://photos.wikimapia.org/p/00/00/57/08/32_big.jpg', 4.3, 1151, 'Park', 1, '', '1202 Bukaneg St, Malate, Manila, 1307 Metro Manila', 'Malate'),
+(1910, 'Hanzala Rice And Halal Chicken Store', '', '14.57182378324779', '121.00399514360187', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=yfcn_1F_BHI9EBMmj9OGAA&cb_client=search.gws-prod.gps&w=408&h=240&yaw=200.65224&pitch=0&thumbfov=100', 0, 0, 'Restaurant', 2, '', '2389 Topacio, San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres'),
+(1911, 'gratuiTEA', '', '14.568157437966464', '121.00303413613722', 'https://lh5.googleusercontent.com/p/AF1QipNWywCN3hZmTcGRMHhY_RUfjEkuJc0jM8Y_QEbc=w408-h306-k-no', 0, 0, 'Bubble Tea Store', 2, '3pm-9pm', '2502 Madre Perla, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1912, 'GRAIL MANILA Clothing Store', '', '14.569694850025169', '121.00050139555317', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=Puxo3VyC-TQn_K9SRgx-Zg&cb_client=search.gws-prod.gps&w=408&h=240&yaw=67.909904&pitch=0&thumbfov=100', 0, 0, 'Store', 2, '', '2342 G.Del Pilar, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1913, 'GDeng\'s Tapsilugan', '', '14.574531293819172', '121.0042596606333', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=eQVuJ8tCXltZQaeP-pf3lg&cb_client=search.gws-prod.gps&w=408&h=240&yaw=317.18765&pitch=0&thumbfov=100', 0, 0, 'Eatery', 1, '', '1729 Radium St, cor Agusto Francisco, San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres');
+INSERT INTO `places` (`PlaceID`, `Pname`, `Des`, `Lat`, `Lot`, `img`, `Rating`, `reviews`, `type`, `price`, `hours`, `address`, `District`) VALUES
+(1914, 'Gabinete\'s Eatery', '', '14.570338353420473', '120.98775587976205', 'https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=FYdHBwmGyu2RIAuORWG2Xw&cb_client=search.gws-prod.gps&w=408&h=240&yaw=260.42587&pitch=0&thumbfov=100', 0, 0, 'Eatery', 1, '', '1695 MA Orosa St Cor Malvar St, Bgy 698, Zone 076 Malate Manila', 'Malate'),
+(1915, 'Fo Guang Shan Mabuhay Temple', 'Fo Guang Shan Mabuhay Temple offers free meditation sessions, lectures and other activities that nourish the mind and body.', '14.560591678834088', '120.99190686840637', 'https://www.travelmyglobe.com/images/Uploaded/philippines/Philippine_Fo%20Guang%20Shan1.jpg', 0, 0, 'Church', 1, '9am-9pm', '656 Ocampo St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1916, 'Evan\'s Goto', '', '14.569363373667287', '120.9879444546817', 'https://d1sag4ddilekf6.azureedge.net/compressed/merchants/2-C2LBLULVVUKAR2/hero/3c35f3fd0f034efba3664df5083023b2_1614154582720165061.jpeg', 0, 0, 'Fast Food', 1, '', '620 San Andres St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1917, 'Ellinwood Malate Church Historical Marker', '', '14.574869222670978', '120.98730155468179', 'http://3.bp.blogspot.com/-gkDZFvFy294/TrPynQ9JnaI/AAAAAAAAC4k/79JmJ_xx6vg/s1600/Elinwood+Malate+Church+%25281%2529.jpg', 0, 0, 'Historical Landmark', 1, '', '1660 Dr Antonio Vasquez, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1918, 'Dolora\'s Hauz Of Pancit Malabon (Dian Branch)', '', '14.564413172998098', '121.00075779970292', 'https://doloras.com/live/upload/1604831697-Branch-14.jpg', 0, 0, 'Fast Food', 2, '8:30-7pm', '2640 Dian St, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1919, 'Dear Self Aesthetic and Wellness Spa', '', '14.57226765492915', '120.99139273845242', 'https://lh5.googleusercontent.com/p/AF1QipMgeR2_l6ZNLlMhe0cNi1qNkJF65gY6MXoyT2hi=w1080-k-no', 0, 0, 'Spa', 3, '', '1928, 1004 Leon Guinto St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1920, 'De La Salle University Manila', '', '14.56445279857318', '120.9940279069287', 'https://lh5.googleusercontent.com/p/AF1QipPvC-lecQ8iG6DXX9vr9l5nYcyYlKwt5e7tcDk=w408-h245-k-no', 0, 0, 'University', 1, '6am-9pm', '2401 Taft Ave, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1921, 'Datablitz MALATE', '', '14.574884380880338', '120.99000281598575', 'https://datablitz.com.ph/userfiles/image/obhs.jpg', 0, 0, 'Store', 2, '', '1004 Leon Guinto St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1922, 'Dangs Tapsihan', '', '14.570386378450966', '120.98786115646764', 'https://lh3.googleusercontent.com/proxy/MzswTHDZ4I-XOGkULDIHFzmVdGqLkq7-BVSsjN0dw-b8K0YW77ITV3RNvGwqRkFiR6jtJPQ6o-WgislehogyFhuoeLIlbdll5xa1Q7Q-lWwBjaLDdHssPtKCdAH1XSFYpxnPZnTTjL8Y4FI1XdpiGfVuUwsZb5FFp8ooHQ0XDBmO=w408-h306-k-no', 0, 0, 'Eatery', 1, '', '1924 Maria Orosa, Malate, Manila, 1004 Metro Manila, Philippines', 'Malate'),
+(1923, 'Dagonoy Public Market', '', '14.572325851201269', '121.00478742448442', 'https://mapio.net/images-p/106077105.jpg', 0, 0, 'Market', 2, '6am-9pm', 'Florentino Torres, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1924, 'cyrinTEAna Milktea and Sandwich', 'CyrinTeana Milktea & Sandwich offer great products and services. It\'s a crowd favorite even it is a little bit expensive but it is worth it for the price. - have some cup of Milktea for your immuniTEA system', '14.57066675738192', '121.00739629700935', 'https://scontent.fmnl8-1.fna.fbcdn.net/v/t39.30808-6/245424247_122305076835012_1913388894760461301_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=8bfeb9&_nc_eui2=AeFWWhh3_g8ZyJ91REsSvPCl9wMXCbSPv3P3AxcJtI-_cz6YoQhpcSpA-cVefKnbTFwlWxn_rxuwTF2ccyup3T8n&_nc_ohc=csun6lFG3', 0, 0, 'Bubble Tea Store', 2, '', '2584 Onyx St Corner Zobel Roxas San Andres Bukid Manila 1204 Manila, Philippines', 'San Andres'),
+(1925, 'Cup of Tea by Kaitley', '', '14.57059386202725', '120.99955658338224', 'https://lh5.googleusercontent.com/p/AF1QipPi9P2F5RdjMEbPhkYEas9d_de8KanpjUg0R8iw=w1080-k-no', 0, 0, 'Café', 2, '', '1251 Agusto Francisco, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1926, 'Cratefull Manila', '', '14.566824398508436', '120.99813537458559', 'https://lh5.googleusercontent.com/p/AF1QipNimiNMRJaCa0UwPHgOYT0GqkI00ckYcnzjr8Mn=w408-h408-k-no', 0, 0, 'Store', 2, '', '2460 Arellano Luxury Pad bldg, 1004 Arellano Ave, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1927, 'Church Of Malate Historical Marker', '', '14.56921400898838', '120.98430325897102', 'http://triptheislands.com/wp-content/uploads/2014/06/Malate_Church_facade.jpg', 0, 0, 'Historical Landmark', 1, '', '542 Remedios St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1928, 'Christian Bible Baptist Church', '', '14.571266524613286', '121.00348796641374', 'https://lh5.googleusercontent.com/p/AF1QipPska4bCtRhC7GYibl5s6GjXVmhD-LBpd8Bpwz0=w408-h272-k-no', 0, 0, 'Church', 1, '', '2391 Zafiro, San Andres Bukid, Manila, Metro Manila', 'San Andres'),
+(1929, 'Chris Chicken Chicken Canteen', '', '14.566368159849349', '120.99864961940871', 'https://10619-2.s.cdn12.com/rests/original/104_501135064.jpg', 0, 0, 'Eatery', 1, '', '1085 Estrada St., Singalong, Malate, Manila, Estrada St, San Andres Bukid, Manila, 1004 Metro Manila', 'Malate'),
+(1930, 'Chowking San Andres', '', '14.571843789827978', '120.99503312584558', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp-cYlsrC3XQXhHHMKcTcwiiMMdf5U8mIhIBN6xHEiae9AnhW3eixlt4rQQBDWJnRlNVM&usqp=CAU', 0, 0, 'Fast Food', 2, '', '1119 singalong st. san andres bukid malate manila 1004 Manila, Philippines', 'San Andres'),
+(1931, 'Casino Filipino - Malate', '', '14.573016560780188', '120.9824910525504', 'https://choicecasino.com/media/ground_casino_photo/0001/51/thumb_50685_ground_casino_photo_retina.jpeg', 0, 0, 'Casino', 3, '24hrs', '1330 Roxas Blvd, Ermita, Manila, 1004 Metro Manila', 'Malate'),
+(1932, 'Cafe Chizon\'s MLK & TEA', '', '14.564988412481023', '120.99039459344765', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/119734466_604835560209551_6762994573919428798_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeEABv0ebExCm85p01Z3z_3adY2gMMfCmKN1jaAwx8KYoxWoLzqWKjWdrGWW3Fuvlr4xAbHGkk41ez3yfcZpc7If&_nc_ohc=WX3bo4XWG_YAX-Q2ZkR&_nc_ht=scontent.fmnl6-1.fna&oh=7a590eb3c1f8c89aba088434efc8a3ed&oe=61900259', 0, 0, 'Café', 2, '9:4am-11pm', '2312 M. Adriatico St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1933, 'Cafe Alicia', '', '14.560630692066088', '120.99163529326603', 'https://b.zmtcdn.com/data/pictures/0/18136770/204e633821e7ded551e3d01d2f2c0610.jpg', 0, 0, 'Restaurant', 2, '8am-11pm', '634 Ocampo St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1934, 'But First, Coffee - Malate (BFC Malate, Manila Branch)', 'Great coffee for as low as 60php, delivered to your doorstep.', '14.571355371116407', '120.98337862584553', 'https://scontent.fmnl6-2.fna.fbcdn.net/v/t1.6435-9/178855999_1062599964262380_3876544214514251923_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeEGwvIm27xjicLSX82A_0HLEUgdDhIs4HYRSB0OEizgdmpJZQ-TTxS0GlMgDGDgUZwfHEKgvOrMg_nH9fvUw8GH&_nc_ohc=stoQqqTHLvUAX9OM4jN&_nc_ht=scontent.fmnl6-2.fna&oh=3af6acf1454309190bde46a1e299ec22&oe=6191F6A3', 0, 0, 'Cafe', 2, '', 'Alpha Grandview Condominium, M.H. Del Pilar St., Malate, Manila 1004 Manila, Philippines', 'Malate'),
+(1935, 'Brew that Kape MNL', '', '14.570436691701373', '120.9984040434507', 'https://lh5.googleusercontent.com/p/AF1QipPi9P2F5RdjMEbPhkYEas9d_de8KanpjUg0R8iw=w1080-k-no', 5, 3, 'Café', 2, '', 'San Andres Bukid, Manila, 1004 Metro Manila', 'San Andres'),
+(1936, 'Bounti Gym', '', '14.568338822056191', '121.00266126921048', 'https://lh5.googleusercontent.com/p/AF1QipOUdY54QW8e7_Mm1DHttLYNPZVDx4E1NsFHtMIH=w408-h544-k-no', 0, 0, 'Gym', 2, '6am-11pm', 'St, 2471 Madre Perla, San Andres Bukid, Manila City, 1017 Metro Manila', 'San Andres'),
+(1937, 'BigBrew San Andres', 'Big in taste, Bit in price', '14.57316737348564', '121.00541665468184', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/158933621_108413154652225_9183865977526850806_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeEdhGUFe2AlUE6kzwNqgb3raQAzm5lrbw5pADObmWtvDj_txcdYm5bnWM1pxs6YH1lc5t3NUSY91e6B_iQnwx7m&_nc_ohc=6dLvlnVT4IYAX9zyJ2T&tn=5qgQoNliJ2ProirS&_nc_ht=scontent.fmnl6-1.fna&oh=271069c724dc9087d2c6c4a4d497f97c&oe=6192DCA4', 0, 0, 'Take out', 2, '', '1757 Florentino Torres Street San Andres Bukid 1017 Manila, Philippines', 'San Andres'),
+(1938, 'Becky\'s Kitchen', '', '14.564548673137622', '120.99898192792675', 'https://b.zmtcdn.com/data/reviews_photos/381/8b3bb8eb8233a968bc4b17c6e7219381_1437121067.jpg?output-format=webp&fit=around|300:273&crop=300:273;*,*', 0, 0, 'Eatery', 1, '7am-9pm', '1061 Ocampo St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1939, 'Bangko Sentral ng Pilipinas MAIN, Gate 6', '', '14.561832348255829', '120.98655041724815', 'http://images.gmanews.tv/webpics/2017/08/640_malate-bsp_2017_08_07_12_19_14.jpg', 0, 0, 'Bank', 2, '8am-5pm', '2335 Roxas Blvd, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1940, 'Babe Mike Shawarma', '', '14.56111255458082', '120.9943051556161', 'https://fastly.4sqi.net/img/general/600x600/22604975_0v90XqaY9chOTyWMf9Cc8JMW1wqbY2RxwAZwJrOZJD4.jpg', 0, 0, 'Fast Food', 1, '', '770 Ocampo St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1941, 'Aurora A. Quezon Elementary School', '', '14.57013832704623', '120.9890979148203', 'https://lh5.googleusercontent.com/p/AF1QipPzCnZD7imcib3wpmtx9IiCYovP3YSa7IA2uhvd=w426-h240-k-no', 0, 0, 'School', 1, '', 'R, San Andres St, Malate, Manila, Metro Manila', 'Malate'),
+(1942, 'ASEAN Garden', '', '14.559643204856764', '120.98642311330035', 'https://www.travelmyglobe.com/images/Uploaded/philippines/Ph_ASEAN%20Garden1.jpg', 0, 0, 'Park', 1, '24hrs', 'HX5P+VHF, Malate, Maynila, 1004 Kalakhang Maynila', 'Malate'),
+(1943, 'Annyeong Corndog- Sta. Ana, Manila', 'A South Korean street snack that gained attention and fame lately is now in Sta. Ana, Manila! A stick dipped snack in heavy batter with our signature annyeong corndog flavors will bring you an experience worth coming back for.', '14.568554132915816', '121.00388436531765', 'http://surl.li/akulj', 0, 0, 'Fast Food', 1, '', '2525 Esmeralda St. San Andres, Manila', 'San Andres'),
+(1944, 'Andy\'S Famous Batangas Lomi & Bulalo', '', '14.571821555604783', '120.99488860225665', 'https://lh5.googleusercontent.com/p/AF1QipO7CDgwfZN9YFAtRlptOnfOkyuAOAHwBThiLYgA=w408-h306-k-no', 0, 0, 'Restaurant', 2, '10am-9:30pm', '1119 Singalong St, Malate, Manila, 1004 Metro Manila', 'Malate'),
+(1945, 'Andok\'s San Andres Bukid', '', '14.57294791732722', '121.00028836294966', 'https://lh5.googleusercontent.com/p/AF1QipNO1RxdygQc8uwCo68ABNSU6x0jI8gO7v3jmxk=w408-h306-k-no', 0, 0, 'Take out', 2, '', 'San Andres Ext., 803, San Andres Bukid, 1017 Metro Manila', 'San Andres'),
+(1946, 'Akik Goto', '', '14.574684849945577', '121.00431813453696', 'https://fastly.4sqi.net/img/general/600x600/5970298_vhwBmWbtFL_tPSoK28qT1GY_SIGYLGmWFkVjI239sO0.jpg', 0, 0, 'Restaurant', 2, '24hrs', 'Radium, Manila City, Manila, Metro Manila', 'San Andres'),
+(1947, 'Ahzel’s Cafe', '', '14.569258173672333', '120.98584795468176', 'https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/167914232_111830911003951_5935105618373731477_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeHXjHc5Hxwoh-fpjPY81-GDFK3xB354WsMUrfEHfnhaw-7skHtGDtmulXLweAAeatNNQlucStuTWpSmAFyiIsWj&_nc_ohc=0Hzus1QhrggAX-WTgTK&_nc_ht=scontent.fmnl6-1.fna&oh=4240080be7aa19f686e37b5090fc52b2&oe=619258ED', 0, 0, 'Café', 2, '2pm-2am', '1956 madre ignacia malate manila', 'San Andres'),
+(1948, 'ACM GENERAL MERCHANDISE', '', '14.574394850660283', '121.00384274155233', 'https://lh5.googleusercontent.com/p/AF1QipOw4z6GckmJ_hvZstBL2b8GfciIRQ_IxPMgm0-P=w408-h725-k-no', 0, 0, 'Store', 2, '', '2327 Agua Marina, San Andres Bukid, Manila, 1017 Metro Manila', 'San Andres'),
+(1949, '7-Eleven Harrison st. Malate', 'Convenience chain offering grab-&-go bites & beverages, plus assorted newsstand items.', '14.559990172387637', '120.98961632317987', 'https://lh5.googleusercontent.com/p/AF1QipNUQOhhoqSAtAmuG-Ryx36pFR3gan3BmxOUdmtw=w493-h240-k-no', 0, 0, 'Store', 1, '24hrs', 'F.B. Harrison St, Malate, Manila, 1004 Metro Manila', 'Malate');
 
 -- --------------------------------------------------------
 
@@ -365,8 +511,6 @@ CREATE TABLE `post` (
   `PostID` int(11) NOT NULL,
   `PostTitle` varchar(55) DEFAULT NULL,
   `Cont` varchar(255) DEFAULT NULL,
-  `Tag` varchar(55) DEFAULT NULL,
-  `Rating` int(11) DEFAULT NULL,
   `UserID` int(11) NOT NULL,
   `UserName` varchar(25) NOT NULL,
   `Status` varchar(10) NOT NULL DEFAULT 'Active'
@@ -376,36 +520,43 @@ CREATE TABLE `post` (
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`PostID`, `PostTitle`, `Cont`, `Tag`, `Rating`, `UserID`, `UserName`, `Status`) VALUES
-(70, 'Manila Ocean Park', 'The Manila Ocean Park is a oceanarium in Manila, Philippines. It is owned by China Oceanis Philippines Inc., a subsidiary of China Oceanis Inc., a Singaporean-registered firm. It is located behind the Quirino Grandstand at Rizal Park.', 'Manila Ocean Park', 5, 61, 'deocer123', 'Active'),
-(74, 'Manila', 'Manila, the capital of the Philippines, is a densely populated bayside city on the island of Luzon, which mixes Spanish colonial architecture with modern skyscrapers. Intramuros, a walled city in colonial times, is the heart of Old Manila. It’s home to th', '', 1, 61, 'deocer123', 'Active'),
-(75, 'Manila', 'Manila, the capital of the Philippines, is a densely populated bayside city on the island of Luzon, which mixes Spanish colonial architecture with modern skyscrapers. Intramuros, a walled city in colonial times, is the heart of Old Manila. It’s home to th', '', 3, 61, 'deocer123', 'Active'),
-(76, 'Baguio', 'Baguio, on the Philippines’ Luzon island, is a mountain town of universities and resorts. Called the “City of Pines,” it’s particularly popular in summer due to unusually cooler weather. At its center is Burnham Park, with gardens and a lake. Nearby, Bagu', '', 1, 61, 'deocer123', 'Active'),
-(77, 'Baguio', 'Baguio, on the Philippines’ Luzon island, is a mountain town of universities and resorts. Called the “City of Pines,” it’s particularly popular in summer due to unusually cooler weather. At its center is Burnham Park, with gardens and a lake. Nearby, Bagu', '', 1, 61, 'deocer123', 'Active'),
-(78, 'Tagaytay', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake', '', 1, 61, 'deocer123', 'Active'),
-(79, 'Taal Volcano', 'Taal Volcano is a large caldera filled by Taal Lake in the Philippines. Located in the province of Batangas, the volcano is one of the most active volcanoes in the country, with 34 recorded historical eruptions, all of which were concentrated on Volcano I', '', 2, 61, 'deocer123', 'Active'),
-(80, 'Taal Volcano', 'Taal Volcano is a large caldera filled by Taal Lake in the Philippines. Located in the province of Batangas, the volcano is one of the most active volcanoes in the country, with 34 recorded historical eruptions, all of which were concentrated on Volcano I', '', 1, 61, 'deocer123', 'Active'),
-(81, 'Batangas', 'Batangas, officially the Province of Batangas is a province in the Philippines located in the Calabarzon region on Luzon. Its capital is the city of Batangas, and is bordered by the provinces of Cavite and Laguna to the north, and Quezon to the east', '', 2, 61, 'deocer123', 'Active'),
-(84, 'a popular ', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake.', '', 1, 61, 'deocer123', 'Active'),
-(85, 'Tagaytay is a popular holiday town south of Manila ', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake. Overlooking the area, People’s Park in the Sky occupies', '', 2, 61, 'deocer123', 'Active'),
-(86, 'Holiday town south of Manila ', 'Tagaytay is a popular holiday town south of Manila ', '', 1, 61, 'deocer123', 'Active'),
-(87, 'Tagaytay holiday ', 'Tagaytay is a popular holiday town south of Manila ', '', 2, 61, 'deocer123', 'Active'),
-(88, 'Tagaytay is a popular ', 'Tagaytay is a popular holiday town south of Manila ', '', 1, 61, 'deocer123', 'Active'),
-(89, 'Tagaytay town south of Manila ', 'Tagaytay is a popular holiday town south of Manila ', '', 2, 61, 'deocer123', 'Active'),
-(90, 'South of Manila ', 'Tagaytay is a popular holiday town south of Manila ', '', 2, 61, 'deocer123', 'Active'),
-(92, 'Hiking!', '', '9 SPOONS - The Bayleaf Intramuros', 3, 61, 'deocer123', 'Active'),
-(93, 'Hiking', '', 'Eat All You Can Food Corporation', 2, 61, 'deocer123', 'Active'),
-(94, 'Luneta', 'The Luneta Park tagalog draws its name from the word lunette, meaning “crescent-shaped structure for defense used in fortifications in the 17th to 18th centuries.” The original name of Luneta Park is Bagumbayan.', 'Rizal Park', 5, 61, 'deocer123', 'Active'),
-(95, ' Rizal Park', 'Rizal Park is one of the largest urban parks in Asia. At 140 acres, the park is home to the National Museum Complex, the Rizal Monument, a series of gardens, public art and event venues. The National Museum Complex consists of the National Museums of Fine', 'Rizal Park', 3, 61, 'deocer123', 'Active'),
-(97, 'The National Museum, a Trust of the Government', 'Is an educational, scientific and cultural institution that acquires, documents, preserves, exhibits, and fosters scholarly study and public appreciation of works of art, specimens, and cultural and historical artifacts', 'National Museum of the Philippines', 4, 61, 'deocer123', 'Archived'),
-(99, 're', 'rerer', 'Ang Tunay Beef House', 2, 98, 'deocer231', 'Active'),
-(101, 'Post with Pic', 'w', 'Ampie', 3, 98, 'deocer231', 'Archived'),
-(105, 'ewqeqw', 'eqewqeqwe', 'Baluarte de San Diego', 3, 62, 'admin123', 'Archived'),
-(106, 'ewewqeq', 'eqwewqeqe', 'Angel', 2, 98, 'deocer231', 'Active'),
-(107, 'ewqeqwe', 'eqwewqewqe', 'Baluarte de San Diego', 2, 98, 'deocer231', 'Active'),
-(108, 'w', 'w', 'Amis Restaurant', 2, 98, 'deocer231', 'Active'),
-(109, 'e', 'e', 'Bahay Tsinoy, Museum of Chinese in Philippine Life', 3, 98, 'deocer231', 'Active'),
-(110, 'weqw', 'eewqewq', '9 SPOONS - The Bayleaf Intramuros', 2, 98, 'deocer231', 'Active');
+INSERT INTO `post` (`PostID`, `PostTitle`, `Cont`, `UserID`, `UserName`, `Status`) VALUES
+(70, 'Manila Ocean Park', 'The Manila Ocean Park is a oceanarium in Manila, Philippines. It is owned by China Oceanis Philippines Inc., a subsidiary of China Oceanis Inc., a Singaporean-registered firm. It is located behind the Quirino Grandstand at Rizal Park.', 61, 'deocer123', 'Active'),
+(74, 'Manila', 'Manila, the capital of the Philippines, is a densely populated bayside city on the island of Luzon, which mixes Spanish colonial architecture with modern skyscrapers. Intramuros, a walled city in colonial times, is the heart of Old Manila. It’s home to th', 61, 'deocer123', 'Active'),
+(75, 'Manila', 'Manila, the capital of the Philippines, is a densely populated bayside city on the island of Luzon, which mixes Spanish colonial architecture with modern skyscrapers. Intramuros, a walled city in colonial times, is the heart of Old Manila. It’s home to th', 61, 'deocer123', 'Active'),
+(76, 'Baguio', 'Baguio, on the Philippines’ Luzon island, is a mountain town of universities and resorts. Called the “City of Pines,” it’s particularly popular in summer due to unusually cooler weather. At its center is Burnham Park, with gardens and a lake. Nearby, Bagu', 61, 'deocer123', 'Active'),
+(77, 'Baguio', 'Baguio, on the Philippines’ Luzon island, is a mountain town of universities and resorts. Called the “City of Pines,” it’s particularly popular in summer due to unusually cooler weather. At its center is Burnham Park, with gardens and a lake. Nearby, Bagu', 61, 'deocer123', 'Active'),
+(78, 'Tagaytay', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake', 61, 'deocer123', 'Active'),
+(79, 'Taal Volcano', 'Taal Volcano is a large caldera filled by Taal Lake in the Philippines. Located in the province of Batangas, the volcano is one of the most active volcanoes in the country, with 34 recorded historical eruptions, all of which were concentrated on Volcano I', 61, 'deocer123', 'Active'),
+(80, 'Taal Volcano', 'Taal Volcano is a large caldera filled by Taal Lake in the Philippines. Located in the province of Batangas, the volcano is one of the most active volcanoes in the country, with 34 recorded historical eruptions, all of which were concentrated on Volcano I', 61, 'deocer123', 'Active'),
+(81, 'Batangas', 'Batangas, officially the Province of Batangas is a province in the Philippines located in the Calabarzon region on Luzon. Its capital is the city of Batangas, and is bordered by the provinces of Cavite and Laguna to the north, and Quezon to the east', 61, 'deocer123', 'Active'),
+(84, 'a popular ', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake.', 61, 'deocer123', 'Active'),
+(85, 'Tagaytay is a popular holiday town south of Manila ', 'Tagaytay is a popular holiday town south of Manila on the Philippine island Luzon. Known for its mild climate, it sits on a ridge above Taal Volcano Island, an active volcano surrounded by Taal Lake. Overlooking the area, People’s Park in the Sky occupies', 61, 'deocer123', 'Active'),
+(86, 'Holiday town south of Manila ', 'Tagaytay is a popular holiday town south of Manila ', 61, 'deocer123', 'Active'),
+(87, 'Tagaytay holiday ', 'Tagaytay is a popular holiday town south of Manila ', 61, 'deocer123', 'Active'),
+(88, 'Tagaytay is a popular ', 'Tagaytay is a popular holiday town south of Manila ', 61, 'deocer123', 'Active'),
+(89, 'Tagaytay town south of Manila ', 'Tagaytay is a popular holiday town south of Manila ', 61, 'deocer123', 'Active'),
+(90, 'South of Manila ', 'Tagaytay is a popular holiday town south of Manila ', 61, 'deocer123', 'Active'),
+(92, 'Hiking!', '', 61, 'deocer123', 'Active'),
+(93, 'Hiking', '', 61, 'deocer123', 'Active'),
+(94, 'Luneta', 'The Luneta Park tagalog draws its name from the word lunette, meaning “crescent-shaped structure for defense used in fortifications in the 17th to 18th centuries.” The original name of Luneta Park is Bagumbayan.', 61, 'deocer123', 'Active'),
+(95, ' Rizal Park', 'Rizal Park is one of the largest urban parks in Asia. At 140 acres, the park is home to the National Museum Complex, the Rizal Monument, a series of gardens, public art and event venues. The National Museum Complex consists of the National Museums of Fine', 61, 'deocer123', 'Archived'),
+(97, 'The National Museum, a Trust of the Government', 'Is an educational, scientific and cultural institution that acquires, documents, preserves, exhibits, and fosters scholarly study and public appreciation of works of art, specimens, and cultural and historical artifacts', 61, 'deocer123', 'Archived'),
+(99, 're', 'rerer', 98, 'deocer231', 'Active'),
+(101, 'Post with Pic', 'w', 98, 'deocer231', 'Archived'),
+(105, 'ewqeqw', 'eqewqeqwe', 62, 'admin123', 'Archived'),
+(106, 'ewewqeq', 'eqwewqeqe', 98, 'deocer231', 'Active'),
+(107, 'ewqeqwe', 'eqwewqewqe', 98, 'deocer231', 'Active'),
+(108, 'w', 'w', 98, 'deocer231', 'Active'),
+(109, 'e', 'e', 98, 'deocer231', 'Active'),
+(110, 'weqw', 'eewqewq', 98, 'deocer231', 'Active'),
+(112, 'wewqe', 'ewqewqeq', 62, 'admin123', 'Archived'),
+(113, 'ewqewqewqe', 'qewqeqeqeqw', 62, 'admin123', 'Archived'),
+(114, 'eweqwewq', 'eweweeqwe', 62, 'admin123', 'Deleted'),
+(115, 'w', 'w', 62, 'admin123', 'Deleted'),
+(116, 'eweqweqw', 'eqweqe', 62, 'admin123', 'Deleted'),
+(117, 'Demo Post', 'A post demo', 130, 'DemoUser', 'Deleted'),
+(118, 'A demo post', 'Demo post', 131, 'ToolUser', 'Active');
 
 -- --------------------------------------------------------
 
@@ -472,16 +623,23 @@ CREATE TABLE `wuser` (
 --
 
 INSERT INTO `wuser` (`UserID`, `UserName`, `Pass`, `Status`, `Budget`, `destype`, `district`, `Auth`) VALUES
-(61, 'deocer123', '$2y$10$S2UapU3N.t5xXP3mXA/0HO8u1g8IRKAIFyz35dyFnoSBKNEhwGi3y', 'Flagged', '$$', 'Park', 'Ermita', 'User'),
-(62, 'admin123', '$2y$10$JsW4zURwGg6PlYZr3KJ7men/YGpULfOBpEdQF4IR6Zj9TV7eCE7C2', 'Normal', '', 'Park', 'Ermita', 'Admin'),
-(98, 'deocer231', '$2y$10$BuEvCu7oZgrT4pG1HoilVe385TqR4qvgHeMpfVAy4cdwaQ7egAWB2', 'Normal', '$', 'Park', 'Ermita', 'User'),
+(61, 'deocer123', '$2y$10$S2UapU3N.t5xXP3mXA/0HO8u1g8IRKAIFyz35dyFnoSBKNEhwGi3y', 'Flagged', '2', 'Park', 'Ermita', 'User'),
+(62, 'admin123', '$2y$10$JsW4zURwGg6PlYZr3KJ7men/YGpULfOBpEdQF4IR6Zj9TV7eCE7C2', 'Normal', '3', 'Park', 'Ermita', 'Admin'),
+(98, 'deocer231', '$2y$10$BuEvCu7oZgrT4pG1HoilVe385TqR4qvgHeMpfVAy4cdwaQ7egAWB2', 'Normal', '1', 'Park', 'Ermita', 'User'),
 (118, 'eqweqwew', '$2y$10$j93cOIXrpTbOeeV6Sf.3peo6/cTs7oXefFMhyZ2SUSGXqS2Iauata', 'Normal', '$$', 'Park', 'Ermita', 'User'),
 (119, 'wwwwwwwweee', '$2y$10$0TzeVKbaLyMGNv/ne1M1A.ecPJL5QxLf6uKNQZlJdUwiqWEViIkBe', 'Normal', '$', 'Park', 'Ermita', 'User'),
 (120, 'eweqweqq', '$2y$10$9gGEXj9sXKEHEqf9.05qHen2y8sdzzH.NzfQeZL04WLm96nCOoO.i', 'Normal', '$$', 'Park', 'San Miguel', 'User'),
 (121, 'ewqewqeq', '$2y$10$KGHVKAFQCHkmdC1Dmj9MduDNWVFS9zjmSHiKkOKnqdZ/FPswePA1q', 'Normal', '$', 'Restaurants', 'Tondo', 'User'),
 (122, 'wweqweqwewq', '$2y$10$FmfR7aPIMEho7EmFmxuvF.PoQ4T2am2EaRF9O4/CBo.r9DSCMzYs6', 'Normal', '$$', 'Art gallery', 'Santa Ana', 'User'),
 (123, 'eqweqweqweqeq', '$2y$10$NtjAb9UPDOfuQCXBxLtFp.jU41WtJMtQISY1vzvfETE9VtY6BAZV.', 'Normal', '$', 'Art gallery', 'Port Area', 'User'),
-(124, 'deocer321', '$2y$10$4RYPFiSwbQ5G2PBhohtdLOV8k3DVIiSD1pclz.WNmnlicsc8ikDU.', 'Normal', '$$$', 'Park', 'Ermita', 'User');
+(124, 'deocer321', '$2y$10$4RYPFiSwbQ5G2PBhohtdLOV8k3DVIiSD1pclz.WNmnlicsc8ikDU.', 'Normal', '$$$', 'Park', 'Ermita', 'User'),
+(125, 'CapstoneMock2', '$2y$10$qfvVz90XkI74IWQ9SIbxNuDh9PnvOapLPS6BpKaK8Bi0M10wzfdb6', 'Normal', '$', 'Park', 'Ermita', 'User'),
+(126, 'dwqewqeewqewqe', '$2y$10$jUNW46pKsFM0QC13NbkA/.A4nYZjAOnG8kHlmRlkRsFfxCF6svuO6', 'Normal', '$', 'Restaurants', 'Tondo', 'User'),
+(127, 'ewqewqewqeqw', '$2y$10$UabObTAFAMnLXPwhLdWHR.a8JhmAA18ISG8ApUpoK0xfayJWqlKwa', 'Normal', '1', 'Restaurants', 'Tondo', 'User'),
+(128, 'qeqweqweqeqwe', '$2y$10$KPRoXMt5SMx6vyUaECTrXOT5iy38yb4sIB1R6CZlUCA3OlXlnzjA6', 'Normal', '1', 'Restaurants', 'Sta. Mesa', 'User'),
+(129, 'Demo22334', '$2y$10$HIauYq7g9cUS75NDos/V/.Mj5.MvDDaAw6R03GK75Xn5tjNPzTNeW', 'Normal', '3', 'Park', 'Ermita', 'User'),
+(130, 'DemoUser', '$2y$10$wrt9gEf7A2HLw5tMAlrQ/upBFzZeJLd3AFaft/BYg52.6ubl8US7i', 'Normal', '3', 'Park', 'Ermita', 'User'),
+(131, 'ToolUser', '$2y$10$OT7E6GElLX5jL31q/tvCn.csaXd9T7fJgaSAy4DB5S9PeU06siVIK', 'Normal', '2', 'Park', 'Ermita', 'User');
 
 --
 -- Indexes for dumped tables
@@ -553,13 +711,13 @@ ALTER TABLE `wuser`
 -- AUTO_INCREMENT for table `itinerary`
 --
 ALTER TABLE `itinerary`
-  MODIFY `PlcID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `PlcID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=185;
 
 --
 -- AUTO_INCREMENT for table `panes`
 --
 ALTER TABLE `panes`
-  MODIFY `PaneID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `PaneID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `pflags`
@@ -571,13 +729,13 @@ ALTER TABLE `pflags`
 -- AUTO_INCREMENT for table `places`
 --
 ALTER TABLE `places`
-  MODIFY `PlaceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1818;
+  MODIFY `PlaceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1950;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `PostID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -595,7 +753,7 @@ ALTER TABLE `uflags`
 -- AUTO_INCREMENT for table `wuser`
 --
 ALTER TABLE `wuser`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- Constraints for dumped tables
