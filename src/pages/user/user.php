@@ -52,14 +52,21 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
  
  <script>
   $(document).ready(function(){
+
     $("#input").keyup(function(){
           $( "#result" ).empty();
           $( "#demo" ).empty();
+          $('#result').html( ""+
+          "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"
+                  );
           $.ajax({
               url: '../../PHP/Functions/SearchDes.php',
               type:'post',
               data: {search: $(this).val()},
               success:function(result){
+                  $('#pricesort').hide();
                   $("#result").html(result);
               },
             error: function(){
@@ -68,7 +75,81 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           });
     });
 
+    $.ajax({
+        url: '../../PHP/view/place.php',
+        type:'post',
+        data: {
+              reco: "reco",
+              lat: <?php echo $_SESSION['lat']?>,
+              lot: <?php echo $_SESSION['lot']?>,
+              district: "<?php echo $_SESSION['district']?>",
+              city: "<?php echo $_SESSION['City']?>",
+              price: "<?php echo $_SESSION['price']?>",
+              type: "<?php echo $_SESSION['type']?>",
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+              },
+            error: function(){
+                console.log("error")
+            }
+          });    
+
+  
+    $("#profile-tab").click(function(){
+      $('#post').html( ""+
+          "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"
+                  );
+        $.ajax({
+            url: '../../PHP/view/post.php',
+            type:'post',
+            data: {post:'<?php echo $_SESSION['Id']; ?>'},
+            success:function(result){
+             $("#post").html(result);
+             },
+            error: function(){
+            console.log("error")
+             }
+        });
+    });
+
+    $("#messages-tab").click(function(){
+        $('#uspost').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+        $.ajax({
+            url: '../../PHP/view/post.php',
+            type:'post',
+            data: {userpost:'<?php echo $_SESSION['Id']; ?>'},
+            success:function(result){
+             $("#uspost").html(result);
+             },
+            error: function(){
+            console.log("error")
+             }
+        });
+    });
+
     $("#landmark").click(function(){
+          $("#landmark").css("color", "#9570DD");
+          $("#church").css("color", "black");
+          $("#shopping").css("color", "black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -81,6 +162,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                       
             },
               success:function(result){
+                   $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
@@ -94,6 +176,18 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
     $("#church").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "#9570DD");
+          $("#shopping").css("color", "black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
+          $('#result').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -105,6 +199,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                       city: "<?php echo $_SESSION['City']?>"
             },
               success:function(result){
+                   $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
@@ -118,22 +213,35 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
     $("#shopping").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color", "#9570DD");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
               data: {
-                      default: "Shopping",
+                      default: "Store",
                       lat: <?php echo $_SESSION['lat']?>,
                       lot: <?php echo $_SESSION['lot']?>,
                       district: "<?php echo $_SESSION['district']?>",
                       city: "<?php echo $_SESSION['City']?>"
             },
               success:function(result){
+                   $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
-                    <?php $destype = 'Shopping' ?>
-                   $('#des').val("Shopping");
+                    <?php $destype = 'Store' ?>
+                   $('#des').val("Store");
               },
             error: function(){
                 console.log("error")
@@ -143,6 +251,18 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
 
     $("#park").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "#9570DD");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -154,6 +274,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                       city: "<?php echo $_SESSION['City']?>"
               },
               success:function(result){
+                   $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
@@ -167,6 +288,18 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
     $("#restaurant").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "#9570DD");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -178,6 +311,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                       city: "<?php echo $_SESSION['City']?>"
               },
               success:function(result){
+                   $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
@@ -192,6 +326,18 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
 
     $("#attraction").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "#9570DD");
+          $("#reco").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -203,6 +349,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                       city: "<?php echo $_SESSION['City']?>"
               },
               success:function(result){
+                   $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
@@ -216,6 +363,18 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
     $("#reco").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "#9570DD");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -229,6 +388,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                       type: "<?php echo $_SESSION['type']?>",
               },
               success:function(result){
+                   $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
@@ -240,6 +400,11 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
    $("#distance").click(function(){
+          $('#des').html( ""+
+      "<div class='spinner-grow text-dark' role='status'>"+
+        "<span class='visually-hidden'>Loading...</span>"+
+      "</div>"
+            );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -252,6 +417,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                       type:$('#des').val()
               },
               success:function(result){
+                   $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
@@ -264,6 +430,11 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
    $("#prize").click(function(){
+          $('#demo').html( ""+
+      "<div class='spinner-grow text-dark' role='status'>"+
+        "<span class='visually-hidden'>Loading...</span>"+
+      "</div>"
+            );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -280,6 +451,69 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
+                   $('#pricesort').show();
+                   $('#des').html( "<?php echo $destype?>");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+   $("#asc").click(function(){
+          $('#demo').html( ""+
+      "<div class='spinner-grow text-dark' role='status'>"+
+        "<span class='visually-hidden'>Loading...</span>"+
+      "</div>"
+            );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      asc:  "",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>",
+                      price: "<?php echo $_SESSION['price']?>",
+                      type: $('#des').val()
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   $('#pricesort').show();
+                   $('#des').html( "<?php echo $destype?>");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+   $("#dcs").click(function(){
+          $('#demo').html( ""+
+      "<div class='spinner-grow text-dark' role='status'>"+
+        "<span class='visually-hidden'>Loading...</span>"+
+      "</div>"
+            );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      dsc:  "",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>",
+                      price: "<?php echo $_SESSION['price']?>",
+                      type: $('#des').val()
+              },
+              success:function(result){
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                   $('#pricesort').show();
                    $('#des').html( "<?php echo $destype?>");
               },
             error: function(){
@@ -289,6 +523,11 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
    $("#popularity").click(function(){
+          $('#demo').html( ""+
+      "<div class='spinner-grow text-dark' role='status'>"+
+        "<span class='visually-hidden'>Loading...</span>"+
+      "</div>"
+            );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -301,6 +540,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                       type: $('#des').val()
               },
               success:function(result){
+                   $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    $("#result").html(result);
@@ -366,13 +606,25 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
     <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Latest Feed</button>
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+        <strong>
+        Manila Area Map          
+        </strong>
+      </button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">My Reccomended Feed</button>
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+        <strong>
+        Blog Feed          
+        </strong>
+      </button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Post</button>
+        <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">
+      <strong>
+        My Post        
+      </strong>
+      </button>
       </li>
       <li class="nav-item" role="presentation">
 
@@ -502,17 +754,16 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
       </div>
       <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
-              <?php 
-              $p = new PostView();
-              $p->ShowPost();
-              ?>  
+            <div id="post">          
+            </div>
+   
       </div>
-       <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab" style="margin:auto;">
-              <?php 
-              $p->UsPost($_SESSION['Id']);
-              $p->UsArchive($_SESSION['Id']);
-              ?>
-
+       <div class="tab-pane bg-light" id="messages" role="tabpanel" aria-labelledby="messages-tab" style="margin:auto;">
+          <div  class="bg-light" style="height: 600px;text-align: center;">
+              <div id="uspost" class="bg-light">
+                
+              </div>
+          </div>
       </div>
     </div>
 
@@ -573,19 +824,50 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
     <div class="col text-center mx-auto bg-light" style="overflow: auto;height:720px;overflow-x: hidden;">
       <div class="bg-dark text-center  p-0" style="font-family: Caveat; font-weight: bolder;">
-         <h4 class="text-light bg-dark text-center  p-1" style="font-family: Caveat; font-weight: bolder;"> Places In <?php echo $place; ?></h4>
-         <h4 class="text-light bg-dark text-center  p-1" style="font-family: Caveat; font-weight: bolder;"> Recommended Places For You
-        <span class="badge rounded-pill bg-warning text-dark"><?php echo $price ?></span>
-        <span class="badge rounded-pill bg-light text-dark"><?php echo $type ?></span>
-        </h4>     
+         <h4 class="text-light bg-dark text-center  p-1" style="font-family: Caveat; font-weight: bolder;"> Places In <?php echo $place; ?></h4>   
       </div>
-          <button  id="landmark" class="btn"><i class="fa fa-monument"></i> Historical landmark</button>
-          <button  id="church" class="btn"><i class="fa fa-church"></i> Church</button>
-          <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i> Shopping</button>
-          <button  id="park" class="btn"><i class="fa fa-tree"></i> Park</button>
-          <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i> Restaurant</button>
-          <button  id="attraction" class="btn"><i class="fa fa-landmark"></i> Tourist attraction</button>
-          <button  id="reco" class="btn"><i class="fa fa-map-marker"></i> Recommended for you</button>  
+      <div class="" style="font-size: 5px;">
+           <button  id="landmark" class="btn"><i class="fa fa-monument"></i>
+            Historical landmark          
+         </button>
+
+          <button  id="church" class="btn"><i class="fa fa-church"></i>
+           Church
+         </button>
+
+          <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i>
+           Shopping            
+         </button>
+
+          <button  id="park" class="btn"><i class="fa fa-tree"></i>
+           Park            
+         </button>
+
+          <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i>
+           Restaurant            
+         </button>
+
+          <button  id="attraction" class="btn"><i class="fa fa-landmark"></i>
+           Tourist attraction            
+         </button>
+
+          <button  id="reco" class="btn"><i class="fa fa-map-marker"></i>
+           Recommended for you            
+         </button>         
+      </div>
+
+      <div id="pricesort" style="display: none;">
+          <button  id="asc" class="btn"><i class="fa fa-sort-amount-up-alt"></i>
+           Low to High            
+         </button>
+
+          <button  id="dcs" class="btn"><i class="fa fa-sort-amount-down-alt"></i>
+           High to Low            
+         </button>            
+
+      </div>
+    
+
 
       <div class="row g-3">
 
@@ -593,25 +875,29 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
         <div class="col-auto">
             <div class="dropdown">     
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Sort By :
-                 </button>
-                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><p id="distance" class="dropdown-item" >Distance</p></li>
-                    <li><p id="prize" class="dropdown-item" >Prize</p></li>
-                    <li><p id="popularity"class="dropdown-item">Popularity</p></li>
+                <button class="btn dropdown-toggle text-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #9570DD;"><strong> Sort By :</strong>
+                </button>
+                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"  style="color: #9570DD;">
+                    <li><p style="color: #9570DD;"id="distance" class="dropdown-item" >
+                      <strong>Distance</strong> </p></li>
+                    <li><p style="color: #9570DD;"id="prize" class="dropdown-item" >
+                      <strong>Prize</p></strong></li>
+                    <li><p style="color: #9570DD;"id="popularity"class="dropdown-item">
+                      <strong>Popularity</strong></p></li>
                 </ul>
            </div>
                     
         </div>
-        <div class="col-auto">
-          <input type="text" class="form-control" id="input" placeholder="Search Place in Manila">
+        <div class="col">
+          <input type="text" class="form-control" id="input" placeholder="Search Place in Manila "
+           style="width:100%;">
         </div>
       </div>
       <p id="result"></p>
       <div id="demo">      
-       <?php 
-            $plc-> Valueplace($_SESSION['lat'],$_SESSION['lot'],$place,$type,$price,$_SESSION['City']);
-       ?> 
+      <div class="spinner-grow text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
       </div>
 
 
@@ -670,13 +956,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
          title: '<?php echo "Welcome Back ".$_SESSION['UserName']; ?>',
         icon: 'info',
         html:
-          '<?php 
-
-            $p->UsArchive($_SESSION['Id']);
-
-
-
-          ?>',
+          '',
         showCloseButton: true,
         confirmButtonText:
           'Okay'

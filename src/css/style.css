@@ -9,6 +9,10 @@ body{
   opacity: 1;
 }
 
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+}
 
 #main{
     background: rgba(39,62,84,0.82);
@@ -242,3 +246,4 @@ li {
 .btn {
   margin-bottom: 10px;
 }
+

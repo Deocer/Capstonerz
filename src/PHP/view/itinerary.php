@@ -49,11 +49,22 @@ class ItemView extends ItemControl
 
 								</a>
 				    </div>
-				    <div class="col-md-8 mx-auto" style="margin:auto;">
+				    <div class="col-md-6 mx-auto" style="margin:auto;">
 				      <div class="card-body">
 				        <p class="card-title">'.$place[0]['Pname'].'</p>
-
 				      </div>
+				    </div>
+				    <div class="col-2 text-light" style="margin:auto; height:100%;text-align:center;margin:auto;">
+								<a type="button" class="btn" aria-current="page"  style="height:100%;width:50px;background-color:#f8481c;text-align:center;margin:auto;" href="../../PHP/controller/itinerary.php?delete='.$res[$ctr]['PlcID'].'">
+										<strong>
+                    <span 
+                      class="material-icons text-light"
+                      style="font-size:15px;"
+                      >
+                      remove_circle_outline
+                      </span>
+										</strong>
+								</a>
 				    </div>
 				  </div>
 				</div>';
@@ -131,7 +142,7 @@ if ($ctr == -1) {
 				        L.mapquest.key = "UBI3Wc0udk0csdys2DFuAJAdhxdX00E9";
 
 				        var map = L.mapquest.map("map", {
-				          center: [14.5878,120.9690],
+				          center: ['.$lat.','.$lot.'],
 				          layers: L.mapquest.tileLayer("map"),
 				          zoom: 15
 				        });

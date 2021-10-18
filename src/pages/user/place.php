@@ -101,13 +101,25 @@ $rev = new ReviewView();
             <h4 class=" text-light bg-dark text-center  p-3"><?php echo $nm; ?></h4>
             <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Map</button>
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+              <strong>
+                Map                
+              </strong>
+              </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Reviews</button>
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                <strong>
+                 Reviews                 
+                </strong>
+              </button>
               </li>
               <li class="nav-item" role="presentation">
-                <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Other Info.</button>
+                <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">
+                <strong>
+                 Other Info.                 
+                </strong>
+              </button>
               </li>
             </ul>
             <div class="tab-content bg-light" style="width:100%;height: 70%;">
@@ -119,7 +131,7 @@ $rev = new ReviewView();
                   <div class="col">
                     <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
                       <div class="card-body">
-                        <h5 class="card-title">Google Review Rating</h5>
+                        <h5 class="card-title">Google Reviews</h5>
                         <div class="col" style="    
                               display: flex;
                               align-items: center;
@@ -305,13 +317,47 @@ $rev = new ReviewView();
          <h4 class="text-light bg-dark text-center  p-1" style="font-weight: bolder;">Nearby <span id="dest"></span> in <span id="name"></span><?php echo $nm; ?> </h4>        
       </div>
 <br>
-          <button  id="landmark" class="btn"><i class="fa fa-monument"></i> Historical landmark</button>
-          <button  id="church" class="btn"><i class="fa fa-church"></i> Church</button>
-          <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i> Shopping</button>
-          <button  id="park" class="btn"><i class="fa fa-tree"></i> Park</button>
-          <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i> Restaurant</button>
-          <button  id="attraction" class="btn"><i class="fa fa-landmark"></i> Tourist attraction</button>
-          <button  id="reco" class="btn"><i class="fa fa-map-marker"></i> Recommended for you</button>
+          <button  id="landmark" class="btn"><i class="fa fa-monument"></i>
+          <strong>
+            Historical landmark          
+          </strong>
+         </button>
+
+          <button  id="church" class="btn"><i class="fa fa-church"></i>
+          <strong>
+           Church
+         </strong>
+         </button>
+
+          <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i>
+          <strong>
+           Shopping            
+          </strong>
+         </button>
+
+          <button  id="park" class="btn"><i class="fa fa-tree"></i>
+          <strong>
+           Park            
+          </strong>
+         </button>
+
+          <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i>
+          <strong>
+           Restaurant            
+          </strong>
+         </button>
+
+          <button  id="attraction" class="btn"><i class="fa fa-landmark"></i>
+          <strong>
+           Tourist attraction            
+          </strong>
+         </button>
+
+          <button  id="reco" class="btn"><i class="fa fa-map-marker"></i>
+          <strong>
+           Recommended for you            
+          </strong>
+         </button>  
           <br> 
           <br>
           <input type="text" class="form-control" id="input" placeholder="Search Place in Manila">
@@ -351,6 +397,13 @@ $rev = new ReviewView();
     });
 
     $("#landmark").click(function(){
+          $("#landmark").css("color", "#9570DD");
+          $("#church").css("color", "black");
+          $("#shopping").css("color", "black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -376,6 +429,13 @@ $rev = new ReviewView();
     });
 
     $("#church").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "#9570DD");
+          $("#shopping").css("color", "black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -400,6 +460,13 @@ $rev = new ReviewView();
     });
 
     $("#shopping").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color", "#9570DD");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -408,7 +475,7 @@ $rev = new ReviewView();
                       lat: <?php echo $lat?>,
                       lot: <?php echo $lot?>,
                       nm: "<?php echo $nm ?>",
-                      class: "Shopping",
+                      class: "Store",
             },
               success:function(result){
                    $( "#demo" ).empty();
@@ -425,6 +492,13 @@ $rev = new ReviewView();
 
 
     $("#park").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "#9570DD");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -449,6 +523,13 @@ $rev = new ReviewView();
     });
 
     $("#restaurant").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "#9570DD");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -474,6 +555,13 @@ $rev = new ReviewView();
 
 
     $("#attraction").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "#9570DD");
+          $("#reco").css("color", "black");
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -498,6 +586,13 @@ $rev = new ReviewView();
     });
 
      $("#reco").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "#9570DD");
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',

@@ -4,7 +4,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/post.php');
 class PostView extends PostControl
 	{
 		
-		function ShowPost()
+		function ShowPost($id)
 		{
 		 $i = 0;
 		 $pic = 0;
@@ -29,7 +29,7 @@ class PostView extends PostControl
 					          <h5 class="card-title" style ="font-size:14px;">'.$res[$ctr]['UserName'].'</h5>
 					        </div>
 					        <div class="col py-2 text-end">
-						         <a type="button" onClick="flagP('.$res[$ctr]['PostID'].','.$_SESSION['Id'].')" ><span class="material-icons text-danger">report_problem</span>
+						         <a type="button" onClick="flagP('.$res[$ctr]['PostID'].','.$id.')" ><span class="material-icons text-danger">report_problem</span>
 						         </a>
 
 					        </div>
@@ -416,6 +416,20 @@ echo'
 		 	$i++;
 		 }
 
+        if($i == 0){
+                      echo "
+                      <span 
+                      class='material-icons text-muted'
+                      style='font-size: 230px;text-align: center;padding-top:40px;color:grey;'
+
+                      >
+                      post_add
+                      </span>";
+
+                      echo "
+                      <p class='text-muted'>No Post Found.</p>
+                      ";
+         }else{
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
 		 		echo '
 
@@ -438,6 +452,8 @@ echo'
 
 						';
 		 	}
+         }
+
 		}
 
 		function UsArchive($id)
@@ -500,6 +516,14 @@ echo'
 
 
 }
+$d = new PostView();
 
+if (isset($_POST['post'])){
+echo $d->ShowPost($_POST['post']);
+}
+
+if (isset($_POST['userpost'])){
+echo $d->USPost($_POST['userpost']);
+}
 
  ?>

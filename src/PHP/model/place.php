@@ -42,11 +42,11 @@ class placedatabase{
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
 
 		if ($price == 1) {
-			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, price  ASC LIMIT 20";
+			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, price  ASC";
 		}elseif ($price == 2) {
-			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, price ASC LIMIT 20";
+			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, price ASC";
 		}elseif ($price == 3) {
-			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, price DESC LIMIT 20";
+			$sql = "SELECT * FROM places WHERE District =? ORDER BY (type = ?) DESC, price DESC";
 		}
 
 		$stmt = $conn->prepare($sql); 
@@ -90,6 +90,33 @@ class placedatabase{
 
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
+
+	// Sorts the places by ascending price. 
+	protected function AscSortbyPrice($district,$type,$price){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$sql = "SELECT * FROM places WHERE District =?  AND type = ? ORDER BY price  ASC";
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("ss",$district,$type);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+	// Sorts the places desending by price. 
+	protected function DescSortbyPrice($district,$type,$price){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$sql = "SELECT * FROM places WHERE District =?  AND type = ? ORDER BY price  DESC";
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("ss",$district,$type);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
 
 	// Actually sorts the places based on the number of reviews
 	protected function SortbyRating($district,$type){
