@@ -1,55 +1,42 @@
-<!DOCTYPE html>
-       <html>
-       <head>
-         <meta charset="utf-8">
-         <title>YOru</title>
-       </head>
-       <body>
-       <p></p>
-       </body>
-       <script type="text/javascript">
-var apiGeolocationSuccess = function(position) {
-    alert("API geolocation success!\n\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
-};
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+          <div class="" style="font-size: 5px;">
+           <button  id="landmark" class="btn"><i class="fa fa-monument"></i>
+            Historical landmark          
+         </button>
 
-var tryAPIGeolocation = function() {
-    jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDCa1LUe1vOczX1hO_iGYgyo8p_jYuGOPU", function(success) {
-        apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
-  })
-  .fail(function(err) {
-    alert("API Geolocation error! \n\n"+err);
-  });
-};
+          <button  id="church" class="btn"><i class="fa fa-church"></i>
+           Church
+         </button>
 
-var browserGeolocationSuccess = function(position) {
-    alert("Browser geolocation success!\n\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
-};
+          <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i>
+           Shopping            
+         </button>
 
-var browserGeolocationFail = function(error) {
-  switch (error.code) {
-    case error.TIMEOUT:
-      alert("Browser geolocation error !\n\nTimeout.");
-      break;
-    case error.PERMISSION_DENIED:
-      if(error.message.indexOf("Only secure origins are allowed") == 0) {
-        tryAPIGeolocation();
-      }
-      break;
-    case error.POSITION_UNAVAILABLE:
-      alert("Browser geolocation error !\n\nPosition unavailable.");
-      break;
-  }
-};
+          <button  id="park" class="btn"><i class="fa fa-tree"></i>
+           Park            
+         </button>
 
-var tryGeolocation = function() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-        browserGeolocationSuccess,
-      browserGeolocationFail,
-      {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
-  }
-};
+          <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i>
+           Restaurant            
+         </button>
 
-tryGeolocation();
-       </script>
-       </html>       
+          <button  id="attraction" class="btn"><i class="fa fa-landmark"></i>
+           Tourist attraction            
+         </button>
+
+          <button  id="reco" class="btn"><i class="fa fa-map-marker"></i>
+           Recommended for you            
+         </button>         
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

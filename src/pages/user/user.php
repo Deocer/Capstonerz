@@ -52,7 +52,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
  
  <script>
   $(document).ready(function(){
-
+    $("#resto").hide();
     $("#input").keyup(function(){
           $( "#result" ).empty();
           $( "#demo" ).empty();
@@ -138,6 +138,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
     $("#landmark").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "#9570DD");
           $("#church").css("color", "black");
           $("#shopping").css("color", "black");
@@ -176,6 +177,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
     $("#church").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "#9570DD");
           $("#shopping").css("color", "black");
@@ -213,6 +215,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
     $("#shopping").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color", "#9570DD");
@@ -251,6 +254,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
 
     $("#park").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color","black");
@@ -288,6 +292,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
     $("#restaurant").click(function(){
+          $("#resto").show();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color","black");
@@ -326,6 +331,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
 
     $("#attraction").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color","black");
@@ -362,7 +368,172 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           });
     });
 
+    $("#Café").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#Café").css("color", "#9570DD");
+          $("#Eatery").css("color", "black");
+          $("#FastFood").css("color", "black");
+          $("#Bar").css("color", "black");
+          $("#reco").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "Café",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>"
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Café' ?>
+                   $('#des').val("Café ");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#Eatery").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#Café").css("color", "black");
+          $("#Eatery").css("color", "#9570DD");
+          $("#FastFood").css("color", "black");
+          $("#Bar").css("color", "black");
+          $("#reco").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "Eatery",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>"
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Eatery' ?>
+                   $('#des').val("Eatery");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#FastFood").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#Café").css("color", "black");
+          $("#Eatery").css("color", "black");
+          $("#FastFood").css("color", "#9570DD");
+          $("#Bar").css("color", "black");
+          $("#reco").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "Fast Food",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>"
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = 'Fast Food' ?>
+                   $('#des').val("Fast Food");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#Bar").click(function(){
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#Café").css("color", "black");
+          $("#Eatery").css("color", "black");
+          $("#FastFood").css("color", "black");
+          $("#Bar").css("color", "#9570DD");
+          $("#reco").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      default: "#Bar",
+                      lat: <?php echo $_SESSION['lat']?>,
+                      lot: <?php echo $_SESSION['lot']?>,
+                      district: "<?php echo $_SESSION['district']?>",
+                      city: "<?php echo $_SESSION['City']?>"
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   $("#result").html(result);
+                    <?php $destype = '#Bar' ?>
+                   $('#des').val("#Bar");
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
     $("#reco").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color","black");
@@ -400,6 +571,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
    $("#distance").click(function(){
+          $("#resto").hide();
           $('#des').html( ""+
       "<div class='spinner-grow text-dark' role='status'>"+
         "<span class='visually-hidden'>Loading...</span>"+
@@ -430,6 +602,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
    $("#prize").click(function(){
+          $("#resto").hide();
           $('#demo').html( ""+
       "<div class='spinner-grow text-dark' role='status'>"+
         "<span class='visually-hidden'>Loading...</span>"+
@@ -461,6 +634,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
    $("#asc").click(function(){
+          $("#resto").hide();
           $('#demo').html( ""+
       "<div class='spinner-grow text-dark' role='status'>"+
         "<span class='visually-hidden'>Loading...</span>"+
@@ -492,6 +666,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
    $("#dcs").click(function(){
+          $("#resto").hide();
           $('#demo').html( ""+
       "<div class='spinner-grow text-dark' role='status'>"+
         "<span class='visually-hidden'>Loading...</span>"+
@@ -523,6 +698,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
     });
 
    $("#popularity").click(function(){
+          $("#resto").hide();
           $('#demo').html( ""+
       "<div class='spinner-grow text-dark' role='status'>"+
         "<span class='visually-hidden'>Loading...</span>"+
@@ -826,35 +1002,65 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
       <div class="bg-dark text-center  p-0" style="font-family: Caveat; font-weight: bolder;">
          <h4 class="text-light bg-dark text-center  p-1" style="font-family: Caveat; font-weight: bolder;"> Places In <?php echo $place; ?></h4>   
       </div>
-      <div class="" style="font-size: 5px;">
-           <button  id="landmark" class="btn"><i class="fa fa-monument"></i>
-            Historical landmark          
-         </button>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+              <button class="accordion-button btn" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+              <div class="accordion-body">
+                    <div class="" style="font-size: 5px;">
+                       <button  id="landmark" class="btn"><i class="fa fa-monument"></i>
+                          Historical landmark          
+                       </button>
 
-          <button  id="church" class="btn"><i class="fa fa-church"></i>
-           Church
-         </button>
+                        <button  id="church" class="btn"><i class="fa fa-church"></i>
+                         Church
+                       </button>
 
-          <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i>
-           Shopping            
-         </button>
+                        <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i>
+                         Shopping            
+                       </button>
 
-          <button  id="park" class="btn"><i class="fa fa-tree"></i>
-           Park            
-         </button>
+                        <button  id="park" class="btn"><i class="fa fa-tree"></i>
+                         Park            
+                       </button>
 
-          <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i>
-           Restaurant            
-         </button>
+                        <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i>
+                         Restaurant            
+                       </button>
 
-          <button  id="attraction" class="btn"><i class="fa fa-landmark"></i>
-           Tourist attraction            
-         </button>
+                        <button  id="attraction" class="btn"><i class="fa fa-landmark"></i>
+                         Tourist attraction            
+                       </button>
 
-          <button  id="reco" class="btn"><i class="fa fa-map-marker"></i>
-           Recommended for you            
-         </button>         
+                        <button  id="reco" class="btn"><i class="fa fa-map-marker"></i>
+                         Recommended for you            
+                       </button>         
+                    </div>
+              </div>
+            </div>
+          </div>
+
       </div>
+                    <div class="" id="resto" style="font-size: 5px;">
+                       <button  id="Café" class="btn"><i class="fa fa-coffee"></i>
+                          Café          
+                       </button>
+
+                        <button  id="Eatery" class="btn"><i class="fa fa-utensils"></i>
+                         Eatery
+                       </button>
+
+                        <button  id="FastFood" class="btn"><i class="fa fa-hamburger"></i>
+                         Fast Food            
+                       </button>
+
+                       <button  id="Bar" class="btn"><i class="fa fa-glass-martini"></i>
+                         Bar            
+                       </button>        
+                    </div>
 
       <div id="pricesort" style="display: none;">
           <button  id="asc" class="btn"><i class="fa fa-sort-amount-up-alt"></i>

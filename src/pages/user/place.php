@@ -19,12 +19,13 @@ $lat = $_GET['lat'];
 $lot = $_GET['lot'];
 $nm = $_GET['nm'];
 $desc = $_GET['desc'];
-$img = $_GET['img'];
 $rating = $_GET['rating'];
 $class = $_GET['class'];
 $price = $_GET['price'];
 $hour = $_GET['hours'];
 $address = $_GET['address'];
+$contact = $_GET['contact'];
+$site = $_GET['site'];
 }
 
 $id = $_SESSION['Id'];
@@ -127,6 +128,41 @@ $rev = new ReviewView();
                 <div class="row">
                   <div id="map" class="mx-auto" style="width: 100%; height: 300px;"></div>
                 </div>
+                <br><br>
+
+                <div class="row">
+                  <?php 
+                  $img = str_replace("@","&",$_GET['img']); 
+                  echo '
+
+                  <div class="row no-gutters">
+                      <div class="col-4">
+                          <img src="'.$img.'" class="img-fluid rounded-circle m-1 "  alt="" style="width:150px;height:120px;">
+                      </div>
+                      <div class="col">
+                          <p>'.$desc.'</p>
+                          <p>Located at : '.$address.'</p>';
+
+                  if ($contact == 'N/A') {
+
+                  }else{
+                      echo '<p>Contact : '.$contact.'</p> ';
+                  }
+
+                  if ($site == 'N/A') {
+
+                  }else{
+                     echo '<p>Website : <a href="'.$site.'">'.$site.'</a></p> ';                    
+                  }
+                          
+                  echo'
+                      </div>
+                  </div>
+
+
+                  ' ?>
+
+                </div>  
                 <div class="row">
                   <div class="col">
                     <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
@@ -164,9 +200,9 @@ $rev = new ReviewView();
                                 }else{
                                   echo '                                   
                                   <p class=card-text" style="font-size:36px;">
-                                  <span class="material-icons" style="font-size:36px;">paid</span>
-                                  <span class="material-icons" style="font-size:36px;">paid</span>
-                                  <span class="material-icons" style="font-size:36px;">paid</span>
+                                  <span class="material-icons" style="font-size:30px;">paid</span>
+                                  <span class="material-icons" style="font-size:30px;">paid</span>
+                                  <span class="material-icons" style="font-size:30px;">paid</span>
                                   </p>';                          
                                 }
 

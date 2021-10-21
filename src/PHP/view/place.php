@@ -37,31 +37,32 @@ class PlaceView extends PlaceControl
 		 }
 
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
-			 $sorted[$ctr] =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 @$sorted[$ctr] =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
 
 		 	}
-
 		 	 asort($sorted, true);
 			 $keys =  array_keys($sorted);
 
-		 foreach($keys as $k ){
+		 for ($c=0; $c < $i; $c++) {
+		 		$img = str_replace("&","@",$res[$keys[$c]]['img']);  
 				echo '
 					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
-					                <img src="'.$res[$k]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
+					                <img src="'.$res[$keys[$c]]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$k]['Pname'].'&lat='.$res[$k]['Lat'].'&lot='.$res[$k]['Lot'].'&desc='.$res[$k]['Des'].'&img='.$res[$k]['img'].'&class='.$res[$k]['type'].'&rating='.$res[$k]['Rating'].'&address='.$res[$k]['address'].'&hours='.$res[$k]['hours'].'&price='.$res[$k]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$k]['Pname'].'</b></a></p>
-					                    <p class="text-muted" style ="font-size:10px;"><span class="material-icons">place</span> <b>'.round($sorted[$k]).' KM</b> From Your Location: <b>'.$city.'</b></p>
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$keys[$c]]['Pname'].'&lat='.$res[$keys[$c]]['Lat'].'&lot='.$res[$keys[$c]]['Lot'].'&desc='.$res[$keys[$c]]['Des'].'&img='.$img.'&class='.$res[$keys[$c]]['type'].'&rating='.$res[$keys[$c]]['Rating'].'&address='.$res[$keys[$c]]['address'].'&hours='.$res[$keys[$c]]['hours'].'&price='.$res[$keys[$c]]['price'].'&contact='.$res[$keys[$c]]['contact'].'&site='.$res[$keys[$c]]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$keys[$c]]['Pname'].'</b></a></p>
+					                    <p class="text-muted" style ="font-size:10px;"><span class="material-icons">place</span> <b>'.round($sorted[$keys[$c]]).' KM</b> From Your Location: <b>'.$city.'</b></p>
 					                </div>
 					            </div>
 					        </div>
 					  </div>						
   ';
 
-		 }
+
+		 	}
 
 
 		}
@@ -78,7 +79,8 @@ class PlaceView extends PlaceControl
 		 }
 
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
-			 $sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 @$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 $img = str_replace("&","@",$res[$ctr]['img']); 
 
 				echo '
 					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
@@ -88,7 +90,7 @@ class PlaceView extends PlaceControl
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>';
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$img.'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'&contact='.$res[$ctr]['contact'].'&site='.$res[$ctr]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>';
 					           		if ($res[$ctr]['price'] == 1) {
 					           			echo ' <p class="text-muted" style ="font-size:12px;">
 					           			<span class="material-icons">paid</span>
@@ -134,7 +136,8 @@ class PlaceView extends PlaceControl
 		 }
 
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
-			 $sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 @$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 $img = str_replace("&","@",$res[$ctr]['img']); 
 
 				echo '
 					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
@@ -144,7 +147,7 @@ class PlaceView extends PlaceControl
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>';
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$img.'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'&contact='.$res[$ctr]['contact'].'&site='.$res[$ctr]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>';
 					           		if ($res[$ctr]['price'] == 1) {
 					           			echo ' <p class="text-muted" style ="font-size:12px;">
 					           			<span class="material-icons">paid</span>
@@ -189,7 +192,8 @@ class PlaceView extends PlaceControl
 		 }
 
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
-			 $sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 @$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 $img = str_replace("&","@",$res[$ctr]['img']); 
 
 				echo '
 					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
@@ -199,7 +203,7 @@ class PlaceView extends PlaceControl
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>';
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$img.'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'&contact='.$res[$ctr]['contact'].'&site='.$res[$ctr]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>';
 					           		if ($res[$ctr]['price'] == 1) {
 					           			echo ' <p class="text-muted" style ="font-size:12px;">
 					           			<span class="material-icons">paid</span>
@@ -244,7 +248,8 @@ class PlaceView extends PlaceControl
 		 }
 
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
-			 $sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 @$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 $img = str_replace("&","@",$res[$ctr]['img']); 
 
 				echo '
 					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
@@ -254,7 +259,7 @@ class PlaceView extends PlaceControl
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>				                         
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$img.'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'&contact='.$res[$ctr]['contact'].'&site='.$res[$ctr]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>				                         
 
 				                          <p style="font-size:30px;">
 				                           <span class="material-icons" style="font-size:25px;color:yellow;">star</span>
@@ -285,8 +290,8 @@ class PlaceView extends PlaceControl
 		 }
 
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
-			 $sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
-
+			 @$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 $img = str_replace("&","@",$res[$ctr]['img']); 
 				echo '
 					  <div class="card placecard" style="width:420px;height:170px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
@@ -295,7 +300,7 @@ class PlaceView extends PlaceControl
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>';
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$img.'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'&contact='.$res[$ctr]['contact'].'&site='.$res[$ctr]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>';
 					                    
 					           		if ($res[$ctr]['price'] == 1) {
 					           			echo ' <p class="text-muted" style ="font-size:15px;">
@@ -344,34 +349,32 @@ class PlaceView extends PlaceControl
 		 }
 
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
-			 $sorted[$ctr] =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+			 @$sorted[$ctr] =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
 
 		 	}
 
 		 	 asort($sorted, true);
 			 $keys =  array_keys($sorted);
-
-		 foreach($keys as $k ){
+		 for ($c=0; $c < $i; $c++) {
+		 		$img = str_replace("&","@",$res[$keys[$c]]['img']); 
 				echo '
-					  <div class="card placecard">
+					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
-					                <img src="'.$res[$k]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
+					                <img src="'.$res[$keys[$c]]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$k]['Pname'].'&lat='.$res[$k]['Lat'].'&lot='.$res[$k]['Lot'].'&desc='.$res[$k]['Des'].'&img='.$res[$k]['img'].'&class='.$res[$k]['type'].'&rating='.$res[$k]['Rating'].'&address='.$res[$k]['address'].'&hours='.$res[$k]['hours'].'&price='.$res[$k]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$k]['Pname'].'</b></a></p>
-					                    <p class="text-muted" style ="font-size:12px;"><span class="material-icons">place</span> <b>'.round($sorted[$k]).' KM</b> From Your Location: <b>'.$place.'</b></p>
-					                    <p class="text-muted" style ="font-size:9px;"><small>'.$res[$k]['type'].'</small></p>
-
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$keys[$c]]['Pname'].'&lat='.$res[$keys[$c]]['Lat'].'&lot='.$res[$keys[$c]]['Lot'].'&desc='.$res[$keys[$c]]['Des'].'&img='.$img.'&class='.$res[$keys[$c]]['type'].'&rating='.$res[$keys[$c]]['Rating'].'&address='.$res[$keys[$c]]['address'].'&hours='.$res[$keys[$c]]['hours'].'&price='.$res[$keys[$c]]['price'].'&contact='.$res[$keys[$c]]['contact'].'&site='.$res[$keys[$c]]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$keys[$c]]['Pname'].'</b></a></p>
+					                    <p class="text-muted" style ="font-size:10px;"><span class="material-icons">place</span> <b>'.round($sorted[$keys[$c]]).' KM</b> From Your Location: <b>'.$place.'</b></p>
 					                </div>
 					            </div>
 					        </div>
-					  </div>	
+					  </div>						
+  ';
 
-						';
 
-		 }
+		 	}
 
 
 		}
@@ -402,7 +405,8 @@ class PlaceView extends PlaceControl
 		 }
 
 		  for ($ctr=0; $ctr < $i; $ctr++) { 
-		  		$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+		  		@$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+		  		$img = str_replace("&","@",$res[$ctr]['img']); 
 				echo '
 					  <div class="card placecard">
 					        <div class="row no-gutters">
@@ -411,7 +415,7 @@ class PlaceView extends PlaceControl
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$res[$ctr]['img'].'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$img.'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'&contact='.$res[$ctr]['contact'].'&site='.$res[$ctr]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>
 					                    <p class="text-muted" style ="font-size:15px;"><span class="material-icons">star</span></p>
 					                    <p class="text-muted" style ="font-size:12px;">'.$res[$ctr]['Rating'].'</p>
 					                    <p class="text-muted" style ="font-size:12px;">'.$res[$ctr]['reviews'].'</p>
@@ -465,3 +469,4 @@ echo $d->DscPriceSort($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['typ
 }
 
  ?>
+
