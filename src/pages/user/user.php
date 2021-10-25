@@ -166,9 +166,15 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                   <?php $destype = 'Landmark' ?>
-                   $('#des').val("Historical landmark");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                        $("#result").html(result);
+                        <?php $destype = 'Landmark' ?>
+                        $('#des').val("Historical landmark");
+                    }
+
               },
             error: function(){
                 console.log("error")
@@ -204,9 +210,14 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                   <?php $destype = 'Church' ?>
-                   $('#des').val("Church");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                          $("#result").html(result);
+                         <?php $destype = 'Church' ?>
+                         $('#des').val("Church");
+                    }
               },
             error: function(){
                 console.log("error")
@@ -242,9 +253,14 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                    <?php $destype = 'Store' ?>
-                   $('#des').val("Store");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                      $("#result").html(result);
+                      <?php $destype = 'Store' ?>
+                      $('#des').val("Store");
+                    }
               },
             error: function(){
                 console.log("error")
@@ -281,9 +297,14 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                    <?php $destype = 'Park' ?>
-                   $('#des').val("Park");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = 'Park' ?>
+                       $('#des').val("Park");
+                    }
               },
             error: function(){
                 console.log("error")
@@ -319,9 +340,14 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                    <?php $destype = 'Restaurant' ?>
-                   $('#des').val("Restaurant");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = 'Restaurant' ?>
+                       $('#des').val("Restaurant");
+                  }
               },
             error: function(){
                 console.log("error")
@@ -358,9 +384,14 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                    <?php $destype = 'Tourist Attraction' ?>
-                   $('#des').val("Tourist Attraction");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = 'Tourist Attraction' ?>
+                       $('#des').val("Tourist Attraction");
+                  }
               },
             error: function(){
                 console.log("error")
@@ -399,9 +430,14 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                    <?php $destype = 'Café' ?>
-                   $('#des').val("Café ");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = 'Café' ?>
+                       $('#des').val("Café ");
+                  }
               },
             error: function(){
                 console.log("error")
@@ -440,9 +476,15 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                    <?php $destype = 'Eatery' ?>
-                   $('#des').val("Eatery");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = 'Eatery' ?>
+                       $('#des').val("Eatery");
+                  }
+
               },
             error: function(){
                 console.log("error")
@@ -481,9 +523,14 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                    <?php $destype = 'Fast Food' ?>
-                   $('#des').val("Fast Food");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = 'Fast Food' ?>
+                       $('#des').val("Fast Food");  
+                  }
               },
             error: function(){
                 console.log("error")
@@ -522,9 +569,14 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
                    $('#pricesort').hide();
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
-                   $("#result").html(result);
-                    <?php $destype = '#Bar' ?>
-                   $('#des').val("#Bar");
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = '#Bar' ?>
+                       $('#des').val("#Bar"); 
+                  }
               },
             error: function(){
                 console.log("error")

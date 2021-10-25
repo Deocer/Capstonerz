@@ -46,7 +46,7 @@ class PostView extends PostControl
 					switch ($pic) {
 				  case $pic == 1 :
 				   echo '
-				 		<img src="'.$img[0]['datum'].'" style="height: 300px;" class="img-fluid rounded-start" onClick="reply_click(this)"  alt="../../imgs/wander logo.png"></br>';
+				 		<img src="'.$img[0]['datum'].'" style="height: 300px;width:100%;" class="img-fluid rounded-start" onClick="reply_click(this)"  alt="../../imgs/wander logo.png"></br>';
 				    break;
 				  case $pic == 2:
 				    echo '<div class="container">

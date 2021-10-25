@@ -51,9 +51,9 @@ $name = $_SESSION['UserName'];
 
 $d = new PostControl();
 
-$d->CreatePost($title, $cont, $id,$name);
+$d->CreatePost($title,$cont,$id,$name);
 
-$num  = $d->Pop($id,$title,$name);
+$num  = $d->Pop($id,$title,$cont,$name);
 
 uploader($num,$name);
 

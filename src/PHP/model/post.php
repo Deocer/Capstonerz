@@ -93,11 +93,11 @@ class postdatabase{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
-	protected function fetchPop($UserID,$title,$name){
+	protected function fetchPop($UserID,$title,$cont,$name){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);  
-		$sql = "SELECT * FROM post WHERE UserID = ? AND PostTitle = ? AND UserName = ? AND Status = 'Active'"; 
+		$sql = "SELECT * FROM post WHERE UserID = ? AND PostTitle = ? AND Cont = ? AND UserName = ? AND Status = 'Active'"; 
 		$stmt = $conn->prepare($sql); 
-		$stmt->bind_param("iss", $UserID,$title,$name);
+		$stmt->bind_param("isss", $UserID,$title,$cont,$name);
 		$stmt->execute();
 
 		$result = $stmt->get_result();

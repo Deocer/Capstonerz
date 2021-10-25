@@ -70,10 +70,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/post.php');
 		 
 		}
 
-		function Pop($id,$title,$name)
+		function Pop($UserID,$title,$cont,$name)
 		{
 		 
-		 $res =  $this->fetchPop($id,$title,$name);
+		 $res =  $this->fetchPop($UserID,$title,$cont,$name);
 
 		 return $res;
 		 
