@@ -18,69 +18,76 @@ session_start();
 
 <body>
 
-<h3 style="margin: auto; text-align: center; font-weight: bolder; color: white;" class="bg-dark">GETTING STARTED</h3>
-<br>
-<h5 style="margin: auto; text-align: center; font-weight: bold; color: white;">Almost there! Please Enter your current District in Manila so that we may fetch you some nearby travelling spots!</h5>
-<br>
-
-<div class="container-sm bg-light" style="width: 50%;">
-  <form action="../../PHP/Functions/Geocoding.php" method="post" >
-      <br>
-    <div>
-      <label>Preferred Price Point For Destinations</label>
-      <br>
-      <select class="form-select" aria-label="Please Your Current City Location" name="prize">
-        <option value="1">I prefer travel on a lower budget</option>
-        <option value="2">Average budget </option>
-        <option value="3">I only travel on premium destinations</option>
-      </select>
+  <div class="container">
+    <div class="row vh-100 align-items-center justify-content-center">
+      <div class="d-sm-flex justify-content-center">
+        <!--Login Form-->
+        <div class="col-sm-8 col-md-6 col-lg-4 bg-white rounded p-4 shadow">
+        <h3 style="margin: auto; text-align: center; font-weight: bold;">Getting Started:</h3>
+        <p style="margin: auto; text-align: center; font-weight: bold;"><strong>Almost there! Please the district in Manila you cuurently reside on or the district you want to visit.</strong></p>
+        <br>
+          <form action="../../PHP/Functions/Geocoding.php" method="post" class="container" style="margin: auto;">
+            <div>
+              <label>Preferred Price Point For Destinations</label>
+              <br>
+              <br>
+              <select class="form-select" aria-label="Please Your Current City Location" name="prize">
+                <option value="1">I prefer travel on a lower budget</option>
+                <option value="2">Average budget </option>
+                <option value="3">I only travel on premium destinations</option>
+              </select>
+            </div>
+            <br>
+            <div>
+             <label>Which district in Manila City do you want to visit?</label>
+              <br>
+              <br>
+              <select class="form-select"  aria-label="Please Your Current City Location" name="district">
+                <option value="Tondo">Tondo</option>
+                <option value="Binondo">Binondo</option>
+                <option value="Port Area">Port Area</option>
+                <option value="Ermita">Ermita</option>
+                <option value="Malate">Malate</option>
+                <option value="Santa Ana">Santa Ana</option>
+                <option value="Sta. Mesa">Sta. Mesa</option>
+                <option value="Sampaloc">Sampaloc</option>
+                <option value="Sta Cruz">Sta Cruz</option>
+                <option value="Quiapo">Quiapo</option>
+                <option value="San Miguel">San Miguel</option>
+                <option value="Intramuros">Intramuros</option>
+                <option value="Paco">Paco</option>
+                <option value="Pandacan">Pandacan</option>
+                <option value="San Andres">San Andres</option>
+                <option value="San Nicolas">San Nicolas</option>
+              </select>
+            </div>
+            <br>
+            <br>
+            <div>
+             <label>What Kind of Destinations Do you Frequently Visit:</label>
+              <br>
+              <br>
+              <select class="form-select" aria-label="Please Your Current City Location" name="type">
+                <option value="Restaurants">Restaurants</option>
+                <option value="Park">Park</option>
+                <option value="Art gallery">Art gallery</option>
+                <option value="Hotels">Hotels</option>
+                <option value="Spa">Spa</option>
+                <option value="Tourist attraction">Tourist attraction</option>
+              </select>
+            </div>
+            <br>
+            <div style="color:white;margin: auto;text-align: center;">
+               <button class="btn btn-outline-secondary btn-success " id="place-search-input" id="button-addon2" style="color:white;margin: auto;">Button</button>
+            </div>
+            <br>
+         </form>
+        </div>
+        
+        <img src="../../imgs/background.jpg" class=" w-50 d-none d-sm-block" width="">
+      </div>      
     </div>
-    <br>
-    <div>
-     <label>Which district in Manila City do you want to visit?</label>
-      <br>
-      <select class="form-select" aria-label="Please Your Current City Location" name="district">
-        <option value="Tondo">Tondo</option>
-        <option value="Binondo">Binondo</option>
-        <option value="Port Area">Port Area</option>
-        <option value="Ermita">Ermita</option>
-        <option value="Malate">Malate</option>
-        <option value="Santa Ana">Santa Ana</option>
-        <option value="Sta. Mesa">Sta. Mesa</option>
-        <option value="Sampaloc">Sampaloc</option>
-        <option value="Sta Cruz">Sta Cruz</option>
-        <option value="Quiapo">Quiapo</option>
-        <option value="San Miguel">San Miguel</option>
-        <option value="Intramuros">Intramuros</option>
-        <option value="Paco">Paco</option>
-        <option value="Pandacan">Pandacan</option>
-        <option value="San Andres">San Andres</option>
-        <option value="San Nicolas">San Nicolas</option>
-      </select>
-    </div>
-    <br>
-    <br>
-    <div>
-     <label>What Kind of Destinations Do you Frequently Visit</label>
-      <br>
-      <select class="form-select" aria-label="Please Your Current City Location" name="type">
-        <option value="Restaurants">Restaurants</option>
-        <option value="Park">Park</option>
-        <option value="Art gallery">Art gallery</option>
-        <option value="Hotels">Hotels</option>
-        <option value="Spa">Spa</option>
-        <option value="Tourist attraction">Tourist attraction</option>
-      </select>
-    </div>
-    <br>
-    <div style="color:white;margin: auto;text-align: center;">
-       <button class="btn btn-outline-secondary btn-success " id="place-search-input" id="button-addon2" style="color:white;margin: auto;">Button</button>
-    </div>
-    <br>
- </form>
-                     
-</div>
-<br><br>
+  </div>  
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>

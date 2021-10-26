@@ -99,7 +99,6 @@ $rev = new ReviewView();
         </div>
         <div class="col-7 mx-auto">
           <div class="container-fluid bg-light" style="overflow: auto;height:720px">
-            <h4 class=" text-light bg-dark text-center  p-3"><?php echo $nm; ?></h4>
             <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
@@ -140,8 +139,118 @@ $rev = new ReviewView();
                           <img src="'.$img.'" class="img-fluid rounded-circle m-1 "  alt="" style="width:150px;height:120px;">
                       </div>
                       <div class="col">
-                          <p>'.$desc.'</p>
-                          <p>Located at : '.$address.'</p>';
+                          <span style="font-size:20px;"><strong>'.$nm.'</strong> </span>
+                          ';
+                  echo '                
+                  <div class="row">
+                    <div class="col-5">';
+                  if ($rating == 1) {
+                    echo '<p style="font-size:55px;">'.$rating.'</p>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                  }elseif ($rating > 1 && $rating < 2) {
+                    echo '<span style="font-size:30px;">'.$rating.'</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons">star_half</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                    echo '<span class="material-icons">star_outline</span>'; 
+                  }elseif ($rating == 2) {
+                    echo '<span style="font-size:30px;">'.$rating.'</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                    echo '<span class="material-icons">star_outline</span>'; 
+                  }elseif ($rating > 2 && $rating < 3) {
+                    echo '<span style="font-size:30px;">'.$rating.'</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons">star_half</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                    echo '<span class="material-icons">star_outline</span>'; 
+                  }elseif ($rating == 3) {
+                    echo '<span style="font-size:30px;">'.$rating.'</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons">star_outline</span>';
+                    echo '<span class="material-icons">star_outline</span>'; 
+                  }elseif ($rating > 3 && $rating < 4) {
+                    echo '<span style="font-size:30px;">'.$rating.'</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons">star_half</span>';
+                    echo '<span class="material-icons">star_outline</span>'; 
+                  }elseif ($rating == 4) {
+                    echo '<span style="font-size:30px;">'.$rating.'</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons">star_outline</span>'; 
+                  }elseif ($rating > 4 && $rating < 5) {
+                    echo '<span style="font-size:30px;">'.$rating.'</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons">star_half</span>';
+                  }elseif ($rating == 5) {
+                    echo '<span style="font-size:30px;">'.$rating.'</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                    echo '<span class="material-icons" >star</span>';
+                  }elseif ($rating == 0) {
+                    echo '<span style="font-size:30px;">'.$rating.'</span>';
+                    echo '<span class="material-icons">star_outline</span>'; 
+                    echo '<span class="material-icons">star_outline</span>'; 
+                    echo '<span class="material-icons">star_outline</span>'; 
+                    echo '<span class="material-icons">star_outline</span>'; 
+                    echo '<span class="material-icons">star_outline</span>'; 
+                  }
+                  echo '
+                   </div>
+                    <div class="col">';
+                    if ($price == 1) {
+                      echo ' 
+                      <p class=card-text" style="font-size:30px;">
+                      <span class="material-icons">paid</span>
+                      </p>';
+                    }elseif ($price == 2) {
+                      echo '                                  
+                      <p class=card-text" style="font-size:30px;">
+                      <span class="material-icons">paid</span>
+                      <span class="material-icons">paid</span>
+                      </p>';
+                    }else{
+                      echo '                                   
+                      <p class=card-text" style="font-size:30px;">
+                      <span class="material-icons">paid</span>
+                      <span class="material-icons">paid</span>
+                      <span class="material-icons">paid</span>
+                      </p>';                          
+                    }
+
+                  echo'  
+                    </div>
+                    <div class="col">
+                        <a class="btn" aria-current="page" onclick="add()" style="background-color:purple;color:white;"><span class="material-icons" style="font-size:35px;">add</span></a>
+                    </div>
+                  </div>';
+
+
+                  echo'      
+                          <p class="text-lead">'.$desc.'</p>
+                          <p><sub><b>Operation Hours:</b> '.$hour.'</sub></p>  
+                          <p><sub><b>Located at :</b> '.$address.'</sub></p>';
+            
 
                   if ($contact == 'N/A') {
 
@@ -163,84 +272,6 @@ $rev = new ReviewView();
                   ' ?>
 
                 </div>  
-                <div class="row">
-                  <div class="col">
-                    <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
-                      <div class="card-body">
-                        <h5 class="card-title">Google Reviews</h5>
-                        <div class="col" style="    
-                              display: flex;
-                              align-items: center;
-                              margin-left: 1em; ">
-                          <p style="font-size:30px;">
-                            <?php echo $rating ?>
-                          </p>
-                          <p><span class="material-icons" style="font-size:35px;">star</span></p>
-                        </div>                      
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
-                      <div class="card-body">
-                        <h5 class="card-title">Destination Price Point</h5>
-                        <?php 
-
-                                if ($price == 1) {
-                                  echo ' 
-                                  <p class=card-text" style="font-size:56px;">
-                                  <span class="material-icons" style="font-size:56px;">paid</span>
-                                  </p>';
-                                }elseif ($price == 2) {
-                                  echo '                                  
-                                  <p class=card-text" style="font-size:40px;">
-                                  <span class="material-icons" style="font-size:40px;">paid</span>
-                                  <span class="material-icons" style="font-size:40px;">paid</span>
-                                  </p>';
-                                }else{
-                                  echo '                                   
-                                  <p class=card-text" style="font-size:36px;">
-                                  <span class="material-icons" style="font-size:30px;">paid</span>
-                                  <span class="material-icons" style="font-size:30px;">paid</span>
-                                  <span class="material-icons" style="font-size:30px;">paid</span>
-                                  </p>';                          
-                                }
-
-                          ?>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
-                      <div class="card-body">
-                        <h5 class="card-title">Operating Hours</h5>
-                        <p class="card-text" style="font-size:20px;font-weight: bolder;">
-                          <?php echo $hour ?>
-                        </p>                        
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                     <div class="card text-center fs-1 text" style="width: 100%;height: 150px;">
-                      <div class="card-body">
-                        <h5 class="card-title">Add To Itinerary</h5>
-                        <a class="btn btn-primary" aria-current="page" onclick="add()"><span class="material-icons p-3 text-light">travel_explore</span></a>                       
-                      </div>
-                    </div>
-                  </div>
-
-                  <script type="text/javascript">
-                  function add() {
-                    Swal.fire({
-                      title: "Success!",
-                      text: "Redirecting in 2 seconds.",
-                      icon: "success",
-                    }).then(function() {
-                      window.location.href = "../../PHP/controller/itinerary.php?nm=<?php echo $nm; ?>&id=<?php echo $id; ?>";
-                    });
-                  }
-                  </script>
-                </div>
               </div>
               <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
                 <reviews>
@@ -297,6 +328,17 @@ $rev = new ReviewView();
                       </div>
                     </div>
                   </div>
+                  <script type="text/javascript">
+                  function add() {
+                    Swal.fire({
+                      title: "Destination added!",
+                      text:  "<?php echo $nm ?>" +" has been added to your itinerary",
+                      icon: "success",
+                    }).then(function() {
+                      window.location.href = "../../PHP/controller/itinerary.php?nm=<?php echo $nm; ?>&id=<?php echo $id; ?>";
+                    });
+                  }
+                  </script>
                 </reviews>
               </div>
               <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">

@@ -43,7 +43,7 @@ class ItemView extends ItemControl
 				<div class="card mb-3" style="">
 				  <div class="row g-0">
 				    <div class="col-md-4" style="margin:auto;">
-				 				<a href="../../pages/user/place.php?nm='.$place[0]['Pname'].'&lat='.$place[0]['Lat'].'&lot='.$place[0]['Lot'].'&desc='.$place[0]['Des'].'&img='.$place[0]['img'].'&class='.$place[0]['type'].'&rating='.$place[0]['Rating'].'&address='.$place[0]['address'].'&hours='.$place[0]['hours'].'&price='.$place[0]['price'].'" class="text-body"  style="text-decoration: none;" >
+				 				<a href="../../pages/user/place.php?nm='.$place[0]['Pname'].'&lat='.$place[0]['Lat'].'&lot='.$place[0]['Lot'].'&desc='.$place[0]['Des'].'&img='.$place[0]['img'].'&class='.$place[0]['type'].'&rating='.$place[0]['Rating'].'&address='.$place[0]['address'].'&hours='.$place[0]['hours'].'&price='.$place[0]['price'].'&contact='.$place[0]['contact'].'&site='.$place[0]['site'].'" class="text-body"  style="text-decoration: none;" >
 
 										<img src="'.$place[0]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:70px;height:80px;">
 

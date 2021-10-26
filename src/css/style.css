@@ -195,8 +195,6 @@ li {
     overflow: hidden;
     list-style: none;
     white-space:nowrap;
-    margin-right: 10px;
-    border-radius: 25px;
 }
     li a {
         font-size: 15px;
