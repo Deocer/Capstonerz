@@ -108,6 +108,18 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 		 return $res;
 		}
 
+		function fetchNormal()//Select All User
+		{
+		 $res = $this->selectNormal();
+		 return $res;
+		}
+
+		function fetchFlagged()//Select All User
+		{
+		 $res = $this->selectFlagged();
+		 return $res;
+		}
+
 	    function StatUsers($id)//Flag User
 		{
 		 $res = $this->setstat($id);

@@ -93,6 +93,38 @@ class postdatabase{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
+	protected function Active(){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$sql = "SELECT * FROM post WHERE Status  = 'Active'"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+	protected function Archived(){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$sql = "SELECT * FROM post WHERE Status  = 'Archived'"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+	protected function Deleted(){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$sql = "SELECT * FROM post WHERE Status  = 'Deleted'"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
 	protected function fetchPop($UserID,$title,$cont,$name){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);  
 		$sql = "SELECT * FROM post WHERE UserID = ? AND PostTitle = ? AND Cont = ? AND UserName = ? AND Status = 'Active'"; 

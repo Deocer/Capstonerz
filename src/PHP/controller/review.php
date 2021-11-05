@@ -48,9 +48,13 @@ $place = $_POST['place'];
 $name = $_POST['name'];
 $id = $_POST['id'];
 $cont = $_POST['cont'];
-echo 'mobalista';
+
 $d = new ReviewControl();
 $d->CreateReview($place, $cont,$rating, $id, $name);
+
+header('location:../../pages/user/place.php?nm='.$_GET['nm'].'&lat='.$_GET['lat'].'&lot='.$_GET['lot'].'&desc='.$_GET['desc'].'&img='.$_GET['img'].'&class='.$_GET['class'].'&rating='.$_GET['rating'].'&address='.$_GET['address'].'&hours='.$_GET['hours'].'&price='.$_GET['price'].'&contact='.$_GET['price'].'&site='.$_GET['site'].'');
+exit();
+
 }
 
 

@@ -65,6 +65,28 @@ class userdatabase{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
+	protected function selectNormal(){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$sql = "SELECT * FROM wuser WHERE Status = 'Normal' "; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+	protected function selectFlagged(){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$sql = "SELECT * FROM wuser WHERE Status = 'Flagged' "; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
 	protected function setstat ($id){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	 
 		$stmt = $conn->prepare("UPDATE wuser SET  Status = 'Flagged' WHERE UserID = ? ");

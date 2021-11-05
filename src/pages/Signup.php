@@ -29,7 +29,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 				<!-- Sign Up Form -->
 				<div class="col-sm-8 col-md-6 col-lg-4 bg-white rounded p-4 shadow">
 					<div class="row justify-content-center mb-2">
-						<img src="../imgs/wander logo.png" class="w-50 rounded-pill">
+						<img src="../imgs/logo.png" /class="w-50 rounded-pill">
 					</div>
 					<p class="h4 text-center">Sign-Up Page</p>
 					<form action=" ../../src/PHP/Functions/Sign_up.php" method="post">

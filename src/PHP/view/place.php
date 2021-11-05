@@ -430,6 +430,21 @@ class PlaceView extends PlaceControl
 		 	}
 
 	}
+
+	function PlaceTypes($place,$type){
+		 $p = new PlaceView();
+		 $i = 0;
+		 $res =  $this->GetByType($place,$type);
+		  foreach($res as $r ){
+		 	$i++;
+		 }
+
+		 echo $i;
+
+		 return $i;
+
+	}
+
 }
 $d = new PlaceView();
 

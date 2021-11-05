@@ -284,7 +284,7 @@ $rev = new ReviewView();
               </h2>
                       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                          <form action="../../PHP/controller/review.php" method="post">
+                          <form action="../../PHP/controller/review.php?nm=<?php echo $nm ?>&lat=<?php echo $lat ?>&lot=<?php echo $lot ?>&desc=<?php echo $desc ?>&img=<?php echo $img ?>&class=<?php echo $class ?>&rating=<?php echo $rating ?>&address=<?php echo $address ?>&hours=<?php echo $hour ?>&price=<?php echo $price ?>&contact=<?php echo $contact ?>&site=<?php echo $site ?>" method="post">
                             <div>
                               <input class="form-control" style="display: none;" name="place" value="<?php echo $nm ?>">
                               <input class="form-control" style="display: none;" name="id" value="<?php echo $_SESSION['Id'] ?>">

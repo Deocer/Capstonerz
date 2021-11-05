@@ -510,8 +510,44 @@ echo'
 		 	}
 		}
 
+	function ArchivePost(){
+		 $i = 0;
+		 $res =  $this->Archives();
+		  foreach($res as $r ){
+		 	$i++;
+		 }
 
+		 echo $i;
 
+		 return $i;
+
+	}
+
+	function ActivePost(){
+		 $i = 0;
+		 $res =  $this->Actives();
+		  foreach($res as $r ){
+		 	$i++;
+		 }
+
+		 echo $i;
+
+		 return $i;
+
+	}
+
+	function DeletedPost(){
+		 $i = 0;
+		 $res =  $this->Deleteds();
+		  foreach($res as $r ){
+		 	$i++;
+		 }
+
+		 echo $i;
+
+		 return $i;
+
+	}
 
 
 

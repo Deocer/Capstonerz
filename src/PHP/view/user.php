@@ -1,7 +1,6 @@
 <?php 
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/user.php');
 
-
 /**
 	 * 
 	 */
@@ -46,6 +45,31 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/user.php');
 
 	}
 
+	function Normals(){
+		 $i = 0;
+		 $res =  $this->fetchNormal();
+		  foreach($res as $r ){
+		 	$i++;
+		 }
+
+		 echo $i;
+
+		 return $i;
+
+	}
+
+	function Flagged(){
+		 $i = 0;
+		 $res =  $this->fetchFlagged();
+		  foreach($res as $r ){
+		 	$i++;
+		 }
+
+		 echo $i;
+
+		 return $i;
+
+	}
 }
 
  ?>

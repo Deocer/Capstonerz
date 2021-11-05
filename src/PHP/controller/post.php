@@ -52,6 +52,33 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/post.php');
 		 
 		}
 
+	    function Archives()
+		{
+		 
+		 $res =  $this->Archived();
+
+		 return $res;
+		 
+		}
+
+	    function Actives()
+		{
+		 
+		 $res =  $this->Active();
+
+		 return $res;
+		 
+		}
+
+	    function Deleteds()
+		{
+		 
+		 $res =  $this->Deleted();
+
+		 return $res;
+		 
+		}
+
 		function UserPost($id)
 		{
 		 

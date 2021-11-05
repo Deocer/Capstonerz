@@ -78,6 +78,9 @@ $plc = new PlaceView();
 	  <li class="nav-item" role="presentation">
 	    <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">User Control</button>
 	  </li>
+	  <li class="nav-item" role="presentation">
+	    <button class="nav-link" id="report-tab" data-bs-toggle="tab" data-bs-target="#report" type="button" role="tab" aria-controls="report" aria-selected="false">Report</button>
+	  </li>
 	</ul>
 
 	<div class="tab-content">
@@ -204,6 +207,421 @@ $plc = new PlaceView();
 			  }
 
 	     </script>	
+	  </div>
+	   <div class="tab-pane" id="report" role="tabpanel" aria-labelledby="report-tab">
+	   		<div class="container">
+			<table class="table">
+			  <thead>
+			    <tr class="table-dark">
+						<th scope="col">District</th>
+					  <th scope="col">Historical landmark</th>
+					  <th scope="col">Church</th>
+					  <th scope="col">Shopping</th>
+					  <th scope="col">Park</th>
+					  <th scope="col">Restaurant</th>
+					  <th scope="col">Tourist attraction</th>
+					  <th scope="col">Total</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+					  <tr>
+					    <th scope="row">Tondo</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Tondo','Café');
+					    			$te  = $plc->PlaceTypes('Tondo','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Tondo','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Tondo','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Tondo','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Tondo','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Tondo','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Tondo','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Tondo','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Tondo','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+
+					  <tr>
+					    <th scope="row">San Nicolas</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('San Nicolas','Café');
+					    			$te  = $plc->PlaceTypes('San Nicolas','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('San Nicolas','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('San Nicolas','Bar'); 
+					    			$tr  = $plc->PlaceTypes('San Nicolas','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('San Nicolas','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('San Nicolas','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('San Nicolas','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('San Nicolas','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('San Nicolas','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Binondo</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Binondo','Café');
+					    			$te  = $plc->PlaceTypes('Binondo','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Binondo','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Binondo','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Binondo','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Binondo','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Binondo','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Binondo','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Binondo','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Binondo','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Port Area</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Port Area','Café');
+					    			$te  = $plc->PlaceTypes('Port Area','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Port Area','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Port Area','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Port Area','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Port Area','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Port Area','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Port Area','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Port Area','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Port Area','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Ermita</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Ermita','Café');
+					    			$te  = $plc->PlaceTypes('Ermita','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Ermita','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Ermita','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Ermita','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Ermita','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Ermita','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Ermita','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Ermita','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Ermita','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Malate</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Malate','Café');
+					    			$te  = $plc->PlaceTypes('Malate','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Malate','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Malate','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Malate','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Malate','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Malate','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Malate','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Malate','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Malate','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">San Andres</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('San Andres','Café');
+					    			$te  = $plc->PlaceTypes('San Andres','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('San Andres','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('San Andres','Bar'); 
+					    			$tr  = $plc->PlaceTypes('San Andres','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('San Andres','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('San Andres','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('San Andres','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('San Andres','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('San Andres','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Santa Ana</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Santa Ana','Café');
+					    			$te  = $plc->PlaceTypes('Santa Ana','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Santa Ana','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Santa Ana','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Santa Ana','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Santa Ana','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Santa Ana','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Santa Ana','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Santa Ana','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Santa Ana','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Sta. Mesa</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Sta. Mesa','Café');
+					    			$te  = $plc->PlaceTypes('Sta. Mesa','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Sta. Mesa','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Sta. Mesa','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Sta. Mesa','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Sta. Mesa','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Sta. Mesa','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Sta. Mesa','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Sta. Mesa','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Sta. Mesa','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Sampaloc</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Sampaloc','Café');
+					    			$te  = $plc->PlaceTypes('Sampaloc','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Sampaloc','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Sampaloc','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Sampaloc','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Sampaloc','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Sampaloc','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Sampaloc','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Sampaloc','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Sampaloc','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Quiapo</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Quiapo','Café');
+					    			$te  = $plc->PlaceTypes('Quiapo','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Quiapo','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Quiapo','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Quiapo','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Quiapo','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Quiapo','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Quiapo','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Quiapo','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Quiapo','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Sta Cruz</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Sta Cruz','Café');
+					    			$te  = $plc->PlaceTypes('Sta Cruz','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Sta Cruz','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Sta Cruz','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Sta Cruz','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Sta Cruz','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Sta Cruz','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Sta Cruz','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Sta Cruz','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Sta Cruz','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">San Miguel</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('San Miguel','Café');
+					    			$te  = $plc->PlaceTypes('San Miguel','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('San Miguel','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('San Miguel','Bar'); 
+					    			$tr  = $plc->PlaceTypes('San Miguel','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('San Miguel','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('San Miguel','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('San Miguel','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('San Miguel','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('San Miguel','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Intramuros</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Intramuros','Café');
+					    			$te  = $plc->PlaceTypes('Intramuros','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Intramuros','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Intramuros','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Intramuros','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Intramuros','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Intramuros','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Intramuros','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Intramuros','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Intramuros','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Paco</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Paco','Café');
+					    			$te  = $plc->PlaceTypes('Paco','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Paco','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Paco','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Paco','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Paco','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Paco','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Paco','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Paco','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Paco','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+					  <tr>
+					    <th scope="row">Pandacan</th>
+					    <div style="display:none">
+					    		<?php 
+					    			$tc  = $plc->PlaceTypes('Pandacan','Café');
+					    			$te  = $plc->PlaceTypes('Pandacan','Eatery'); 
+					    			$tf  = $plc->PlaceTypes('Pandacan','FastFood'); 
+					    			$tb  = $plc->PlaceTypes('Pandacan','Bar'); 
+					    			$tr  = $plc->PlaceTypes('Pandacan','Restaurant');
+					    			$td = $tc + $te + $tf + $tb + $tr;  
+					    		?>
+					    </div>
+
+					    <td><?php $th = $plc->PlaceTypes('Pandacan','Historical landmark'); ?></td>
+					    <td><?php $tch = $plc->PlaceTypes('Pandacan','Church'); ?></td>
+					    <td><?php $tsh  = $plc->PlaceTypes('Pandacan','Store'); ?></td>
+					    <td><?php $tp  = $plc->PlaceTypes('Pandacan','Park'); ?></td>
+					    <td><?php echo $td ?> </td>
+					    <td><?php $tta  = $plc->PlaceTypes('Pandacan','Tourist attraction'); ?></td>
+					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
+					    <td><?php echo $total;  ?></td>
+					  </tr>
+			  </tbody>
+			</table>
+
+				<table class="table">
+			  <thead>
+			    <tr class="table-dark">
+			      <th scope="col">User</th>
+						<th scope="col">Normal</th>
+						<th scope="col">Flagged</th>
+						<th scope="col">Total Users</th>
+
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <th scope="row">*</th>
+						<td><?php $n = $users->Normals(); ?></td>
+						<td><?php $f = $users->Flagged(); $t = $n + $f ?></td>
+						<td><?php echo $t; ?></td>
+			    </tr>
+			  </tbody>
+			</table>
+
+				<table class="table">
+			  <thead>
+			    <tr class="table-dark">
+			      <th scope="col">Post</th>
+						<th scope="col">Active</th>
+						<th scope="col">Archived</th>
+						<th scope="col">Deleted</th>
+						<th scope="col">Total</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <th scope="row">*</th>
+						<td><?php $ac = $p->ActivePost(); ?></td>
+						<td><?php $ar = $p->ArchivePost(); ?></td>
+						<td><?php $dl = $p->DeletedPost(); $t = $ac + $ar +$dl ?></td>
+						<td><?php echo $t; ?></td>
+			    </tr>
+			  </tbody>
+			</table>
+
+	   		</div>
 	  </div>
 	</div>
 
