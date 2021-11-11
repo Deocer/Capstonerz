@@ -7,16 +7,25 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 	class PlaceControl extends placedatabase
 	{
 		
-		function AddItem($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city)
+		function AddItem($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city,$contact, $site)
 		{
-			if ($this->fetch($name) == null) {
-				 $this->insert($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city);
-				 echo "g";
-			}else{
-			}
-		
+			$this->insert($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city,$contact, $site);
+
 		}
 
+		function UpdateItem($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city,$contact, $site, $id)
+		{
+			$this->update($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city,$contact, $site, $id);
+
+		}
+
+		function DeleteItem($id)
+		{
+		 
+		 $res =  $this->delete($id);
+
+		 return $res;
+		 }
 
 		function GetVname($name)
 		{
@@ -111,6 +120,28 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 			
 	}
 
+if (isset($_POST['add']) || isset($_POST['placename']) ){
 
+$plc = new PlaceControl();
+$plc-> AddItem($_POST['name'],$_POST['desc'],$_POST['lat'],$_POST['lot'],$_POST['image'],$_POST['rating'],$_POST['reviews'],$_POST['type'],$_POST['price'],$_POST['hours'],$_POST['address'],$_POST['district'],$_POST['contact'], $_POST['site']);
+
+
+}
+
+if (isset($_POST['update']) ){
+
+$plc = new PlaceControl();
+$plc-> UpdateItem($_POST['name'],$_POST['desc'],$_POST['lat'],$_POST['lot'],$_POST['image'],$_POST['rating'],$_POST['reviews'],$_POST['type'],$_POST['price'],$_POST['hours'],$_POST['address'],$_POST['district'],$_POST['contact'], $_POST['site'], $_POST['id'] );
+
+
+}
+
+if (isset($_POST['delete']) ){
+
+$plc = new PlaceControl();
+$plc-> DeleteItem($_POST['id']);
+
+
+}
 
  ?>

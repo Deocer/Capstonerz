@@ -445,6 +445,45 @@ class PlaceView extends PlaceControl
 
 	}
 
+	function AllPlaces(){
+		 $i = 0;
+		 $res =  $this->Getplaces();
+		  foreach($res as $r ){
+		 	$i++;
+		 }
+		  for ($ctr=0; $ctr < $i; $ctr++) { 
+
+    			echo '
+					<tr class ="placerow" 
+					onclick="populate(';
+					echo "'".$res[$ctr]['PlaceID']."',";
+					echo "'".addslashes($res[$ctr]['Pname'])."',";
+					echo "'".addslashes($res[$ctr]['Des'])."',";
+					echo "'".$res[$ctr]['type']."',";
+					echo "'".$res[$ctr]['Lat']."',";
+					echo "'".$res[$ctr]['Lot']."',";
+					echo "'".$res[$ctr]['District']."',";
+					echo "'".addslashes($res[$ctr]['address'])."',";
+					echo "'".$res[$ctr]['Rating']."',";
+					echo "'".$res[$ctr]['reviews']."',";
+					echo "'".$res[$ctr]['price']."',";
+					echo "'".$res[$ctr]['hours']."',";
+					echo "'".$res[$ctr]['contact']."',";
+					echo "'".$res[$ctr]['site']."',";
+					echo "'".$res[$ctr]['img']."'";
+
+				echo')">
+		 		    <th scope="row">'.$res[$ctr]['PlaceID'].'</th>
+				    <td>'.$res[$ctr]['Pname'].'</td>
+				    <td>'.$res[$ctr]['type'].'</td>
+				    <td>'.$res[$ctr]['District'].'</td>
+				    </tr>
+
+				    ';
+
+		 	}
+	}
+
 }
 $d = new PlaceView();
 
@@ -481,6 +520,10 @@ echo $d->AscPriceSort($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['typ
 
 if (isset($_POST['dsc'])){
 echo $d->DscPriceSort($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['type'],$_POST['price'],$_POST['city'] );
+}
+
+if (isset($_POST['showall'])){
+echo $d->AllPlaces();
 }
 
  ?>

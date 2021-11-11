@@ -6,13 +6,30 @@ class placedatabase{
 	public $dbname = 'capstone';
 	
 	// Inserts a new place record in the places table
-	protected function insert($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city){
+	protected function insert($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city,$contact, $site){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
-		$stmt = $conn->prepare("INSERT INTO places (Pname,Des, Lat, Lot, img, rating, reviews, type,price,hours,address,District) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("ssssssssssss",$name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city);
+		$stmt = $conn->prepare("INSERT INTO places (Pname,Des, Lat, Lot, img, rating, reviews, type,price,hours,address,District,contact,site) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("ssssssssssssss",$name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city,$contact,$site);
 		$stmt->execute();
 		$stmt->close();
 	}
+
+	protected function update ($name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city,$contact, $site, $id){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$stmt = $conn->prepare("UPDATE places SET  Pname = ?, Des = ?, Lat = ?, Lot = ?, img = ?, rating = ?, reviews = ?, type = ?, price = ?, hours = ?, address = ?, District = ?, contact = ?, site = ?  WHERE PlaceID = ? ");
+		$stmt->bind_param("ssssssssssssssi",$name,$des, $lat, $lot,$img,$rating,$reviews,$type,$price,$hours,$address,$city,$contact,$site,$id);
+		$stmt->execute();
+		$stmt->close();
+	}
+
+	protected function delete ($id){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$stmt = $conn->prepare("DELETE FROM places WHERE PlaceID = ? ");
+		$stmt->bind_param("i",$id);
+		$stmt->execute();
+		$stmt->close();
+	}
+
    // Gets a place based on the provided name
 	protected function fetch($name){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
@@ -134,7 +151,7 @@ class placedatabase{
 	//Selects all places in the place table and is ordered by id
 	protected function select(){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname); 
-		$sql = "SELECT * FROM places ORDER BY PlaceID"; 
+		$sql = "SELECT * FROM places ORDER BY PlaceID  DESC"; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->execute();
 
