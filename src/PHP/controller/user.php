@@ -15,6 +15,11 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/Functions/sendmail.php');
 		 $this->insert($Username, $Pass, $Status, $email);
 		}
 
+		function ChangePass($Pass,$email)
+		{
+		 $this->updatepw($Pass,$email);
+		}
+
 		function SetUser($Budget,$des,$district,$id)// Used to set the user's budget
 		{
 		 $this->secloc($Budget,$des,$district,$id);

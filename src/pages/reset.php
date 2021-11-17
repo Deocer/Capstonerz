@@ -46,28 +46,6 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 	<title>WANDER | Forget Password</title>
 </head>
 <script type="text/javascript">
-  $(document).ready(function(){
-    $("#submit").click(function(){
-    	var demail = $("#email").val();
-          $.ajax({
-              url: '../../src/PHP/controller/user.php',
-              type:'post',
-              data: {
-              		reset : demail,
-              } ,
-              success:function(result){
-                  console.log("set");
-                   $("#msg").show();
-                   $("#back").show();
-                   $("#email").hide();
-                   $("#submit").hide();
-              },
-            error: function(){
-                console.log("error")
-            }
-          });
-    });	
-});	
 </script>
 <body>
 	<div class="container">
@@ -79,17 +57,18 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 					</div>
 					<p class="text-center">Password Reset for : <?php echo $decryption; ?></p>
 					<br>
-					<form  method="post" class="container">
+					<form  method="post" action="../../src/PHP/Functions/Changepass.php?mail=<?php echo $_GET['mail']; ?>" class="container">
 						<div class="mb-4" style="margin:auto;">
 							<div class="input-group mb-3" style="">
 								<div id="email" class="container-fluid">
-								  <input type="password" class="form-control p-2" placeholder="Create new Password" aria-label="Username" aria-describedby="basic-addon1" name="resetmail">
+								  <input type="password" class="form-control p-2" placeholder="Create new Password" aria-label="Username" aria-describedby="basic-addon1" name="password">
 								  <br>
-								  <input type="password" class="form-control p-2" placeholder="Confirm Password" aria-label="Username" aria-describedby="basic-addon1" name="resetmail">		
+								  <input type="password" class="form-control p-2" placeholder="Confirm Password" aria-label="Username" aria-describedby="basic-addon1" name="cpassword">
+								  <input type="" name="email" style="display:none;" value="<?php echo $decryption; ?>">		
 								</div>
 							</div>
 						</div>
-						<button type="button" id="submit" class="btn btn-secondary w-100">Reset Password</button>
+						<button type="submit" id="submit" class="btn btn-secondary w-100">Reset Password</button>
 					</form>
 				</div>
 				
@@ -102,14 +81,47 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 
 if (isset($_GET["error"])) {
 
-		if ($_GET["error"] == "Wrong") {
-				echo 
+		if ($_GET["error"] == "emptyinput") {
+			echo 
 				"
 				 <script type='text/javascript'>
 				   function error() {
 				  Swal.fire({
 				      title: 'Oops..',
-				      text: 'Wrong UserName or Password!',
+				      text: 'Fill in all fields!',
+				      icon: 'error'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
+
+			}elseif ($_GET["error"] == "Shortpass") {
+			echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				      title: 'Oops..',
+				      text: 'Password Too Short!',
+				      icon: 'error'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
+			}elseif ($_GET["error"] == "Notsame") {
+			echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				      title: 'Oops..',
+				      text: 'Passwords does not match!',
 				      icon: 'error'
 					})
 				}

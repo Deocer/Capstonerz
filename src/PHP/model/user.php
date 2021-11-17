@@ -15,6 +15,14 @@ class userdatabase{
 		$stmt->close();
 	}
 
+	protected function updatepw($Pass,$email){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
+		$stmt = $conn->prepare("UPDATE wuser SET  Pass = ? WHERE useremail = ? ");
+		$hasher_pwd = password_hash($Pass, PASSWORD_DEFAULT);
+		$stmt->bind_param("ss", $hasher_pwd,$email);
+		$stmt->execute();
+		$stmt->close();
+	}
 
 	protected function secloc ($Budget,$des,$district,$id){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
