@@ -8,15 +8,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 class Maker extends userdatabase
 {		
 
-		function NewUser($Username, $Pass)
+		function NewUser($Username,$Pass,$email)
 		{
 		    
 			if ($res = $this->verify($Username) == null) {
-                  $this->insert($Username, $Pass, 'Normal');
-			       header('location:../controller/user.php?Username='.$Username.'&Password='.$Pass.''); 
-			       exit();
-
-		        
+				$this->insert($Username, $Pass, 'Normal',$email);
+				header('location:../controller/user.php?Username='.$Username.'&Password='.$Pass.''); 
+			    exit();
 			}else{
 				header("location:../../pages/Signup.php?error=nameTaken");
 				exit();
@@ -100,7 +98,7 @@ class Validations{
             exit();
         }else{
 		      $s = new Maker();
-				$s->NewUser($_POST['name'],$_POST['password']);
+				$s->NewUser($_POST['name'],$_POST['password'],$_POST['email']);
         }
 
  	} 

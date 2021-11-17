@@ -38,6 +38,10 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 							<input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp">
 						</div>
 						<div class="mb-4">
+							<label for="name" class="form-label">Email</label>
+							<input type="email" class="form-control" id="email" name="email" aria-describedby="nameHelp">
+						</div>
+						<div class="mb-4">
 							<label for="password" class="form-label">Password</label>
 							<input type="password" class="form-control" name="password" id="password" aria-describedby="passwordHelp">
 							<div id="passwordHelp" class="form-text">Password must be over 6 characters long.</div>

@@ -3,16 +3,16 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
-
+include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/Functions/sendmail.php');
 /**
 	 * 
 	 */
 	class UserControl extends userdatabase
 	{
 		
-		function CreateUser($Username, $Pass, $Status)// Used in the registration process to input
+		function CreateUser($Username, $Pass, $Status, $email)// Used in the registration process to input
 		{
-		 $this->insert($Username, $Pass, $Status);
+		 $this->insert($Username, $Pass, $Status, $email);
 		}
 
 		function SetUser($Budget,$des,$district,$id)// Used to set the user's budget
@@ -134,6 +134,11 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
 		 exit();
 		}
 
+	    function searchmail($email)//
+		{
+		 $res = $this->fetchemail($email);
+		 return $res;
+		}
 
 
 	}
@@ -173,6 +178,17 @@ if (isset($_GET['Unstat'])){
 $s = new UserControl();
 $s->UnStatUsers($_GET['Unstat']);
 }else{
+
+}
+
+if (isset($_POST['reset'])){
+	$s = new UserControl();
+	$res = $s->searchmail($_POST['reset']);
+	if ($res == null) {
+
+	}else{
+		sendmail($res[0]['useremail'],$res[0]['UserName']);
+	}
 
 }
 

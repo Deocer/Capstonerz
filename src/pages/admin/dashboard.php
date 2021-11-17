@@ -25,8 +25,492 @@ $plc = new PlaceView();
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
  	<title></title>
  </head>
+ <script type="text/javascript">
+function tondochart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Tondo','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Tondo','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Tondo",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Tondo",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Tondo",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Tondo",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Tondo",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Tondo",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Tondo",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Tondo",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function nicolaschart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('San Nicolas','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('San Nicolas','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("San Nicolas",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("San Nicolas",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("San Nicolas",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("San Nicolas",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("San Nicolas",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("San Nicolas",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("San Nicolas",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("San Nicolas",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+
+function binondochart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Binondo','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Binondo','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Binondo",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Binondo",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Binondo",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Binondo",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Binondo",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Binondo",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Binondo",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Binondo",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function cruzchart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Sta Cruz','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Sta Cruz','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Sta Cruz",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Sta Cruz",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Sta Cruz",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Sta Cruz",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Sta Cruz",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Sta Cruz",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Sta Cruz",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Sta Cruz",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function sampalocchart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Sampaloc','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Sampaloc','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Sampaloc",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Sampaloc",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Sampaloc",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Sampaloc",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Sampaloc",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Sampaloc",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Sampaloc",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Sampaloc",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+
+function quiapochart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Quiapo','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Quiapo','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Quiapo",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Quiapo",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Quiapo",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Quiapo",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Quiapo",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Quiapo",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Quiapo",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Quiapo",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function intramuroschart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Intramuros','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Intramuros','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Intramuros",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Intramuros",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Intramuros",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Intramuros",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Intramuros",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Intramuros",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Intramuros",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Intramuros",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function portchart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Port Area','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Port Area','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Port Area",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Port Area",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Port Area",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Port Area",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Port Area",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Port Area",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Port Area",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Port Area",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function ermitachart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Ermita','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Ermita','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Ermita",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Ermita",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Ermita",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Ermita",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Ermita",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Ermita",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Ermita",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Ermita",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function miguelchart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('San Miguel','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('San Miguel','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("San Miguel",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("San Miguel",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("San Miguel",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("San Miguel",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("San Miguel",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("San Miguel",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("San Miguel",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("San Miguel",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function mesachart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Sta. Mesa','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Sta. Mesa','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Sta. Mesa",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Sta. Mesa",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Sta. Mesa",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Sta. Mesa",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Sta. Mesa",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Sta. Mesa",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Sta. Mesa",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Sta. Mesa",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function pandacanchart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Pandacan','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Pandacan','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Pandacan",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Pandacan",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Pandacan",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Pandacan",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Pandacan",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Pandacan",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Pandacan",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Pandacan",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function pacochart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Paco','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Paco','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Paco",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Paco",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Paco",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Paco",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Paco",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Paco",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Paco",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Paco",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function malatechart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Malate','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Malate','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Malate",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Malate",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Malate",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Malate",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Malate",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Malate",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Malate",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Malate",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function andreschart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('San Andres','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('San Andres','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("San Andres",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("San Andres",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("San Andres",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("San Andres",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("San Andres",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("San Andres",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("San Andres",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("San Andres",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+
+function anachart(title){
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+		// Draw the chart and set the chart values
+		function drawChart() {
+		  var data = google.visualization.arrayToDataTable([
+
+						  ['Task', 'Hours per Day'],
+						  ['Historical landmark', <?php $plc->PlaceTypes('Santa Ana','Historical landmark');?>],
+						  ['Church', <?php $plc->PlaceTypes('Santa Ana','Church');?>],
+						  ['Shopping', <?php $plc->PlaceTypes("Santa Ana",'Shopping');?>],
+						  ['Park', <?php $plc->PlaceTypes("Santa Ana",'Park');?>],
+						  ['Restaurant', <?php $plc->PlaceTypes("Santa Ana",'Restaurant');?>],
+						  ['Café', <?php $plc->PlaceTypes("Santa Ana",'Café');?>],
+						  ['Eatery', <?php $plc->PlaceTypes("Santa Ana",'Eatery');?>],
+						  ['FastFood', <?php $plc->PlaceTypes("Santa Ana",'FastFood');?>],
+						  ['Bar', <?php $plc->PlaceTypes("Santa Ana",'Bar');?>],
+						  ['Tourist attraction', <?php $plc->PlaceTypes("Santa Ana",'Tourist attraction');?>]
+		]);
+
+		  // Optional; add a title and set the width and height of the chart
+		  var options = {'title':title, 'width':850, 'height':500};
+
+		  // Display the chart inside the <div> element with id="piechart"
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+		  chart.draw(data, options);
+		}	
+}
+</script>
  <body>
 
 <section class="container-fluid">
@@ -209,376 +693,39 @@ $plc = new PlaceView();
 	     </script>	
 	  </div>
 	   <div class="tab-pane" id="report" role="tabpanel" aria-labelledby="report-tab">
-	   		<div class="container">
-			<table class="table">
-			  <thead>
-			    <tr class="table-dark">
-						<th scope="col">District</th>
-					  <th scope="col">Historical landmark</th>
-					  <th scope="col">Church</th>
-					  <th scope="col">Shopping</th>
-					  <th scope="col">Park</th>
-					  <th scope="col">Restaurant</th>
-					  <th scope="col">Tourist attraction</th>
-					  <th scope="col">Total</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-					  <tr>
-					    <th scope="row">Tondo</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Tondo','Café');
-					    			$te  = $plc->PlaceTypes('Tondo','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Tondo','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Tondo','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Tondo','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
+	   	<div class="container">
+          <div class="row mx-auto" style="overflow: hidden;margin: auto;">
+            <div class="col" style="width:100px;height: 70%;">
 
-					    <td><?php $th = $plc->PlaceTypes('Tondo','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Tondo','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Tondo','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Tondo','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Tondo','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
+              <img src="../../imgs/map.png" usemap="#image-map">
 
-					  <tr>
-					    <th scope="row">San Nicolas</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('San Nicolas','Café');
-					    			$te  = $plc->PlaceTypes('San Nicolas','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('San Nicolas','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('San Nicolas','Bar'); 
-					    			$tr  = $plc->PlaceTypes('San Nicolas','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('San Nicolas','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('San Nicolas','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('San Nicolas','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('San Nicolas','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('San Nicolas','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Binondo</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Binondo','Café');
-					    			$te  = $plc->PlaceTypes('Binondo','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Binondo','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Binondo','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Binondo','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Binondo','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Binondo','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Binondo','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Binondo','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Binondo','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Port Area</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Port Area','Café');
-					    			$te  = $plc->PlaceTypes('Port Area','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Port Area','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Port Area','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Port Area','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Port Area','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Port Area','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Port Area','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Port Area','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Port Area','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Ermita</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Ermita','Café');
-					    			$te  = $plc->PlaceTypes('Ermita','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Ermita','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Ermita','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Ermita','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Ermita','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Ermita','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Ermita','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Ermita','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Ermita','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Malate</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Malate','Café');
-					    			$te  = $plc->PlaceTypes('Malate','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Malate','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Malate','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Malate','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Malate','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Malate','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Malate','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Malate','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Malate','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">San Andres</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('San Andres','Café');
-					    			$te  = $plc->PlaceTypes('San Andres','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('San Andres','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('San Andres','Bar'); 
-					    			$tr  = $plc->PlaceTypes('San Andres','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('San Andres','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('San Andres','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('San Andres','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('San Andres','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('San Andres','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Santa Ana</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Santa Ana','Café');
-					    			$te  = $plc->PlaceTypes('Santa Ana','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Santa Ana','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Santa Ana','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Santa Ana','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Santa Ana','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Santa Ana','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Santa Ana','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Santa Ana','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Santa Ana','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Sta. Mesa</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Sta. Mesa','Café');
-					    			$te  = $plc->PlaceTypes('Sta. Mesa','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Sta. Mesa','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Sta. Mesa','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Sta. Mesa','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Sta. Mesa','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Sta. Mesa','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Sta. Mesa','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Sta. Mesa','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Sta. Mesa','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Sampaloc</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Sampaloc','Café');
-					    			$te  = $plc->PlaceTypes('Sampaloc','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Sampaloc','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Sampaloc','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Sampaloc','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Sampaloc','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Sampaloc','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Sampaloc','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Sampaloc','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Sampaloc','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Quiapo</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Quiapo','Café');
-					    			$te  = $plc->PlaceTypes('Quiapo','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Quiapo','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Quiapo','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Quiapo','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Quiapo','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Quiapo','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Quiapo','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Quiapo','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Quiapo','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Sta Cruz</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Sta Cruz','Café');
-					    			$te  = $plc->PlaceTypes('Sta Cruz','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Sta Cruz','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Sta Cruz','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Sta Cruz','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Sta Cruz','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Sta Cruz','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Sta Cruz','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Sta Cruz','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Sta Cruz','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">San Miguel</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('San Miguel','Café');
-					    			$te  = $plc->PlaceTypes('San Miguel','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('San Miguel','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('San Miguel','Bar'); 
-					    			$tr  = $plc->PlaceTypes('San Miguel','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('San Miguel','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('San Miguel','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('San Miguel','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('San Miguel','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('San Miguel','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Intramuros</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Intramuros','Café');
-					    			$te  = $plc->PlaceTypes('Intramuros','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Intramuros','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Intramuros','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Intramuros','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Intramuros','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Intramuros','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Intramuros','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Intramuros','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Intramuros','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Paco</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Paco','Café');
-					    			$te  = $plc->PlaceTypes('Paco','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Paco','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Paco','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Paco','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Paco','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Paco','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Paco','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Paco','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Paco','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-					  <tr>
-					    <th scope="row">Pandacan</th>
-					    <div style="display:none">
-					    		<?php 
-					    			$tc  = $plc->PlaceTypes('Pandacan','Café');
-					    			$te  = $plc->PlaceTypes('Pandacan','Eatery'); 
-					    			$tf  = $plc->PlaceTypes('Pandacan','FastFood'); 
-					    			$tb  = $plc->PlaceTypes('Pandacan','Bar'); 
-					    			$tr  = $plc->PlaceTypes('Pandacan','Restaurant');
-					    			$td = $tc + $te + $tf + $tb + $tr;  
-					    		?>
-					    </div>
-
-					    <td><?php $th = $plc->PlaceTypes('Pandacan','Historical landmark'); ?></td>
-					    <td><?php $tch = $plc->PlaceTypes('Pandacan','Church'); ?></td>
-					    <td><?php $tsh  = $plc->PlaceTypes('Pandacan','Store'); ?></td>
-					    <td><?php $tp  = $plc->PlaceTypes('Pandacan','Park'); ?></td>
-					    <td><?php echo $td ?> </td>
-					    <td><?php $tta  = $plc->PlaceTypes('Pandacan','Tourist attraction'); ?></td>
-					    <?php $total = $th + $tch + $tsh + $tp + $td + $tta; ?>
-					    <td><?php echo $total;  ?></td>
-					  </tr>
-			  </tbody>
-			</table>
+              <map name="image-map">
+                  <area target="" alt="Tondo" title="Tondo" onclick="tondochart('Places In Tondo')" id="tondomap" coords="8,27,7,51,54,51,62,106,65,114,70,146,76,225,66,225,42,174,34,181,50,222,0,241,2,261,74,252,70,244,78,239,95,238,123,197,133,192,152,200,162,169,154,132,160,93,170,92,171,57,162,40,170,13,164,1,156,2,158,13,143,19,139,15,87,15,72,31,56,27" shape="poly">
+                  <area target="" alt="San Nicolas" title="San Nicolas"  onclick="nicolaschart('Places In San Nicolas')" coords="71,244,78,239,95,239,119,198,125,202,128,211,122,217,128,222,132,231,135,241,138,252,138,258,115,251,92,252,76,254" shape="poly">
+                  <area target="" alt="Binondo" title="Binondo" id="binondomap" onclick="binondochart('Places In Binondo')" coords="124,196,128,209,124,217,132,231,136,244,139,256,149,255,155,248,159,240,155,232,146,228,142,221,146,217,149,208,152,202,133,193" shape="poly">
+                  <area target="" alt="Port Area" title="Port Area" onclick="portchart('Places In Port Area')" coords="109,258,92,257,80,263,64,275,63,280,57,283,76,323,115,354,138,325" shape="poly">
+                  <area target="" alt="Ermita" title="Ermita"  onclick="ermitachart('Places In Ermita')" coords="137,327,131,333,133,339,129,352,137,365,142,362,148,376,156,379,161,389,170,391,212,363,194,349,187,330,192,327,183,289,172,273,166,262,162,254,154,255,148,259,154,269,160,279,162,287,162,299,162,307,160,314,154,323,142,333" shape="poly">
+                  <area target="" alt="Malate" title="Malate"  onclick="malatechart('Places In Malate')" coords="160,390,180,457,182,471,153,495,188,481,228,466,228,451,228,421,232,404,236,383,226,376,224,381,214,363,169,391" shape="poly">
+                  <area target="" alt="San Andres" title="San Andres"  onclick="andreschart('Places In San Andres')"  coords="238,383,241,376,246,372,251,362,257,360,257,353,268,350,284,369,287,380,229,467,228,421,233,405" shape="poly">
+                  <area target="" alt="Santa Ana" title="Santa Ana" onclick="anachart('Places In Santa Ana')" coords="259,335,261,341,256,347,256,353,267,349,282,367,288,378,305,355,321,317,338,280,330,289,321,298,312,302,300,302,295,295,285,293,274,286,264,288,255,292,252,299,254,309,258,321,262,328" shape="poly">
+                  <area target="" alt="Sta. Mesa" title="Sta. Mesa" onclick="mesachart('Places In Sta. Mesa')"  coords="301,300,312,299,321,294,330,284,338,275,338,258,331,237,319,224,315,214,306,204,298,215,235,224,243,246,242,252,248,252,249,246,260,244,268,246,278,252,289,261,298,270,302,277,298,289,298,295" shape="poly">
+                  <area target="" alt="Sampaloc" title="Sampaloc" onclick="sampalocchart('Places In Sampaloc')" coords="307,201,299,213,235,223,224,228,209,221,204,228,181,212,186,147,195,134,196,75,203,77" shape="poly">
+                  <area target="" alt="Sta Cruz" title="Sta Cruz"  onclick="cruzchart('Places In Sta Cruz')" coords="200,75,211,18,184,2,170,12,162,38,171,56,170,94,161,93,154,130,162,169,149,209,145,219,147,226,155,230,160,239,157,246,163,248,168,256,176,248,184,146,193,135" shape="poly">
+                  <area target="" alt="Quiapo" title="Quiapo" onclick="quiapochart('Places In Quiapo')"  coords="180,214,203,228,203,237,201,244,203,254,203,263,199,271,191,266,184,260,177,261,172,266,168,257,177,249" shape="poly">
+                  <area target="" alt="San Miguel" title="San Miguel"  onclick="miguelchart('Places In San Miguel')"  coords="210,221,204,230,201,242,204,252,204,262,198,270,183,261,174,265,171,270,184,287,195,295,203,296,212,287,220,276,225,264,232,257,242,257,241,249,244,243,235,224,224,229" shape="poly">
+                  <area target="" alt="Intramuros" title="Intramuros" onclick="intramuroschart('Places In Intramuros')" coords="149,262,137,264,123,260,111,258,143,331,156,318,162,303,160,279" shape="poly">
+                  <area target="" alt="Paco" title="Paco" onclick="pacochart('Places In Paco')" coords="251,258,242,257,234,257,225,262,220,276,205,295,185,289,193,326,188,332,194,349,213,360,222,377,228,374,237,381,245,371,251,361,256,358,256,346,260,341,259,335,243,336,235,318,233,303,245,293,251,284,252,273" shape="poly">
+                  <area target="" alt="Pandacan" title="Pandacan" onclick="pandacanchart('Places In Pandacan')" coords="250,248,252,257,252,284,245,296,233,303,235,319,244,335,259,334,261,328,255,313,253,299,256,290,274,284,288,292,294,292,300,276,286,259,270,248,260,245" shape="poly">
+              </map>
+            </div>
+           <div class="col-8" style="overflow: hidden;margin: auto;text-align: center;">
+              <div class="card mx-auto" style="width:100%;height: 70%;box-shadow: 5px 5px 10px 4px rgba(0,0,0,0.5);">
+                <div class="card-body">
+										<div id="piechart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 				<table class="table">
 			  <thead>
@@ -646,26 +793,4 @@ $plc = new PlaceView();
  </body>
  </html>
 
- 
-*/
 
-Please take a note of the details below these are needed to access your account.
-Your account is now active.
-
-Control panel username:	b22_29994007
-Control panel password:	**********
-Control panel URL:	cpanel.byethost22.com
-MySQL username	b22_29994007
-MySQL password:	**********
-MySQL hostname:	sql202.byethost22.com
-FTP username:	b22_29994007
-FTP password:	**********
-FTP host name:	ftp.byethost22.com
-Your Website URL:	http://wander.byethost22.com
- 	 
-Thank you for choosing us to host your websites!
-
-byethost22.com hosting services 2021
-
-
-*/

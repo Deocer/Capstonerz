@@ -43,10 +43,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 						<div class="mb-4">
 							<label for="password" class="form-label">Password</label>
 							<input type="password"  name="Password" class="form-control" id="password">
-						</div>
-						<div class="mb-4 form-check">
-							<input type="checkbox" class="form-check-input" id="remember">
-							<label for="form-check-label" for="remember">Remember me</label>
+							<p class="mb-0"><a href="forgetpw.php">Forgot Password?</a></p>
 						</div>
 						<button type="submit" class="btn btn-secondary w-100">Login</button>
 					</form>

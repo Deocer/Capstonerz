@@ -6,11 +6,11 @@ class userdatabase{
 	public $password ='root';
 	public $dbname = 'capstone';
 
-	protected function insert($Username, $Pass, $Status){
+	protected function insert($Username, $Pass, $Status,$email){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	
-		$stmt = $conn->prepare("INSERT INTO wuser (UserID, UserName, Pass, Status, Budget) SELECT MAX( UserID ) + 1, ?, ?, ?, '1' FROM wuser");
+		$stmt = $conn->prepare("INSERT INTO wuser (UserID, UserName, Pass, Status, useremail,  Budget) SELECT MAX( UserID ) + 1, ?, ?, ?,?, '1' FROM wuser");
 		$hasher_pwd = password_hash($Pass, PASSWORD_DEFAULT);
-		$stmt->bind_param("sss", $Username, $hasher_pwd, $Status);
+		$stmt->bind_param("ssss", $Username, $hasher_pwd, $Status,$email);
 		$stmt->execute();
 		$stmt->close();
 	}
@@ -40,6 +40,17 @@ class userdatabase{
 			}
 
 
+	}
+
+	protected function fetchemail($email){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
+		$sql = "SELECT * FROM wuser WHERE useremail = ?"; 
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("s", $email);
+		$stmt->execute();
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
 	protected function verify($Username){
