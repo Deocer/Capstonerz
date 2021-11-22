@@ -60,6 +60,8 @@ class Validations{
         }else{
                $s = new UserControl();
                $s->Changepass($_POST['password'],$_POST['email']);
+               header("location:../../pages/Login.php");
+               exit();
         }
 
     } 

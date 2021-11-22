@@ -53,6 +53,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
  <script>
   $(document).ready(function(){
     $("#resto").hide();
+    $("#last").hide();
     $("#input").keyup(function(){
           $( "#result" ).empty();
           $( "#demo" ).empty();
@@ -98,6 +99,92 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
             }
           });    
 
+    $.ajax({
+        url: '../../PHP/controller/itinerary.php',
+        type:'post',
+        data: {
+              id:<?php echo$_SESSION['Id']?>,
+              },
+              success:function(result){
+                  if (result != null) {
+                    $("#last").show();
+                  //----------------------------//
+                  //----------------------------//                 
+                }else{
+
+                }
+
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+
+    $("#last").click(function(){
+          $("#resto").hide();
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color", "black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#reco").css("color", "black");
+          $("#last").css("color", "#9570DD");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+          $.ajax({
+              url: '../../PHP/controller/itinerary.php',
+              type:'post',
+              data: {
+                    id:<?php echo$_SESSION['Id']?>,
+                    },
+                    success:function(result){
+                        if (result != null) {
+                          const myJSON = JSON.parse(result);
+                        //----------------------------//
+                            $.ajax({
+                              url: '../../PHP/view/place.php',
+                              type:'post',
+                              data: {
+                                      lst2: "",
+                                      lat: <?php echo $_SESSION['lat']?>,
+                                      lot: <?php echo $_SESSION['lot']?>,
+                                      district: myJSON.District1,
+                                      district2: myJSON.District2,
+                                      type: myJSON.Type1,
+                                      type2:myJSON.Type2,
+                                      city: "<?php echo $_SESSION['City']?>",
+                                    },
+                                    success:function(res){
+                                    $('#pricesort').hide();
+                                    $( "#demo" ).empty();
+                                    $( "#result" ).empty();
+                                    $("#result").html(res);
+                                    if (!$.trim(res)){   
+                                          $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                                      }
+                                    else{   
+                                          $("#result").html(res);
+                                      }
+                                    },
+                                  error: function(){
+                                      console.log("error")
+                                  }
+                                }); 
+                        //----------------------------//                 
+                      }else{
+
+                      }
+
+                    },
+                  error: function(){
+                      console.log("error")
+                  }
+                });
+    });
   
     $("#profile-tab").click(function(){
       $('#post').html( ""+
@@ -146,6 +233,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#restaurant").css("color", "black");
           $("#attraction").css("color", "black");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -191,6 +279,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#restaurant").css("color", "black");
           $("#attraction").css("color", "black");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#result').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -234,6 +323,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#restaurant").css("color", "black");
           $("#attraction").css("color", "black");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -278,6 +368,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#restaurant").css("color", "black");
           $("#attraction").css("color", "black");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -321,6 +412,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#restaurant").css("color", "#9570DD");
           $("#attraction").css("color", "black");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -365,6 +457,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#restaurant").css("color", "black");
           $("#attraction").css("color", "#9570DD");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -411,6 +504,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#FastFood").css("color", "black");
           $("#Bar").css("color", "black");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -457,6 +551,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#FastFood").css("color", "black");
           $("#Bar").css("color", "black");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -504,6 +599,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#FastFood").css("color", "#9570DD");
           $("#Bar").css("color", "black");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -550,6 +646,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#FastFood").css("color", "black");
           $("#Bar").css("color", "#9570DD");
           $("#reco").css("color", "black");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -593,6 +690,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           $("#restaurant").css("color", "black");
           $("#attraction").css("color", "black");
           $("#reco").css("color", "#9570DD");
+          $("#last").css("color", "black");
           $('#demo').html( ""+
             "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
@@ -1092,7 +1190,10 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
                         <button  id="reco" class="btn"><i class="fa fa-map-marker"></i>
                          Recommended for you            
-                       </button>         
+                       </button>
+                        <button  id="last" class="btn"><i class="fa fa-map-marker"></i>
+                         Places you might like            
+                       </button>          
                     </div>
               </div>
             </div>

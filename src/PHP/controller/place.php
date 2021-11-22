@@ -117,6 +117,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/place.php');
 
 		 return $res;
 		 }
+
+		function Itinerarylast($district,$district2,$type,$type2)
+		{
+		 
+		 $res =  $this->Last2($district,$district2,$type,$type2);
+		 return $res;
+		 }
 			
 	}
 

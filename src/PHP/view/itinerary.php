@@ -2,6 +2,21 @@
 
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/itinerary.php');
 include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/place.php');
+//echo "<br>"; 
+//echo "Step 1 : Show All Items in Itinerary";
+//echo "<br>";
+//echo "<br>"; 
+//echo "<br>"; 
+//echo "Step 2 : Sort the items and use store in another array using their counter key as their array key";
+//echo "<br>"; 
+
+//			 echo '<pre>',print_r($sorted),'</pre>';
+//echo "<br>"; 
+//echo "<br>"; 
+//echo "Step 3 : Sort Then Place the Array keys in another array to have access to the original items in the itinerary";
+//echo "<br>"; 
+
+//			 echo '<pre>',print_r($s),'</pre>';
 class ItemView extends ItemControl
 	{
 		 public $lat = array();
@@ -75,185 +90,159 @@ class ItemView extends ItemControl
 		 	}
 		}
 
+
 		function mapper($lat,$lot){
 			$p = new ItemView();
 			$sorted = array();
 			$ctr = count($this->lat)-1;
-//echo "<br>"; 
-//echo "Step 1 : Show All Items in Itinerary";
-//echo "<br>";        
+     
 			 for ($c=0; $c < count($this->lat); $c++) { 
 					 $this->name[$c];
 					 $sorted[$c] =  $p-> haversine($lat,$lot,$this->lat[$c],$this->lot[$c]);
 					 ;
 			 }
 			 asort($sorted);
-//echo "<br>"; 
-//echo "<br>"; 
-//echo "Step 2 : Sort the items and use store in another array using their counter key as their array key";
-//echo "<br>"; 
-
-//			 echo '<pre>',print_r($sorted),'</pre>';
-
-
 			 $s = array_keys($sorted);
+				echo '
+					<div class="card mb-3" style="">
+					  <div class="row g-0">
+					    <div class="col-md-4">
+					      <img  src="https://cdn.pngsumo.com/flat-home-house-icon-transparent-png-svg-vector-house-icon-png-512_512.png" class="img-fluid rounded-start" class="img-fluid rounded-circle m-1 "  alt="" style="width:70px;height:80px;">
+					    </div>
+					    <div class="col-md-8">
+					      <div class="card-body">
+					        <p class="card-title">Current Location</p>
+					        <button type="button" id="directions" class="btn btn-primary" style="font-size:8px;">Show Directions</button>
+					        <button type="button" id="nodirections" class="btn btn-primary" style="font-size:8px;">Remove Directions</button>
 
-
-//echo "<br>"; 
-//echo "<br>"; 
-//echo "Step 3 : Sort Then Place the Array keys in another array to have access to the original items in the itinerary";
-//echo "<br>"; 
-
-//			 echo '<pre>',print_r($s),'</pre>';
-
-
-echo '
-<div class="card mb-3" style="">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img  src="https://cdn.pngsumo.com/flat-home-house-icon-transparent-png-svg-vector-house-icon-png-512_512.png" class="img-fluid rounded-start" class="img-fluid rounded-circle m-1 "  alt="" style="width:70px;height:80px;">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <p class="card-title">Current Location</p>
-        <button type="button" id="directions" class="btn btn-primary" style="font-size:8px;">Show Directions</button>
-        <button type="button" id="nodirections" class="btn btn-primary" style="font-size:8px;">Remove Directions</button>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-  
-';
-$limit = count($s) -1;
-for ($i=0; $i <= $limit; $i++) {
-	 $ald = $i +2;
-	 echo $this->place[$s[$i]];
-}
-
-
-if ($ctr == -1) {
-		echo '
-				      <script type="text/javascript">
-				      window.onload = function() {
-				        L.mapquest.key = "UBI3Wc0udk0csdys2DFuAJAdhxdX00E9";
-
-				        var map = L.mapquest.map("map", {
-				          center: ['.$lat.','.$lot.'],
-				          layers: L.mapquest.tileLayer("map"),
-				          zoom: 15
-				        });
-				         L.marker(['.$lat.','.$lot.'], {
-				          icon: L.mapquest.icons.marker(),
-				          draggable: false
-				        }).bindPopup("Current Location").addTo(map);
-					}
-					</script>';
-
-}else{
-echo "
-    <script type='text/javascript'>
-      window.onload = function() {
-        L.mapquest.key = 'UBI3Wc0udk0csdys2DFuAJAdhxdX00E9';
-        var directions = L.mapquest.directions();
-        directions.route({
-        locations: [".'"'.$lat.','.$lot.'"'.",";
-             for ($ctr=0; $ctr < count($sorted); $ctr++) { 
-                        echo '"'.$this->lat[$s[$ctr]].','.$this->lot[$s[$ctr]].'",';
-                     
-             }
-
- echo  "]
-      }, createMap);
-    function createMap(error, response) {
-          var map = L.mapquest.map('map', {
-            center: [0,0],
-            layers: L.mapquest.tileLayer('map'),
-            zoom: 0
-          });
-
-      var DirectionsLayerWithCustomMarkers = L.mapquest.DirectionsLayer.extend({
-
-        createStartMarker: function(location, stopNumber) {
-          console.log(location);
-          console.log(stopNumber);
-
-                return L.mapquest.textMarker(location.latLng, {
-                  text: 'Start',
-                  type: 'marker',
-                  icon: {
-                    primaryColor: '#333333',
-                    secondaryColor: '#333333',
-                    size: 'sm',
-                    symbol: stopNumber
-                  }
-                });
-
-        },
-
-        createWaypointMarker: function(location, stopNumber) {
-         console.log(location);
-         console.log(stopNumber);
-
-                return L.mapquest.textMarker(location.latLng, {
-                  text: stopNumber,
-                  type: 'marker',
-                  icon: {
-                    primaryColor: '#333333',
-                    secondaryColor: '#333333',
-                    size: 'sm',
-                    symbol: stopNumber
-                  }
-                });
-
-        },
-
-        createEndMarker: function(location, stopNumber) {
-          console.log(location);
-          console.log(stopNumber);
-
-                return L.mapquest.textMarker(location.latLng, {
-                  text: 'End',
-                  type: 'marker',
-                  icon: {
-                    primaryColor: '#333333',
-                    secondaryColor: '#333333',
-                    size: 'sm',
-                    symbol: stopNumber
-                  }
-                });
-
-        }
-
-      });
-
-      directionsLayer = new DirectionsLayerWithCustomMarkers({
-        directionsResponse: response
-      }).addTo(map);
-
-          var narrativeControl = L.mapquest.narrativeControl({
-            directionsResponse: response,
-            compactResults: true,
-            interactive: true,
-            position : 'bottomright',
-            className: 'nav'
-          });
-
-          narrativeControl.setDirectionsLayer(directionsLayer);
-          narrativeControl.addTo(map);
-        }
-    }
-    </script>
-";
-
-
-}
-
-
+					      </div>
+					    </div>
+					  </div>
+					</div>';
+		$limit = count($s) -1;
+		for ($i=0; $i <= $limit; $i++) {
+			 $ald = $i +2;
+			 echo $this->place[$s[$i]];
 		}
 
+
+		if ($ctr == -1) {
+				echo '
+						      <script type="text/javascript">
+						      window.onload = function() {
+						        L.mapquest.key = "UBI3Wc0udk0csdys2DFuAJAdhxdX00E9";
+
+						        var map = L.mapquest.map("map", {
+						          center: ['.$lat.','.$lot.'],
+						          layers: L.mapquest.tileLayer("map"),
+						          zoom: 15
+						        });
+						         L.marker(['.$lat.','.$lot.'], {
+						          icon: L.mapquest.icons.marker(),
+						          draggable: false
+						        }).bindPopup("Current Location").addTo(map);
+							}
+							</script>';
+
+		}else{
+		echo "
+		    <script type='text/javascript'>
+		      window.onload = function() {
+		        L.mapquest.key = 'UBI3Wc0udk0csdys2DFuAJAdhxdX00E9';
+		        var directions = L.mapquest.directions();
+		        directions.route({
+		        locations: [".'"'.$lat.','.$lot.'"'.",";
+		             for ($ctr=0; $ctr < count($sorted); $ctr++) { 
+		                        echo '"'.$this->lat[$s[$ctr]].','.$this->lot[$s[$ctr]].'",';
+		                     
+		             }
+
+		 echo  "]
+		      }, createMap);
+		    function createMap(error, response) {
+		          var map = L.mapquest.map('map', {
+		            center: [0,0],
+		            layers: L.mapquest.tileLayer('map'),
+		            zoom: 0
+		          });
+
+		      var DirectionsLayerWithCustomMarkers = L.mapquest.DirectionsLayer.extend({
+
+		        createStartMarker: function(location, stopNumber) {
+		          console.log(location);
+		          console.log(stopNumber);
+
+		                return L.mapquest.textMarker(location.latLng, {
+		                  text: 'Start',
+		                  type: 'marker',
+		                  icon: {
+		                    primaryColor: '#333333',
+		                    secondaryColor: '#333333',
+		                    size: 'sm',
+		                    symbol: stopNumber
+		                  }
+		                });
+
+		        },
+
+		        createWaypointMarker: function(location, stopNumber) {
+		         console.log(location);
+		         console.log(stopNumber);
+
+		                return L.mapquest.textMarker(location.latLng, {
+		                  text: stopNumber,
+		                  type: 'marker',
+		                  icon: {
+		                    primaryColor: '#333333',
+		                    secondaryColor: '#333333',
+		                    size: 'sm',
+		                    symbol: stopNumber
+		                  }
+		                });
+
+		        },
+
+		        createEndMarker: function(location, stopNumber) {
+		          console.log(location);
+		          console.log(stopNumber);
+
+		                return L.mapquest.textMarker(location.latLng, {
+		                  text: 'End',
+		                  type: 'marker',
+		                  icon: {
+		                    primaryColor: '#333333',
+		                    secondaryColor: '#333333',
+		                    size: 'sm',
+		                    symbol: stopNumber
+		                  }
+		                });
+
+		        }
+
+		      });
+
+		      directionsLayer = new DirectionsLayerWithCustomMarkers({
+		        directionsResponse: response
+		      }).addTo(map);
+
+		          var narrativeControl = L.mapquest.narrativeControl({
+		            directionsResponse: response,
+		            compactResults: true,
+		            interactive: true,
+		            position : 'bottomright',
+		            className: 'nav'
+		          });
+
+		          narrativeControl.setDirectionsLayer(directionsLayer);
+		          narrativeControl.addTo(map);
+		        }
+		    }
+		    </script>
+		";
+		}
+}		
 }
+$s = new ItemView();
+$res = $s->MyItem(61);
+echo '<pre>'; print_r($res); echo '</pre>';
 ?>

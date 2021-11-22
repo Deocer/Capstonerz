@@ -50,6 +50,19 @@ class itinerarydatabase{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
+	protected function Placefetch($id){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);    
+		$sql = "SELECT * FROM itinerary INNER JOIN places ON itinerary.Pname = places.Pname WHERE itinerary.UserID = ?";
+		$stmt = $conn->prepare($sql);
+		$stmt->bind_param("i", $id);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
+
 }
 
  ?>

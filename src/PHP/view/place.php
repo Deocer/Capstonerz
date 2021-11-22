@@ -380,6 +380,49 @@ class PlaceView extends PlaceControl
 		}
 
 
+		function Last2place($lat,$lot,$district,$district2,$type,$type2,$place)// Recommneded places are nearby places by default so they are also sorted with distance
+		{
+		 $p = new PlaceView();
+		 $i = 0;
+		 $sorted = array();
+		 $keys = array();
+		 $res =  $this->Itinerarylast($district,$district2,$type,$type2);
+		 foreach($res as $r ){
+		 	$i++;
+		 }
+
+		 for ($ctr=0; $ctr < $i; $ctr++) { 
+			 @$sorted[$ctr] =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
+
+		 	}
+
+		 	 asort($sorted, true);
+			 $keys =  array_keys($sorted);
+		 for ($c=0; $c < $i; $c++) {
+		 		$img = str_replace("&","@",$res[$keys[$c]]['img']); 
+				echo '
+					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
+					        <div class="row no-gutters">
+					            <div class="col-4">
+					                <img src="'.$res[$keys[$c]]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
+					            </div>
+					            <div class="col">
+					                <div class="card-block px-2">
+					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$keys[$c]]['Pname'].'&lat='.$res[$keys[$c]]['Lat'].'&lot='.$res[$keys[$c]]['Lot'].'&desc='.$res[$keys[$c]]['Des'].'&img='.$img.'&class='.$res[$keys[$c]]['type'].'&rating='.$res[$keys[$c]]['Rating'].'&address='.$res[$keys[$c]]['address'].'&hours='.$res[$keys[$c]]['hours'].'&price='.$res[$keys[$c]]['price'].'&contact='.$res[$keys[$c]]['contact'].'&site='.$res[$keys[$c]]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$keys[$c]]['Pname'].'</b></a></p>
+					                    <p class="text-muted" style ="font-size:10px;"><span class="material-icons">place</span> <b>'.round($sorted[$keys[$c]]).' KM</b> From Your Location: <b>'.$place.'</b></p>
+					                </div>
+					            </div>
+					        </div>
+					  </div>						
+  ';
+
+
+		 	}
+
+
+		}
+
+
 	function Places(){
 		 $i = 0;
 		 $res =  $this->GetName();
@@ -524,6 +567,10 @@ echo $d->DscPriceSort($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['typ
 
 if (isset($_POST['showall'])){
 echo $d->AllPlaces();
+}
+
+if (isset($_POST['lst2'])){
+	echo $d->Last2place($_POST['lat'],$_POST['lot'],$_POST['district'],$_POST['district2'],$_POST['type'],$_POST['type2'],$_POST['city']);
 }
 
  ?>

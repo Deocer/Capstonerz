@@ -148,6 +148,19 @@ class placedatabase{
 		return $data = $result->fetch_all(MYSQLI_ASSOC);
 	}
 
+	//Fetches Places based on the last 2 items on the itinerary
+	protected function Last2($district,$district2,$type,$type2){
+		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
+		$sql = "(SELECT * FROM places WHERE District = ? AND type = ? OR ? ) UNION (SELECT * FROM places WHERE District = ? AND type = ? OR ?)";
+		$stmt = $conn->prepare($sql); 
+		$stmt->bind_param("ssssss",$district,$type,$type2,$district2,$type,$type2);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		return $data = $result->fetch_all(MYSQLI_ASSOC);
+	}
+
 	//Selects all places in the place table and is ordered by id
 	protected function select(){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname); 
