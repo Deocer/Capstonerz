@@ -900,7 +900,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
 
     <div class="col-1" style="padding: 0;">
-          <aside class="p-0 bg-dark " style="height: 100%;">
+          <aside class="p-0 bg-dark" style="height: 100%;">
             <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
               <br> <span class="material-icons text-light fs-1 text py-1">account_circle</span>
               <p class="text-light">

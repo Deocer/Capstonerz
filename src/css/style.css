@@ -1,7 +1,7 @@
 
 /* Optional: Makes the sample page fill the window. */
 body{
-  background-color: grey;
+  background-color: darkgrey;
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -144,7 +144,6 @@ textarea {
 .placecard{
   border-radius: 4px;
   background: #fff;
-  box-shadow: 5px 5px 10px 4px rgba(0,0,0,0.5);
   transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
   padding: 14px 80px 18px 36px;
   cursor: pointer;
@@ -245,3 +244,26 @@ li {
   margin-bottom: 10px;
 }
 
+.button1 {
+  color:#9205f0;
+  background-color: white;
+  border: 2px solid #9205f0;
+  transition: .2s ease;
+  border-radius: 50px;
+}
+
+.button1:hover {
+  color: white;
+  background-color:  #9205f0;
+  transform: scale(1.1);
+  border: 2px solid white;
+}
+
+.box {
+  background: linear-gradient( #ee5c87, #f1a4b5, #d587b3);
+}
+
+.sign{
+  color: #9205f0;
+  font-weight: bolder;
+}

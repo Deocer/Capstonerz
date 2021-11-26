@@ -40,32 +40,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
 <section class="container-fluid">
   <div class="row">
     <div class="col-1" style="height: 600px;padding: 0;margin: 0;border: 0;">
-          <aside class="p-0 bg-dark " style="height: 650px;">
-            <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
-              <br> <span class="material-icons text-light fs-1 text py-1">account_circle</span>
-              <p class="text-light">
-                <?php echo $_SESSION['UserName']; ?>
-              </p>
-              <br>
-              <div class="collapse navbar-collapse order-last" id="nav">
-                <ul style="display:block;margin: 0;padding: 0;">
-                  <li><span class="material-icons p-3 text-light">home</span><a href="user.php"><i class="fw-bold text-light">Home</i></a></li>
-                  <br>
-                  <?php 
-
-                        if ($_SESSION['Auth'] == 'Admin') {
-                          echo '
-                              <li><span class="material-icons p-3 text-light">dashboard</span><a href="../admin/dashboard.php"><i class="fw-bold text-light">Dashboard</i></a></li>
-                          ';
-                        }
-                   ?>
-                    <li><span class="material-icons p-3 text-light">travel_explore</span><a href="itinerary.php"><i class="fw-bold text-light">Itinerary</i></a></li>
-                    <br>
-                    <li><span class="material-icons p-3 text-light">logout</span><a href="../../PHP/Functions/Log_out.php"><i class="fw-bold text-light">Log Out</i></a></li>
-                </ul>
-              </div>
-            </nav>
-          </aside>
+          <?php include '../../Class/sidebar.php';?>
     </div>
 
 
@@ -74,14 +49,14 @@ include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/view/itinerary.php');
 
 
         <div class="col">
-          <h4 class=" text-light bg-dark text-center  p-3">MY DESTINATION MAP</h4>
-          <div id="map" class="" style="width: 100%; height: 550px; overflow: hidden;"></div>
+          <h4 class="text-center  p-2 sign">MY DESTINATION MAP</h4>
+          <div id="map" class="" style="width: 100%; height: 550px; overflow: hidden;z-index: 1;"></div>
         </div>
 
 
 
         <div class="col-3  mx-auto" style="height: 650px; overflow: auto;">
-         <h5 class=" text-light bg-dark text-center  p-3">Destination List</h5>
+         <h5 class=" text-center  p-2 sign">Destination List</h5>
          <div class="" style="width: 80%; text-align: center;margin: auto;">
         <?php  
             $p = new ItemView();

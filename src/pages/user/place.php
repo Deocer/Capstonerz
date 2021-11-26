@@ -70,53 +70,28 @@ $rev = new ReviewView();
     <section class="container-fluid">
       <div class="row p-0 m-0">
         <div class="col-1" style="padding: 0;">
-          <aside class="p-0 bg-dark " style="height: 100%;">
-            <nav class="navbar navbar-expand-md navbar-dark bd-dark flex-md-column flex-row align-items-center py-2 text-center sticky-top " id="sidebar">
-              <br> <span class="material-icons text-light fs-1 text py-1">account_circle</span>
-              <p class="text-light">
-                <?php echo $_SESSION['UserName']; ?>
-              </p>
-              <br>
-              <div class="collapse navbar-collapse order-last" id="nav">
-                <ul style="display:block;margin: 0;padding: 0;">
-                  <li><span class="material-icons p-3 text-light">home</span><a href="user.php"><i class="fw-bold text-light">Home</i></a></li>
-                  <br>
-                  <?php 
-
-                        if ($_SESSION['Auth'] == 'Admin') {
-                          echo '
-                              <li><span class="material-icons p-3 text-light">dashboard</span><a href="../admin/dashboard.php"><i class="fw-bold text-light">Dashboard</i></a></li>
-                          ';
-                        }
-                   ?>
-                    <li><span class="material-icons p-3 text-light">travel_explore</span><a href="itinerary.php"><i class="fw-bold text-light">Itinerary</i></a></li>
-                    <br>
-                    <li><span class="material-icons p-3 text-light">logout</span><a href="../../Log_out.php"><i class="fw-bold text-light">Log Out</i></a></li>
-                </ul>
-              </div>
-            </nav>
-          </aside>
+          <?php include '../../Class/sidebar.php';?>
         </div>
         <div class="col-7 mx-auto">
           <div class="container-fluid bg-light" style="overflow: auto;height:720px">
             <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-              <strong>
+              <strong class="sign">
                 Map                
               </strong>
               </button>
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-                <strong>
+                <strong class="sign">
                  Reviews                 
                 </strong>
               </button>
               </li>
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">
-                <strong>
+                <strong class="sign">
                  Other Info.                 
                 </strong>
               </button>
@@ -125,7 +100,7 @@ $rev = new ReviewView();
             <div class="tab-content bg-light" style="width:100%;height: 70%;">
               <div class="tab-pane active bg-light" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="row">
-                  <div id="map" class="mx-auto" style="width: 100%; height: 300px;"></div>
+                  <div id="map" class="mx-auto" style="width: 100%; height: 300px;position: relative;z-index: 1;"></div>
                 </div>
                 <br><br>
 
@@ -391,47 +366,47 @@ $rev = new ReviewView();
         </div>
 
     <div class="col text-center mx-auto bg-light" style="overflow: auto;height:720px;overflow-x: hidden;">
-      <div class="bg-dark text-center  p-2" style="font-weight: bolder; margin: auto; text-align:center;">
-         <h4 class="text-light bg-dark text-center  p-1" style="font-weight: bolder;">Nearby <span id="dest"></span> in <span id="name"></span><?php echo $nm; ?> </h4>        
+      <div class="p-2" style="font-weight: bolder; margin: auto; text-align:center;">
+         <p class="text-center  sign" style="font-weight: bolder;">Nearby <span id="dest"></span> in <span id="name"></span><?php echo $nm; ?> </p>        
       </div>
 <br>
-          <button  id="landmark" class="btn"><i class="fa fa-monument"></i>
+          <button  id="landmark" class="btn  button1"><i class="fa fa-monument"></i>
           <strong>
             Historical landmark          
           </strong>
          </button>
 
-          <button  id="church" class="btn"><i class="fa fa-church"></i>
+          <button  id="church" class="btn  button1"><i class="fa fa-church"></i>
           <strong>
            Church
          </strong>
          </button>
 
-          <button  id="shopping" class="btn"><i class="fa fa-shopping-cart"></i>
+          <button  id="shopping" class="btn  button1"><i class="fa fa-shopping-cart"></i>
           <strong>
            Shopping            
           </strong>
          </button>
 
-          <button  id="park" class="btn"><i class="fa fa-tree"></i>
+          <button  id="park" class="btn  button1"><i class="fa fa-tree"></i>
           <strong>
            Park            
           </strong>
          </button>
 
-          <button  id="restaurant" class="btn"><i class="fa fa-cutlery"></i>
+          <button  id="restaurant" class="btn  button1"><i class="fa fa-cutlery"></i>
           <strong>
            Restaurant            
           </strong>
          </button>
 
-          <button  id="attraction" class="btn"><i class="fa fa-landmark"></i>
+          <button  id="attraction" class="btn  button1"><i class="fa fa-landmark"></i>
           <strong>
            Tourist attraction            
           </strong>
          </button>
 
-          <button  id="reco" class="btn"><i class="fa fa-map-marker"></i>
+          <button  id="reco" class="btn  button1"><i class="fa fa-map-marker"></i>
           <strong>
            Recommended for you            
           </strong>
