@@ -46,7 +46,7 @@ class PlaceView extends PlaceControl
 		 for ($c=0; $c < $i; $c++) {
 		 		$img = str_replace("&","@",$res[$keys[$c]]['img']);  
 				echo '
-					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
+					  <div class="card placecard" style="width:100%;height:150px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
 					                <img src="'.$res[$keys[$c]]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
@@ -83,7 +83,7 @@ class PlaceView extends PlaceControl
 			 $img = str_replace("&","@",$res[$ctr]['img']); 
 
 				echo '
-					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
+					  <div class="card placecard" style="width:100%;height:150px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
 					                <img src="'.$res[$ctr]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
@@ -140,7 +140,7 @@ class PlaceView extends PlaceControl
 			 $img = str_replace("&","@",$res[$ctr]['img']); 
 
 				echo '
-					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
+					  <div class="card placecard" style="width:100%;height:150px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
 					                <img src="'.$res[$ctr]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
@@ -196,7 +196,7 @@ class PlaceView extends PlaceControl
 			 $img = str_replace("&","@",$res[$ctr]['img']); 
 
 				echo '
-					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
+					  <div class="card placecard" style="width:100%;height:150px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
 					                <img src="'.$res[$ctr]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
@@ -252,7 +252,7 @@ class PlaceView extends PlaceControl
 			 $img = str_replace("&","@",$res[$ctr]['img']); 
 
 				echo '
-					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
+					  <div class="card placecard" style="width:100%;height:150px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
 					                <img src="'.$res[$ctr]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
@@ -293,7 +293,7 @@ class PlaceView extends PlaceControl
 			 @$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
 			 $img = str_replace("&","@",$res[$ctr]['img']); 
 				echo '
-					  <div class="card placecard" style="width:420px;height:170px;padding:0;padding-top:10px;">
+					  <div class="card placecard" style="width:100%;height:170px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
 					                <img src="'.$res[$ctr]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
@@ -358,7 +358,7 @@ class PlaceView extends PlaceControl
 		 for ($c=0; $c < $i; $c++) {
 		 		$img = str_replace("&","@",$res[$keys[$c]]['img']); 
 				echo '
-					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
+					  <div class="card placecard" style="width:100%;height:150px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
 					                <img src="'.$res[$keys[$c]]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
@@ -401,7 +401,7 @@ class PlaceView extends PlaceControl
 		 for ($c=0; $c < $i; $c++) {
 		 		$img = str_replace("&","@",$res[$keys[$c]]['img']); 
 				echo '
-					  <div class="card placecard" style="width:420px;height:150px;padding:0;padding-top:10px;">
+					  <div class="card placecard" style="width:100%;height:150px;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
 					            <div class="col-4">
 					                <img src="'.$res[$keys[$c]]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">

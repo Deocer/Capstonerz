@@ -1,20 +1,26 @@
 <?php 
-include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/model/user.php');
+include ($_SERVER['DOCUMENT_ROOT'].'/PHP 00P/src/PHP/controller/user.php');
 
 
 /**
 	 * 
 	 */
-class Maker extends userdatabase
+class Maker extends UserControl
 {		
 
 		function NewUser($Username,$Pass,$email)
 		{
 		    
-			if ($res = $this->verify($Username) == null) {
-				$this->insert($Username, $Pass, 'Normal',$email);
-				header('location:../controller/user.php?Username='.$Username.'&Password='.$Pass.''); 
-			    exit();
+			if ($res = $this->VerUser($Username) == null) {
+				if ($res1 = $this->searchmail($email) == null) {
+						$this->CreateUser($Username, $Pass, 'Normal',$email);
+						header('location:../controller/user.php?Username='.$Username.'&Password='.$Pass.''); 
+					    exit();
+				}else{
+						header("location:../../pages/Signup.php?error=emailTaken");
+						exit();					
+				}
+
 			}else{
 				header("location:../../pages/Signup.php?error=nameTaken");
 				exit();
@@ -27,9 +33,9 @@ class Maker extends userdatabase
 
 class Validations{
 
-	function emptyInput($name, $password){
+	function emptyInput($name, $password, $email){
 		$result;
-		if (empty($name) ||empty($password)) 
+		if (empty($name) ||empty($password) || empty($email)) 
 			{
 				$result = true;
 			}else{
@@ -81,10 +87,11 @@ class Validations{
 
 		$name = $_POST['name'];
         $password = $_POST['password'];
+        $email = $_POST['email'];
         $valid = new Validations();
 
 
-        if ($valid->emptyInput($name, $password) !== false) {
+        if ($valid->emptyInput($name, $password, $email) !== false) {
         		header("location:../../pages/Signup.php?error=emptyinput");
         		exit();
         }elseif ($valid->Invalidname($name) !== false) {

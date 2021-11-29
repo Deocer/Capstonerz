@@ -18,7 +18,7 @@ class PostView extends PostControl
 		 		$img =  $this->Pic($res[$ctr]['PostID']);
 
 		 		echo '
-					<div class="card mx-auto" style="width:600px;">
+					<div class="card mx-auto" style="width:70%;">
 					  <div class="card-body">
 					    <div class="container">
 					      <div class="row align-items-start">

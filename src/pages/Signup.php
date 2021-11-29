@@ -143,6 +143,22 @@ if (isset($_GET["error"])) {
 
 
 				";
+			}elseif ($_GET["error"] == "emailTaken") {
+			echo 
+				"
+				 <script type='text/javascript'>
+				   function error() {
+				  Swal.fire({
+				      title: 'Oops..',
+				      text: 'Email Already Taken!',
+				      icon: 'error'
+					})
+				}
+				error();
+				 </script>
+
+
+				";
 			}
 }
 
