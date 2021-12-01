@@ -56,7 +56,7 @@ $s->DeleteItem($_GET['delete']);
 if (isset($_POST['id']) ){
 
 $s = new ItemControl();
-$res = $s->RecItem(61);
+$res = $s->RecItem($_POST['id']);
 //echo count($res);
 	if (count($res) < 2) {
 		return null;

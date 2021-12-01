@@ -1,132 +1,159 @@
 <?php
 
 echo '
-    <section style="background-color: red;height: calc(100vh - 100px);overflow-y: hidden;">
+    <section style="background-color: white;height: calc(100vh - 100px);overflow-y: auto;">
       <div class="container-fluid bg-light" style="height:100%">
-        <h4 class="text-center p-1 sign" style="font-family: Caveat; font-weight: bolder;">TRAVEL FEED</h4>
+        <h1 class="text-center p-1 sign" style="font-family: Caveat; font-weight: bolder; font-size:50px;"><img src="../../imgs/logo.png" style="height:100px;"></h1>
         <ul class="nav nav-tabs nav-fill nav-lg" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><strong class="sign" style="font-size:25px;">HOME</strong></button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><strong class="sign" style="font-size:25px;">NEWSFEED</strong></button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
+            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false"><strong class="sign" style="font-size:25px;">OTHER DESTINATIONS</strong></button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Settings</button>
+            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false"><strong class="sign" style="font-size:25px;">YOUR POST</strong></button>
           </li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="container bg-light mx-auto py-2" style="overflow: hidden;">
-              <div class="row mx-auto" style="overflow: hidden;margin: auto;">
-                <div class="card mx-auto" style="width:90%;height: 100%;">';
+          <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab" style="overflow:auto;">
+              <br><br><br>
+            <div class="container-fluid bg-light mx-auto py-2" style="overflow: hidden;">
+            <div class="row mx-auto" style="overflow: hidden;margin: auto;">
+              <br>
+            <div class ="col-8" style="height:500px;overflow:hidden;">
 
-                    if ($place == "Tondo") {
-                   echo '<img src="https://fastly.4sqi.net/img/general/600x600/QtNf3HOZCw4GiJMk0IhT3OZFpYy1XVm1PJnI0zk4H8o.jpg" class="card-img-top" alt="..." style="height:200px;>';
-                    }
+                  <div class="card mx-auto" style="width:100%;height: 500px;">';
 
-                    if ($place == 'San Nicolas') {
-                    echo '<img src="https://outoftownblog.com/wp-content/uploads/2008/10/Casa-Vizantina-in-Madrid-Street-700x508.jpg" class="card-img-top" alt="..." style="height:200px;">';
-                    }
+                      if ($place == 'Tondo') {
+                     echo '<img src="https://fastly.4sqi.net/img/general/600x600/QtNf3HOZCw4GiJMk0IhT3OZFpYy1XVm1PJnI0zk4H8o.jpg" class="card-img-top" alt="..." style="height:250px;width:100%;">';
+                      }
 
-                    if ($place == 'Binondo') {
-                    echo '<img src="https://images.contentstack.io/v3/assets/blt1306150c2c4003bc/bltd0e4036cee3390b0/5eb4be1655e75137dea93bd7/1._Chinese-Filipino_Friendship_Arch.jpg" class="card-img-top" alt="..." style="height:200px;">';
-                    }
+                      if ($place == 'San Nicolas') {
+                      echo '<img src="https://outoftownblog.com/wp-content/uploads/2008/10/Casa-Vizantina-in-Madrid-Street-700x508.jpg" class="card-img-top" alt="..." style="height:250px;width:100%;">';
+                      }
 
-                    if ($place == 'Port Area') {
-                    echo '<img src="https://media.philstar.com/images/articles/gen17-manila-port-area-eddgumban_2018-08-17_22-04-28.jpg" class="card-img-top" alt="..." style="height:200px;">';
-                    }
+                      if ($place == 'Binondo') {
+                      echo '<img src="https://images.contentstack.io/v3/assets/blt1306150c2c4003bc/bltd0e4036cee3390b0/5eb4be1655e75137dea93bd7/1._Chinese-Filipino_Friendship_Arch.jpg" class="card-img-top" alt="..."  style="height:250px;width:100%;">';
+                      }
 
-                    if ($place == 'Ermita') {
-                    echo '<img src="https://www.vigattintourism.com/assets/article_main_photos/optimize/1346054693SfB9lDHo.jpg" class="card-img-top" alt="..." style="height:200px;">';
-                    }
+                      if ($place == 'Port Area') {
+                      echo '<img src="https://media.philstar.com/images/articles/gen17-manila-port-area-eddgumban_2018-08-17_22-04-28.jpg" class="card-img-top" alt="..."  style="height:250px;width:100%;">';
+                      }
 
-                    if ($place == 'Malate') {
-                    echo '<img src="https://youimg1.tripcdn.com/target/100b1f000001gspscDB29.jpg?proc=source%2Ftrip" class="card-img-top" alt="..." style="height:200px;">';
-                    }
+                      if ($place == 'Ermita') {
+                      echo '<img src="https://www.vigattintourism.com/assets/article_main_photos/optimize/1346054693SfB9lDHo.jpg" class="card-img-top" alt="..."  style="height:250px;width:100%;">';
+                      }
 
-                    if ($place == 'San Andres') {
-                    echo '<img src="https://i.pinimg.com/originals/bf/ee/e8/bfeee8e46fa83afba4ebe803cd07ede8.jpg" class="card-img-top" alt="..." style="height:200px;">';
-                    }
+                      if ($place == 'Malate') {
+                      echo '<img src="https://youimg1.tripcdn.com/target/100b1f000001gspscDB29.jpg?proc=source%2Ftrip" class="card-img-top" alt="..."  style="height:250px;width:100%;">';
+                      }
 
-                    if ($place == 'Santa Ana') {
-                    echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Santa_Ana_Church_west_side.jpg/482px-Santa_Ana_Church_west_side.jpg">';
-                    }
+                      if ($place == 'San Andres') {
+                      echo '<img src="https://i.pinimg.com/originals/bf/ee/e8/bfeee8e46fa83afba4ebe803cd07ede8.jpg" class="card-img-top" alt="..."  style="height:250px;width:100%;">';
+                      }
 
-
-
-                    if ($place == 'Sta. Mesa') {
-                    echo '<img src="https://lh5.googleusercontent.com/p/AF1QipNEac8SlyqKwFIPcMwlI43kFJbidXstknOXRP1h=w400-h300-k-no" class="card-img-top" alt="..." style="height:200px;">';
-                    }
-
-                    if ($place == 'Sampaloc') {
-                    echo '<img src="https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Arch-of-the-Centuries.jpg" alt="..." style="height:200px;">';
-                    }
-
-                    if ($place == 'Quiapo') {
-                    echo '<img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Allan_Jay_Quesada-_Quiapo_Church_DSC_0065_The_Minor_Basilica_of_the_Black_Nazarene_or_Quiapo_Church%2C_Manila.JPG" class="card-img-top" alt="..." style="height:200px;">';
-                    }
-
-                    if ($place == 'Sta Cruz') {
-                    echo '<img src="https://www.ssscongregatio.org/images/articles/News/Phil-Uga-U.S./Sta_Cruz_Church_Manila1.jpg" style="height:200px;">';
-                    }
-
-
-                    if ($place == 'San Miguel') {
-                    echo '<img src="https://intrepidwanderer.com/wp-content/uploads/2013/05/Presidential-Museum-and-Library.jpg" class="card-img-top" alt="..." style="height:200px;">';
-                    }
-
-                    if ($place == 'Intramuros') {
-                    echo '<img src="https://a.cdn-hotels.com/gdcs/production16/d15/70589415-4617-4205-804f-210fbb296933.jpg" alt="..." style="height:200px;">';
-                    }
-
-                    if ($place == 'Paco') {
-                    echo '<img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/View_from_the_pathway_at_Paco_Park.JPG" class="card-img-top" alt="..." style="height:200px;">';
-                    }
-
-                    if ($place == 'Pandacan') {
-                    echo '<img src="https://mapio.net/images-p/56251936.jpg" style="height:200px;">';
-                    }                      
+                      if ($place == 'Santa Ana') {
+                      echo '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Santa_Ana_Church_west_side.jpg/482px-Santa_Ana_Church_west_side.jpg"  style="height:250px;width:100%;">';
+                      }
 
 
 
-             echo'       <div class="card-body">
-                      <h5 class="card-title" style="font-family: Caveat;font-size:20px; font-weight: bolder;"><?php echo $place  ?></h5>
-                      <p class="card-text" style="font-size:13px">Manila, capital and chief city of the Philippines. The city is the centre of the countrys economic, political, social, and cultural activity. It is located on the island of Luzon and spreads along the eastern shore of Manila Bay at the mouth of the Pasig River.</p>
+                      if ($place == 'Sta. Mesa') {
+                      echo '<img src="https://lh5.googleusercontent.com/p/AF1QipNEac8SlyqKwFIPcMwlI43kFJbidXstknOXRP1h=w400-h300-k-no" class="card-img-top" alt="..."  style="height:250px;width:100%;">';
+                      }
+
+                      if ($place == 'Sampaloc') {
+                      echo '<img src="https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Arch-of-the-Centuries.jpg" alt="..."  style="height:250px;width:100%;">';
+                      }
+
+                      if ($place == 'Quiapo') {
+                      echo '<img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Allan_Jay_Quesada-_Quiapo_Church_DSC_0065_The_Minor_Basilica_of_the_Black_Nazarene_or_Quiapo_Church%2C_Manila.JPG" class="card-img-top" alt="..."  style="height:250px;width:100%;">';
+                      }
+
+                      if ($place == 'Sta Cruz') {
+                      echo '<img src="https://www.ssscongregatio.org/images/articles/News/Phil-Uga-U.S./Sta_Cruz_Church_Manila1.jpg"  style="height:250px;width:100%;">';
+                      }
+
+
+                      if ($place == 'San Miguel') {
+                      echo '<img src="https://intrepidwanderer.com/wp-content/uploads/2013/05/Presidential-Museum-and-Library.jpg" class="card-img-top" alt="..."  style="height:250px;width:100%;">';
+                      }
+
+                      if ($place == 'Intramuros') {
+                      echo '<img src="https://a.cdn-hotels.com/gdcs/production16/d15/70589415-4617-4205-804f-210fbb296933.jpg" alt="..."  style="height:250px;width:100%;">';
+                      }
+
+                      if ($place == 'Paco') {
+                      echo '<img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/View_from_the_pathway_at_Paco_Park.JPG" class="card-img-top" alt="..."  style="height:250px;width:100%;">';
+                      }
+
+                      if ($place == 'Pandacan') {
+                      echo '<img src="https://mapio.net/images-p/56251936.jpg"  style="height:250px;width:100%;">';
+                      }                      
+
+
+
+                     echo'       <div class="card-body">
+                                <br>
+                                <div style="margin:auto;text-align:center;">
+                                <h1 class="card-title" style="font-family: Caveat;font-size:50px; font-weight: bolder;">'.$place.'</h1>
+                                </div>
+                                <p class="card-text" style="font-size:20px">Manila, capital and chief city of the Philippines. The city is the centre of the countrys economic, political, social, and cultural activity. It is located on the island of Luzon and spreads along the eastern shore of Manila Bay at the mouth of the Pasig River.</p>
+                              </div>
+                          </div>  
+
                     </div>
-                </div>
+                    <div class ="col">
+                    <div class="container-fluid" style="font-size: 5px; width: 100%;text-align:center;margin:auto;">
+                    <h2>Other Districts in Manila</h2>
+                    </div>
+                    <br>
+                    <div class="container-fluid" style="font-size: 5px; width: 100%;margin:auto;">
+                      <a class="btn button1" href="?place=Tondo">Tondo</a>
+                      <a class="btn button1" href="?place=San Nicolas">San Nicolas</a>
+                      <a class="btn button1" href="?place=Binondo">Binondo</a>
+                      <a class="btn button1" href="?place=Port Area">Port Area</a>
+                      <a class="btn button1" href="?place=Ermita">Ermita</a>
+                      <a class="btn button1" href="?place=Malate">Malate</a>
+                      <a class="btn button1" href="?place=San Andres">San Andres</a>
+                      <a class="btn button1" href="?place=Santa Ana">Santa Ana</a>
+                      <a class="btn button1" href="?place=Sta. Mesa">Sta. Mesa</a>
+                      <a class="btn button1" href="?place=Sampaloc">Sampaloc</a>
+                      <a class="btn button1" href="?place=Quiapo">Quiapo</a>
+                      <a class="btn button1" href="?place=Sta Cruz">Sta Cruz</a>
+                      <a class="btn button1" href="?place=San Miguel">San Miguel</a>
+                      <a class="btn button1" href="?place=Intramuros">Intramuros</a>
+                      <a class="btn button1" href="?place=Paco">Paco</a>
+                      <a class="btn button1" href="?place=Pandacan">Pandacan</a>
+                    </div>
+                    </div>
+            <div id="res" class="container-fluid" style="width:100%;">
+              <div class="spinner-grow text-dark" role="status"> <span class="visually-hidden">Loading...</span> </div>
+            </div>
               </div>
             </div>
           </div>
-          <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-              <div class="accordion-item">
-                <p class="accordion-header" id="panelsStayOpen-headingOne">
-                  <button class="accordion-button btn" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                    <p class="sign"> Places In
-                      <?php echo $place; ?>
-                    </p>
-                  </button>
-                </p>
-                <div id="panelsStayOpen-collapseOne" class="accordion accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                  <div class="accordion-body">
-                    <div class="container-fluid" style="font-size: 5px; width: 100%;">
-                      <button id="landmark" class="btn button1"><i class="fa fa-monument"></i> Historical landmark </button>
-                      <button id="church" class="btn button1"><i class="fa fa-church"></i> Church </button>
-                      <button id="shopping" class="btn button1"><i class="fa fa-shopping-cart"></i> Shopping </button>
-                      <button id="park" class="btn button1"><i class="fa fa-tree"></i> Park </button>
-                      <button id="restaurant" class="btn button1"><i class="fa fa-cutlery"></i> Restaurant </button>
-                      <button id="attraction" class="btn button1"><i class="fa fa-landmark"></i> Tourist attraction </button>
-                      <button id="reco" class="btn button1"><i class="fa fa-map-marker"></i> Recommended for you </button>
-                      <button id="last" class="btn button1"><i class="fa fa-map-marker"></i> Places you might like </button>
+          <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="profile-tab" style="font-size: 15px; width: 100%; margin:auto;text-align:center;">
+                  <br>
+                  <h1 class="sign">Other Places In
+                      '.$place.'
+                    </h1>
+                    <br>
+                    <div class="container-fluid" style="font-size: 15px; width: 100%; margin:auto;">
+                    <br>
+                      <button id="landmark" class="btn button1" style="margin:auto;"><i class="fa fa-monument"></i> Historical landmark </button>
+                      <button id="church" class="btn button1" style="margin:auto;"><i class="fa fa-church"></i> Church </button>
+                      <button id="shopping" class="btn button1" style="margin:auto;"><i class="fa fa-shopping-cart"></i> Shopping </button>
+                      <button id="park" class="btn button1" style="margin:auto;"><i class="fa fa-tree"></i> Park </button>
+                      <button id="restaurant" class="btn button1" style="margin:auto;"><i class="fa fa-cutlery"></i> Restaurant </button>
+                      <button id="attraction" class="btn button1" style="margin:auto;"><i class="fa fa-landmark"></i> Tourist attraction </button>
+                      <button id="reco" class="btn button1" style="margin:auto;"><i class="fa fa-map-marker"></i> Recommended for you </button>
+                      <button id="last" class="btn button1" style="margin:auto;"><i class="fa fa-map-marker"></i> Places you might like </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div class="" id="resto" style="font-size: 5px;">
               <button id="Café" class="btn button1"><i class="fa fa-coffee"></i> Café </button>
               <button id="Eatery" class="btn button1"><i class="fa fa-utensils"></i> Eatery </button>
@@ -146,21 +173,23 @@ echo '
                     <p style="color: #9570DD;" id="distance" class="dropdown-item"> <strong>Distance</strong> </p>
                   </li>
                   <li>
-                    <p style="color: #9570DD;" id="prize" class="dropdown-item"> <strong>Prize</p></strong></li>
+                    <p style="color: #9570DD;" id="prize" class="dropdown-item"> <strong>Price</p></strong></li>
                   <li>
                     <p style="color: #9570DD;" id="popularity" class="dropdown-item"> <strong>Popularity</strong></p>
                   </li>
                 </ul>
               </div>
             </div>
+            <br>
             <input type="text" class="form-control" id="input" placeholder="Search Place in Manila " style="width:100%;">
+            <br>
             <div id="result" style="margin:auto; text-align: center; text-align:center;"></div>
             <div id="demo">
               <div class="spinner-grow text-dark" role="status"> <span class="visually-hidden">Loading...</span> </div>
             </div>
           </div>
-          <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-            <div class="card mx-auto bg-light" style="width:600px; background-color: white;">
+          <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
+            <div class="card mx-auto bg-light" style="width:95%; background-color: white;">
               <div class="card-body">
                 <form action="../../PHP/Functions/createPost.php" method="post" enctype="multipart/form-data">
                   <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
@@ -195,5 +224,5 @@ include '../../Class/mobilenav.php';
 if (isset($_SESSION['close'])) {
       // code...
     }else{
-            include '../../Class/modal.php';    
+            //include '../../Class/modal.php';    
     }

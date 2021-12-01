@@ -189,7 +189,7 @@ a {
 if ($_SESSION['Auth'] == 'Admin') {
     echo '
       <div class="menu-item">
-        <a href="user.php">
+        <a href="../admin/dashboard.php">
           <i class="menu-icon fa fa-dashboard"></i>
           <p class="menu-text">Dashboard</p>
         </a>

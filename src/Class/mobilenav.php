@@ -64,19 +64,27 @@ body, html {
 
 
 
-<div class="wrapper">
+<div class="wrapper" style= "border:20px;">
     <nav class="nav-menu container-fluid text-dark">
-          <a class="nav-btn" href="#home" role="button" aria-label="home button">
-            <i class="fas fa-cog"></i>
+          <a class="nav-btn" href="user.php" role="button" aria-label="home button"  style= "margin-left:15vw;">
+            <i class="fas fa-home"  style= "font-size:3rem;""></i>
+          </a>';
+
+if ($_SESSION['Auth'] == 'Admin') {
+    echo '
+           <a class="nav-btn" href="../admin/dashboard.php" role="button" aria-label="uploads button">
+          <i class="fas fa-cog" style= "font-size:3rem;"></i>
           </a>
-            <a class="nav-btn" href="#search" role="button" aria-label="search button">
-            <i class="fas fa-cog"></i>
+         ';
+ }
+
+          
+echo'
+            <a class="nav-btn" href="itinerary.php" role="button" aria-label="search button">
+            <i class="fas fa-map" style= "font-size:3rem;"></i>
           </a>
-            <a class="nav-btn" href="#favorites" role="button" aria-label="favorites button">
-            <i class="fas fa-cog"></i>
-          </a>
-           <a class="nav-btn" href="#uploads" role="button" aria-label="uploads button">
-          <i class="fas fa-cog"></i>
+            <a class="nav-btn" href="../../PHP/Functions/Log_out.php" role="button" aria-label="favorites button"  style= "margin-right:15vw;">
+            <i class="fa fa-sign-out" style= "font-size:3rem;"></i>
           </a>
     </nav>
 </div>

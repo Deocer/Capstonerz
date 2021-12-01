@@ -29,6 +29,7 @@ $site = $_GET['site'];
 }
 
 $id = $_SESSION['Id'];
+echo $id;
 
 $plc = new Place();
 $rev = new ReviewView();
@@ -67,371 +68,40 @@ $rev = new ReviewView();
   </head>
 
   <body>
-    <section class="container-fluid">
-      <div class="row p-0 m-0">
-        <div class="col-1" style="padding: 0;">
-          <?php include '../../Class/sidebar.php';?>
-        </div>
-        <div class="col-7 mx-auto">
-          <div class="container-fluid bg-light" style="overflow: auto;height:720px">
-            <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-              <strong class="sign">
-                Map                
-              </strong>
-              </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
-                <strong class="sign">
-                 Reviews                 
-                </strong>
-              </button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">
-                <strong class="sign">
-                 Other Info.                 
-                </strong>
-              </button>
-              </li>
-            </ul>
-            <div class="tab-content bg-light" style="width:100%;height: 70%;">
-              <div class="tab-pane active bg-light" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div class="row">
-                  <div id="map" class="mx-auto" style="width: 100%; height: 300px;position: relative;z-index: 1;"></div>
-                </div>
-                <br><br>
-
-                <div class="row">
-                  <?php 
-                  $img = str_replace("@","&",$_GET['img']); 
-                  echo '
-
-                  <div class="row no-gutters">
-                      <div class="col-4">
-                          <img src="'.$img.'" class="img-fluid rounded-circle m-1 "  alt="" style="width:150px;height:120px;">
-                      </div>
-                      <div class="col">
-                          <span style="font-size:20px;"><strong>'.$nm.'</strong> </span>
-                          ';
-                  echo '                
-                  <div class="row">
-                    <div class="col-5">';
-                  if ($rating == 1) {
-                    echo '<p style="font-size:55px;">'.$rating.'</p>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                  }elseif ($rating > 1 && $rating < 2) {
-                    echo '<span style="font-size:30px;">'.$rating.'</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons">star_half</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                    echo '<span class="material-icons">star_outline</span>'; 
-                  }elseif ($rating == 2) {
-                    echo '<span style="font-size:30px;">'.$rating.'</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                    echo '<span class="material-icons">star_outline</span>'; 
-                  }elseif ($rating > 2 && $rating < 3) {
-                    echo '<span style="font-size:30px;">'.$rating.'</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons">star_half</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                    echo '<span class="material-icons">star_outline</span>'; 
-                  }elseif ($rating == 3) {
-                    echo '<span style="font-size:30px;">'.$rating.'</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons">star_outline</span>';
-                    echo '<span class="material-icons">star_outline</span>'; 
-                  }elseif ($rating > 3 && $rating < 4) {
-                    echo '<span style="font-size:30px;">'.$rating.'</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons">star_half</span>';
-                    echo '<span class="material-icons">star_outline</span>'; 
-                  }elseif ($rating == 4) {
-                    echo '<span style="font-size:30px;">'.$rating.'</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons">star_outline</span>'; 
-                  }elseif ($rating > 4 && $rating < 5) {
-                    echo '<span style="font-size:30px;">'.$rating.'</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons">star_half</span>';
-                  }elseif ($rating == 5) {
-                    echo '<span style="font-size:30px;">'.$rating.'</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                    echo '<span class="material-icons" >star</span>';
-                  }elseif ($rating == 0) {
-                    echo '<span style="font-size:30px;">'.$rating.'</span>';
-                    echo '<span class="material-icons">star_outline</span>'; 
-                    echo '<span class="material-icons">star_outline</span>'; 
-                    echo '<span class="material-icons">star_outline</span>'; 
-                    echo '<span class="material-icons">star_outline</span>'; 
-                    echo '<span class="material-icons">star_outline</span>'; 
-                  }
-                  echo '
-                   </div>
-                    <div class="col">';
-                    if ($price == 1) {
-                      echo ' 
-                      <p class=card-text" style="font-size:30px;">
-                      <span class="material-icons">paid</span>
-                      </p>';
-                    }elseif ($price == 2) {
-                      echo '                                  
-                      <p class=card-text" style="font-size:30px;">
-                      <span class="material-icons">paid</span>
-                      <span class="material-icons">paid</span>
-                      </p>';
-                    }else{
-                      echo '                                   
-                      <p class=card-text" style="font-size:30px;">
-                      <span class="material-icons">paid</span>
-                      <span class="material-icons">paid</span>
-                      <span class="material-icons">paid</span>
-                      </p>';                          
-                    }
-
-                  echo'  
-                    </div>
-                    <div class="col">
-                        <a class="btn" aria-current="page" onclick="add()" style="background-color:purple;color:white;"><span class="material-icons" style="font-size:35px;">add</span></a>
-                    </div>
-                  </div>';
 
 
-                  echo'      
-                          <p class="text-lead">'.$desc.'</p>
-                          <p><sub><b>Operation Hours:</b> '.$hour.'</sub></p>  
-                          <p><sub><b>Located at :</b> '.$address.'</sub></p>';
-            
-
-                  if ($contact == 'N/A') {
-
-                  }else{
-                      echo '<p>Contact : '.$contact.'</p> ';
-                  }
-
-                  if ($site == 'N/A') {
-
-                  }else{
-                     echo '<p>Website : <a href="'.$site.'">'.$site.'</a></p> ';                    
-                  }
-                          
-                  echo'
-                      </div>
-                  </div>
+<?php 
 
 
-                  ' ?>
+$useragent=$_SERVER['HTTP_USER_AGENT'];
 
-                </div>  
-              </div>
-              <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="messages-tab">
-                <reviews>
-                  <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Reviews
-                </button>
-              </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                          <form action="../../PHP/controller/review.php?nm=<?php echo $nm ?>&lat=<?php echo $lat ?>&lot=<?php echo $lot ?>&desc=<?php echo $desc ?>&img=<?php echo $img ?>&class=<?php echo $class ?>&rating=<?php echo $rating ?>&address=<?php echo $address ?>&hours=<?php echo $hour ?>&price=<?php echo $price ?>&contact=<?php echo $contact ?>&site=<?php echo $site ?>" method="post">
-                            <div>
-                              <input class="form-control" style="display: none;" name="place" value="<?php echo $nm ?>">
-                              <input class="form-control" style="display: none;" name="id" value="<?php echo $_SESSION['Id'] ?>">
-                              <input class="form-control" style="display: none;" name="name" value="<?php echo $_SESSION['UserName'] ?>"> </div>
-                            <div>
-                              <textarea class="form-control" style="overflow:auto;resize:none" id="exampleFormControlTextarea1" name="cont" placeholder="Tell Us About Your Experience!" rows="3" required></textarea>
-                            </div>
-                            <br>
-                            <div class="container-fluid">
-                              <div class="row">
-                                <div class="col">
-                                  <label>Rating :</label>
-                                  <fieldset> <span class="star-cb-group">
-                              <input type="radio" id="rating-5" name="rating" value="5" />
-                              <label for="rating-5">5</label>
-                              <input type="radio" id="rating-4" name="rating" value="4" />
-                              <label for="rating-4">4</label>
-                              <input type="radio" id="rating-3" name="rating" value="3" />
-                              <label for="rating-3">3</label>
-                              <input type="radio" id="rating-2" name="rating" value="2" />
-                              <label for="rating-2">2</label>
-                              <input type="radio" id="rating-1" name="rating" value="1" />
-                              <label for="rating-1">1</label>
-                              <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" />
-                              <label for="rating-0">0</label>
-                              </span> </fieldset>
-                                </div>
-                                <div class="col mx-auto text-center">
-                                  <button type="submit" class="btn btn-primary">Post</button>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-                          <br>
-                          <br>
-                          <h2><?php echo $nm; ?> Reviews:</h2>
-                          <?php 
-                  $rev->ShowPost($nm);
-                  ?>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <script type="text/javascript">
-                  function add() {
-                    Swal.fire({
-                      title: "Destination added!",
-                      text:  "<?php echo $nm ?>" +" has been added to your itinerary",
-                      icon: "success",
-                    }).then(function() {
-                      window.location.href = "../../PHP/controller/itinerary.php?nm=<?php echo $nm; ?>&id=<?php echo $id; ?>";
-                    });
-                  }
-                  </script>
-                </reviews>
-              </div>
-              <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-                <div class="con bg-dark" style="
-            width: 100%;
-            height: 420px; 
-            display: flex;
-            flex-flow: row wrap;
-            position: relative;
-            margin: auto;
-            text-align: center;
-            overflow: auto;
-          ">
-                  <?php 
-            $new = str_replace(' ', '%20', $nm);
-            $YoutubeVids = file_get_contents("https://youtube.googleapis.com/youtube/v3/search?part=id&maxResults=10&q=".$new."&key=AIzaSyBi2oHeHWH5BD2Ck_iCaznlK2BZwDep998");
-                 
-            $yt = json_decode($YoutubeVids, TRUE); 
+if (preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4))) 
+{
+          include "../format/mobileplace.php";
+}else{
+          include "../format/place.php";
+}
 
-            for ($i=0; $i < 9; $i++) { 
-            $id =  $yt['items'][$i]['id']['videoId'];            
-            echo '
-                <div class="item" style="
-                  margin: 2px;
-                  height: 200px;
-                  flex: 0 1 calc(20% - 8px);
-                  position: relative;
-                  text-align: center;
-                  margin: auto;
-                  color: white;
-                  margin-bottom: 5px;
-                  margin-top: 5px;
-
-                ">
-                  <a href="https://www.youtube.com/watch?app=desktop&v='.$id.'"><img src="http://img.youtube.com/vi/'.$id.'/hqdefault.jpg" title="YouTube Video" alt="YouTube Video" style="width:200px;height:200px;"/></a>
-                </div>
-            ';
-
-            }
-?>
-                </div>
-              </div>
-            </div>
-            <script>
-            var firstTabEl = document.querySelector('#myTab li:last-child a')
-            var firstTab = new bootstrap.Tab(firstTabEl)
-            firstTab.show()
-            </script>
-          </div>
-        </div>
-
-    <div class="col text-center mx-auto bg-light" style="overflow: auto;height:720px;overflow-x: hidden;">
-      <div class="p-2" style="font-weight: bolder; margin: auto; text-align:center;">
-         <p class="text-center  sign" style="font-weight: bolder;">Nearby <span id="dest"></span> in <span id="name"></span><?php echo $nm; ?> </p>        
-      </div>
-<br>
-          <button  id="landmark" class="btn  button1"><i class="fa fa-monument"></i>
-          <strong>
-            Historical landmark          
-          </strong>
-         </button>
-
-          <button  id="church" class="btn  button1"><i class="fa fa-church"></i>
-          <strong>
-           Church
-         </strong>
-         </button>
-
-          <button  id="shopping" class="btn  button1"><i class="fa fa-shopping-cart"></i>
-          <strong>
-           Shopping            
-          </strong>
-         </button>
-
-          <button  id="park" class="btn  button1"><i class="fa fa-tree"></i>
-          <strong>
-           Park            
-          </strong>
-         </button>
-
-          <button  id="restaurant" class="btn  button1"><i class="fa fa-cutlery"></i>
-          <strong>
-           Restaurant            
-          </strong>
-         </button>
-
-          <button  id="attraction" class="btn  button1"><i class="fa fa-landmark"></i>
-          <strong>
-           Tourist attraction            
-          </strong>
-         </button>
-
-          <button  id="reco" class="btn  button1"><i class="fa fa-map-marker"></i>
-          <strong>
-           Recommended for you            
-          </strong>
-         </button>  
-          <br> 
-          <br>
-          <input type="text" class="form-control" id="input" placeholder="Search Place in Manila">
-
-      <p id="result"></p>
-      <div id="demo">      
-       <?php 
-            $plc-> Recplace($lat,$lot,$nm,$class);
-       ?> 
-      </div>
+ ?>
 
 
-    </div>
-      </div>
-    </section>
-    <section>
-      <footer class="bg-dark"> </footer>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>
+<script type="text/javascript">
+   function add() {
+       Swal.fire({
+          title: "Destination added!",
+          text:  "<?php echo $nm ?>" +" has been added to your itinerary",
+          icon: "success",
+          }).then(function() {
+          window.location.href = "../../PHP/controller/itinerary.php?nm=<?php echo $nm; ?>&id=<?php echo $id; ?>";
+          });
+      }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
  <script>
+    $("#resto").hide();
+    $("#last").hide();
+    $("#sort").hide();
   $(document).ready(function(){
     $("#input").keyup(function(){
           $( "#result" ).empty();
@@ -450,6 +120,7 @@ $rev = new ReviewView();
     });
 
     $("#landmark").click(function(){
+           $("#resto").hide();
           $("#landmark").css("color", "#9570DD");
           $("#church").css("color", "black");
           $("#shopping").css("color", "black");
@@ -482,6 +153,7 @@ $rev = new ReviewView();
     });
 
     $("#church").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "#9570DD");
           $("#shopping").css("color", "black");
@@ -513,6 +185,7 @@ $rev = new ReviewView();
     });
 
     $("#shopping").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color", "#9570DD");
@@ -545,6 +218,7 @@ $rev = new ReviewView();
 
 
     $("#park").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color","black");
@@ -576,6 +250,7 @@ $rev = new ReviewView();
     });
 
     $("#restaurant").click(function(){
+          $("#resto").show();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color","black");
@@ -608,6 +283,7 @@ $rev = new ReviewView();
 
 
     $("#attraction").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color","black");
@@ -638,7 +314,201 @@ $rev = new ReviewView();
           });
     });
 
+   $("#Café").click(function(){
+          $("#sort").show();
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#Café").css("color", "#9570DD");
+          $("#Eatery").css("color", "black");
+          $("#FastFood").css("color", "black");
+          $("#Bar").css("color", "black");
+          $("#reco").css("color", "black");
+          $("#last").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "Café",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "Café",
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = 'Café' ?>
+                       $('#des').val("Café ");
+                  }
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#Eatery").click(function(){
+          $("#sort").show();
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#Café").css("color", "black");
+          $("#Eatery").css("color", "#9570DD");
+          $("#FastFood").css("color", "black");
+          $("#Bar").css("color", "black");
+          $("#reco").css("color", "black");
+          $("#last").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "Eatery",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "Eatery",
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = 'Eatery' ?>
+                       $('#des').val("Eatery");
+                  }
+
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#FastFood").click(function(){
+          $("#sort").show();
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#Café").css("color", "black");
+          $("#Eatery").css("color", "black");
+          $("#FastFood").css("color", "#9570DD");
+          $("#Bar").css("color", "black");
+          $("#reco").css("color", "black");
+          $("#last").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "FastFood",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "FastFood",
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = 'Fast Food' ?>
+                       $('#des').val("Fast Food");  
+                  }
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
+    $("#Bar").click(function(){
+          $("#sort").show();
+          $("#landmark").css("color", "black");
+          $("#church").css("color", "black");
+          $("#shopping").css("color","black");
+          $("#park").css("color", "black");
+          $("#restaurant").css("color", "black");
+          $("#attraction").css("color", "black");
+          $("#Café").css("color", "black");
+          $("#Eatery").css("color", "black");
+          $("#FastFood").css("color", "black");
+          $("#Bar").css("color", "#9570DD");
+          $("#reco").css("color", "black");
+          $("#last").css("color", "black");
+          $('#demo').html( ""+
+            "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+            "</div>"
+                  );
+          $.ajax({
+              url: '../../PHP/view/place.php',
+              type:'post',
+              data: {
+                      rec: "Bar",
+                      lat: <?php echo $lat?>,
+                      lot: <?php echo $lot?>,
+                      nm: "<?php echo $nm ?>",
+                      class: "Bar",
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#result" ).empty();
+                   if (!$.trim(result)){   
+                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                    }
+                  else{   
+                       $("#result").html(result);
+                        <?php $destype = '#Bar' ?>
+                       $('#des').val("#Bar"); 
+                  }
+              },
+            error: function(){
+                console.log("error")
+            }
+          });
+    });
+
      $("#reco").click(function(){
+          $("#resto").hide();
           $("#landmark").css("color", "black");
           $("#church").css("color", "black");
           $("#shopping").css("color","black");

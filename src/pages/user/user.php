@@ -30,7 +30,7 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
 
 
    $geo = json_decode($Geocoding, TRUE);
-   $_SESSION['City'] = $geo['display_name'];
+echo   $_SESSION['City'] = $geo['display_name'];
 }
 
 
@@ -118,18 +118,44 @@ if(isset($_GET['lat']) && isset($_GET['lot']) ){
           });    
 
     $.ajax({
+        url: '../../PHP/view/place.php',
+        type:'post',
+        data: {
+              preco: "reco",
+              lat: <?php echo $_SESSION['lat']?>,
+              lot: <?php echo $_SESSION['lot']?>,
+              district: "<?php echo $_SESSION['district']?>",
+              city: "<?php echo $_SESSION['City']?>",
+              price: "<?php echo $_SESSION['price']?>",
+              type: "<?php echo $_SESSION['type']?>",
+              },
+              success:function(result){
+                   $('#pricesort').hide();
+                   $( "#demo" ).empty();
+                   $( "#res" ).empty();
+                   $("#res").html(result);
+              },
+            error: function(){
+                console.log("error")
+            }
+          });  
+
+
+    $.ajax({
         url: '../../PHP/controller/itinerary.php',
         type:'post',
         data: {
               id:<?php echo$_SESSION['Id']?>,
               },
               success:function(result){
-                  if (result != null) {
+                  if (result !== null || result !== '' || result.length === 0) {
+                    const myJSON = JSON.parse(result);
+                    console.log(myJSON);
                     $("#last").show();
                   //----------------------------//
                   //----------------------------//                 
                 }else{
-
+                    $("#last").hide();
                 }
 
               },
@@ -936,7 +962,7 @@ if (preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|
  ?>
 
  </body>
-
+ 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   <script type="text/javascript">
   $("#modalclose").click( function () {
