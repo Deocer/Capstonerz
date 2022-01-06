@@ -355,7 +355,7 @@ echo '</li>
 if (isset($_SESSION['close'])) {
       // code...
    }else{
-          include '../../Class/modal.php';    
+          include '../../Class/mobilemodal.php';    
    }
 
 

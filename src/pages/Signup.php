@@ -46,7 +46,12 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 							<input type="password" class="form-control" name="password" id="password" aria-describedby="passwordHelp">
 							<div id="passwordHelp" class="form-text">Password must be over 6 characters long.</div>
 						</div>
+						<p class="text-muted" style="font-size:10px;">By creating an account I choose to enable location access and must set the Allow all the time option in location permission while using the website.
+						</p>
+						
 						<button type="submit" class="btn btn-secondary w-100">Sign up</button>
+						<div style="text-align:center;margin: auto;"><a class="text-muted" style="font-size:10px; color: black;" href="terms.php"><strong>Terms and Conditions </strong></a></div>
+						
 					</form>
 					<p class="mb-0 text-center">Already a member? <a href="Login.php">Log in Here.</a></p>
 				</div>

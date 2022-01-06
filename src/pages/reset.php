@@ -48,12 +48,13 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 <script type="text/javascript">
 </script>
 <body>
-	<div class="container">
-		<div class="row vh-100 align-items-center justify-content-center">
-			<div class="d-sm-flex justify-content-center">
-				<div class="container bg-white rounded p-4 shadow" style="width:40%;">
+<br><br><br><br>
+	<div class="" style="text-align: center; margin: auto;">
+		<div class="align-items-center justify-content-center">
+			<div class="d-sm-flex justify-content-center" style="overflow: hidden;">
+				<div class="container bg-white rounded  shadow" style="max-width: 480px; min-width: 250px;">
 					<div class="row justify-content-center mb-2">
-						<img src="../imgs/logo.png" /class="w-50 rounded-pill">
+						<img src="../imgs/logo.png" /class="w-70 rounded-pill" style="height:100px;">
 					</div>
 					<p class="text-center">Password Reset for : <?php echo $decryption; ?></p>
 					<br>
@@ -69,6 +70,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 							</div>
 						</div>
 						<button type="submit" id="submit" class="btn btn-secondary w-100">Reset Password</button>
+						<br><br>
 					</form>
 				</div>
 				

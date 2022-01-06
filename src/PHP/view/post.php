@@ -18,25 +18,24 @@ class PostView extends PostControl
 		 		$img =  $this->Pic($res[$ctr]['PostID']);
 
 		 		echo '
-					<div class="card mx-auto" style="width:100%;">
+					<div class="card mx-auto" style="width:100%;border-bottom:10px solid #5E06AC;border-top:5px solid #5E06AC;">
 					  <div class="card-body">
 					    <div class="container">
 					      <div class="row align-items-start">
-					        <div class="col-1 px-2">
-					         <img src="../../imgs/logo.png"  class="d-block" alt="..." style="width:50px; height: 50px; border: solid white; border-radius: 50px;">
-					        </div>
 					        <div class="col-7 py-2">
-					          <h5 class="card-title" style ="font-size:14px;">'.$res[$ctr]['UserName'].'</h5>
+					          <h5 class="card-title text-muted" style ="font-size:14px;">Posted by '.$res[$ctr]['UserName'].'</h5>
 					        </div>
 					        <div class="col py-2 text-end">
-						         <a type="button" onClick="flagP('.$res[$ctr]['PostID'].','.$id.')" ><span class="material-icons text-danger">report_problem</span>
+						         <a type="button" onClick="flagP('.$res[$ctr]['PostID'].','.$id.')" ><span class="material-icons text-muted">report_problem</span>
 						         </a>
 
 					        </div>
 					      </div>
 					      <br>
-					    <p class="card-text" style ="font-size:12px;">'.$res[$ctr]['PostTitle'].'</p>
-					    <p style ="font-size:12px;">'.$res[$ctr]['Cont'].'</p>';
+					    <p class="card-text text-lead" style ="font-size:1.32rem;"><b>'.$res[$ctr]['PostTitle'].'</b></p>
+					    <p style ="font-size:15px;">'.$res[$ctr]['Cont'].'</p>
+					    <br>';
+
 
 		 	foreach($img as $im ){
 		 		  $pic++;
@@ -130,14 +129,15 @@ class PostView extends PostControl
 					</div>
 					<br><br>
 					</div>
+					<br>
 					';
 
 echo'
 
 		<div id="myModal" class="postmodal" style"display:none;">
 
-				<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-				 <img src="" style="height: 500px; width:1200px;" id = "modalpic" class="img-fluid" alt="">
+				<div class="postpic  modal-dialog modal-dialog-centered modal-dialog-scrollable" style"width:100;"">
+				 <img src="" style="height: 50%;" id = "modalpic" class="img-fluid" alt="">
 				</div>
 
 		</div>';
@@ -419,6 +419,7 @@ echo'
 
         if($i == 0){
                       echo "
+                      <div style='margin:auto;text-align:center;font-size:50px;'>
                       <span 
                       class='material-icons text-muted'
                       style='font-size: 230px;text-align: center;padding-top:40px;color:grey;'
@@ -429,6 +430,7 @@ echo'
 
                       echo "
                       <p class='text-muted'>No Post Found.</p>
+                      </div>
                       ";
          }else{
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
@@ -438,8 +440,9 @@ echo'
 								  <div class="row g-0">
 								    <div class="col">
 								      <div class="card-body">
-								        <h5 class="card-title"><b>'.$res[$ctr]['PostTitle'].'</b></h5>
-								        <p class="card-text">'.$res[$ctr]['Cont'].'</p>
+								        <h6 class="card-title"><b>'.$res[$ctr]['PostTitle'].'</b></h6>
+								        <br>
+								        <p class="card-text text-muted">'.$res[$ctr]['Cont'].'</p>
 								      </div>
 								    </div>
 								    <div class="col-2 text-light">

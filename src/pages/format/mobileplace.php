@@ -4,7 +4,7 @@ echo
 '
 <section style="background-color: white;height: calc(100vh - 100px);overflow-y: auto; width: 100%;margin: auto;">
 <div class="container-fluid bg-light" style="height:100%; width: 100%;">
-<h1 class="text-center p-1 sign" style="font-family: Caveat; font-weight: bolder; font-size:50px;"><img src="../../imgs/logo.png" style="height:100px;"></h1>
+<div class="text-center p-1 sign" style="background-color:white;font-size:50px;"><img src="../../imgs/logo.png" style="height:100px;"></div>
 <ul class="nav nav-tabs nav-fill nav-lg" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><strong class="sign" style="font-size:25px;">Map</strong></button>
@@ -34,16 +34,15 @@ echo
 
                   <div class="row no-gutters">
                       <div class="col-4">
-                          <img src="'.$img.'" class="img-fluid rounded-circle m-1 "  alt="" style="width:20rem;height:20rem;">
+                          <img src="'.$img.'" class="img-fluid rounded-circle m-1 "  alt="" style="width:25rem;height:20rem;">
                       </div>
                       <div class="col">
-                          <span style="font-size:2.5rem;"><strong>'.$nm.'</strong> </span>
-                          <br>
-                          <br>
+                          <span style="font-size:4rem;padding-right:10px;"><strong>'.$nm.'</strong> </span>
+                          <br><br>
                           ';
                   echo '                
-                  <div class="row">
-                    <div class="col-5">';
+                  <div class="row container-fluid" style="overflow-y:hidden">
+                    <div class="col">';
                   if ($rating == 1) {
                     echo '<p style="font-size:85px;">'.$rating.'</p>';
                     echo '<span style="font-size:30px;" class="material-icons" >star</span>';
@@ -117,7 +116,7 @@ echo
                   }
                   echo '
                    </div>
-                    <div class="col">';
+                    <div class="col-4">';
                     if ($price == 1) {
                       echo ' 
                       <p class=card-text" style="font-size:50px;">
@@ -140,7 +139,7 @@ echo
 
                   echo'  
                     </div>
-                    <div class="col">
+                    <div class="col-2">
                         <a class="btn" aria-current="page" onclick="add()" style="background-color:purple;color:white;"><span class="material-icons" style="font-size:55px;">add</span></a>
                     </div>
                   </div>';
@@ -170,7 +169,7 @@ echo
                   if ($site == 'N/A') {
 
                   }else{
-                     echo '<p style="font-size:2.2rem;"><b>Website :</b><a href="'.$site.'">'.$site.'</a></p><br>';                    
+                     echo '<p style="font-size:2.2rem;"><b>Website </b><a href="'.$site.'">'.$site.'</a></p><br>';                    
                   }
                           
                   echo'

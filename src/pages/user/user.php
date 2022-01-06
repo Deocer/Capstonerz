@@ -43,13 +43,13 @@ echo   $_SESSION['City'] = $geo['display_name'];
  <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="../../css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
   <title></title>
  </head>
  <script>
@@ -61,8 +61,10 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $( "#result" ).empty();
           $( "#demo" ).empty();
           $('#result').html( ""+
+          "<div style='margin:auto;text-align:center;font-size:50px;'>"+
           "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"+
           "</div>"
                   );
           $.ajax({
@@ -176,9 +178,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "#9570DD");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/controller/itinerary.php',
@@ -209,7 +213,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                                     $( "#result" ).empty();
                                     $("#result").html(res);
                                     if (!$.trim(res)){   
-                                          $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                                          $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                                          $("#sort").hide();
                                       }
                                     else{   
                                           $("#result").html(res);
@@ -233,8 +238,10 @@ echo   $_SESSION['City'] = $geo['display_name'];
   
     $("#profile-tab").click(function(){
       $('#post').html( ""+
+          "<div style='margin:auto;text-align:center;'>"+
           "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"+
           "</div>"
                   );
         $.ajax({
@@ -252,9 +259,32 @@ echo   $_SESSION['City'] = $geo['display_name'];
 
     $("#messages-tab").click(function(){
         $('#uspost').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
+                  );
+        $.ajax({
+            url: '../../PHP/view/post.php',
+            type:'post',
+            data: {userpost:'<?php echo $_SESSION['Id']; ?>'},
+            success:function(result){
+             $("#uspost").html(result);
+             },
+            error: function(){
+            console.log("error")
+             }
+        });
+    });
+
+    $("#settings-tab").click(function(){
+        $('#uspost').html( ""+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"+
+          "</div>"
                   );
         $.ajax({
             url: '../../PHP/view/post.php',
@@ -281,9 +311,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -301,7 +333,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                         $("#result").html(result);
@@ -328,9 +361,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#result').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -347,7 +382,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                           $("#result").html(result);
@@ -373,9 +409,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -392,7 +430,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                       $("#result").html(result);
@@ -419,9 +458,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -438,7 +479,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                        $("#result").html(result);
@@ -464,9 +506,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -483,7 +527,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                        $("#result").html(result);
@@ -510,9 +555,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -529,7 +576,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                        $("#result").html(result);
@@ -558,9 +606,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -577,7 +627,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                        $("#result").html(result);
@@ -606,9 +657,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -625,7 +678,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                        $("#result").html(result);
@@ -655,9 +709,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -674,7 +730,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                        $("#result").html(result);
@@ -703,9 +760,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "black");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -722,7 +781,8 @@ echo   $_SESSION['City'] = $geo['display_name'];
                    $( "#demo" ).empty();
                    $( "#result" ).empty();
                    if (!$.trim(result)){   
-                        $("#result").html("<i class='fa fa-exclamation-triangle'></i>"+"<p>No Such Places</p>");
+                        $("#result").html("<div style='padding-top:20px;font-size:50px;'><i class='fa fa-exclamation-triangle'></i>"+"<b><p>No Such Places</p></b></div>");
+                        $("#sort").hide();
                     }
                   else{   
                        $("#result").html(result);
@@ -748,9 +808,11 @@ echo   $_SESSION['City'] = $geo['display_name'];
           $("#reco").css("color", "#9570DD");
           $("#last").css("color", "black");
           $('#demo').html( ""+
-            "<div class='spinner-grow text-dark' role='status'>"+
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
               "<span class='visually-hidden'>Loading...</span>"+
-            "</div>"
+          "</div>"+
+          "</div>"
                   );
           $.ajax({
               url: '../../PHP/view/place.php',
@@ -779,10 +841,12 @@ echo   $_SESSION['City'] = $geo['display_name'];
    $("#distance").click(function(){
           $("#resto").hide();
           $('#des').html( ""+
-      "<div class='spinner-grow text-dark' role='status'>"+
-        "<span class='visually-hidden'>Loading...</span>"+
-      "</div>"
-            );
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"+
+          "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -810,10 +874,12 @@ echo   $_SESSION['City'] = $geo['display_name'];
    $("#prize").click(function(){
           $("#resto").hide();
           $('#demo').html( ""+
-      "<div class='spinner-grow text-dark' role='status'>"+
-        "<span class='visually-hidden'>Loading...</span>"+
-      "</div>"
-            );
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"+
+          "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -842,10 +908,12 @@ echo   $_SESSION['City'] = $geo['display_name'];
    $("#asc").click(function(){
           $("#resto").hide();
           $('#demo').html( ""+
-      "<div class='spinner-grow text-dark' role='status'>"+
-        "<span class='visually-hidden'>Loading...</span>"+
-      "</div>"
-            );
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"+
+          "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -874,10 +942,12 @@ echo   $_SESSION['City'] = $geo['display_name'];
    $("#dcs").click(function(){
           $("#resto").hide();
           $('#demo').html( ""+
-      "<div class='spinner-grow text-dark' role='status'>"+
-        "<span class='visually-hidden'>Loading...</span>"+
-      "</div>"
-            );
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"+
+          "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',
@@ -906,10 +976,12 @@ echo   $_SESSION['City'] = $geo['display_name'];
    $("#popularity").click(function(){
           $("#resto").hide();
           $('#demo').html( ""+
-      "<div class='spinner-grow text-dark' role='status'>"+
-        "<span class='visually-hidden'>Loading...</span>"+
-      "</div>"
-            );
+          "<div style='margin:auto;text-align:center;'>"+
+          "<div class='spinner-grow text-dark' role='status'>"+
+              "<span class='visually-hidden'>Loading...</span>"+
+          "</div>"+
+          "</div>"
+                  );
           $.ajax({
               url: '../../PHP/view/place.php',
               type:'post',

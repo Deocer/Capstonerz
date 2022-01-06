@@ -34,7 +34,7 @@ class userdatabase{
 
 	protected function fetch($Username, $Pass){
 		$conn = mysqli_connect($this->host,$this->username,$this->password,$this->dbname);	  
-		$sql = "SELECT * FROM wuser WHERE Username = ? "; 
+		$sql = "SELECT * FROM wuser WHERE BINARY Username = ? "; 
 		$stmt = $conn->prepare($sql); 
 		$stmt->bind_param("s", $Username);
 		$stmt->execute();

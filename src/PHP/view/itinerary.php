@@ -42,7 +42,8 @@ class ItemView extends ItemControl
 			}
 
 
-		function MyitemMobile($id)
+
+		function MyitemMobile2($id)
 		{
 		 $i = 0;
 		 $place = array();
@@ -51,133 +52,45 @@ class ItemView extends ItemControl
 		 foreach($res as $r ){
 		 	$i++;
 		 }
-			echo
-			'
-			<style>
-			* {
-			  margin: 0;
-			  padding: 0;
-			}
-			body {
-			  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-			    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-			}
-			.portfolio {
-			  width:100%;
-			  display: flex;
-			  flex-wrap: wrap;
-			}
 
-			.portfolio h2 {
-			  flex-basis: 100%;
-			  text-align: center;
-			  margin: 50px auto 30px;
-			  text-transform: uppercase;
-			  font-size: 30px;
-			  letter-spacing: 2px;
-			  color: #111;
-			}
-			.card {
-			  width: 50%;
-			  overflow: hidden;
-			  position: relative;
-			}
+		 for ($ctr=0; $ctr < $i; $ctr++) { 
+		 		 $place = $s->GetVname($res[$ctr]['Pname']);		 		 
 
-			.card .image {
-			  z-index: 0;
-			  height: 15vh;
-			}
-			.card img {
-			  height: 100%;
-			  width: 100%;
-			  transition: all 0.5s ease;
-			  transform: scale(1.2);
-			}
+				$pstring = '
+				<div class="card mb-3" style="width:100%;padding:0;padding-top:10px;">
+				  <div class="row g-0">
+				    <div class="col-md-4" style="margin:auto;">
+				 				<a href="../../pages/user/place.php?nm='.$place[0]['Pname'].'&lat='.$place[0]['Lat'].'&lot='.$place[0]['Lot'].'&desc='.$place[0]['Des'].'&img='.$place[0]['img'].'&class='.$place[0]['type'].'&rating='.$place[0]['Rating'].'&address='.$place[0]['address'].'&hours='.$place[0]['hours'].'&price='.$place[0]['price'].'&contact='.$place[0]['contact'].'&site='.$place[0]['site'].'" class="text-body"  style="text-decoration: none;" >
 
-			.card:hover .image img {
-			  transform: scale(1);
-			}
+										<img src="'.$place[0]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:15rem;height:10rem;">
 
-			.card:active .image img {
-			  transform: scale(1);
-			}
-
-			.info {
-			  position: absolute;
-			  bottom: 8px;
-			  left: 16px;
-			  color:white;
-			  font-weight:bolder;
-			  font-size:20px;
-			}
-
-			.marker {
-			  position: absolute;
-			  top: 8px;
-			  right: 16px;
-			  font-size:35px;
-			  color:white;
-			  padding:10px;
-			  padding-bottom:0;
-			  background-color:black;
-			}
-
-			@media screen and (max-width: 768px) {
-			  .card {
-			  width: 50%;
-			  }
-			  .card .content {
-			    bottom: 0;
-			  }
-			}
-
-			@media screen and (max-width: 480px) {
-			  .card {
-			  width: 100%;
-			  }
-			}
-			</style>
-
-			<section>
-			';
-
-			for ($ctr=0; $ctr < $i; $ctr++) { 
-				$place = $s->GetVname($res[$ctr]['Pname']);
-				$num = $ctr;
-				$pstring =	
-				'
-			  <div class="card">
-
-			    <div class="image">
-			    <a  href="../../pages/user/place.php?nm='.$place[0]['Pname'].'&lat='.$place[0]['Lat'].'&lot='.$place[0]['Lot'].'&desc='.$place[0]['Des'].'&img='.$place[0]['img'].'&class='.$place[0]['type'].'&rating='.$place[0]['Rating'].'&address='.$place[0]['address'].'&hours='.$place[0]['hours'].'&price='.$place[0]['price'].'&contact='.$place[0]['contact'].'&site='.$place[0]['site'].'" > 
-			     <img src="'.$place[0]['img'].'" alt="" />  
-			    </a>
-			    </div>
-
-					<div class="marker">
-					</div>
-
-				  <div style="background-color:grey;width:100%;">
-
-					    <div class="info">
-					    	<p>'.$place[0]['Pname'].'</p>
-					   </div>
-
-					</div>
-
-			  </div>
-				'; 
+								</a>
+				    </div>
+				    <div class="col-md-6 mx-auto" style="margin:auto;">
+				      <div class="card-body">
+				        <p class="card-title" style="font-size:1.5vh;"><b>'.$place[0]['Pname'].'</b></p>
+				        <p class="card-title" style="font-size:1em;">'.$place[0]['type'].'</p>
+				        <p class="card-title" style="font-size:1em;">Located at :'.$place[0]['address'].'</p>
+				      </div>
+				    </div>
+				    <div class="col-2 text-light" style="margin:auto; height:100%;text-align:center;margin:auto;">
+								<a type="button" class="btn" aria-current="page"  style="font-size:1.5em;height:30%;width:150px;background-color:#f8481c;text-align:center;margin:auto;padding:10px;color:white;" href="../../PHP/controller/itinerary.php?delete='.$res[$ctr]['PlcID'].'">
+										<strong>
+										<b>
+                    Remove
+                    </b>
+										</strong>
+								</a>
+				    </div>
+				  </div>
+				</div>';
 		  $this->lat[$ctr] = $place[0]['Lat'];
 		  $this->lot[$ctr] = $place[0]['Lot'];
 		  $this->name[$ctr] = $place[0]['Pname'];
 		  $this->place[$ctr] = $pstring;
-			}
-			echo'
-			</section>
-			';
-
-
+		 	}
 		}
+
 					
 		function Myitem($id)
 		{
@@ -204,7 +117,8 @@ class ItemView extends ItemControl
 				    </div>
 				    <div class="col-md-6 mx-auto" style="margin:auto;">
 				      <div class="card-body">
-				        <p class="card-title">'.$place[0]['Pname'].'</p>
+				        <p class="card-title"><b>'.$place[0]['Pname'].'</b></p>
+				        <p class="text-muted">'.$place[0]['type'].'</p>
 				      </div>
 				    </div>
 				    <div class="col-2 text-light" style="margin:auto; height:100%;text-align:center;margin:auto;">
@@ -241,44 +155,31 @@ class ItemView extends ItemControl
 			 }
 			 asort($sorted);
 			 $s = array_keys($sorted);
-			 echo'
-			 <br>
-			 <h1 class="text-center p-1 sign" style="font-family: Caveat; font-weight: bolder; font-size:50px;">DESTINATION LIST</h1>
-			 		<div class="portfolio">
-			 <br>
-			 ';
 				echo '
-			  <div class="card">
-
-			    <div class="image">
-			     <img src="https://previews.123rf.com/images/brokenhill/brokenhill1801/brokenhill180100075/93279098-location-icon-flat-with-house-on-white-background-vector-illustration-.jpg" alt="" width="30%;" />  
-			    </a>
-			    </div>
-
-					<div class="marker">
-					</div>
-
-				  <div style="background-color:grey;width:100%;">
-
-					    <div class="info">
-					    	<p>Current Location</p>
-					    		<button type="button" id="directions" class="btn btn-primary" style="font-size:8px;">Show Directions</button>
-					        <button type="button" id="nodirections" class="btn btn-primary" style="font-size:8px;">Remove Directions</button>
-					   </div>
-
-					</div>
-
-			  </div>
-              <br>';
+			<p class="sign">DESTINATION #1</p>	
+			<div class="card mb-3" style="width:100%;padding:0;padding-top:10px;">
+				  <div class="row g-0">
+				    <div class="col-md-4" style="margin:auto;">
+										<img src="https://previews.123rf.com/images/brokenhill/brokenhill1801/brokenhill180100075/93279098-location-icon-flat-with-house-on-white-background-vector-illustration-.jpg" alt=""style="width:70px;height:80px;" />
+				    </div>
+				    <div class="col-md-6 mx-auto" style="margin:auto;">
+				      <div class="card-body">
+				        <p class="card-title" style="font-size:1.5vh;"><b>CURRENT LOCATION</b></p>
+				      </div>
+				    </div>
+				    <div class="col-2 text-light" style="margin:auto; height:100%;text-align:center;margin:auto;">
+									<button type="button" id="directions" class="btn btn-primary" style="font-size:1.5vh;"><b>Show Directions</b></button>
+					        <button type="button" id="nodirections" class="btn btn-primary" style="font-size:1.5vh;"><b>Remove Directions</b></button>
+				    </div>
+				  </div>
+				</div>
+           ';
 		$limit = count($s) -1;
 		for ($i=0; $i <= $limit; $i++) {
 			 $ald = $i +2;
-             echo $ald;
+       echo '<p class="sign" >DESTINATION #'.$ald.'</p>';
 			 echo $this->place[$s[$i]];
 		}
-		echo'
-			 		</div>
-			 ';
 
 
 		if ($ctr == -1) {

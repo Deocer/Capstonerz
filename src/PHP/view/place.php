@@ -53,7 +53,7 @@ class PlaceView extends PlaceControl
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="" style="font-size:1.3em;""><b>'.$res[$keys[$c]]['Pname'].'</b></p>
+					                    <p class="" style="font-size:1.3em;"><b>'.$res[$keys[$c]]['Pname'].'</b></p>
 					                    <p class="text-muted" style="font-size:1em;"><span class="material-icons">place</span> <b>'.round($sorted[$keys[$c]]).' KM</b> From : <b>'.$city.'</b></p>
 					                </div>
 					            </div>
@@ -303,7 +303,7 @@ class PlaceView extends PlaceControl
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p  style="font-size:1.3em;"><b>'.$res[$ctr]['Pname'].'</b></p>';
+					                    <p  style="font-size:1.1em;"><b>'.$res[$ctr]['Pname'].'</b></p>';
 					                    
 					           		if ($res[$ctr]['price'] == 1) {
 					           			echo ' <p class="text-muted" style ="font-size:15px;">
@@ -323,7 +323,7 @@ class PlaceView extends PlaceControl
 					           		}
 
 					echo               '<p class="text-muted lead"  style="font-size:0.9em;">'.$res[$ctr]['type'].'</p>					                    
-					                    <p class="text-muted"  style="font-size:1em;"><span class="material-icons">place</span> <b>'.round($sorted).' KM</b> From '.$city.'</p>
+					                    <p class="text-muted"  style="font-size:0.9em;"><span class="material-icons">place</span> <b>'.round($sorted).' KM</b> From '.$city.'</p>
 
 
 					                </div>
@@ -362,7 +362,7 @@ class PlaceView extends PlaceControl
 				echo '<a href="../../pages/user/place.php?nm='.$res[$keys[$c]]['Pname'].'&lat='.$res[$keys[$c]]['Lat'].'&lot='.$res[$keys[$c]]['Lot'].'&desc='.$res[$keys[$c]]['Des'].'&img='.$img.'&class='.$res[$keys[$c]]['type'].'&rating='.$res[$keys[$c]]['Rating'].'&address='.$res[$keys[$c]]['address'].'&hours='.$res[$keys[$c]]['hours'].'&price='.$res[$keys[$c]]['price'].'&contact='.$res[$keys[$c]]['contact'].'&site='.$res[$keys[$c]]['site'].'" class="text-body"  style="text-decoration: none; font-size:1rem;" >
 					  <div class="card placecard" style="width:100%;height:15rem;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
-					            <div class="col-4">
+					            <div class="col-4"  style="margin:auto;padding-top:5px;">
 					                <img src="'.$res[$keys[$c]]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:18rem;height:12rem;">
 					            </div>
 					            <div class="col">
@@ -424,14 +424,15 @@ class PlaceView extends PlaceControl
 		 for ($c=0; $c < $i; $c++) {
 		 		$img = str_replace("&","@",$res[$keys[$c]]['img']); 
 				echo '<a href="../../pages/user/place.php?nm='.$res[$keys[$c]]['Pname'].'&lat='.$res[$keys[$c]]['Lat'].'&lot='.$res[$keys[$c]]['Lot'].'&desc='.$res[$keys[$c]]['Des'].'&img='.$img.'&class='.$res[$keys[$c]]['type'].'&rating='.$res[$keys[$c]]['Rating'].'&address='.$res[$keys[$c]]['address'].'&hours='.$res[$keys[$c]]['hours'].'&price='.$res[$keys[$c]]['price'].'&contact='.$res[$keys[$c]]['contact'].'&site='.$res[$keys[$c]]['site'].'" class="text-body"  style="text-decoration: none" >
-					  <div class="card placecard" style="width:100%;height:150px;padding:0;padding-top:10px;">
+					  <div class="card placecard" style="width:100%;height:15rem;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
-					            <div class="col-4">
-					                <img src="'.$res[$keys[$c]]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
+					            <div class="col-4"  style="margin:auto;padding-top:5px;">
+					                <img src="'.$res[$keys[$c]]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:18rem;height:12rem;">
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
 					                    <p style="font-size:1.5em;"><b>'.$res[$keys[$c]]['Pname'].'</b></p>
+					                    <p class="text-muted" style="font-size:1.5em;">'.$res[$keys[$c]]['Rating'].'<span class="material-icons">star</span></p>
 					                    <p class="text-muted"  style="font-size:1em;"><span class="material-icons">place</span> <b>'.round($sorted[$keys[$c]]).' KM</b> From Your Location: <b>'.$place.'</b></p>
 					                </div>
 					            </div>
@@ -474,24 +475,23 @@ class PlaceView extends PlaceControl
 		  for ($ctr=0; $ctr < $i; $ctr++) { 
 		  		@$sorted =  $p-> haversine($lat,$lot,$res[$ctr]['Lat'],$res[$ctr]['Lot']);
 		  		$img = str_replace("&","@",$res[$ctr]['img']); 
-				echo '
-					  <div class="card placecard">
+				echo '<a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$img.'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'&contact='.$res[$ctr]['contact'].'&site='.$res[$ctr]['site'].'" class="text-body"  style="text-decoration: none" >
+					  <div class="card placecard" style="width:100%;height:15.5rem;padding:0;padding-top:10px;">
 					        <div class="row no-gutters">
-					            <div class="col-4">
-					                <img src="'.$res[$ctr]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:200px;height:120px;">
+					            <div class="col-4"  style="margin:auto;padding-top:5px;">
+					                <img src="'.$res[$ctr]['img'].'" class="img-fluid rounded-circle m-1 "  alt="" style="width:15rem;height:10rem;">
 					            </div>
 					            <div class="col">
 					                <div class="card-block px-2">
-					                    <p class="h6"><a href="../../pages/user/place.php?nm='.$res[$ctr]['Pname'].'&lat='.$res[$ctr]['Lat'].'&lot='.$res[$ctr]['Lot'].'&desc='.$res[$ctr]['Des'].'&img='.$img.'&class='.$res[$ctr]['type'].'&rating='.$res[$ctr]['Rating'].'&address='.$res[$ctr]['address'].'&hours='.$res[$ctr]['hours'].'&price='.$res[$ctr]['price'].'&contact='.$res[$ctr]['contact'].'&site='.$res[$ctr]['site'].'" class="text-body"  style="text-decoration: none" ><b>'.$res[$ctr]['Pname'].'</b></a></p>
-					                    <p class="text-muted" style ="font-size:15px;"><span class="material-icons">star</span></p>
-					                    <p class="text-muted" style ="font-size:12px;">'.$res[$ctr]['Rating'].'</p>
-					                    <p class="text-muted" style ="font-size:12px;">'.$res[$ctr]['reviews'].'</p>
-					                     <p class="text-muted" style ="font-size:9px;"><span class="material-icons">place</span> <b>'.round($sorted).' KM</b> From Your Location: <b>'.$_SESSION['City'].'</b></p>
+					                    <p style="font-size:1.5em;"><b>'.$res[$ctr]['Pname'].'</b></p>
+					                    <p class="text-muted" style="font-size:1.5em;">'.$res[$ctr]['Rating'].'<span class="material-icons">star</span></p>
+					                     <p class="text-muted" style="font-size:0.9em;"><span class="material-icons">place</span> <b>'.round($sorted).' KM</b> From Your Location: <b>'.$_SESSION['City'].'</b></p>
 
 					                </div>
 					            </div>
 					        </div>
-					  </div>						
+					  </div>
+					  </a>						
  			 ';
 
 		 	}
@@ -586,7 +586,8 @@ class PlaceView extends PlaceControl
 			  text-align: center;
 			  margin: 50px auto 30px;
 			  text-transform: uppercase;
-			  font-size: 30px;
+			  font-size: 40px;
+			  font-weight:bolder;
 			  letter-spacing: 2px;
 			  color: #111;
 			}
@@ -621,6 +622,7 @@ class PlaceView extends PlaceControl
 			  left: 16px;
 			  color:white;
 			  font-weight:bolder;
+			  font-size:15px;
 			}
 
 			.marker {

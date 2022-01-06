@@ -53,7 +53,7 @@ body{
                         <a href="Home.html" class="nav-link" style="color: plum;"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#About" class="nav-link" style="color: plum;"><b>About Us</b></a>
+                        <a href="src/pages/about.php" class="nav-link" style="color: plum;"><b>About Us</b></a>
                     </li>
                     <li class="nav-item">
                         <a href="src/pages/Login.php" class="nav-link" style="color: plum;"><b>Log In</b></a>

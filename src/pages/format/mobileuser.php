@@ -3,7 +3,7 @@
 echo '
     <section style="background-color: white;height: calc(100vh - 100px);overflow-y: auto;">
       <div class="container-fluid bg-light" style="height:100%">
-        <h1 class="text-center p-1 sign" style="font-family: Caveat; font-weight: bolder; font-size:50px;"><img src="../../imgs/logo.png" style="height:100px;"></h1>
+      <div class="text-center p-1 sign" style="background-color:white;font-size:50px;"><img src="../../imgs/logo.png" style="height:100px;"></div>
         <ul class="nav nav-tabs nav-fill nav-lg" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><strong class="sign" style="font-size:25px;">HOME</strong></button>
@@ -24,9 +24,9 @@ echo '
             <div class="container-fluid bg-light mx-auto py-2" style="overflow: hidden;">
             <div class="row mx-auto" style="overflow: hidden;margin: auto;">
               <br>
-            <div class ="col-8" style="height:500px;overflow:hidden;">
+            <div class ="col-7" style="overflow:hidden;">
 
-                  <div class="card mx-auto" style="width:100%;height: 500px;">';
+                  <div class="card placecard mx-auto" style="width:100%;">';
 
                       if ($place == 'Tondo') {
                      echo '<img src="https://fastly.4sqi.net/img/general/600x600/QtNf3HOZCw4GiJMk0IhT3OZFpYy1XVm1PJnI0zk4H8o.jpg" class="card-img-top" alt="..." style="height:250px;width:100%;">';
@@ -100,7 +100,7 @@ echo '
                      echo'       <div class="card-body">
                                 <br>
                                 <div style="margin:auto;text-align:center;">
-                                <h1 class="card-title" style="font-family: Caveat;font-size:50px; font-weight: bolder;">'.$place.'</h1>
+                                <h1 class="card-title" style="font-family: Caveat;font-size:80px; font-weight: bolder;">'.$place.'</h1>
                                 </div>
                                 <p class="card-text" style="font-size:20px">Manila, capital and chief city of the Philippines. The city is the centre of the countrys economic, political, social, and cultural activity. It is located on the island of Luzon and spreads along the eastern shore of Manila Bay at the mouth of the Pasig River.</p>
                               </div>
@@ -109,26 +109,26 @@ echo '
                     </div>
                     <div class ="col">
                     <div class="container-fluid" style="font-size: 5px; width: 100%;text-align:center;margin:auto;">
-                    <h2>Other Districts in Manila</h2>
+                    <h1>Other Districts in Manila</h1>
                     </div>
                     <br>
-                    <div class="container-fluid" style="font-size: 5px; width: 100%;margin:auto;">
-                      <a class="btn button1" href="?place=Tondo">Tondo</a>
-                      <a class="btn button1" href="?place=San Nicolas">San Nicolas</a>
-                      <a class="btn button1" href="?place=Binondo">Binondo</a>
-                      <a class="btn button1" href="?place=Port Area">Port Area</a>
-                      <a class="btn button1" href="?place=Ermita">Ermita</a>
-                      <a class="btn button1" href="?place=Malate">Malate</a>
-                      <a class="btn button1" href="?place=San Andres">San Andres</a>
-                      <a class="btn button1" href="?place=Santa Ana">Santa Ana</a>
-                      <a class="btn button1" href="?place=Sta. Mesa">Sta. Mesa</a>
-                      <a class="btn button1" href="?place=Sampaloc">Sampaloc</a>
-                      <a class="btn button1" href="?place=Quiapo">Quiapo</a>
-                      <a class="btn button1" href="?place=Sta Cruz">Sta Cruz</a>
-                      <a class="btn button1" href="?place=San Miguel">San Miguel</a>
-                      <a class="btn button1" href="?place=Intramuros">Intramuros</a>
-                      <a class="btn button1" href="?place=Paco">Paco</a>
-                      <a class="btn button1" href="?place=Pandacan">Pandacan</a>
+                    <div class="container-fluid" style="font-size: 25px; width: 100%;margin:auto;">
+                      <a class="btn button1" href="?place=Tondo"  style="font-size: 25px;">Tondo</a>
+                      <a class="btn button1" href="?place=San Nicolas" style="font-size: 25px;">San Nicolas</a>
+                      <a class="btn button1" href="?place=Binondo" style="font-size: 25px;">Binondo</a>
+                      <a class="btn button1" href="?place=Port Area" style="font-size: 25px;">Port Area</a>
+                      <a class="btn button1" href="?place=Ermita" style="font-size: 25px;">Ermita</a>
+                      <a class="btn button1" href="?place=Malate" style="font-size: 25px;">Malate</a>
+                      <a class="btn button1" href="?place=San Andres" style="font-size: 25px;">San Andres</a>
+                      <a class="btn button1" href="?place=Santa Ana" style="font-size: 25px;">Santa Ana</a>
+                      <a class="btn button1" href="?place=Sta. Mesa" style="font-size: 25px;">Sta. Mesa</a>
+                      <a class="btn button1" href="?place=Sampaloc" style="font-size: 25px;">Sampaloc</a>
+                      <a class="btn button1" href="?place=Quiapo" style="font-size: 25px;">Quiapo</a>
+                      <a class="btn button1" href="?place=Sta Cruz" style="font-size: 25px;">Sta Cruz</a>
+                      <a class="btn button1" href="?place=San Miguel" style="font-size: 25px;">San Miguel</a>
+                      <a class="btn button1" href="?place=Intramuros" style="font-size: 25px;">Intramuros</a>
+                      <a class="btn button1" href="?place=Paco" style="font-size: 25px;">Paco</a>
+                      <a class="btn button1" href="?place=Pandacan" style="font-size: 25px;">Pandacan</a>
                     </div>
                     </div>
             <div id="res" class="container-fluid" style="width:100%;">
@@ -166,7 +166,8 @@ echo '
             </div>
             <input id="des" type="" name="" style="display:none">
             <div class="col-auto">
-              <div class="dropdown">
+            </div>
+            <div style="text-align:left;">
                 <button class="btn dropdown-toggle text-light" type="button" id="sort" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #9570DD;"><strong> Sort By :</strong> </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="color: #9570DD;">
                   <li>
@@ -179,7 +180,6 @@ echo '
                   </li>
                 </ul>
               </div>
-            </div>
             <br>
             <input type="text" class="form-control" id="input" placeholder="Search Place in Manila " style="width:100%;">
             <br>
@@ -194,8 +194,16 @@ echo '
                 <form action="../../PHP/Functions/createPost.php" method="post" enctype="multipart/form-data">
                   <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
                   <textarea class="form-control" id="exampleFormControlTextarea1" name="cont" placeholder="Tell Us About Your Experience!" rows="5"></textarea>
-                  <input name="file[]" type="file" multiple="multiple" />
-                  <button type="submit" class="btn btn-primary">Post</button>
+                  <div class="row">
+                    <div class="col">
+                    <input name="file[]" type="file" multiple="multiple" />
+                    </div>
+                    <div class="col" style="text-align:right;">
+                    <button type="submit" class="btn btn-primary" style="font-size:1.5rem; background-color:#5E06AC;">Post</button>
+                    </div>
+                  </div>
+                  
+                  
                 </form>
               </div>
             </div>
@@ -224,5 +232,5 @@ include '../../Class/mobilenav.php';
 if (isset($_SESSION['close'])) {
       // code...
     }else{
-            //include '../../Class/modal.php';    
+            include '../../Class/mobilemodal.php';    
     }
