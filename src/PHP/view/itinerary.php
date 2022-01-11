@@ -156,7 +156,13 @@ class ItemView extends ItemControl
 			 asort($sorted);
 			 $s = array_keys($sorted);
 				echo '
-			<p class="sign">DESTINATION #1</p>	
+			<div class="row">
+			    <div class="col"><p class="sign">DESTINATION #1</p>	</div>
+			    <div class="col">
+							<button type="button" id="directions" class="btn btn-primary" style="font-size:1.5vh;"><b>Show Directions</b></button>
+					    <button type="button" id="nodirections" class="btn btn-primary" style="font-size:1.5vh;"><b>Remove Directions</b></button>
+			    </div>
+			</div>
 			<div class="card mb-3" style="width:100%;padding:0;padding-top:10px;">
 				  <div class="row g-0">
 				    <div class="col-md-4" style="margin:auto;">
@@ -168,8 +174,6 @@ class ItemView extends ItemControl
 				      </div>
 				    </div>
 				    <div class="col-2 text-light" style="margin:auto; height:100%;text-align:center;margin:auto;">
-									<button type="button" id="directions" class="btn btn-primary" style="font-size:1.5vh;"><b>Show Directions</b></button>
-					        <button type="button" id="nodirections" class="btn btn-primary" style="font-size:1.5vh;"><b>Remove Directions</b></button>
 				    </div>
 				  </div>
 				</div>

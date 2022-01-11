@@ -39,7 +39,7 @@ body{
 </div>
   <nav class="navbar navbar-expand-lg bg-light navbar-dark navbar-fixed-top">
         <div class="container">
-            <a href="#" class="navbar-brand" id="WANDER">
+            <a href="index.html" class="navbar-brand" id="WANDER">
                 <img src="src/imgs/logo.png" class="img rounded-pill" style="width:100%;height: 50px;">
             </a>
 
@@ -50,7 +50,7 @@ body{
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="Home.html" class="nav-link" style="color: plum;"><b>Home</b></a>
+                        <a href="index.html" class="nav-link" style="color: plum;"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
                         <a href="src/pages/about.php" class="nav-link" style="color: plum;"><b>About Us</b></a>

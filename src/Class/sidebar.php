@@ -114,7 +114,7 @@ a {
 }
 
 .main-menu i.menu-icon {
-  font-size: 15px;
+  font-size: 20px;
   cursor: pointer;
   color:#e1dee3;
 }
@@ -168,23 +168,19 @@ a {
 
   <div class="sidebar">
     <div class="profile">
-      <div class="profile-img">
-        <img>
+    <div class="menu-item">
+          <i class="menu-icon fa fa-user"></i>
+          <p class="menu-text">'.$_SESSION["UserName"].'</p>
       </div>
     </div>
     <div class="main-menu">
-      <div class="menu-item">
-        <a href="#">
-          <i class="menu-icon fa fa-user"></i>
-          <p class="menu-text">'.$_SESSION["UserName"].'</p>
-        </a>
-      </div>
       <div class="menu-item">
         <a href="user.php">
           <i class="menu-icon fa fa-home"></i>
           <p class="menu-text">Home</p>
         </a>
-      </div>';
+      </div>
+      <br>';
 
 if ($_SESSION['Auth'] == 'Admin') {
     echo '
@@ -194,7 +190,7 @@ if ($_SESSION['Auth'] == 'Admin') {
           <p class="menu-text">Dashboard</p>
         </a>
       </div>
-         ';
+        <br>';
  }
 
 echo '
@@ -203,7 +199,7 @@ echo '
           <i class="menu-icon fa fa-map"></i>
           <p class="menu-text">Itinerary</p>
         </a>
-      </div>
+      </div><br>
       <div class="menu-item">
         <a href="../../PHP/Functions/Log_out.php">
           <i class="menu-icon fa fa-sign-out"></i>

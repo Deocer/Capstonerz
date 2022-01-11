@@ -168,7 +168,7 @@ echo '</li>
    
       </div>
        <div class="tab-pane bg-light" id="messages" role="tabpanel" aria-labelledby="messages-tab" style="margin:auto;">
-          <div  class="bg-light" style="height: 600px;text-align: center;">
+          <div  class="bg-light" style="height: 600px;">
               <div id="uspost" class="bg-light">
                 
               </div>

@@ -434,27 +434,136 @@ echo'
                       ";
          }else{
 		 for ($ctr=0; $ctr < $i; $ctr++) { 
-		 		echo '
+		 $pic = 0;
+		 $img =  $this->Pic($res[$ctr]['PostID']);
 
-					<div class="card mb-3 pt-2" style="width: 80%;margin:auto;">
-								  <div class="row g-0">
-								    <div class="col">
-								      <div class="card-body">
-								        <h6 class="card-title"><b>'.$res[$ctr]['PostTitle'].'</b></h6>
-								        <br>
-								        <p class="card-text text-muted">'.$res[$ctr]['Cont'].'</p>
-								      </div>
+		 		echo '
+					<div class="card mx-auto" style="width:100%;border-bottom:10px solid #5E06AC;border-top:5px solid #5E06AC;">
+					  <div class="card-body">
+					    <div class="container">
+					      <div class="row align-items-start">
+					        <div class="col-7 py-2">
+					          <h5 class="card-title text-muted" style ="font-size:14px;">Posted by '.$res[$ctr]['UserName'].'</h5>
+					        </div>
+					        <div class="col py-2 text-end">
+										<button type="button" class="btn text-light" onClick="deleteP('.$res[$ctr]['PostID'].')" >
+										<span class="material-icons text-muted">delete_forever</span></button>
+					        </div>
+					      </div>
+					      <br>
+					    <p class="card-text text-lead" style ="font-size:1.32rem;"><b>'.$res[$ctr]['PostTitle'].'</b></p>
+					    <p style ="font-size:15px;">'.$res[$ctr]['Cont'].'</p>
+					    <br>';
+
+
+		 	foreach($img as $im ){
+		 		  $pic++;
+				 }
+
+				if ($pic > 0) {
+					switch ($pic) {
+				  case $pic == 1 :
+				   echo '
+				 		<img src="'.$img[0]['datum'].'" style="height: 300px;width:100%;" class="img-fluid rounded-start" onClick="reply_click(this)"  alt="../../imgs/wander logo.png"></br>';
+				    break;
+				  case $pic == 2:
+				    echo '<div class="container">
+								  <div class="row g-1">
+								    <div class="col p-0">
+								     <img src="'.$img[0]['datum'].'" style="height: 200px;" class="img-fluid rounded-start"  value="'.$img[0]['datum'].'"  class="img" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
 								    </div>
-								    <div class="col-2 text-light">
-								     <button type="button" class="btn text-light" onClick="deleteP('.$res[$ctr]['PostID'].')" style="height:100%;width:100%;font-size:15px;background-color:#f8481c;"><span class="material-icons">
-											delete_forever
-											</span></button>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 200px;"  class="img-fluid rounded-start"  value="'.$img[1]['datum'].'"class="img" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
 								    </div>
 								  </div>
-								</div>
+								</div>';
+				    break;
+					case $pic == 3:
+				    echo '<div class="container">
+								  <div class="row g-1 gx-1">
+								    <div class="col">
+								     <img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt=../../imgs/wander logo.png">
+								    </div>
+								  </div>
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[2]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+				  case $pic == 4:
+				    echo '<div class="container">
+								  <div class="row g-1">
+								    <div class="col mt-1">
+								     <img src="'.$img[0]['datum'].'" style="height: 200px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								    <div class="col mt-1">
+								     <img src="'.$img[1]['datum'].'" style="height: 200px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								  </div>
+								  <div class="row g-1 mt-1">
+								    <div class="col mt-1">
+								     <img src="'.$img[2]['datum'].'" style="height: 200px;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								     <div class="col mt-1">
+								     <img src="'.$img[3]['datum'].'" style="height: 200px;" class="img-fluid rounded-start"onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+				 	  case  $pic > 4:
+				    echo '<div class="container">
+								  <div class="row g-1 gx-1">
+								    <div class="col">
+								     <img src="'.$img[0]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								    <div class="col">
+								     <img src="'.$img[1]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								  </div>
+								  <div class="row g-1">
+								    <div class="col">
+								     <img src="'.$img[2]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								     <div class="col">
+								     <p>'.$pic.'</p>
+								     <img src="'.$img[3]['datum'].'" style="height: 100%;" class="img-fluid rounded-start" onClick="reply_click(this)" alt="../../imgs/wander logo.png">
+								    </div>
+								  </div>
+								</div>';
+				    break;
+				  default:
+				    echo "";
+				}
+		}
+
+				
+
+				echo '
+					  </div>
+					</div>
+					<br><br>
+					</div>
+					<br>
+					';
+
+echo'
+
+		<div id="myModal" class="postmodal" style"display:none;">
+
+				<div class="postpic  modal-dialog modal-dialog-centered modal-dialog-scrollable" style"width:100;"">
+				 <img src="" style="height: 50%;" id = "modalpic" class="img-fluid" alt="">
+				</div>
+
+		</div>';
 
 
-						';
+
+
 		 	}
          }
 

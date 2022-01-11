@@ -5,9 +5,64 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/v4-shims.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 	<title>About Us</title>
 </head>
+<script type="text/javascript">
+
+function validateEmail(email) 
+    {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+  $(document).ready(function(){
+    $("#msg").hide();
+    $("#back").hide();
+
+    $("#submit").click(function(){
+    var femail = $("#email").val();
+    console.log(validateEmail(femail));
+     if ($("#email").val().length == 0 || validateEmail(femail) === false) {
+            alert("Please fill the field with your account's email");
+      } 
+      else 
+      {
+           var fname = $("#name").val();
+            var fsubject = $("#subject").val();
+            var fmesg = $("#mesg").val(); 
+              $.ajax({
+                  url: '../../src/PHP/Functions/help.php',
+                  type:'post',
+                  data: {
+                        name : fname,
+                        email : femail,
+                        subject : fsubject,
+                        mesg : fmesg
+                  } ,
+                  success:function(result){
+                        $("#email").val("");
+                        $("#name").val("");
+                        $("#subject").val("");
+                        $("#mesg").val("");
+                      alert("Message Sent! Thank you!");
+                  },
+                error: function(){
+                    console.log("error")
+                }
+              })
+      }
+});
+
+}); 
+
+$(document).keypress(function(e){
+    if (e.which == 13){
+        $("#submit").click();
+    }
+});
+</script>
 <style type="text/css">
 body {
   background:gainsboro;
@@ -72,7 +127,7 @@ body {
 <body>
   <nav class="navbar navbar-expand-lg bg-light navbar-dark navbar-fixed-top">
         <div class="container">
-            <a href="#" class="navbar-brand" id="WANDER">
+            <a href="../../index.php" class="navbar-brand" id="WANDER">
                 <img src="../imgs/logo.png" class="img rounded-pill" style="width:100%;height: 50px;">
             </a>
 
@@ -126,61 +181,42 @@ body {
                   <p class="m-0">We’ll write rarely, but only the best content.</p>
                </div>
             </div>
-            <div class="card-body p-3">
-               
+            <div class="card-body p-3" id="femail">               
                   <div class="form-group">
                   <label> Your name </label>
                   <div class="input-group">
-                     <input value="" type="text" name="data[name]" class="form-control" id="inlineFormInputGroupUsername" placeholder="Your name">
+                     <input value="" type="text" id="name" class="form-control" id="inlineFormInputGroupUsername" placeholder="Your name" required>
                   </div>
-				</div>
+                </div>
                   <div class="form-group">
                      <label>Your email</label>
                      <div class="input-group mb-2 mb-sm-0">
-                        <input type="email" value="" name="data[email]" class="form-control" id="inlineFormInputGroupUsername" placeholder="Email">
+                        <input type="email" value="" id="email" class="form-control" id="inlineFormInputGroupUsername" placeholder="Email" required>
                      </div>
                   </div>
                   <div class="form-group">
                      <label>Subject</label>
                      <div class="input-group mb-2 mb-sm-0">
-                        <input type="text" name="data[subject]" class="form-control" id="inlineFormInputGroupUsername" placeholder="Subject">
+                        <input type="text" id="subject" class="form-control" id="inlineFormInputGroupUsername" placeholder="Subject" required>
                      </div>
                   </div>
                   <div class="form-group">
                      <label>Message</label>
                      <div class="input-group mb-2 mb-sm-0">
-                        <input type="text" class="form-control" name="mesg">
+                        <input type="textbox" class="form-control" id="mesg">
                      </div>
                   </div>
                   <br><br>
                   <div class="text-center">
-                     <input type="submit" name="submit" value="Submit" class="btn btn-block text-light rounded-0 py-2" style="background: #9205f0;">
+                     <input type="submit" id="submit" value="Submit" class="btn btn-block text-light rounded-0 py-2" style="background: #9205f0;">
                   </div>
-             
-			     </div>
+			 </div>
 				  
             </div>
          </div>
       <br><br>
-      <div class="">
-         <!--Buttons-->
-         <div class="row text-center">
-            <div class="col-md-4">
-               <a class="px-3 py-2 rounded text-white mb-2 d-inline-block" style="background: #9205f0;"><i class="fa fa-map-marker"></i></a>
-               <p>  </p>
-            </div>
-            <div class="col-md-4">
-               <a class="px-3 py-2 rounded text-white mb-2 d-inline-block" style="background: #9205f0;"><i class="fa fa-phone"></i></a>
-               <p>+91- 934233112</p>
-            </div>
-            <div class="col-md-4">
-               <a class="px-3 py-2 rounded text-white mb-2 d-inline-block" style="background: #9205f0;"><i class="fa fa-envelope"></i></a>
-               <p> WanderTravel@gmail.com</p>
-            </div>
-         </div>
-      </div>
-      <!--Grid column-->
 	    </div>
 </section>
 </body>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </html>

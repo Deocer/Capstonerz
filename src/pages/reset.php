@@ -70,7 +70,7 @@ echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 							</div>
 						</div>
 						<button type="submit" id="submit" class="btn btn-secondary w-100">Reset Password</button>
-						<br><br>
+						<br><br><br>
 					</form>
 				</div>
 				
